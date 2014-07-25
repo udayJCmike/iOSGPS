@@ -58,8 +58,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.43137254899999999" green="0.67843137249999996" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
-                                    <segment title="Live"/>
-                                    <segment title="History"/>
+                                    <segment title="Live Track"/>
+                                    <segment title="Tracking History"/>
                                     <segment title="Alert Message"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -125,8 +125,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.43137254899999999" green="0.67843137249999996" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
-                                    <segment title="Live"/>
-                                    <segment title="History"/>
+                                    <segment title="Live Track"/>
+                                    <segment title="Tracking History"/>
                                     <segment title="Alert Message"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -269,8 +269,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.43137254899999999" green="0.67843137249999996" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
-                                    <segment title="Live"/>
-                                    <segment title="History"/>
+                                    <segment title="Live Track"/>
+                                    <segment title="Tracking History"/>
                                     <segment title="Alert Message"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -334,8 +334,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="OST-PB-vz8"/>
-        <segue reference="m2a-ud-Z1a"/>
         <segue reference="dKs-zj-9B6"/>
+        <segue reference="m2a-ud-Z1a"/>
+        <segue reference="OST-PB-vz8"/>
     </inferredMetricsTieBreakers>
 </document>

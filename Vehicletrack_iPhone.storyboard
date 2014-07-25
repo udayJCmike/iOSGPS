@@ -58,12 +58,12 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="69N-Fd-ybc">
-                                <rect key="frame" x="20" y="156" width="275" height="29"/>
+                                <rect key="frame" x="15" y="156" width="290" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.43137254899999999" green="0.67843137249999996" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
-                                    <segment title="Live"/>
-                                    <segment title="History"/>
+                                    <segment title="Live Track" width="70"/>
+                                    <segment title="Tracking History"/>
                                     <segment title="Alert Message"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -147,12 +147,12 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Tml-9B-ddj">
-                                <rect key="frame" x="23" y="156" width="275" height="29"/>
+                                <rect key="frame" x="15" y="156" width="290" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.43137254899999999" green="0.67843137249999996" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
-                                    <segment title="Live"/>
-                                    <segment title="History"/>
+                                    <segment title="Live Track" width="70"/>
+                                    <segment title="Tracking History"/>
                                     <segment title="Alert Message"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -300,12 +300,12 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7oh-MP-KcR">
-                                <rect key="frame" x="23" y="165" width="275" height="29"/>
+                                <rect key="frame" x="15" y="165" width="290" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.43137254899999999" green="0.67843137249999996" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
-                                    <segment title="Live"/>
-                                    <segment title="History"/>
+                                    <segment title="Live Track" width="70"/>
+                                    <segment title="Tracking History"/>
                                     <segment title="Alert Message"/>
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -380,8 +380,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Ar1-6u-s9b"/>
-        <segue reference="34y-xG-DC7"/>
         <segue reference="C1F-ev-vyf"/>
+        <segue reference="iQi-xp-qgJ"/>
+        <segue reference="Lgc-bc-OqT"/>
     </inferredMetricsTieBreakers>
 </document>

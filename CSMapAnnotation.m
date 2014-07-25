@@ -7,7 +7,7 @@
 //
 
 #import "CSMapAnnotation.h"
-
+#import "CalloutView.h"
 
 @implementation CSMapAnnotation
 
@@ -37,14 +37,7 @@
 
 - (NSString *)subtitle
 {
-//	NSString* subtitle = nil;
-//	
-//	if(_annotationType == CSMapAnnotationTypeStart || 
-//		_annotationType == CSMapAnnotationTypeEnd)
-//	{
-//		subtitle = [NSString stringWithFormat:@"%lf, %lf", _coordinate.latitude, _coordinate.longitude];
-//	}
-	
+    
 	return _subtitle;
 }
 

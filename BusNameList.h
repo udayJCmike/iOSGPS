@@ -11,10 +11,10 @@
 @interface BusNameList : NSObject
 
 @property(nonatomic,retain)NSString *vehicle_reg_no;
-@property(nonatomic,retain)NSString *device_imei_number;
-@property(nonatomic,retain)NSString *driver_name;
-@property(nonatomic,retain)NSString *driver_licence_number;
-@property(nonatomic,retain)NSString *driver_licence_exp_date;
-@property(nonatomic,retain)NSString *route_no;
+@property(nonatomic,retain)NSString *bus_tracking_timestamp;
+@property(nonatomic,retain)NSString *speed;
 @property(nonatomic,retain)NSString *device_status;
+@property(nonatomic,retain)NSString *address;
+
+
 @end

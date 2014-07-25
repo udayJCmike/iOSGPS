@@ -10,11 +10,10 @@
 
 @implementation BusNameList
 @synthesize vehicle_reg_no;
-@synthesize device_imei_number;
-@synthesize route_no;
+@synthesize bus_tracking_timestamp;
+@synthesize speed;
 @synthesize device_status;
-@synthesize driver_licence_exp_date;
-@synthesize driver_licence_number;
-@synthesize driver_name;
+@synthesize address;
+
 
 @end

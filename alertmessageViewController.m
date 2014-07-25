@@ -418,7 +418,7 @@
         {
             [self.activityIndicator stopAnimating];
             [self.activityIndicator setHidden:YES];
-            TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Message sent succesfully" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Message sent successfully." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
             [self styleCustomAlertView:alertView];
             [self addButtonsWithBackgroundImagesToAlertView:alertView];
             [alertView show];
@@ -427,7 +427,7 @@
     else if([[du submitvalues] isEqualToString:@"Failure"])
     {
         [sendmessage setEnabled:YES];
-        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"Network Error" message:@"Message sending failed" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Message sending failed." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [self styleCustomAlertView:alertView];
         [self addButtonsWithBackgroundImagesToAlertView:alertView];
         [alertView show];

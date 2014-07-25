@@ -420,7 +420,7 @@ int message_count;
                 [HUD hide:YES];
                 //invalid username or password
                 NSLog(@"Failed to insert Contact Details");
-                TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Unable to contact" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Can't reach server." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [self styleCustomAlertView:alertView];
                 [self addButtonsWithBackgroundImagesToAlertView:alertView];
                 [alertView show];
@@ -535,27 +535,45 @@ int message_count;
     {
         NSString *rangeOfString = @" ";
         NSCharacterSet *rangeOfCharacters = [NSCharacterSet characterSetWithCharactersInString:rangeOfString];
-        for (int i = 0; i<[string length]; i++)
+//        for (int i = 0; i<[string length]; i++)
+//        {
+//            UniChar c1 = [string characterAtIndex:i];
+//            if ([rangeOfCharacters characterIsMember:c1])
+//            {
+//                return NO;
+//            }
+//        }
+        if(![string isEqualToString:@""])
         {
-            UniChar c1 = [string characterAtIndex:i];
-            if ([rangeOfCharacters characterIsMember:c1])
+            if (range.location == 0 && [rangeOfCharacters characterIsMember:[string characterAtIndex:0]] )
             {
+                
                 return NO;
             }
         }
+
     }
     else if (textField == lastNameTextField)
     {
         NSString *rangeOfString = @" ";
         NSCharacterSet *rangeOfCharacters = [NSCharacterSet characterSetWithCharactersInString:rangeOfString];
-        for (int i = 0; i<[string length]; i++)
+//        for (int i = 0; i<[string length]; i++)
+//        {
+//            UniChar c1 = [string characterAtIndex:i];
+//            if ([rangeOfCharacters characterIsMember:c1])
+//            {
+//                return NO;
+//            }
+//        }
+        if(![string isEqualToString:@""])
         {
-            UniChar c1 = [string characterAtIndex:i];
-            if ([rangeOfCharacters characterIsMember:c1])
+            if (range.location == 0 && [rangeOfCharacters characterIsMember:[string characterAtIndex:0]] )
             {
+                
                 return NO;
             }
         }
+
     }
     else if(textField == emailTextField)
     {
@@ -694,7 +712,7 @@ int message_count;
          [self resetButtonAction:self.resetButton];
         message_count=0;
         [HUD hide:YES];
-        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"Message sent" message:nil delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Message sent." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [self styleCustomAlertView:alertView];
         [self addButtonsWithBackgroundImagesToAlertView:alertView];
         [alertView show];
@@ -704,7 +722,7 @@ int message_count;
 // On Failure
 -(void)messageFailed:(SKPSMTPMessage *)message error:(NSError *)error{
     // open an alert with just an OK button
-    TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"Error!" message:[error localizedDescription] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO!" message:[error localizedDescription] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
     [self styleCustomAlertView:alertView];
     [self addButtonsWithBackgroundImagesToAlertView:alertView];
     [alertView show];

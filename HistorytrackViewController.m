@@ -14,6 +14,7 @@
 #import "WelcomeViewController.h"
 #import "CSMapAnnotation.h"
 #import "CSImageAnnotationView.h"
+#import "CalloutView.h"
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define SCREEN_35 (SCREEN_HEIGHT == 480)
 #define SCREEN_40 (SCREEN_HEIGHT == 568)
@@ -163,6 +164,14 @@
         
     }
     
+    CLLocationCoordinate2D coord = {.latitude =  22.3512639, .longitude =78.9542827};
+    MKCoordinateSpan span = {.latitudeDelta =  30, .longitudeDelta =  30};
+    //  MKCoordinateRegion region = {coord, span};
+    MKCoordinateRegion region = { .center = coord, .span = span };
+    
+    
+    
+    [mapview setRegion:region animated:YES];
     [segment setSelectedSegmentIndex:1];
     
     stepper_initial_value=stepper.value;
@@ -283,7 +292,7 @@
                     [self.view addSubview:view1];
                 }
                
-                TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"No location's found" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"No location's found." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [self styleCustomAlertView:alertView];
                 [self addButtonsWithBackgroundImagesToAlertView:alertView];
                 [alertView show];
@@ -333,7 +342,7 @@
             
             annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
                                                        annotationType:CSMapAnnotationTypeRedImage
-                                                                title:[NSString stringWithFormat:@"Speed:%@ km/hr",list1.speed]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
+                                                                title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
             [annotation setUserData:@"red_pin.png"];
             
             [mapview addAnnotation:annotation];
@@ -347,13 +356,15 @@
         
         Vehiclelocationlist *list1=[locationlist objectAtIndex:[locationlist count]-1];
         CLLocationCoordinate2D coord = {.latitude =  [list1.latitude doubleValue], .longitude = [list1.longitude doubleValue]};
-        MKCoordinateSpan span = {.latitudeDelta =  18.0, .longitudeDelta =  18.0};
+        MKCoordinateSpan span = {.latitudeDelta =  0, .longitudeDelta =  0};
         //  MKCoordinateRegion region = {coord, span};
         MKCoordinateRegion region = { .center = coord, .span = span };
         
         
         
         [mapview setRegion:region animated:YES];
+        
+        
         [points release];
         
         [self.view addSubview:mapview];
@@ -521,22 +532,7 @@
 	{
 		// determine the type of annotation, and produce the correct type of annotation view for it.
 		CSMapAnnotation* csAnnotation = (CSMapAnnotation*)annotation;
-        //		if(csAnnotation.annotationType == CSMapAnnotationTypeStart ||
-        //		   csAnnotation.annotationType == CSMapAnnotationTypeEnd)
-        //		{
-        //			NSString* identifier = @"Pin";
-        //			MKPinAnnotationView* pin = (MKPinAnnotationView*)[self.mapview dequeueReusableAnnotationViewWithIdentifier:identifier];
-        //
-        //			if(nil == pin)
-        //			{
-        //				pin = [[[MKPinAnnotationView alloc] initWithAnnotation:csAnnotation reuseIdentifier:identifier] autorelease];
-        //			}
-        //
         
-        //			[pin setPinColor:(csAnnotation.annotationType == CSMapAnnotationTypeEnd) ? MKPinAnnotationColorRed : MKPinAnnotationColorGreen];
-        //			///NSLog(@"pav.frame.size = %@, pav.image.size = %@",  NSStringFromCGSize(pin.frame.size),                 NSStringFromCGSize(pin.image.size));
-        //			annotationView = pin;
-        //		}
         if(csAnnotation.annotationType == CSMapAnnotationTypeRedImage)
 		{
 			NSString* identifier = @"Red";
@@ -545,7 +541,7 @@
 			if(nil == imageAnnotationView)
 			{
 				imageAnnotationView = [[[CSImageAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
-				//imageAnnotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+				
 			}
 			
 			annotationView = imageAnnotationView;
@@ -558,7 +554,7 @@
 			if(nil == imageAnnotationView)
 			{
 				imageAnnotationView = [[[CSImageAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
-				//imageAnnotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+				
 			}
 			
 			annotationView = imageAnnotationView;
@@ -571,14 +567,14 @@
 			if(nil == imageAnnotationView)
 			{
 				imageAnnotationView = [[[CSImageAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
-				//imageAnnotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+				
 			}
 			
 			annotationView = imageAnnotationView;
 		}
-        //	annotationView.centerOffset=CGPointMake(100,100);
-		[annotationView setEnabled:YES];
-		[annotationView setCanShowCallout:YES];
+       
+        [annotationView setEnabled:YES];
+		[annotationView setCanShowCallout:NO];
 		
 		
 	}
@@ -590,7 +586,7 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-	
+	  
     CSImageAnnotationView* imageAnnotationView = (CSImageAnnotationView*) view;
 	CSMapAnnotation* annotation = (CSMapAnnotation*)[imageAnnotationView annotation];
     
@@ -602,6 +598,26 @@
 	
 }
 
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    // NSLog(@"called ");
+    CSImageAnnotationView* imageAnnotationView = (CSImageAnnotationView*) view;
+    CSMapAnnotation* annotation = (CSMapAnnotation*)[imageAnnotationView annotation];
+    
+    CalloutView *calloutView = (CalloutView *)[[[NSBundle mainBundle] loadNibNamed:@"calloutView" owner:self options:nil] objectAtIndex:0];
+    CGRect calloutViewFrame = calloutView.frame;
+    calloutViewFrame.origin = CGPointMake(-calloutViewFrame.size.width/2 + 15, -calloutViewFrame.size.height);
+    calloutView.frame = calloutViewFrame;
+    [calloutView.calloutLabel setText:[NSString stringWithFormat:@"%@\n%@",[annotation title],[annotation subtitle]]];
+    [view addSubview:calloutView];
+}
+
+-(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+    for (UIView *subview in view.subviews ){
+        UIView* subview1=(UIView*)subview;
+        if([subview1 isKindOfClass:[CalloutView class]])
+            [subview removeFromSuperview];
+    }
+}
 
 - (void)viewDidUnload {
 	self.mapview   = nil;

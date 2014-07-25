@@ -148,6 +148,9 @@
 		84968B45197686D400DD80E5 /* month.png in Resources */ = {isa = PBXBuildFile; fileRef = 84968B42197686D400DD80E5 /* month.png */; };
 		84968B46197686D400DD80E5 /* year.png in Resources */ = {isa = PBXBuildFile; fileRef = 84968B43197686D400DD80E5 /* year.png */; };
 		8498BE7A197569CC00B810F0 /* Vehiclelocationlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 8498BE79197569CC00B810F0 /* Vehiclelocationlist.m */; };
+		84992C791982334C002304EE /* CalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84992C771982334C002304EE /* CalloutView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		84992C7A1982334C002304EE /* calloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84992C781982334C002304EE /* calloutView.xib */; };
+		84992C7F19825393002304EE /* bluebg.png in Resources */ = {isa = PBXBuildFile; fileRef = 84992C7E19825393002304EE /* bluebg.png */; };
 		8499684C1979011100A53BEF /* Pin.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499684B1979011100A53BEF /* Pin.m */; };
 		8499685419795DC800A53BEF /* AKNumericFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499684F19795DC800A53BEF /* AKNumericFormatter.m */; };
 		8499685519795DC800A53BEF /* NSString+AKNumericFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499685119795DC800A53BEF /* NSString+AKNumericFormatter.m */; };
@@ -155,6 +158,7 @@
 		849CA556197810E50005309F /* green_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 849CA553197810E50005309F /* green_pin.png */; };
 		849CA557197810E50005309F /* pink_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 849CA554197810E50005309F /* pink_pin.png */; };
 		849CA558197810E50005309F /* red_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 849CA555197810E50005309F /* red_pin.png */; };
+		84D77B9119829C6A008D9542 /* mygps_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D77B9019829C6A008D9542 /* mygps_logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -345,6 +349,10 @@
 		84968B43197686D400DD80E5 /* year.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = year.png; sourceTree = "<group>"; };
 		8498BE78197569CC00B810F0 /* Vehiclelocationlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vehiclelocationlist.h; sourceTree = "<group>"; };
 		8498BE79197569CC00B810F0 /* Vehiclelocationlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vehiclelocationlist.m; sourceTree = "<group>"; };
+		84992C761982334C002304EE /* CalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalloutView.h; sourceTree = "<group>"; };
+		84992C771982334C002304EE /* CalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalloutView.m; sourceTree = "<group>"; };
+		84992C781982334C002304EE /* calloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = calloutView.xib; sourceTree = "<group>"; };
+		84992C7E19825393002304EE /* bluebg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluebg.png; sourceTree = "<group>"; };
 		8499684A1979011100A53BEF /* Pin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pin.h; sourceTree = "<group>"; };
 		8499684B1979011100A53BEF /* Pin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pin.m; sourceTree = "<group>"; };
 		8499684E19795DC800A53BEF /* AKNumericFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKNumericFormatter.h; sourceTree = "<group>"; };
@@ -356,6 +364,7 @@
 		849CA553197810E50005309F /* green_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_pin.png; sourceTree = "<group>"; };
 		849CA554197810E50005309F /* pink_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pink_pin.png; sourceTree = "<group>"; };
 		849CA555197810E50005309F /* red_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_pin.png; sourceTree = "<group>"; };
+		84D77B9019829C6A008D9542 /* mygps_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mygps_logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -470,6 +479,7 @@
 		84951A761973C7C2003C603B = {
 			isa = PBXGroup;
 			children = (
+				84992C751982333D002304EE /* Custom Callouts */,
 				8492D0E0197F781700E1101A /* iPad_icons */,
 				8492D0DF197F780E00E1101A /* iPhone_icons */,
 				8499684D19795DBD00A53BEF /* MobileNumberFormat */,
@@ -606,6 +616,7 @@
 				8492E12F1975054300AA9291 /* green_light.png */,
 				8492E1301975054300AA9291 /* red_light.png */,
 				8492E1311975054300AA9291 /* yellow_light.png */,
+				84D77B9019829C6A008D9542 /* mygps_logo.png */,
 				84951B1C19741013003C603B /* aboutus.png */,
 				84951B1D19741013003C603B /* clear.png */,
 				84951B1E19741013003C603B /* contactus.png */,
@@ -741,6 +752,17 @@
 			name = "Custom date picker";
 			sourceTree = "<group>";
 		};
+		84992C751982333D002304EE /* Custom Callouts */ = {
+			isa = PBXGroup;
+			children = (
+				84992C761982334C002304EE /* CalloutView.h */,
+				84992C7E19825393002304EE /* bluebg.png */,
+				84992C771982334C002304EE /* CalloutView.m */,
+				84992C781982334C002304EE /* calloutView.xib */,
+			);
+			name = "Custom Callouts";
+			sourceTree = "<group>";
+		};
 		8499684D19795DBD00A53BEF /* MobileNumberFormat */ = {
 			isa = PBXGroup;
 			children = (
@@ -864,6 +886,7 @@
 				8492D0FD197F783A00E1101A /* ipad80.png in Resources */,
 				8492D14E197F7F7E00E1101A /* login~ipad.png in Resources */,
 				849CA558197810E50005309F /* red_pin.png in Resources */,
+				84D77B9119829C6A008D9542 /* mygps_logo.png in Resources */,
 				8492D110197F7E1700E1101A /* dashboard-568h@2x.png in Resources */,
 				8492E1321975054300AA9291 /* green_light.png in Resources */,
 				84951AC71973D5EE003C603B /* Welcome_iPhone.storyboard in Resources */,
@@ -902,6 +925,7 @@
 				8492D14A197F7F7E00E1101A /* histroytrack~ipad.png in Resources */,
 				8492D0E7197F782B00E1101A /* iphone29.png in Resources */,
 				84951A8D1973C7C2003C603B /* InfoPlist.strings in Resources */,
+				84992C7F19825393002304EE /* bluebg.png in Resources */,
 				8492D0F8197F783A00E1101A /* ipad40.png in Resources */,
 				84951AD71973E139003C603B /* Contactus_iPad.storyboard in Resources */,
 				8492D144197F7F7E00E1101A /* contact~ipad.png in Resources */,
@@ -926,6 +950,7 @@
 				8494062F1976AB1F00234E2A /* home.png in Resources */,
 				849CA556197810E50005309F /* green_pin.png in Resources */,
 				8492E1211974ECF300AA9291 /* large.button.green.off.png in Resources */,
+				84992C7A1982334C002304EE /* calloutView.xib in Resources */,
 				84968B46197686D400DD80E5 /* year.png in Resources */,
 				8492D10C197F7E1700E1101A /* about-568h@2x.png in Resources */,
 				8492D147197F7F7E00E1101A /* Default-portrait@2x~ipad.png in Resources */,
@@ -965,6 +990,7 @@
 				84951B121973FB14003C603B /* databaseurl.m in Sources */,
 				8492E1101974ECE100AA9291 /* TTAlertView.m in Sources */,
 				84951B1B1973FB14003C603B /* SBJsonWriter.m in Sources */,
+				84992C791982334C002304EE /* CalloutView.m in Sources */,
 				84951A9C1973C7C2003C603B /* GPSMobileTrackingViewController.m in Sources */,
 				8499684C1979011100A53BEF /* Pin.m in Sources */,
 				84951B191973FB14003C603B /* SBJsonBase.m in Sources */,

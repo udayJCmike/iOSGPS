@@ -158,11 +158,14 @@ int c;
             if ([[menu objectForKey:@"success"] isEqualToString:@"Yes"])
             {
                 [HUD hide:YES];
+               
                 [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"orgid"] forKey:@"orgid"];
                 [[NSUserDefaults standardUserDefaults]setValue:username.text forKey:@"username"];
                  [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"role"] forKey:@"role"];
                 NSLog(@"role %@",[menu objectForKey:@"role"]);
                 [[NSUserDefaults standardUserDefaults]synchronize];
+                username.text=@"";
+                password.text=@"";
                 if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
                 {
                     UIStoryboard *welcome=[UIStoryboard storyboardWithName:@"Welcome_iPad" bundle:nil];

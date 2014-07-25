@@ -8,7 +8,9 @@
 
 #import "AboutusViewController.h"
 #import "databaseurl.h"
-
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#define SCREEN_35 (SCREEN_HEIGHT == 480)
+#define SCREEN_40 (SCREEN_HEIGHT == 568)
 @interface AboutusViewController ()
 {
     databaseurl * du;
@@ -18,6 +20,10 @@
 
 @implementation AboutusViewController
 @synthesize imageview;
+@synthesize scroll_height;
+@synthesize scrollview;
+@synthesize scrollview_height;
+@synthesize scroll_bottom;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,34 +45,29 @@
     
     NSString *filename = [du imagecheck:@"about.png"];
     NSLog(@"image name %@",filename);
-    //    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
-    //        CGRect screenRect = [[UIScreen mainScreen] bounds];
-    //        if (screenRect.size.height == 1024.0f)
-    //        {
-    //            filename = [filename stringByReplacingOccurrencesOfString:@".png" withString:@"~ipad.png"];
-    //            // code for 4-inch screen
-    //        } else {
-    //            filename = [filename stringByReplacingOccurrencesOfString:@".png" withString:@"@2x~ipad.png"];
-    //            // code for 3.5-inch screen
-    //        }
-    //
-    //    }
-    //    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-    //
-    //        CGRect screenRect = [[UIScreen mainScreen] bounds];
-    //        if (screenRect.size.height == 568.0f)
-    //        {
-    //            filename = [filename stringByReplacingOccurrencesOfString:@".png" withString:@"-568h@2x.png"];
-    //            // code for 4-inch screen
-    //        } else {
-    //            filename = [filename stringByReplacingOccurrencesOfString:@".png" withString:@"@2x.png"];
-    //            // code for 3.5-inch screen
-    //        }
-    //
-    //    }
-    
     
     imageview.image = [UIImage imageNamed:filename];
+    
+    if(SCREEN_35)
+    {
+        
+        for (NSLayoutConstraint *con in self.view.constraints)
+        {
+            if (con.firstItem == scrollview && con.firstAttribute == NSLayoutAttributeTop) {
+                
+                con.constant =160;
+                self.scrollview_height.constant=330;
+                self.scroll_height.constant = 161;
+                scroll_bottom.constant=60;
+                [self.scrollview needsUpdateConstraints];
+            }
+            
+                
+            
+            
+        }
+    }
+
    
 
 }
@@ -77,18 +78,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (void)dealloc {
+  
+ 
+    
+   
  [super dealloc];
 }
 @end

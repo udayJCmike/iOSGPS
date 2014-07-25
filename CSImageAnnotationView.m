@@ -23,11 +23,13 @@
 	self.backgroundColor = [UIColor clearColor];
 	
 	CSMapAnnotation* csAnnotation = (CSMapAnnotation*)annotation;
+    
 	
 	UIImage* image = [UIImage imageNamed:csAnnotation.userData];
 	_imageView = [[UIImageView alloc] initWithImage:image];
 	
 	_imageView.frame = CGRectMake(kBorder, kBorder, kWidth - 2 * kBorder, kWidth - 2 * kBorder);
+    
 	[self addSubview:_imageView];
 	
 	return self;

@@ -10,7 +10,9 @@
 
 @implementation BuslistTableViewCell
 @synthesize vehicle_reg_no;
-@synthesize driver_name;
+@synthesize last_update;
+@synthesize current_location;
+@synthesize current_speed;
 @synthesize device_status;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

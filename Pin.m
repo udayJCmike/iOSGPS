@@ -15,8 +15,8 @@
     self = [super init];
     if (self) {
         _coordinate = newCoordinate;
-        _title = @"Hello";
-        _subtitle = @"Are you still there?";
+        _title = @"";
+        _subtitle = @"";
     }
     return self;
 }

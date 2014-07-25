@@ -161,16 +161,11 @@
                     
                     BusNameList *list1=[[BusNameList alloc]init];
                    list1.vehicle_reg_no=[arrayList1 objectForKey:@"vehicle_reg_no"];
-                    list1.driver_name =[arrayList1 objectForKey:@"driver_name"];
+                    list1.speed =[arrayList1 objectForKey:@"speed"];
                     list1.device_status =[arrayList1 objectForKey:@"device_status"];
-                    list1.driver_licence_number =[arrayList1 objectForKey:@"driver_licence_number"];
-                    list1.driver_licence_exp_date =[arrayList1 objectForKey:@"driver_licence_exp_date"];
-                    list1.route_no =[arrayList1 objectForKey:@"route_no"];
-                    list1.device_imei_number =[arrayList1 objectForKey:@"device_imei_number"];
-                    
+                    list1.bus_tracking_timestamp =[arrayList1 objectForKey:@"bus_tracking_timestamp"];
+                    list1.address =[arrayList1 objectForKey:@"address"];
                     [list addObject:list1];
-                    
-                    
                 }
                
             }
@@ -214,16 +209,26 @@
         cell=[[BuslistTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellid];
     }
     BusNameList *list1=[list objectAtIndex:indexPath.row];
-    cell.driver_name.text=list1.driver_name;
+   
     cell.vehicle_reg_no.text=list1.vehicle_reg_no;
+    cell.current_speed.text=list1.speed;
+    cell.current_location.text=list1.address;
+    cell.last_update.text=list1.bus_tracking_timestamp;
+    
     if ([list1.device_status isEqualToString:@"0"]) {
         cell.device_status.image=[UIImage imageNamed:@"red_light.png"];
     }
     else if ([list1.device_status isEqualToString:@"1"]) {
         cell.device_status.image=[UIImage imageNamed:@"green_light.png"];
     }
-    else {
+ else if (([list1.device_status isEqualToString:@"2"])|| ([list1.device_status isEqualToString:@"3"]))
+ {
          cell.device_status.image=[UIImage imageNamed:@"yellow_light.png"];
+    }
+    else
+    {
+         cell.device_status.image=[UIImage imageNamed:@"red_light.png"];
+        
     }
     
     
@@ -278,16 +283,16 @@
     
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
-        UIStoryboard *welcome=[UIStoryboard storyboardWithName:@"Aboutus_iPad" bundle:nil];
-        UIViewController *initialvc=[welcome instantiateInitialViewController];
+        UIStoryboard *welcome1=[UIStoryboard storyboardWithName:@"Aboutus_iPad" bundle:nil];
+        UIViewController *initialvc=[welcome1 instantiateInitialViewController];
         [self.navigationController pushViewController:initialvc animated:YES];
         //    initialvc.modalTransitionStyle=UIModalTransitionStyleFlipHorizontal;
         //    [self presentModalViewController:initialvc animated:YES];
     }
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
     {
-        UIStoryboard *welcome=[UIStoryboard storyboardWithName:@"Aboutus_iPhone" bundle:nil];
-        UIViewController *initialvc=[welcome instantiateInitialViewController];
+        UIStoryboard *welcome1=[UIStoryboard storyboardWithName:@"Aboutus_iPhone" bundle:nil];
+        UIViewController *initialvc=[welcome1 instantiateInitialViewController];
         [self.navigationController pushViewController:initialvc animated:YES];
         //    initialvc.modalTransitionStyle=UIModalTransitionStyleFlipHorizontal;
         //    [self presentModalViewController:initialvc animated:YES];
@@ -299,16 +304,16 @@
     
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
-        UIStoryboard *welcome=[UIStoryboard storyboardWithName:@"Contactus_iPad" bundle:nil];
-        UIViewController *initialvc=[welcome instantiateInitialViewController];
+        UIStoryboard *welcome1=[UIStoryboard storyboardWithName:@"Contactus_iPad" bundle:nil];
+        UIViewController *initialvc=[welcome1 instantiateInitialViewController];
         [self.navigationController pushViewController:initialvc animated:YES];
         //    initialvc.modalTransitionStyle=UIModalTransitionStyleFlipHorizontal;
         //    [self presentModalViewController:initialvc animated:YES];
     }
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
     {
-        UIStoryboard *welcome=[UIStoryboard storyboardWithName:@"Contactus_iPhone" bundle:nil];
-        UIViewController *initialvc=[welcome instantiateInitialViewController];
+        UIStoryboard *welcome1=[UIStoryboard storyboardWithName:@"Contactus_iPhone" bundle:nil];
+        UIViewController *initialvc=[welcome1 instantiateInitialViewController];
         [self.navigationController pushViewController:initialvc animated:YES];
         //    initialvc.modalTransitionStyle=UIModalTransitionStyleFlipHorizontal;
         //    [self presentModalViewController:initialvc animated:YES];

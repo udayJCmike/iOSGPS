@@ -16,6 +16,7 @@
 #import "WelcomeViewController.h"
 #import "CSMapAnnotation.h"
 #import "CSImageAnnotationView.h"
+
 #define MERCATOR_OFFSET 268435456
 #define MERCATOR_RADIUS 85445659.44705395
 #define interval 30
@@ -29,7 +30,13 @@ int i;
     databaseurl *du;
     int stepper_initial_value;
     CLLocationCoordinate2D _coordinate;
+    
 }
+@property (nonatomic, strong) NSMutableArray *allPins;
+@property (nonatomic, strong) MKPolylineView *lineView;
+@property (nonatomic, strong) MKPolyline *polyline;
+
+- (IBAction)drawLines:(id)sender;
 @end
 
 @implementation LivetrackViewController
@@ -59,9 +66,7 @@ int i;
     span.longitudeDelta*=delta;
     region.span=span;
     [mapView setRegion:region animated:YES];
-    //    CLLocationCoordinate2D centerCoord = { mapview.region.center.latitude,  mapview.region.center.longitude };
-    //     MKCoordinateRegion region=[self setCenterCoordinate:centerCoord zoomLevel:delta animated:NO];
-//    [mapView setRegion:region animated:YES];
+   
     
 }
 - (void)zoomMapdec:(MKMapView*)mapView byDelta:(int) delta {
@@ -72,9 +77,7 @@ int i;
     span.longitudeDelta/=delta;
     region.span=span;
     [mapView setRegion:region animated:YES];
-    //    CLLocationCoordinate2D centerCoord = { mapview.region.center.latitude,  mapview.region.center.longitude };
-    //    MKCoordinateRegion region=[self setCenterCoordinate:centerCoord zoomLevel:delta animated:NO];
-//    [mapView setRegion:region animated:YES];
+   
     
     
 }
@@ -187,6 +190,7 @@ int i;
 {
     [super viewDidLoad];
     i=1;
+  
     if(SCREEN_35)
     {
         
@@ -239,6 +243,7 @@ int i;
                                     [UIFont fontWithName:@"Times New Roman" size:20], UITextAttributeFont,nil];
         [segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
         
+        
     }
     else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
         
@@ -258,7 +263,15 @@ int i;
         [self.navigationController setNavigationBarHidden:YES animated:NO];
         
     }
+    CLLocationCoordinate2D coord = {.latitude =  22.3512639, .longitude =78.9542827};
+    MKCoordinateSpan span = {.latitudeDelta =  30, .longitudeDelta =  30};
+    //  MKCoordinateRegion region = {coord, span};
+    MKCoordinateRegion region = { .center = coord, .span = span };
     
+    
+    
+    [mapview setRegion:region animated:YES];
+
     
     NSString *filename = [du imagecheck:@"livetrack.png"];
     NSLog(@"image name %@",filename);
@@ -388,7 +401,7 @@ int i;
             }
             else
             {
-                TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"No location's found" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"No location's found." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [self styleCustomAlertView:alertView];
                 [self addButtonsWithBackgroundImagesToAlertView:alertView];
                 [alertView show];
@@ -406,6 +419,7 @@ int i;
 {
     
      NSMutableArray *points=[[NSMutableArray alloc]init];
+      self.allPins = [[NSMutableArray alloc]init];
     MKMapRect visibleMapRect = mapview.visibleMapRect;
     NSLog(@"visible");
     NSSet *visibleAnnotations = [mapview annotationsInMapRect:visibleMapRect];
@@ -433,7 +447,8 @@ int i;
             if ((i==0)&&([list1.exceed_speed_limit isEqualToString:@"0"])) {
                 annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
                                                            annotationType:CSMapAnnotationTypeGreenImage
-                                                                    title:[NSString stringWithFormat:@"Speed:%@ km/hr",list1.speed]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
+                                                                    title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
+                
                  [annotation setUserData:@"green_pin.png"];
             }
             else if (((i==0)&&([list1.exceed_speed_limit isEqualToString:@"1"]))||([list1.exceed_speed_limit isEqualToString:@"1"]))
@@ -441,7 +456,7 @@ int i;
             {
                 annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
                                                            annotationType:CSMapAnnotationTypePinkImage
-                                                                    title:[NSString stringWithFormat:@"Speed:%@ km/hr",list1.speed]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
+                                                                    title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
                 [annotation setUserData:@"pink_pin.png"];
             }
             else
@@ -449,30 +464,34 @@ int i;
             {
                 annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
                                                            annotationType:CSMapAnnotationTypeRedImage
-                                                                    title:[NSString stringWithFormat:@"Speed:%@ km/hr",list1.speed]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
+                                                                    title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
                  [annotation setUserData:@"red_pin.png"];
             }
             if ((i==0)&&([list1.exceed_speed_limit isEqualToString:@"0"])) {
-                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
-                                                           annotationType:CSMapAnnotationTypeGreenImage
-                                                                    title:[NSString stringWithFormat:@"Speed:%@ km/hr",list1.speed]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
+                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]                                                           annotationType:CSMapAnnotationTypeGreenImage  title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
                  [annotation setUserData:@"green_pin.png"];
             }
             
           [mapview addAnnotation:annotation];
+            CLLocationCoordinate2D coord = {.latitude =  [list1.latitude doubleValue], .longitude = [list1.longitude doubleValue]};
+            Pin *newPin = [[Pin alloc]initWithCoordinate:coord];
+            [self.allPins addObject:newPin];
+           [self drawLines:self];
+            
             
         }
+        
          Vehiclelocationlist *list1=[locationlist objectAtIndex:0];
         CLLocationCoordinate2D coord = {.latitude =  [list1.latitude doubleValue], .longitude = [list1.longitude doubleValue]};
-        MKCoordinateSpan span = {.latitudeDelta =  18.0, .longitudeDelta =  18.0};
+        MKCoordinateSpan span = {.latitudeDelta =  0.00, .longitudeDelta =  0.00};
         //  MKCoordinateRegion region = {coord, span};
         MKCoordinateRegion region = { .center = coord, .span = span };
         
         
         
         [mapview setRegion:region animated:YES];
-       
-       
+        
+       [points release];
         [self.view addSubview:mapview];
         [self.view addSubview:maptype];
         [self.view addSubview:stepper];
@@ -481,23 +500,7 @@ int i;
     
     
 }
-//- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-//{
-//    
-//      _coordinate.latitude = userLocation.location.coordinate.latitude;
-//      _coordinate.longitude = userLocation.location.coordinate.longitude;
-//    
-//    [self setMapRegionWithCoordinate:_coordinate];
-//}
-//
-//- (void)setMapRegionWithCoordinate:(CLLocationCoordinate2D)coordinate
-//{
-//    MKCoordinateRegion region;
-//    
-//    region = MKCoordinateRegionMake(coordinate, MKCoordinateSpanMake(.1, .1));
-//    MKCoordinateRegion adjustedRegion = [mapview regionThatFits:region];
-//    [mapview setRegion:adjustedRegion animated:YES];
-//}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -531,6 +534,46 @@ int i;
         }
     }
 }
+
+- (IBAction)drawLines:(id)sender {
+    
+    
+   // NSLog(@"method call");
+    [self drawLineSubroutine];
+    [self drawLineSubroutine];
+    
+}
+- (void)drawLineSubroutine {
+    
+    // remove polyline if one exists
+    [self.mapview removeOverlay:self.polyline];
+    
+    // create an array of coordinates from allPins
+    CLLocationCoordinate2D coordinates[self.allPins.count];
+    int i = 0;
+    for (Pin *currentPin in self.allPins) {
+        coordinates[i] = currentPin.coordinate;
+        i++;
+    }
+    
+    // create a polyline with all cooridnates
+    MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinates count:self.allPins.count];
+    [self.mapview addOverlay:polyline];
+    self.polyline = polyline;
+    
+    // create an MKPolylineView and add it to the map view
+    self.lineView = [[MKPolylineView alloc]initWithPolyline:self.polyline];
+    self.lineView.strokeColor = [UIColor redColor];
+    self.lineView.lineWidth = 3;
+    
+    // for a laugh: how many polylines are we drawing here?
+    self.title = [[NSString alloc]initWithFormat:@"%lu", (unsigned long)self.mapview.overlays.count];
+    
+}
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
+    
+    return self.lineView;
+}
 #pragma mark mapView delegate functions
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
@@ -542,31 +585,16 @@ int i;
 	{
 		// determine the type of annotation, and produce the correct type of annotation view for it.
 		CSMapAnnotation* csAnnotation = (CSMapAnnotation*)annotation;
-//		if(csAnnotation.annotationType == CSMapAnnotationTypeStart ||
-//		   csAnnotation.annotationType == CSMapAnnotationTypeEnd)
-//		{
-//			NSString* identifier = @"Pin";
-//			MKPinAnnotationView* pin = (MKPinAnnotationView*)[self.mapview dequeueReusableAnnotationViewWithIdentifier:identifier];
-//			
-//			if(nil == pin)
-//			{
-//				pin = [[[MKPinAnnotationView alloc] initWithAnnotation:csAnnotation reuseIdentifier:identifier] autorelease];
-//			}
-//            
-			
-//			[pin setPinColor:(csAnnotation.annotationType == CSMapAnnotationTypeEnd) ? MKPinAnnotationColorRed : MKPinAnnotationColorGreen];
-//			///NSLog(@"pav.frame.size = %@, pav.image.size = %@",  NSStringFromCGSize(pin.frame.size),                 NSStringFromCGSize(pin.image.size));
-//			annotationView = pin;
-//		}
+
          if(csAnnotation.annotationType == CSMapAnnotationTypeRedImage)
 		{
 			NSString* identifier = @"Red";
 			
 			CSImageAnnotationView* imageAnnotationView = (CSImageAnnotationView*)[self.mapview dequeueReusableAnnotationViewWithIdentifier:identifier];
-			if(nil == imageAnnotationView)
+           if(nil == imageAnnotationView)
 			{
 				imageAnnotationView = [[[CSImageAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
-				//imageAnnotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+				
 			}
 			
 			annotationView = imageAnnotationView;
@@ -579,7 +607,7 @@ int i;
 			if(nil == imageAnnotationView)
 			{
 				imageAnnotationView = [[[CSImageAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
-				//imageAnnotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+				
 			}
 			
 			annotationView = imageAnnotationView;
@@ -589,17 +617,17 @@ int i;
 			NSString* identifier = @"Pink";
 			
 			CSImageAnnotationView* imageAnnotationView = (CSImageAnnotationView*)[self.mapview dequeueReusableAnnotationViewWithIdentifier:identifier];
-			if(nil == imageAnnotationView)
+            if(nil == imageAnnotationView)
 			{
 				imageAnnotationView = [[[CSImageAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
-				//imageAnnotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+				
 			}
 			
 			annotationView = imageAnnotationView;
 		}
 	//	annotationView.centerOffset=CGPointMake(100,100);
 		[annotationView setEnabled:YES];
-		[annotationView setCanShowCallout:YES];
+		[annotationView setCanShowCallout:NO];
 		
 		
 	}
@@ -615,93 +643,32 @@ int i;
     CSImageAnnotationView* imageAnnotationView = (CSImageAnnotationView*) view;
 	CSMapAnnotation* annotation = (CSMapAnnotation*)[imageAnnotationView annotation];
     
-	if(annotation.url != nil)
-	{
-		
-	}
+	
   
 	
 }
-
-#pragma mark -
-#pragma mark Map conversion methods
-
-- (double)longitudeToPixelSpaceX:(double)longitude
-{
-    return round(MERCATOR_OFFSET + MERCATOR_RADIUS * longitude * M_PI / 180.0);
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+       // NSLog(@"called ");
+        CSImageAnnotationView* imageAnnotationView = (CSImageAnnotationView*) view;
+    	CSMapAnnotation* annotation = (CSMapAnnotation*)[imageAnnotationView annotation];
+    
+            CalloutView *calloutView = (CalloutView *)[[[NSBundle mainBundle] loadNibNamed:@"calloutView" owner:self options:nil] objectAtIndex:0];
+            CGRect calloutViewFrame = calloutView.frame;
+            calloutViewFrame.origin = CGPointMake(-calloutViewFrame.size.width/2 + 15, -calloutViewFrame.size.height);
+            calloutView.frame = calloutViewFrame;
+            [calloutView.calloutLabel setText:[NSString stringWithFormat:@"%@\n%@",[annotation title],[annotation subtitle]]];
+            [view addSubview:calloutView];
 }
 
-- (double)latitudeToPixelSpaceY:(double)latitude
-{
-    return round(MERCATOR_OFFSET - MERCATOR_RADIUS * logf((1 + sinf(latitude * M_PI / 180.0)) / (1 - sinf(latitude * M_PI / 180.0))) / 2.0);
+-(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+        for (UIView *subview in view.subviews ){
+           UIView* subview1=(UIView*)subview;
+            if([subview1 isKindOfClass:[CalloutView class]])
+            [subview removeFromSuperview];
+        }
 }
 
-- (double)pixelSpaceXToLongitude:(double)pixelX
-{
-    return ((round(pixelX) - MERCATOR_OFFSET) / MERCATOR_RADIUS) * 180.0 / M_PI;
-}
 
-- (double)pixelSpaceYToLatitude:(double)pixelY
-{
-    return (M_PI / 2.0 - 2.0 * atan(exp((round(pixelY) - MERCATOR_OFFSET) / MERCATOR_RADIUS))) * 180.0 / M_PI;
-}
-
-#pragma mark -
-#pragma mark Helper methods
-
-- (MKCoordinateSpan)coordinateSpanWithMapView:(MKMapView *)mapView
-                             centerCoordinate:(CLLocationCoordinate2D)centerCoordinate
-                                 andZoomLevel:(NSUInteger)zoomLevel
-{
-    // convert center coordiate to pixel space
-    double centerPixelX = [self longitudeToPixelSpaceX:centerCoordinate.longitude];
-    double centerPixelY = [self latitudeToPixelSpaceY:centerCoordinate.latitude];
-    
-    // determine the scale value from the zoom level
-    NSInteger zoomExponent = 20 - zoomLevel;
-    double zoomScale = pow(2, zoomExponent);
-    
-    // scale the map’s size in pixel space
-    CGSize mapSizeInPixels = mapView.bounds.size;
-    double scaledMapWidth = mapSizeInPixels.width * zoomScale;
-    double scaledMapHeight = mapSizeInPixels.height * zoomScale;
-    
-    // figure out the position of the top-left pixel
-    double topLeftPixelX = centerPixelX - (scaledMapWidth / 2);
-    double topLeftPixelY = centerPixelY - (scaledMapHeight / 2);
-    
-    // find delta between left and right longitudes
-    CLLocationDegrees minLng = [self pixelSpaceXToLongitude:topLeftPixelX];
-    CLLocationDegrees maxLng = [self pixelSpaceXToLongitude:topLeftPixelX + scaledMapWidth];
-    CLLocationDegrees longitudeDelta = maxLng - minLng;
-    
-    // find delta between top and bottom latitudes
-    CLLocationDegrees minLat = [self pixelSpaceYToLatitude:topLeftPixelY];
-    CLLocationDegrees maxLat = [self pixelSpaceYToLatitude:topLeftPixelY + scaledMapHeight];
-    CLLocationDegrees latitudeDelta = -1 * (maxLat - minLat);
-    
-    // create and return the lat/lng span
-    MKCoordinateSpan span = MKCoordinateSpanMake(latitudeDelta, longitudeDelta);
-    return span;
-}
-
-#pragma mark -
-#pragma mark Public methods
-
-- (MKCoordinateRegion)setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate
-                                zoomLevel:(NSUInteger)zoomLevel
-                                 animated:(BOOL)animated
-{
-    // clamp large numbers to 28
-    zoomLevel = MIN(zoomLevel, 28);
-    
-    // use the zoom level to compute the region
-    MKCoordinateSpan span = [self coordinateSpanWithMapView:self.mapview centerCoordinate:centerCoordinate andZoomLevel:zoomLevel];
-    MKCoordinateRegion region = MKCoordinateRegionMake(centerCoordinate, span);
-    
-    // set the region like normal
-    return region;
-}
 
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -715,10 +682,7 @@ int i;
     
     
    
-//    if ([timer isValid]) {
-//        NSLog(@"timer stopped in dealloc");
-//        [timer invalidate];
-//    }
+
     [super dealloc];
     [mapview release];
  
