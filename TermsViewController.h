@@ -10,5 +10,8 @@
 
 @interface TermsViewController : UIViewController
 @property (retain, nonatomic) IBOutlet UIImageView *imageview;
+@property (retain, nonatomic) IBOutlet NSLayoutConstraint *scroll_height;
+@property (retain, nonatomic) IBOutlet UIScrollView *scrollview;
 
+@property (retain, nonatomic) IBOutlet NSLayoutConstraint *scroll_bottom;
 @end

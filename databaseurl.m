@@ -20,8 +20,8 @@ static databaseurl * appInstance;
 
 -(NSString*)DBurl
 {
-   // NSString * link=@"http://208.109.248.89:80/gpsios/service/";
-       NSString * link=@"http://192.168.1.106:8888/gpsios/service/";
+   NSString * link=@"http://208.109.248.89:80/gpsios/service/";
+     //  NSString * link=@"http://192.168.1.106:8888/gpsios/service/";
     return link;
     
 }
@@ -76,7 +76,7 @@ static databaseurl * appInstance;
 -(BOOL)validateNameForContactUsPage:(NSString *)firstname
 
 {
-    NSString *userFormat1 =@"[A-Za-z]{4,16}";
+    NSString *userFormat1 =@"[A-Za-z ]{4,16}";
     //[(UITextField*)[self.view viewWithTag:101] resignFirstResponder];
     NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", userFormat1];
     return [test evaluateWithObject:firstname];

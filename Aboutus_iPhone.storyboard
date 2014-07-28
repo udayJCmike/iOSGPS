@@ -22,17 +22,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hg4-9b-cCc">
-                                <rect key="frame" x="16" y="179" width="288" height="322"/>
+                                <rect key="frame" x="16" y="223" width="288" height="278"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mwP-Yi-2qf">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="791"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mwP-Yi-2qf">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="818"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="8wZ-Ox-62Z">
                                                 <rect key="frame" x="2" y="10" width="280" height="151"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">Deemsys MyGPS tracking systems offer the best way for schools, colleges and other businesses to have real-time information about the location and use of their vehicles and other assets. Schools, colleges and businesses can save money on fuel, cell-phone bills and other operational costs, increase productivity, and prevent loss or theft of vehicles and precious assets. </string>
+                                                <string key="text">Deemgps tracking systems offer the best way for schools, colleges and other businesses to have real-time information about the location and use of their vehicles and other assets. Schools, colleges and businesses can save money on fuel, cell-phone bills and other operational costs, increase productivity, and prevent loss or theft of vehicles and precious assets. </string>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -44,9 +44,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="169" translatesAutoresizingMaskIntoConstraints="NO" id="VEp-iK-JTu">
-                                                <rect key="frame" x="4" y="675" width="169" height="37"/>
+                                                <rect key="frame" x="2" y="695" width="169" height="37"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">Designed &amp; Developed byDeemsys Inc</string>
+                                                <string key="text">Designed &amp; Developed by
+Deemsys Inc</string>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -86,6 +87,18 @@
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Offshore Office" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9w6-cg-r3F">
+                                                <rect key="frame" x="2" y="356" width="108" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Head Office" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1T6-c5-M7E">
+                                                <rect key="frame" x="2" y="535" width="87" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="www.mygps.technology" translatesAutoresizingMaskIntoConstraints="NO" id="lSY-jG-AWv">
                                                 <rect key="frame" x="68" y="258" width="200" height="27"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -107,109 +120,107 @@
                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                             </textView>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Plot No-21," lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34n-bZ-BGq">
-                                                <rect key="frame" x="2" y="360" width="85" height="24"/>
+                                                <rect key="frame" x="2" y="378" width="85" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="152/33 Manoharan Flats," lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nis-ng-jfS">
-                                                <rect key="frame" x="2" y="385" width="360" height="24"/>
+                                                <rect key="frame" x="2" y="403" width="360" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6X2-yu-sl3">
-                                                <rect key="frame" x="2" y="410" width="360" height="24"/>
+                                                <rect key="frame" x="2" y="428" width="360" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <string key="text">Kailash Nagar 1st street,	</string>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4d-00-cqG">
-                                                <rect key="frame" x="2" y="435" width="360" height="24"/>
+                                                <rect key="frame" x="2" y="453" width="360" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <string key="text">Perumbakkam,	</string>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chennai-600100." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnQ-Nt-GJE">
-                                                <rect key="frame" x="2" y="460" width="360" height="24"/>
+                                                <rect key="frame" x="2" y="478" width="360" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFN-e5-OcU">
-                                                <rect key="frame" x="2" y="485" width="360" height="24"/>
+                                                <rect key="frame" x="2" y="503" width="360" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <string key="text">Tel: +91-9841122989	</string>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="800 Cross Pointe road" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjw-FY-fur">
-                                                <rect key="frame" x="2" y="530" width="360" height="24"/>
+                                                <rect key="frame" x="2" y="557" width="360" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Suite A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnk-Fe-6zQ">
-                                                <rect key="frame" x="2" y="555" width="360" height="24"/>
+                                                <rect key="frame" x="2" y="582" width="360" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gahanna, OH 43230" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEt-1L-Guv">
-                                                <rect key="frame" x="2" y="580" width="360" height="24"/>
+                                                <rect key="frame" x="2" y="607" width="360" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tel: 614-322-9928" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIz-8O-4hd">
-                                                <rect key="frame" x="2" y="605" width="360" height="24"/>
+                                                <rect key="frame" x="2" y="632" width="360" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fax: 614-322-9945" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hv-1j-HDM">
-                                                <rect key="frame" x="2" y="630" width="360" height="24"/>
+                                                <rect key="frame" x="2" y="657" width="360" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Copyrights 2014 Deemsysinc.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YD2-P8-r3n">
-                                                <rect key="frame" x="8" y="780" width="274" height="21"/>
+                                                <rect key="frame" x="8" y="796" width="274" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mygps_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="wBH-eB-ZL7">
-                                                <rect key="frame" x="94" y="740" width="100" height="45"/>
+                                                <rect key="frame" x="94" y="756" width="100" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="791" id="4Qe-Za-kJn"/>
+                                            <constraint firstAttribute="height" constant="820" id="4Qe-Za-kJn"/>
                                             <constraint firstAttribute="width" constant="288" id="hJj-dz-bwn"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="mwP-Yi-2qf" firstAttribute="top" secondItem="Hg4-9b-cCc" secondAttribute="top" id="0Q7-qA-9er"/>
-                                    <constraint firstAttribute="trailing" secondItem="mwP-Yi-2qf" secondAttribute="trailing" id="Ec6-Hq-Qyc"/>
-                                    <constraint firstAttribute="height" constant="322" id="H9m-Br-GjK"/>
-                                    <constraint firstAttribute="width" constant="288" id="K8X-Cm-ROF"/>
-                                    <constraint firstAttribute="bottom" secondItem="mwP-Yi-2qf" secondAttribute="bottom" id="bH0-ub-uGa"/>
-                                    <constraint firstItem="mwP-Yi-2qf" firstAttribute="leading" secondItem="Hg4-9b-cCc" secondAttribute="leading" id="gUy-uz-lhV"/>
+                                    <constraint firstItem="mwP-Yi-2qf" firstAttribute="leading" secondItem="Hg4-9b-cCc" secondAttribute="leading" id="3Ck-vu-ewq"/>
+                                    <constraint firstAttribute="bottom" secondItem="mwP-Yi-2qf" secondAttribute="bottom" id="46i-MZ-9yN"/>
+                                    <constraint firstAttribute="trailing" secondItem="mwP-Yi-2qf" secondAttribute="trailing" id="SIt-xa-OgX"/>
+                                    <constraint firstItem="mwP-Yi-2qf" firstAttribute="top" secondItem="Hg4-9b-cCc" secondAttribute="top" id="rsw-Bm-EwJ"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Hg4-9b-cCc" firstAttribute="leading" secondItem="uaS-K6-uTw" secondAttribute="leading" constant="16" id="17q-40-0J0"/>
                             <constraint firstAttribute="trailing" secondItem="4JY-cU-fcf" secondAttribute="trailing" id="5HG-P2-ctx"/>
-                            <constraint firstItem="Hg4-9b-cCc" firstAttribute="top" secondItem="uaS-K6-uTw" secondAttribute="top" constant="179" id="JGe-Ae-bQl"/>
-                            <constraint firstItem="Hg4-9b-cCc" firstAttribute="leading" secondItem="uaS-K6-uTw" secondAttribute="leading" constant="16" id="KvN-Y8-xnh"/>
-                            <constraint firstAttribute="bottom" secondItem="Hg4-9b-cCc" secondAttribute="bottom" constant="67" id="aTE-DM-fXG"/>
-                            <constraint firstAttribute="trailing" secondItem="Hg4-9b-cCc" secondAttribute="trailing" constant="16" id="i9H-Zq-dNP"/>
+                            <constraint firstItem="Hg4-9b-cCc" firstAttribute="top" secondItem="NbU-tk-ULh" secondAttribute="bottom" constant="159" id="Bfx-li-VBm"/>
+                            <constraint firstAttribute="bottom" secondItem="Hg4-9b-cCc" secondAttribute="bottom" constant="67" id="Vfa-KU-wkU"/>
+                            <constraint firstAttribute="trailing" secondItem="Hg4-9b-cCc" secondAttribute="trailing" constant="16" id="dIY-q3-hZe"/>
                             <constraint firstAttribute="bottom" secondItem="4JY-cU-fcf" secondAttribute="bottom" constant="15" id="nN7-l1-oPB"/>
                             <constraint firstItem="4JY-cU-fcf" firstAttribute="leading" secondItem="uaS-K6-uTw" secondAttribute="leading" id="vVg-X4-SYI"/>
                             <constraint firstItem="4JY-cU-fcf" firstAttribute="top" secondItem="uaS-K6-uTw" secondAttribute="top" constant="64" id="yWH-hJ-bli"/>
@@ -219,10 +230,9 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="imageview" destination="4JY-cU-fcf" id="yLK-AY-iUL"/>
-                        <outlet property="scroll_bottom" destination="aTE-DM-fXG" id="vjh-ms-EGW"/>
-                        <outlet property="scroll_height" destination="JGe-Ae-bQl" id="aiY-LS-DGU"/>
+                        <outlet property="scroll_bottom" destination="Vfa-KU-wkU" id="Cxk-YX-qwL"/>
                         <outlet property="scrollview" destination="Hg4-9b-cCc" id="qbS-Eo-gkn"/>
-                        <outlet property="scrollview_height" destination="H9m-Br-GjK" id="jdr-dr-aAa"/>
+                        <outlet property="scrollview_height" destination="Bfx-li-VBm" id="wNq-Wh-rNe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bjJ-6l-sMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -261,22 +271,174 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oCz-ba-Vuq">
-                                <rect key="frame" x="0.0" y="64" width="320" height="483"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hgt-2Q-vVO">
+                                <rect key="frame" x="0.0" y="64" width="320" height="489"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRx-kp-jLr">
+                                <rect key="frame" x="14" y="223" width="293" height="227"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pbv-uE-HNB">
+                                        <rect key="frame" x="0.0" y="0.0" width="293" height="2300"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="uVY-Eh-7iO">
+                                                <rect key="frame" x="2" y="0.0" width="288" height="363"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">By submitting your personal information through Leadtek Research Inc. (“LEDATEK")'s website, you hereby give your consent to the handling of your personal data in the manner described in this statement.
+This privacy statement is to inform you of our online information practiced and the choices available regarding the collection and use of your personal information via this website.
+You acknowledge and agree that this statement has the same effect as a written consent. By accessing or using this website or providing information to LEADTEK through this website, you acknowledge that you have reviewed the content of this statement and consent to the practices described in this statement.
+Except this statement, LEADTEK might provide different or additional information or terms for specific products, discounts, areas, services, or activities.
+</string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Use of your Personal Information " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDs-xN-r4C">
+                                                <rect key="frame" x="2" y="368" width="209" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="wb5-Jo-75d">
+                                                <rect key="frame" x="2" y="388" width="288" height="300"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">Collection of Personal Information:
+This privacy statement is to inform you of our online information practiced and the choices available regarding the collection and use of your personal information via this website.
+You acknowledge and agree that this statement has the same effect as a written consent. By accessing or using this website or providing information to DEEM GPS through this website, you acknowledge that you have reviewed the content of this statement and consent to the practices described in this statement.
+Except this statement, DEEM GPS might provide different or additional information or terms for specific products, discounts, areas, services, or activities.
+ </string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="xNl-WX-aZF">
+                                                <rect key="frame" x="2" y="699" width="288" height="177"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">We may hold and process your Personal Information in your home country or overseas, and on our own information technology systems or on systems owned by third parties that may hold and process your Personal Information on our behalf.  The DEEM GPS entity that holds your Personal Information is the entity set out in the Contact Details section applicable to the country in which you acquired the relevant product or Service. </string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="288" translatesAutoresizingMaskIntoConstraints="NO" id="kWb-jG-E93">
+                                                <rect key="frame" x="2" y="903" width="288" height="374"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">Some of our web pages utilize "cookies" and other tracking technologies. A "cookie" is a small text file that may be used to collect information about web site activity. Some cookies and other technologies may recall personal information previously provided by a web user. Most browsers allow you to control cookies, including whether or not to accept them and how to remove them. You may set most browsers to notify you if you receive a cookie or you may choose to block cookies with your browser. Tracking technologies record information such as Internet domain and host names; Internet protocol (IP) addresses; browser software and operating system types; clickstream patterns; and dates and times that our site is accessed. We use cookies and other tracking technologies so that we can improve our web site and your web experience. We may also analyze information for trends and statistics. We do not generate e-mail lists from cookies.</string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Storage of Personal Information: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Xq-NR-c30">
+                                                <rect key="frame" x="2" y="681" width="209" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We Use Cookies " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRC-h9-GAB">
+                                                <rect key="frame" x="2" y="884" width="104" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How We Secure Your Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w00-2E-iK6">
+                                                <rect key="frame" x="1" y="1284" width="209" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Access and correction of Personal Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iyr-aW-z6V">
+                                                <rect key="frame" x="0.0" y="1464" width="282" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Third Party Websites " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tg9-g1-pRE">
+                                                <rect key="frame" x="2" y="1683" width="141" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Changes to this Privacy Policy  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1u-nE-3DJ">
+                                                <rect key="frame" x="1" y="1963" width="194" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="umq-Rm-s6E">
+                                                <rect key="frame" x="2" y="1302" width="290" height="153"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">Wherever your information may be held within DEEM GPS or on its behalf, we intend to take reasonable and appropriate steps to protect the personal information that you share with us from unauthorized access or disclosure. We use firewalls, encryption technologies (such as SSL) and physical security measures in order to prevent unauthorized use of personal information. </string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="ihI-Hd-2rm">
+                                                <rect key="frame" x="2" y="1484" width="290" height="187"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">You have the right to access and correct the Personal Information that we keep about you.  To do so, please contact us in writing at the address below.
+Complaints procedure
+If you think we have breached applicable privacy laws, please write to us at the address below.  We will investigate any complaint and will notify you of the making of a decision in relation to your complaint as soon as is practicable after it has been made.
+</string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="KCS-cA-Z1E">
+                                                <rect key="frame" x="2" y="1700" width="290" height="257"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">Links on our websites or accessible through our other Services to websites that are operated by third parties are provided solely as a convenience to you. If you use these links, you will leave our website or other Service. DEEM GPS has not reviewed all of these third-party sites and does not control and is not responsible for any of these sites or their content. Thus, DEEM GPS does not endorse or make any representations about them, or any information, software or other products or materials found there, or any results that may be obtained from using them. If you decide to access any third-party websites, you do this entirely at your own risk.</string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="8Jk-nv-oUH">
+                                                <rect key="frame" x="2" y="1983" width="290" height="201"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">We reserve the right to change and update this Privacy Policy at any time. Any such changes will be posted at this website. The date of the latest update to the Privacy Policy is set out at the top of the Privacy Policy. Changes to the Privacy Policy are effective at the time they are posted to this website, and your continued use of a Service shall signify your acceptance of, and agreement to be bound by, those changes.  We recommend you check this website regularly for changes to the Privacy Policy.
+Effective date: 2014/07/14
+</string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Copyrights 2014 Deemsysinc.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lot-ey-nXi">
+                                                <rect key="frame" x="9" y="2278" width="274" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mygps_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="kvb-lT-IAD">
+                                                <rect key="frame" x="94" y="2235" width="100" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="293" id="909-Bu-HMF"/>
+                                            <constraint firstAttribute="height" constant="2300" id="dco-00-Go8"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="pbv-uE-HNB" firstAttribute="leading" secondItem="FRx-kp-jLr" secondAttribute="leading" id="F4R-wf-Gcu"/>
+                                    <constraint firstAttribute="bottom" secondItem="pbv-uE-HNB" secondAttribute="bottom" id="bDI-XB-68U"/>
+                                    <constraint firstAttribute="trailing" secondItem="pbv-uE-HNB" secondAttribute="trailing" id="bwz-kY-Qe5"/>
+                                    <constraint firstItem="pbv-uE-HNB" firstAttribute="top" secondItem="FRx-kp-jLr" secondAttribute="top" id="yLZ-JU-5Y2"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="oCz-ba-Vuq" secondAttribute="bottom" constant="21" id="1ZS-Ie-EeD"/>
-                            <constraint firstItem="oCz-ba-Vuq" firstAttribute="top" secondItem="lVb-9c-YX8" secondAttribute="top" constant="64" id="FEQ-JD-X1U"/>
-                            <constraint firstItem="oCz-ba-Vuq" firstAttribute="leading" secondItem="lVb-9c-YX8" secondAttribute="leading" id="Odp-sM-VQI"/>
-                            <constraint firstAttribute="trailing" secondItem="oCz-ba-Vuq" secondAttribute="trailing" id="kRU-hk-eVg"/>
+                            <constraint firstItem="Hgt-2Q-vVO" firstAttribute="top" secondItem="lVb-9c-YX8" secondAttribute="top" constant="64" id="2cm-Pn-Kjx"/>
+                            <constraint firstItem="FRx-kp-jLr" firstAttribute="leading" secondItem="lVb-9c-YX8" secondAttribute="leading" constant="14" id="5wt-Ho-St8"/>
+                            <constraint firstItem="suZ-qW-ABw" firstAttribute="top" secondItem="FRx-kp-jLr" secondAttribute="bottom" constant="69" id="Ekg-Jn-Csb"/>
+                            <constraint firstAttribute="trailing" secondItem="FRx-kp-jLr" secondAttribute="trailing" constant="13" id="Omj-Hp-Yme"/>
+                            <constraint firstAttribute="bottom" secondItem="Hgt-2Q-vVO" secondAttribute="bottom" constant="15" id="XP2-dz-Rxj"/>
+                            <constraint firstAttribute="trailing" secondItem="Hgt-2Q-vVO" secondAttribute="trailing" id="aft-Y0-Y8J"/>
+                            <constraint firstItem="Hgt-2Q-vVO" firstAttribute="leading" secondItem="lVb-9c-YX8" secondAttribute="leading" id="mmc-RL-M1w"/>
+                            <constraint firstItem="FRx-kp-jLr" firstAttribute="top" secondItem="JGe-kN-yJf" secondAttribute="bottom" constant="159" id="pMR-IE-mtx"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Privacy Policy" id="pXL-eW-Swv"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="imageview" destination="oCz-ba-Vuq" id="amZ-i8-amq"/>
+                        <outlet property="imageview" destination="Hgt-2Q-vVO" id="Qyh-eO-9IL"/>
+                        <outlet property="scroll_bottom" destination="Ekg-Jn-Csb" id="6GF-i8-UGy"/>
+                        <outlet property="scrollview" destination="FRx-kp-jLr" id="9dH-mD-fbR"/>
+                        <outlet property="scrollview_height" destination="pMR-IE-mtx" id="bJN-lh-mHi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vNF-6V-ExU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -296,35 +458,243 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gP6-ci-Yny">
-                                <rect key="frame" x="0.0" y="64" width="320" height="483"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="489"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="underconstruction.png" translatesAutoresizingMaskIntoConstraints="NO" id="jnf-QA-O9o">
-                                <rect key="frame" x="40" y="220" width="240" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5E4-VD-Sma">
+                                <rect key="frame" x="15" y="179" width="291" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQC-rV-1i6">
+                                        <rect key="frame" x="0.0" y="0.0" width="291" height="2000"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deem GPS Return Policy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5q9-JK-NME">
+                                                <rect key="frame" x="0.0" y="3" width="152" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deem GPS Refund Policy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVD-j3-BnB">
+                                                <rect key="frame" x="0.0" y="110" width="161" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DEEM GPS Warranty &amp; Replacement Policy" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="281" translatesAutoresizingMaskIntoConstraints="NO" id="3eu-Lg-ZQp">
+                                                <rect key="frame" x="0.0" y="361" width="281" height="27"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="In-Warranty Repairs" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="141" translatesAutoresizingMaskIntoConstraints="NO" id="yHP-yt-mzT">
+                                                <rect key="frame" x="1" y="384" width="141" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="In-warranty Services require a valid Proof-of Purchase." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="a9v-ka-WFT">
+                                                <rect key="frame" x="1" y="552" width="280" height="32"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="wbJ-6I-28J">
+                                                <rect key="frame" x="1" y="21" width="290" height="88"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">You will need a Return Authorization (RA) number prior to shipping your product to DEEM GPS for repair. Please contact our technical support group by calling or emailing us. Click Here for Contact Information.</string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="291" translatesAutoresizingMaskIntoConstraints="NO" id="FJu-n4-fdg">
+                                                <rect key="frame" x="0.0" y="129" width="291" height="227"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">The DEEM GPS Return/Refund Policy only applies to hardware and software goods purchased from the DEEM GPS website or a telephone order. Other products such as map downloads, subscriptions, and opened software programs are not refundable. In order to return an item for refund you will need a Return Authorization. Please contact DEEM GPS by phone or email to obtain a Return Authorization.
+
+We accept returns of devices and accessories within 7 days of purchase.
+</string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="291" translatesAutoresizingMaskIntoConstraints="NO" id="T97-pi-rvv">
+                                                <rect key="frame" x="0.0" y="396" width="291" height="148"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">All Deem GPS products are warranted to be free from defects in materials or workmanship for:
+	● 1 month from the date of purchase for new GPS receivers
+	● 1 month  from the date of purchase for reconditioned GPS receivers
+	● The greater of 1 month or the remainder of the original warranty for GPS receivers exchanged by Deem GPS as part of in-warranty servicing.
+
+</string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="291" translatesAutoresizingMaskIntoConstraints="NO" id="0eT-OE-JML">
+                                                <rect key="frame" x="1" y="586" width="291" height="185"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">If returned within the applicable warranty period, Deem GPS will, at its sole discretion and at no cost to the customer, replace the defective GPS receiver with a reconditioned unit of the same model, as available. If the same model is not available, a different reconditioned model GPS receiver will be used for the exchange.
+This warranty does not cover failures due to abuse, misuse, accident or unauthorized alterations or repairs.</string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Out of Warranty Repairs" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="160" translatesAutoresizingMaskIntoConstraints="NO" id="gpM-kz-B2Q">
+                                                <rect key="frame" x="1" y="775" width="160" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="wiP-im-fid">
+                                                <rect key="frame" x="1" y="798" width="290" height="84"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">Deem GPS does not service products. For receivers returned after the warranty period or for damage not covered by the warranty, customers may purchase a new unit at a reduced cost or reconditioned unit also at a reduced cost.</string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Broken Displays" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="112" translatesAutoresizingMaskIntoConstraints="NO" id="1mm-iT-NKH">
+                                                <rect key="frame" x="1" y="889" width="112" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="ERm-p6-tZo">
+                                                <rect key="frame" x="1" y="907" width="290" height="158"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">Deem GPS will replace receivers with a broken display returned within the warranty period with a reconditioned unit of the same or comparable model at a reduced cost to customer. Customers with a broken display unit returned outside the warranty period will be given the opportunity to purchase a new unit at a reduced cost or reconditioned unit also at a reduced cost.</string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product Return Shipping Instructions:" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="238" translatesAutoresizingMaskIntoConstraints="NO" id="Saf-qf-ugR">
+                                                <rect key="frame" x="2" y="1067" width="238" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="T2D-p8-JJf">
+                                                <rect key="frame" x="2" y="1086" width="290" height="121"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">You will need a Return Authorization (RA) number prior to shipping your product to Deem GPS for repair. Please contact our technical support group at the phone numbers listed above. Any package that is sent into our repair facilities without an RA number will be rejected and sent back at the owner's expense and will be assessed a INR 500.00 service charge fee prior to returning the item. </string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shipping instructions:" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="DH1-XE-1fw">
+                                                <rect key="frame" x="2" y="1206" width="140" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="tz5-77-0U2">
+                                                <rect key="frame" x="2" y="1224" width="290" height="162"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">After obtaining your Return Authorization number from Magellan we strongly suggest you ship your product back to our service center via a trackable shipping method, and clearly write your Return Authorization number on the 2nd line of the address label as well as on three sides of the box you are shipping your product back in. Please note that the Repair Authorization number is only valid for 30 Days. </string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="XXn-fR-s2o">
+                                                <rect key="frame" x="2" y="1523" width="290" height="406"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">Note: We strongly recommend shipping your product using a reliable and trackable shipping method . This will help keep track of your product as it's delivered, and signed for at our facility. Please insure the package at cost value as Magellan is not responsible for lost or damaged product during transit. 
+
+WARRANTY DISCLAIMER: Deem GPS will, at its sole discretion and at no cost to the customer replace the defective GPS receiver with a reconditioned unit of the same model, as available. If the same model is not available, a comparable model GPS receiver will be used for the exchange. 
+
+The warranty does not cover failures due to abuse, misuse, accident, unauthorized alterations and/or repairs. 
+
+Expected Turn Around Time: Customer(s) can expect to receive their replacement product back within 7-10 days after the returned product has been received at our Service Center.
+</string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DEEMSYS INDIAN ADDRESS:" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="203" translatesAutoresizingMaskIntoConstraints="NO" id="0vf-dc-1zk">
+                                                <rect key="frame" x="2" y="1387" width="203" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="289" translatesAutoresizingMaskIntoConstraints="NO" id="0jd-UB-PgW">
+                                                <rect key="frame" x="2" y="1405" width="289" height="124"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <string key="text">Plot No-21,
+152/33 Manoharan Flats,				
+Kailash Nagar 1st street,					
+Perumbakkam,						
+Chennai-600100.					
+Tel: +91-9841122989
+</string>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Copyrights 2014 Deemsysinc.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="838-ng-TUE">
+                                                <rect key="frame" x="32" y="1979" width="216" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mygps_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="csf-h0-mb4">
+                                                <rect key="frame" x="94" y="1937" width="100" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="291" id="Kqb-rq-aAp"/>
+                                            <constraint firstAttribute="height" constant="2000" id="jeq-iN-ieU"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="MQC-rV-1i6" firstAttribute="leading" secondItem="5E4-VD-Sma" secondAttribute="leading" id="1Ed-dH-D35"/>
+                                    <constraint firstAttribute="trailing" secondItem="MQC-rV-1i6" secondAttribute="trailing" id="Hqj-nn-YlG"/>
+                                    <constraint firstItem="MQC-rV-1i6" firstAttribute="top" secondItem="5E4-VD-Sma" secondAttribute="top" id="ZFY-1u-IYr"/>
+                                    <constraint firstAttribute="bottom" secondItem="MQC-rV-1i6" secondAttribute="bottom" id="oK7-f2-Z7d"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gP6-ci-Yny" firstAttribute="top" secondItem="On4-r7-1aW" secondAttribute="top" constant="64" id="7dE-qV-Mxw"/>
-                            <constraint firstItem="gP6-ci-Yny" firstAttribute="leading" secondItem="On4-r7-1aW" secondAttribute="leading" id="FL3-cH-MGB"/>
-                            <constraint firstAttribute="trailing" secondItem="gP6-ci-Yny" secondAttribute="trailing" id="M7U-Ee-Zic"/>
-                            <constraint firstAttribute="bottom" secondItem="gP6-ci-Yny" secondAttribute="bottom" constant="21" id="PY9-GZ-TSc"/>
+                            <constraint firstItem="gP6-ci-Yny" firstAttribute="top" secondItem="On4-r7-1aW" secondAttribute="top" constant="64" id="2mq-72-9DM"/>
+                            <constraint firstAttribute="trailing" secondItem="gP6-ci-Yny" secondAttribute="trailing" id="Ffa-Kz-0kC"/>
+                            <constraint firstAttribute="trailing" secondItem="5E4-VD-Sma" secondAttribute="trailing" constant="14" id="TEa-Tb-Qoq"/>
+                            <constraint firstItem="5E4-VD-Sma" firstAttribute="top" secondItem="LzZ-ac-PnN" secondAttribute="bottom" constant="159" id="Z34-Mn-3nQ"/>
+                            <constraint firstItem="gP6-ci-Yny" firstAttribute="leading" secondItem="On4-r7-1aW" secondAttribute="leading" id="aKg-Y4-IVb"/>
+                            <constraint firstAttribute="bottom" secondItem="gP6-ci-Yny" secondAttribute="bottom" constant="15" id="b4b-HD-M1A"/>
+                            <constraint firstItem="5E4-VD-Sma" firstAttribute="leading" secondItem="On4-r7-1aW" secondAttribute="leading" constant="15" id="ru1-zu-TLT"/>
+                            <constraint firstAttribute="bottom" secondItem="5E4-VD-Sma" secondAttribute="bottom" constant="69" id="z2b-f3-w8y"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Terms &amp; Conditions" id="h30-h2-36s"/>
                     <connections>
                         <outlet property="imageview" destination="gP6-ci-Yny" id="PZr-2a-wq3"/>
+                        <outlet property="scroll_bottom" destination="z2b-f3-w8y" id="h5K-nN-xAB"/>
+                        <outlet property="scroll_height" destination="Z34-Mn-3nQ" id="GJy-QS-2b1"/>
+                        <outlet property="scrollview" destination="5E4-VD-Sma" id="LIU-vt-zcm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hMr-jf-oBW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="490" y="1305"/>
+            <point key="canvasLocation" x="382" y="1282"/>
         </scene>
     </scenes>
     <resources>
         <image name="mygps_logo.png" width="129" height="46"/>
-        <image name="underconstruction.png" width="578" height="468"/>
     </resources>
     <color key="tintColor" red="0.43137254899999999" green="0.67843137249999996" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -8,7 +8,9 @@
 
 #import "PrivacyPolicyViewController.h"
 #import "databaseurl.h"
-
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#define SCREEN_35 (SCREEN_HEIGHT == 480)
+#define SCREEN_40 (SCREEN_HEIGHT == 568)
 @interface PrivacyPolicyViewController ()
 {
     databaseurl * du;
@@ -18,7 +20,9 @@
 
 @implementation PrivacyPolicyViewController
 @synthesize imageview;
-
+@synthesize scrollview;
+@synthesize scrollview_height;
+@synthesize scroll_bottom;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -39,34 +43,32 @@
     
     NSString *filename = [du imagecheck:@"privacy.png"];
     NSLog(@"image name %@",filename);
-    //    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
-    //        CGRect screenRect = [[UIScreen mainScreen] bounds];
-    //        if (screenRect.size.height == 1024.0f)
-    //        {
-    //            filename = [filename stringByReplacingOccurrencesOfString:@".png" withString:@"~ipad.png"];
-    //            // code for 4-inch screen
-    //        } else {
-    //            filename = [filename stringByReplacingOccurrencesOfString:@".png" withString:@"@2x~ipad.png"];
-    //            // code for 3.5-inch screen
-    //        }
-    //
-    //    }
-    //    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-    //
-    //        CGRect screenRect = [[UIScreen mainScreen] bounds];
-    //        if (screenRect.size.height == 568.0f)
-    //        {
-    //            filename = [filename stringByReplacingOccurrencesOfString:@".png" withString:@"-568h@2x.png"];
-    //            // code for 4-inch screen
-    //        } else {
-    //            filename = [filename stringByReplacingOccurrencesOfString:@".png" withString:@"@2x.png"];
-    //            // code for 3.5-inch screen
-    //        }
-    //
-    //    }
-    
     
     imageview.image = [UIImage imageNamed:filename];
+    if(SCREEN_35)
+    {
+        
+        for (NSLayoutConstraint *con in self.view.constraints)
+        {
+            if (con.firstItem == scrollview && con.firstAttribute == NSLayoutAttributeTop) {
+                
+                con.constant =160;
+                self.scrollview_height.constant=140;
+                
+                
+                scroll_bottom.constant=60;
+                [self.scrollview needsUpdateConstraints];
+                
+            }
+            
+            
+            
+            
+        }
+    }
+    
+    
+ 
     
 }
 

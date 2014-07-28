@@ -20,7 +20,7 @@
 
 @implementation AboutusViewController
 @synthesize imageview;
-@synthesize scroll_height;
+
 @synthesize scrollview;
 @synthesize scrollview_height;
 @synthesize scroll_bottom;
@@ -56,10 +56,12 @@
             if (con.firstItem == scrollview && con.firstAttribute == NSLayoutAttributeTop) {
                 
                 con.constant =160;
-                self.scrollview_height.constant=330;
-                self.scroll_height.constant = 161;
+                self.scrollview_height.constant=140;
+               
+                
                 scroll_bottom.constant=60;
                 [self.scrollview needsUpdateConstraints];
+                
             }
             
                 

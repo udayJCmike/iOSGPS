@@ -12,7 +12,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+//    UIStoryboard *welcome;
+//    UIViewController *initialvc;
+//    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+//    {
+//        welcome=[UIStoryboard storyboardWithName:@"Aboutus_iPad" bundle:nil];
+//        initialvc=[welcome instantiateInitialViewController];
+//    }
+//    else   if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+//    {
+//        welcome=[UIStoryboard storyboardWithName:@"Aboutus_iPhone" bundle:nil];
+//        initialvc=[welcome instantiateInitialViewController];
+//    }
+//
+//    [self.window setRootViewController:initialvc ];
     return YES;
 }
 							

@@ -247,7 +247,7 @@ int message_count;
                                     {
                                         c = 0;
                                         // enter state TextField
-                                        NSLog(@"ENTER VALID STATE NAME");
+                                       // NSLog(@"ENTER VALID STATE NAME");
                                         TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"Invalid state" message:@"State should contain only alphabets" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                                         [self styleCustomAlertView:alertView];
                                         [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -258,7 +258,7 @@ int message_count;
                                 {
                                     c = 0;
                                     // enter city TextField
-                                    NSLog(@"ENTER VALID CITY NAME");
+                                  //  NSLog(@"ENTER VALID CITY NAME");
                                     TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"Invalid city" message:@"City should contain only alphabets" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                                     [self styleCustomAlertView:alertView];
                                     [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -269,7 +269,7 @@ int message_count;
                             {
                                 c = 0;
                                 // enter address Textview
-                                NSLog(@"PLEASE ENTER ADDRESS");
+                              //  NSLog(@"PLEASE ENTER ADDRESS");
                                 TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"Invalid address" message:@"Address should contain only alphabets." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                                 [self styleCustomAlertView:alertView];
                                 [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -283,7 +283,7 @@ int message_count;
                         {
                             c = 0;
                             // enter mobile TextField
-                            NSLog(@"ENTER VALID MOBILE NUMBER");
+                          //  NSLog(@"ENTER VALID MOBILE NUMBER");
                             TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"Invalid mobile number" message:@"Mobile number should contain only numbers." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                             [self styleCustomAlertView:alertView];
                             [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -294,7 +294,7 @@ int message_count;
                     {
                         c = 0;
                         // enter organization TextField
-                        NSLog(@"ENTER VALID ORGANIZATION NAME");
+                      //  NSLog(@"ENTER VALID ORGANIZATION NAME");
                         TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"Invalid organization name" message:@"Organization name should contain only alphabets." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                         [self styleCustomAlertView:alertView];
                         [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -305,7 +305,7 @@ int message_count;
                 {
                     c = 0;
                     // enter email TextField
-                    NSLog(@"ENTER VALID EMAIL-ID");
+                 //   NSLog(@"ENTER VALID EMAIL-ID");
                     TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"Invalid email" message:@"Email should contain only alphabets,numbers,@ . _" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                     [self styleCustomAlertView:alertView];
                     [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -316,7 +316,7 @@ int message_count;
             {
                 c=0;
                 //enter lastname TextField
-                NSLog(@"ENTER VALID LAST NAME");
+              //  NSLog(@"ENTER VALID LAST NAME");
                 TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"Invalid lastname" message:@"Lastname should contain only alphabets,4-16 characters." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [self styleCustomAlertView:alertView];
                 [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -327,7 +327,7 @@ int message_count;
         {
             c=0;
             //enter firstname TextField
-            NSLog(@"ENTER VALID FIRST NAME");
+          //  NSLog(@"ENTER VALID FIRST NAME");
             TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"Invalid firstname" message:@"Firstname should contain only alphabets,4-16 characters." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
             [self styleCustomAlertView:alertView];
             [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -338,7 +338,7 @@ int message_count;
     {
         c=0;
         //enter all required fields
-        NSLog(@"ENTER ALL REQUIRED FIELDS");
+     //   NSLog(@"ENTER ALL REQUIRED FIELDS");
         TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Please enter all fields." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [self styleCustomAlertView:alertView];
         [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -376,15 +376,15 @@ int message_count;
 -(void)checkdata
 {
     NSString *response=[self HttpPostEntityFirst1:@"firstname" ForValue1:firstNameTextField.text  EntitySecond:@"authkey" ForValue2:@"rzTFevN099Km39PV"];
-    NSLog(@"Responce : %@",response);
+ //   NSLog(@"Responce : %@",response);
     NSError *error;
     SBJSON *json = [[SBJSON new] autorelease];
     NSDictionary *parsedvalue = [json objectWithString:response error:&error];
     
-    NSLog(@"%@ lucky numbers",parsedvalue);
+  //  NSLog(@"%@ lucky numbers",parsedvalue);
     if (parsedvalue == nil)
     {
-        NSLog(@"parsedvalue == nil");
+        //NSLog(@"parsedvalue == nil");
         [HUD hide:YES];
     }
     else
@@ -396,7 +396,7 @@ int message_count;
             if ([[menu objectForKey:@"success"] isEqualToString:@"Yes"])
             {
                
-                NSLog(@"Inserting Contact Details Succecssful");
+               // NSLog(@"Inserting Contact Details Succecssful");
                 [self sendEmailInBackground];
                 [self sendEmailInBackgroundToSuperAdmin];
                
@@ -419,7 +419,7 @@ int message_count;
             {
                 [HUD hide:YES];
                 //invalid username or password
-                NSLog(@"Failed to insert Contact Details");
+              //  NSLog(@"Failed to insert Contact Details");
                 TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Can't reach server." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [self styleCustomAlertView:alertView];
                 [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -437,7 +437,7 @@ int message_count;
     NSString *url2=[NSString stringWithFormat:@"%@%@",urltemp,url1];
     //NSString *post =[[NSString alloc] initWithFormat:@"%@=%@&password=%@&role=0&%@=%@",firstEntity,value1,password.text,secondEntity,value2];
     NSString *post =[[NSString alloc] initWithFormat:@"%@=%@&lastname=%@&email=%@&organisation=%@&mobile=%@&address1=%@&city=%@&state=%@&%@=%@",firstEntity,value1,lastNameTextField.text,emailTextField.text,organizationNameTextField.text,mobileNumberTextField.text,addressTextView.text,cityTextField.text,stateTextField.text,secondEntity,value2];
-    NSLog(@"POST %@",post);
+  //  NSLog(@"POST %@",post);
     NSURL *url = [NSURL URLWithString:url2];
     return [du returndbresult:post URL:url];
 }
@@ -458,7 +458,7 @@ int message_count;
 {
     if ([textView.text length]<1)
     {
-        NSLog(@" Text View length : %lu",(unsigned long)textView.text.length);
+      //  NSLog(@" Text View length : %lu",(unsigned long)textView.text.length);
         [addressTextView setTextColor:[UIColor lightGrayColor]];
         i = 0;
         addressTextView.text=@"Address";
@@ -637,7 +637,7 @@ int message_count;
 #pragma Sending Mail Automatically in Background
 
 -(void) sendEmailInBackground {
-    NSLog(@"Start Sending");
+  //  NSLog(@"Start Sending");
     SKPSMTPMessage *emailMessage = [[SKPSMTPMessage alloc] init];
     emailMessage.fromEmail = @"deemgpsapp@gmail.com"; //sender email address
     emailMessage.toEmail = [NSString stringWithFormat:@"%@",emailTextField.text];  //receiver email address
@@ -671,7 +671,7 @@ int message_count;
 }
 
 -(void) sendEmailInBackgroundToSuperAdmin {
-    NSLog(@"Start Sending");
+  //  NSLog(@"Start Sending");
     SKPSMTPMessage *emailMessage = [[SKPSMTPMessage alloc] init];
     emailMessage.fromEmail = @"deemgpsapp@gmail.com"; //sender email address
     emailMessage.toEmail = @"udayjc@icloud.com";  //receiver email address
