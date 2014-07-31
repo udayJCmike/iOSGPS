@@ -322,10 +322,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="clear.png" width="300" height="50"/>
+        <image name="clear.png" width="287" height="50"/>
         <image name="home.png" width="64" height="64"/>
-        <image name="logout.png" width="150" height="50"/>
-        <image name="send.png" width="300" height="50"/>
+        <image name="logout.png" width="270" height="66"/>
+        <image name="send.png" width="287" height="50"/>
     </resources>
     <color key="tintColor" red="0.43137254899999999" green="0.67843137249999996" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

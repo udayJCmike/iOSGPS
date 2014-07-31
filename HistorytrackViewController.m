@@ -179,7 +179,7 @@
    
     // Do any additional setup after loading the view.
     du=[[databaseurl alloc]init];
-    NSString *filename = [du imagecheck:@"histroytrack.png"];
+    NSString *filename = [du imagecheck:@"historytrack.png"];
     NSLog(@"image name %@",filename);
     
     mapview.delegate=self;
