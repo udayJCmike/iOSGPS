@@ -15,6 +15,7 @@
 @property (retain, nonatomic) IBOutlet UIScrollView *scrollview;
 @property (retain, nonatomic) IBOutlet NSLayoutConstraint *scrollview_height;
 @property (retain, nonatomic) IBOutlet NSLayoutConstraint *scroll_bottom;
+@property (retain, nonatomic) IBOutlet NSLayoutConstraint *ipad_scrollview_height;
 
 
 @end

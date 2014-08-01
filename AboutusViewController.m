@@ -24,7 +24,7 @@
 @synthesize scrollview;
 @synthesize scrollview_height;
 @synthesize scroll_bottom;
-
+@synthesize ipad_scrollview_height;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -69,10 +69,34 @@
             
         }
     }
-
+  
+   
    
 
 }
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+//    {
+//        for (NSLayoutConstraint *con in self.view.constraints)
+//        {
+//            if (con.firstItem == scrollview && con.firstAttribute == NSLayoutAttributeBottom) {
+//                
+//                con.constant =90;
+//                self.ipad_scrollview_height.constant=150;
+//            
+//                [self.scrollview needsUpdateConstraints];
+//                
+//            }
+//            
+//            
+//            
+//            
+//        }
+// 
+//    }
+//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -87,6 +111,7 @@
  
     
    
+    
  [super dealloc];
 }
 @end

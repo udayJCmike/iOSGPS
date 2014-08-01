@@ -35,22 +35,14 @@
 		84188B56198B9B79002D55BA /* indicator_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B53198B9B79002D55BA /* indicator_red.png */; };
 		84188B57198B9B79002D55BA /* indicator_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B54198B9B79002D55BA /* indicator_yellow.png */; };
 		84188B59198B9B8B002D55BA /* logout.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B58198B9B8B002D55BA /* logout.png */; };
-		8492D0E7197F782B00E1101A /* iphone29.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492D0E1197F782B00E1101A /* iphone29.png */; };
-		8492D0E8197F782B00E1101A /* iphone57.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492D0E2197F782B00E1101A /* iphone57.png */; };
-		8492D0E9197F782B00E1101A /* iphone58.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492D0E3197F782B00E1101A /* iphone58.png */; };
-		8492D0EA197F782B00E1101A /* iphone80.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492D0E4197F782B00E1101A /* iphone80.png */; };
-		8492D0EB197F782B00E1101A /* iphone114.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492D0E5197F782B00E1101A /* iphone114.png */; };
-		8492D0EC197F782B00E1101A /* iphone120.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492D0E6197F782B00E1101A /* iphone120.png */; };
-		8492D0F7197F783A00E1101A /* ipad29.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492D0ED197F783A00E1101A /* ipad29.png */; };
-		8492D0F8197F783A00E1101A /* ipad40.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492D0EE197F783A00E1101A /* ipad40.png */; };
-		8492D0F9197F783A00E1101A /* ipad50.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492D0EF197F783A00E1101A /* ipad50.png */; };
-		8492D0FA197F783A00E1101A /* ipad58.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492D0F0197F783A00E1101A /* ipad58.png */; };
-		8492D0FB197F783A00E1101A /* ipad72.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492D0F1197F783A00E1101A /* ipad72.png */; };
-		8492D0FC197F783A00E1101A /* ipad76.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492D0F2197F783A00E1101A /* ipad76.png */; };
-		8492D0FD197F783A00E1101A /* ipad80.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492D0F3197F783A00E1101A /* ipad80.png */; };
-		8492D0FE197F783A00E1101A /* ipad100.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492D0F4197F783A00E1101A /* ipad100.png */; };
-		8492D0FF197F783A00E1101A /* ipad144.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492D0F5197F783A00E1101A /* ipad144.png */; };
-		8492D100197F783A00E1101A /* ipad152.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492D0F6197F783A00E1101A /* ipad152.png */; };
+		84188B79198BCCF7002D55BA /* ipad29.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B72198BCCF7002D55BA /* ipad29.png */; };
+		84188B7A198BCCF7002D55BA /* ipad50.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B73198BCCF7002D55BA /* ipad50.png */; };
+		84188B7B198BCCF7002D55BA /* ipad58.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B74198BCCF7002D55BA /* ipad58.png */; };
+		84188B7C198BCCF7002D55BA /* ipad72.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B75198BCCF7002D55BA /* ipad72.png */; };
+		84188B7D198BCCF7002D55BA /* ipad80.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B76198BCCF7002D55BA /* ipad80.png */; };
+		84188B7E198BCCF7002D55BA /* ipad100.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B77198BCCF7002D55BA /* ipad100.png */; };
+		84188B7F198BCCF7002D55BA /* ipad144.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B78198BCCF7002D55BA /* ipad144.png */; };
+		84188B81198BCD4F002D55BA /* ipad40.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B80198BCD4F002D55BA /* ipad40.png */; };
 		8492E1101974ECE100AA9291 /* TTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8492E10F1974ECE100AA9291 /* TTAlertView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		8492E11F1974ECF300AA9291 /* alert.bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492E1111974ECF300AA9291 /* alert.bg.png */; };
 		8492E1201974ECF300AA9291 /* alert.bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8492E1121974ECF300AA9291 /* alert.bg@2x.png */; };
@@ -213,22 +205,14 @@
 		84188B53198B9B79002D55BA /* indicator_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = indicator_red.png; sourceTree = "<group>"; };
 		84188B54198B9B79002D55BA /* indicator_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = indicator_yellow.png; sourceTree = "<group>"; };
 		84188B58198B9B8B002D55BA /* logout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout.png; sourceTree = "<group>"; };
-		8492D0E1197F782B00E1101A /* iphone29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone29.png; sourceTree = "<group>"; };
-		8492D0E2197F782B00E1101A /* iphone57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone57.png; sourceTree = "<group>"; };
-		8492D0E3197F782B00E1101A /* iphone58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone58.png; sourceTree = "<group>"; };
-		8492D0E4197F782B00E1101A /* iphone80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone80.png; sourceTree = "<group>"; };
-		8492D0E5197F782B00E1101A /* iphone114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone114.png; sourceTree = "<group>"; };
-		8492D0E6197F782B00E1101A /* iphone120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone120.png; sourceTree = "<group>"; };
-		8492D0ED197F783A00E1101A /* ipad29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad29.png; sourceTree = "<group>"; };
-		8492D0EE197F783A00E1101A /* ipad40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad40.png; sourceTree = "<group>"; };
-		8492D0EF197F783A00E1101A /* ipad50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad50.png; sourceTree = "<group>"; };
-		8492D0F0197F783A00E1101A /* ipad58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad58.png; sourceTree = "<group>"; };
-		8492D0F1197F783A00E1101A /* ipad72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad72.png; sourceTree = "<group>"; };
-		8492D0F2197F783A00E1101A /* ipad76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad76.png; sourceTree = "<group>"; };
-		8492D0F3197F783A00E1101A /* ipad80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad80.png; sourceTree = "<group>"; };
-		8492D0F4197F783A00E1101A /* ipad100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad100.png; sourceTree = "<group>"; };
-		8492D0F5197F783A00E1101A /* ipad144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad144.png; sourceTree = "<group>"; };
-		8492D0F6197F783A00E1101A /* ipad152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad152.png; sourceTree = "<group>"; };
+		84188B72198BCCF7002D55BA /* ipad29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad29.png; sourceTree = "<group>"; };
+		84188B73198BCCF7002D55BA /* ipad50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad50.png; sourceTree = "<group>"; };
+		84188B74198BCCF7002D55BA /* ipad58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad58.png; sourceTree = "<group>"; };
+		84188B75198BCCF7002D55BA /* ipad72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad72.png; sourceTree = "<group>"; };
+		84188B76198BCCF7002D55BA /* ipad80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad80.png; sourceTree = "<group>"; };
+		84188B77198BCCF7002D55BA /* ipad100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad100.png; sourceTree = "<group>"; };
+		84188B78198BCCF7002D55BA /* ipad144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad144.png; sourceTree = "<group>"; };
+		84188B80198BCD4F002D55BA /* ipad40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ipad40.png; sourceTree = "<group>"; };
 		8492E10E1974ECE100AA9291 /* TTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTAlertView.h; sourceTree = "<group>"; };
 		8492E10F1974ECE100AA9291 /* TTAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTAlertView.m; sourceTree = "<group>"; };
 		8492E1111974ECF300AA9291 /* alert.bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alert.bg.png; sourceTree = "<group>"; };
@@ -252,14 +236,14 @@
 		8494C4AF1977B13500FCB97F /* CSImageAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSImageAnnotationView.m; sourceTree = "<group>"; };
 		8494C4B01977B13500FCB97F /* CSMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSMapAnnotation.h; sourceTree = "<group>"; };
 		8494C4B11977B13500FCB97F /* CSMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSMapAnnotation.m; sourceTree = "<group>"; };
-		84951A7F1973C7C2003C603B /* GPSMobileTracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPSMobileTracking.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84951A7F1973C7C2003C603B /* DeemGPS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeemGPS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84951A821973C7C2003C603B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84951A841973C7C2003C603B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		84951A861973C7C2003C603B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		84951A8A1973C7C2003C603B /* GPSMobileTracking-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GPSMobileTracking-Info.plist"; sourceTree = "<group>"; };
+		84951A8A1973C7C2003C603B /* DeemGPS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DeemGPS-Info.plist"; sourceTree = "<group>"; };
 		84951A8C1973C7C2003C603B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84951A8E1973C7C2003C603B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		84951A901973C7C2003C603B /* GPSMobileTracking-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GPSMobileTracking-Prefix.pch"; sourceTree = "<group>"; };
+		84951A901973C7C2003C603B /* DeemGPS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DeemGPS-Prefix.pch"; sourceTree = "<group>"; };
 		84951A911973C7C2003C603B /* GPSMobileTrackingAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPSMobileTrackingAppDelegate.h; sourceTree = "<group>"; };
 		84951A921973C7C2003C603B /* GPSMobileTrackingAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPSMobileTrackingAppDelegate.m; sourceTree = "<group>"; };
 		84951A951973C7C2003C603B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
@@ -267,9 +251,9 @@
 		84951A9A1973C7C2003C603B /* GPSMobileTrackingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPSMobileTrackingViewController.h; sourceTree = "<group>"; };
 		84951A9B1973C7C2003C603B /* GPSMobileTrackingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPSMobileTrackingViewController.m; sourceTree = "<group>"; };
 		84951A9D1973C7C2003C603B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		84951AA31973C7C2003C603B /* GPSMobileTrackingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GPSMobileTrackingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84951AA31973C7C2003C603B /* DeemGPSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeemGPSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84951AA41973C7C2003C603B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		84951AAC1973C7C2003C603B /* GPSMobileTrackingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GPSMobileTrackingTests-Info.plist"; sourceTree = "<group>"; };
+		84951AAC1973C7C2003C603B /* DeemGPSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DeemGPSTests-Info.plist"; sourceTree = "<group>"; };
 		84951AAE1973C7C2003C603B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84951AB01973C7C2003C603B /* GPSMobileTrackingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPSMobileTrackingTests.m; sourceTree = "<group>"; };
 		84951ABA1973C80A003C603B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -425,12 +409,6 @@
 		8492D0DF197F780E00E1101A /* iPhone_icons */ = {
 			isa = PBXGroup;
 			children = (
-				8492D0E1197F782B00E1101A /* iphone29.png */,
-				8492D0E2197F782B00E1101A /* iphone57.png */,
-				8492D0E3197F782B00E1101A /* iphone58.png */,
-				8492D0E4197F782B00E1101A /* iphone80.png */,
-				8492D0E5197F782B00E1101A /* iphone114.png */,
-				8492D0E6197F782B00E1101A /* iphone120.png */,
 			);
 			name = iPhone_icons;
 			sourceTree = "<group>";
@@ -438,16 +416,14 @@
 		8492D0E0197F781700E1101A /* iPad_icons */ = {
 			isa = PBXGroup;
 			children = (
-				8492D0ED197F783A00E1101A /* ipad29.png */,
-				8492D0EE197F783A00E1101A /* ipad40.png */,
-				8492D0EF197F783A00E1101A /* ipad50.png */,
-				8492D0F0197F783A00E1101A /* ipad58.png */,
-				8492D0F1197F783A00E1101A /* ipad72.png */,
-				8492D0F2197F783A00E1101A /* ipad76.png */,
-				8492D0F3197F783A00E1101A /* ipad80.png */,
-				8492D0F4197F783A00E1101A /* ipad100.png */,
-				8492D0F5197F783A00E1101A /* ipad144.png */,
-				8492D0F6197F783A00E1101A /* ipad152.png */,
+				84188B72198BCCF7002D55BA /* ipad29.png */,
+				84188B73198BCCF7002D55BA /* ipad50.png */,
+				84188B80198BCD4F002D55BA /* ipad40.png */,
+				84188B74198BCCF7002D55BA /* ipad58.png */,
+				84188B75198BCCF7002D55BA /* ipad72.png */,
+				84188B76198BCCF7002D55BA /* ipad80.png */,
+				84188B77198BCCF7002D55BA /* ipad100.png */,
+				84188B78198BCCF7002D55BA /* ipad144.png */,
 			);
 			name = iPad_icons;
 			sourceTree = "<group>";
@@ -514,8 +490,8 @@
 		84951A801973C7C2003C603B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84951A7F1973C7C2003C603B /* GPSMobileTracking.app */,
-				84951AA31973C7C2003C603B /* GPSMobileTrackingTests.xctest */,
+				84951A7F1973C7C2003C603B /* DeemGPS.app */,
+				84951AA31973C7C2003C603B /* DeemGPSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -551,10 +527,10 @@
 		84951A891973C7C2003C603B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				84951A8A1973C7C2003C603B /* GPSMobileTracking-Info.plist */,
+				84951A8A1973C7C2003C603B /* DeemGPS-Info.plist */,
 				84951A8B1973C7C2003C603B /* InfoPlist.strings */,
 				84951A8E1973C7C2003C603B /* main.m */,
-				84951A901973C7C2003C603B /* GPSMobileTracking-Prefix.pch */,
+				84951A901973C7C2003C603B /* DeemGPS-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -571,7 +547,7 @@
 		84951AAB1973C7C2003C603B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				84951AAC1973C7C2003C603B /* GPSMobileTrackingTests-Info.plist */,
+				84951AAC1973C7C2003C603B /* DeemGPSTests-Info.plist */,
 				84951AAD1973C7C2003C603B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -797,9 +773,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		84951A7E1973C7C2003C603B /* GPSMobileTracking */ = {
+		84951A7E1973C7C2003C603B /* DeemGPS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 84951AB41973C7C2003C603B /* Build configuration list for PBXNativeTarget "GPSMobileTracking" */;
+			buildConfigurationList = 84951AB41973C7C2003C603B /* Build configuration list for PBXNativeTarget "DeemGPS" */;
 			buildPhases = (
 				84951A7B1973C7C2003C603B /* Sources */,
 				84951A7C1973C7C2003C603B /* Frameworks */,
@@ -809,14 +785,14 @@
 			);
 			dependencies = (
 			);
-			name = GPSMobileTracking;
+			name = DeemGPS;
 			productName = GPSMobileTracking;
-			productReference = 84951A7F1973C7C2003C603B /* GPSMobileTracking.app */;
+			productReference = 84951A7F1973C7C2003C603B /* DeemGPS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		84951AA21973C7C2003C603B /* GPSMobileTrackingTests */ = {
+		84951AA21973C7C2003C603B /* DeemGPSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 84951AB71973C7C2003C603B /* Build configuration list for PBXNativeTarget "GPSMobileTrackingTests" */;
+			buildConfigurationList = 84951AB71973C7C2003C603B /* Build configuration list for PBXNativeTarget "DeemGPSTests" */;
 			buildPhases = (
 				84951A9F1973C7C2003C603B /* Sources */,
 				84951AA01973C7C2003C603B /* Frameworks */,
@@ -827,9 +803,9 @@
 			dependencies = (
 				84951AA91973C7C2003C603B /* PBXTargetDependency */,
 			);
-			name = GPSMobileTrackingTests;
+			name = DeemGPSTests;
 			productName = GPSMobileTrackingTests;
-			productReference = 84951AA31973C7C2003C603B /* GPSMobileTrackingTests.xctest */;
+			productReference = 84951AA31973C7C2003C603B /* DeemGPSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -847,7 +823,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 84951A7A1973C7C2003C603B /* Build configuration list for PBXProject "GPSMobileTracking" */;
+			buildConfigurationList = 84951A7A1973C7C2003C603B /* Build configuration list for PBXProject "DeemGPS" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -860,8 +836,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				84951A7E1973C7C2003C603B /* GPSMobileTracking */,
-				84951AA21973C7C2003C603B /* GPSMobileTrackingTests */,
+				84951A7E1973C7C2003C603B /* DeemGPS */,
+				84951AA21973C7C2003C603B /* DeemGPSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -871,23 +847,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84188B7A198BCCF7002D55BA /* ipad50.png in Resources */,
+				84188B7E198BCCF7002D55BA /* ipad100.png in Resources */,
 				84996592198A891400D5CB98 /* about~ipad.png in Resources */,
 				8499657A198A7AA300D5CB98 /* privacy~ipad.png in Resources */,
 				8499655F198A7A9100D5CB98 /* contact-568h@2x.png in Resources */,
-				8492D0F7197F783A00E1101A /* ipad29.png in Resources */,
 				84996552198A7A7F00D5CB98 /* privacy@2x.png in Resources */,
 				84188B3F198B665D002D55BA /* Default.png in Resources */,
+				84188B7D198BCCF7002D55BA /* ipad80.png in Resources */,
 				84996574198A7AA300D5CB98 /* dashboard~ipad.png in Resources */,
 				84188B59198B9B8B002D55BA /* logout.png in Resources */,
+				84188B79198BCCF7002D55BA /* ipad29.png in Resources */,
 				8499654C198A7A7F00D5CB98 /* dashboard@2x.png in Resources */,
 				84951A991973C7C2003C603B /* Main_iPad.storyboard in Resources */,
-				8492D0EA197F782B00E1101A /* iphone80.png in Resources */,
 				8499653B198A7A6A00D5CB98 /* contactus.png in Resources */,
 				8492E1281974ECF300AA9291 /* large.button.grey.on@2x.png in Resources */,
-				8492D0E9197F782B00E1101A /* iphone58.png in Resources */,
-				8492D0FE197F783A00E1101A /* ipad100.png in Resources */,
 				8499653E198A7A6A00D5CB98 /* resetbutton.png in Resources */,
 				8492E12A1974ECF300AA9291 /* large.button.red.off@2x.png in Resources */,
+				84188B81198BCD4F002D55BA /* ipad40.png in Resources */,
 				8492E1201974ECF300AA9291 /* alert.bg@2x.png in Resources */,
 				84951AE01973E21E003C603B /* Aboutus_iPhone.storyboard in Resources */,
 				84996579198A7AA300D5CB98 /* message~ipad.png in Resources */,
@@ -897,15 +874,11 @@
 				8492E1251974ECF300AA9291 /* large.button.grey.off.png in Resources */,
 				84951AE71973E2E5003C603B /* Vehicletrack_iPad.storyboard in Resources */,
 				84951A9E1973C7C2003C603B /* Images.xcassets in Resources */,
-				8492D0F9197F783A00E1101A /* ipad50.png in Resources */,
 				84996576198A7AA300D5CB98 /* historytrack~ipad.png in Resources */,
-				8492D100197F783A00E1101A /* ipad152.png in Resources */,
 				84188B49198B7F72002D55BA /* aboutus.png in Resources */,
 				84996564198A7A9100D5CB98 /* login-568h@2x.png in Resources */,
 				84188B46198B69B7002D55BA /* logout_iPad.png in Resources */,
 				84188B55198B9B79002D55BA /* indicator_green.png in Resources */,
-				8492D0EC197F782B00E1101A /* iphone120.png in Resources */,
-				8492D0FD197F783A00E1101A /* ipad80.png in Resources */,
 				84188B3A198B51AC002D55BA /* livetrack@2x~ipad.png in Resources */,
 				849CA558197810E50005309F /* red_pin.png in Resources */,
 				84D77B9119829C6A008D9542 /* mygps_logo.png in Resources */,
@@ -916,19 +889,16 @@
 				8499654F198A7A7F00D5CB98 /* livetrack@2x.png in Resources */,
 				84951AC71973D5EE003C603B /* Welcome_iPhone.storyboard in Resources */,
 				84996575198A7AA300D5CB98 /* Default-portrait~ipad.png in Resources */,
-				8492D0FB197F783A00E1101A /* ipad72.png in Resources */,
 				84996562198A7A9100D5CB98 /* historytrack-568h@2x.png in Resources */,
 				84951AE51973E2A0003C603B /* Vehicletrack_iPhone.storyboard in Resources */,
 				849965A0198A89BE00D5CB98 /* dashboard@2x~ipad.png in Resources */,
-				8492D0FA197F783A00E1101A /* ipad58.png in Resources */,
 				84188B39198B51AC002D55BA /* contact@2x~ipad.png in Resources */,
-				8492D0FC197F783A00E1101A /* ipad76.png in Resources */,
 				84996566198A7A9100D5CB98 /* privacy-568h@2x.png in Resources */,
 				8499654E198A7A7F00D5CB98 /* historytrack@2x.png in Resources */,
 				849965A5198A89BE00D5CB98 /* message@2x~ipad.png in Resources */,
 				8499653C198A7A6A00D5CB98 /* loginbutton.png in Resources */,
 				8492E1331975054300AA9291 /* red_light.png in Resources */,
-				8492D0E8197F782B00E1101A /* iphone57.png in Resources */,
+				84188B7C198BCCF7002D55BA /* ipad72.png in Resources */,
 				84951AD21973D952003C603B /* Welcome_iPad.storyboard in Resources */,
 				84996551198A7A7F00D5CB98 /* message@2x.png in Resources */,
 				84188B4F198B8465002D55BA /* year.png in Resources */,
@@ -938,17 +908,15 @@
 				8492E1341975054300AA9291 /* yellow_light.png in Resources */,
 				8492E12C1974ECF300AA9291 /* large.button.red.on@2x.png in Resources */,
 				84188B3D198B51AC002D55BA /* terms@2x~ipad.png in Resources */,
-				8492D0FF197F783A00E1101A /* ipad144.png in Resources */,
 				849965A1198A89BE00D5CB98 /* Default-portrait@2x~ipad.png in Resources */,
 				84951A961973C7C2003C603B /* Main_iPhone.storyboard in Resources */,
 				84996591198A860600D5CB98 /* login~ipad.png in Resources */,
 				84188B4D198B8465002D55BA /* day.png in Resources */,
-				8492D0E7197F782B00E1101A /* iphone29.png in Resources */,
 				84188B45198B69B7002D55BA /* logo_iPad.png in Resources */,
 				84951A8D1973C7C2003C603B /* InfoPlist.strings in Resources */,
 				84188B44198B69B7002D55BA /* clear_iPad.png in Resources */,
 				84992C7F19825393002304EE /* bluebg.png in Resources */,
-				8492D0F8197F783A00E1101A /* ipad40.png in Resources */,
+				84188B7B198BCCF7002D55BA /* ipad58.png in Resources */,
 				84996553198A7A7F00D5CB98 /* terms@2x.png in Resources */,
 				84951AD71973E139003C603B /* Contactus_iPad.storyboard in Resources */,
 				84188B3B198B51AC002D55BA /* login@2x~ipad.png in Resources */,
@@ -967,6 +935,7 @@
 				8499657B198A7AA300D5CB98 /* terms~ipad.png in Resources */,
 				84996567198A7A9100D5CB98 /* terms-568h@2x.png in Resources */,
 				8499653A198A7A6A00D5CB98 /* clear.png in Resources */,
+				84188B7F198BCCF7002D55BA /* ipad144.png in Resources */,
 				84188B4E198B8465002D55BA /* month.png in Resources */,
 				84188B3C198B51AC002D55BA /* privacy@2x~ipad.png in Resources */,
 				84951AE21973E234003C603B /* Aboutus_iPad.storyboard in Resources */,
@@ -979,7 +948,6 @@
 				84992C7A1982334C002304EE /* calloutView.xib in Resources */,
 				8492E1231974ECF300AA9291 /* large.button.green.on.png in Resources */,
 				84188B57198B9B79002D55BA /* indicator_yellow.png in Resources */,
-				8492D0EB197F782B00E1101A /* iphone114.png in Resources */,
 				84996563198A7A9100D5CB98 /* livetrack-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1053,7 +1021,7 @@
 /* Begin PBXTargetDependency section */
 		84951AA91973C7C2003C603B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 84951A7E1973C7C2003C603B /* GPSMobileTracking */;
+			target = 84951A7E1973C7C2003C603B /* DeemGPS */;
 			targetProxy = 84951AA81973C7C2003C603B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1173,10 +1141,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GPSMobileTracking/GPSMobileTracking-Prefix.pch";
-				INFOPLIST_FILE = "GPSMobileTracking/GPSMobileTracking-Info.plist";
+				GCC_PREFIX_HEADER = "GPSMobileTracking/DeemGPS-Prefix.pch";
+				INFOPLIST_FILE = "GPSMobileTracking/DeemGPS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DeemGPS;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1188,10 +1156,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "GPSMobileTracking/GPSMobileTracking-Prefix.pch";
-				INFOPLIST_FILE = "GPSMobileTracking/GPSMobileTracking-Info.plist";
+				GCC_PREFIX_HEADER = "GPSMobileTracking/DeemGPS-Prefix.pch";
+				INFOPLIST_FILE = "GPSMobileTracking/DeemGPS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DeemGPS;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1211,8 +1179,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "GPSMobileTrackingTests/GPSMobileTrackingTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "GPSMobileTrackingTests/DeemGPSTests-Info.plist";
+				PRODUCT_NAME = DeemGPSTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1229,8 +1197,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GPSMobileTracking/GPSMobileTracking-Prefix.pch";
-				INFOPLIST_FILE = "GPSMobileTrackingTests/GPSMobileTrackingTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "GPSMobileTrackingTests/DeemGPSTests-Info.plist";
+				PRODUCT_NAME = DeemGPSTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1239,7 +1207,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		84951A7A1973C7C2003C603B /* Build configuration list for PBXProject "GPSMobileTracking" */ = {
+		84951A7A1973C7C2003C603B /* Build configuration list for PBXProject "DeemGPS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				84951AB21973C7C2003C603B /* Debug */,
@@ -1248,7 +1216,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		84951AB41973C7C2003C603B /* Build configuration list for PBXNativeTarget "GPSMobileTracking" */ = {
+		84951AB41973C7C2003C603B /* Build configuration list for PBXNativeTarget "DeemGPS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				84951AB51973C7C2003C603B /* Debug */,
@@ -1257,7 +1225,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		84951AB71973C7C2003C603B /* Build configuration list for PBXNativeTarget "GPSMobileTrackingTests" */ = {
+		84951AB71973C7C2003C603B /* Build configuration list for PBXNativeTarget "DeemGPSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				84951AB81973C7C2003C603B /* Debug */,

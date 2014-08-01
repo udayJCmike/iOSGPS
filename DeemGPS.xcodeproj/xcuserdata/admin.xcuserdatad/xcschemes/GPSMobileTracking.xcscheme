@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "84951A7E1973C7C2003C603B"
                BuildableName = "GPSMobileTracking.app"
-               BlueprintName = "GPSMobileTracking"
-               ReferencedContainer = "container:GPSMobileTracking.xcodeproj">
+               BlueprintName = "DeemGPS"
+               ReferencedContainer = "container:DeemGPS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "84951AA21973C7C2003C603B"
                BuildableName = "GPSMobileTrackingTests.xctest"
-               BlueprintName = "GPSMobileTrackingTests"
-               ReferencedContainer = "container:GPSMobileTracking.xcodeproj">
+               BlueprintName = "DeemGPSTests"
+               ReferencedContainer = "container:DeemGPS.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,8 +44,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "84951A7E1973C7C2003C603B"
             BuildableName = "GPSMobileTracking.app"
-            BlueprintName = "GPSMobileTracking"
-            ReferencedContainer = "container:GPSMobileTracking.xcodeproj">
+            BlueprintName = "DeemGPS"
+            ReferencedContainer = "container:DeemGPS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "84951A7E1973C7C2003C603B"
             BuildableName = "GPSMobileTracking.app"
-            BlueprintName = "GPSMobileTracking"
-            ReferencedContainer = "container:GPSMobileTracking.xcodeproj">
+            BlueprintName = "DeemGPS"
+            ReferencedContainer = "container:DeemGPS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -81,8 +81,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "84951A7E1973C7C2003C603B"
             BuildableName = "GPSMobileTracking.app"
-            BlueprintName = "GPSMobileTracking"
-            ReferencedContainer = "container:GPSMobileTracking.xcodeproj">
+            BlueprintName = "DeemGPS"
+            ReferencedContainer = "container:DeemGPS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
