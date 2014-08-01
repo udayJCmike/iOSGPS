@@ -128,11 +128,11 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVS-Fj-8A2">
-                                <rect key="frame" x="46" y="520" width="107" height="30"/>
+                                <rect key="frame" x="46" y="520" width="107" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="107" id="NhM-uD-KWe"/>
-                                    <constraint firstAttribute="height" constant="30" id="d7S-mQ-BAK"/>
+                                    <constraint firstAttribute="height" constant="20" id="d7S-mQ-BAK"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="send.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -142,11 +142,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ck-XQ-AOz">
-                                <rect key="frame" x="166" y="520" width="107" height="30"/>
+                                <rect key="frame" x="166" y="520" width="107" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="107" id="Txz-xp-mWw"/>
-                                    <constraint firstAttribute="height" constant="30" id="Zaa-56-Pj3"/>
+                                    <constraint firstAttribute="height" constant="20" id="Zaa-56-Pj3"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="clear.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -214,10 +214,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="clear.png" width="300" height="50"/>
-        <image name="send.png" width="300" height="50"/>
+        <image name="clear.png" width="287" height="50"/>
+        <image name="send.png" width="287" height="50"/>
     </resources>
-    <color key="tintColor" red="0.43137254899999999" green="0.67843137249999996" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" red="1" green="0.61176470589999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

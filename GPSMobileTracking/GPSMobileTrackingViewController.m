@@ -240,11 +240,9 @@ int c;
             if (con.firstItem == username && con.firstAttribute == NSLayoutAttributeTop) {
                 con.constant = 190;
             }
+           
             if (con.firstItem == password && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant = 244;
-            }
-            if (con.firstItem == password && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant = 244;
+                con.constant = 230;
             }
             if (con.firstItem == login && con.firstAttribute == NSLayoutAttributeTop) {
                 con.constant = 294;

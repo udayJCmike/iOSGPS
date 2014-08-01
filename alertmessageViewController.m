@@ -394,14 +394,14 @@
     [sendmessage setEnabled:NO];
     if ([[du submitvalues] isEqualToString:@"Success"])
     {
-        NSLog(@"Network is Rechabile");
+       // NSLog(@"Network is Rechabile");
         for (int i = 0; i<mobileNumbers.count; i++)
         {
             
             NSString * requestUrl=[NSString stringWithFormat:@"http://api.cutesms.in/sms.aspx?a=submit&un=%@&pw=%@&to=%@&msg=%@",username,password,[mobileNumbers objectAtIndex:i],textMessage];
            NSString *result=  [self send:[NSURL URLWithString:requestUrl]];
             // NSLog(@"response %@",result);
-            NSLog(@" Mobile Number is : %@ ",[mobileNumbers objectAtIndex:i]);
+          //  NSLog(@" Mobile Number is : %@ ",[mobileNumbers objectAtIndex:i]);
             if (result)
             {
                 if (i == 0)

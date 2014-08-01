@@ -215,24 +215,51 @@
     cell.current_location.text=list1.address;
     cell.last_update.text=list1.bus_tracking_timestamp;
     
-    if ([list1.device_status isEqualToString:@"0"]) {
-        cell.device_status.image=[UIImage imageNamed:@"red_light.png"];
-    }
-    else if ([list1.device_status isEqualToString:@"1"]) {
-        cell.device_status.image=[UIImage imageNamed:@"green_light.png"];
-    }
- else if (([list1.device_status isEqualToString:@"2"])|| ([list1.device_status isEqualToString:@"3"]))
- {
-         cell.device_status.image=[UIImage imageNamed:@"yellow_light.png"];
-    }
-    else
+       if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
-         cell.device_status.image=[UIImage imageNamed:@"red_light.png"];
-        
+        if ([list1.device_status isEqualToString:@"0"]) {
+            cell.device_status.image=[UIImage imageNamed:@"indicator_red.png"];
+        }
+        else if ([list1.device_status isEqualToString:@"1"]) {
+            cell.device_status.image=[UIImage imageNamed:@"indicator_green.png"];
+        }
+        else if (([list1.device_status isEqualToString:@"2"])|| ([list1.device_status isEqualToString:@"3"]))
+        {
+            cell.device_status.image=[UIImage imageNamed:@"indicator_yellow.png"];
+        }
+        else
+        {
+            cell.device_status.image=[UIImage imageNamed:@"indicator_red.png"];
+            
+        }
+
+    }
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+    {
+        if ([list1.device_status isEqualToString:@"0"]) {
+            cell.device_status.image=[UIImage imageNamed:@"red_light.png"];
+        }
+        else if ([list1.device_status isEqualToString:@"1"]) {
+            cell.device_status.image=[UIImage imageNamed:@"green_light.png"];
+        }
+        else if (([list1.device_status isEqualToString:@"2"])|| ([list1.device_status isEqualToString:@"3"]))
+        {
+            cell.device_status.image=[UIImage imageNamed:@"yellow_light.png"];
+        }
+        else
+        {
+            cell.device_status.image=[UIImage imageNamed:@"red_light.png"];
+            
+        }
+
     }
     
     
     return cell;
+}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    cell.backgroundColor = [UIColor clearColor];
 }
 -(void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
