@@ -50,6 +50,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+   
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
         self.navigationController.navigationBarHidden=YES;
@@ -64,6 +65,8 @@
         self.navigationItem.hidesBackButton=YES;
         [self.navigationController setNavigationBarHidden:YES animated:NO];
     }
+      [self getData];
+    [self.tableView reloadData];
 }
 - (void)viewDidLoad
 {
@@ -120,6 +123,7 @@
      [self getData];
     // Do any additional setup after loading the view.
 }
+
 -(void)getData
 {
     

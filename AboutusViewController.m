@@ -25,6 +25,7 @@
 @synthesize scrollview_height;
 @synthesize scroll_bottom;
 @synthesize ipad_scrollview_height;
+@synthesize ipad_scrollview_bottomheight;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -69,22 +70,51 @@
             
         }
     }
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+//        NSLog(@"top height %@",ipad_scrollview_height);
+//        NSLog(@"bottom height %@",ipad_scrollview_bottomheight);
+//        for (NSLayoutConstraint *con in self.view.constraints)
+//        {
+//            if (con.firstItem == scrollview && con.firstAttribute == NSLayoutAttributeTop) {
+//                
+//                con.constant =40;
+//                self.ipad_scrollview_height.constant=294;
+//                
+//                self.ipad_scrollview_bottomheight.constant=40;
+//                
+//                [self.scrollview needsUpdateConstraints];
+//                
+//            }
+//            
+//            
+//            
+//            
+//        }
+
+    }
   
    
    
 
 }
-//-(void)viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillAppear:animated];
-//    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-//    {
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+//        NSLog(@"top height %@",ipad_scrollview_height);
+//        NSLog(@"bottom height %@",ipad_scrollview_bottomheight);
+//   
+//    
 //        for (NSLayoutConstraint *con in self.view.constraints)
 //        {
-//            if (con.firstItem == scrollview && con.firstAttribute == NSLayoutAttributeBottom) {
+//            if (con.firstItem == scrollview && con.firstAttribute == NSLayoutAttributeTop) {
 //                
 //                con.constant =90;
-//                self.ipad_scrollview_height.constant=150;
+//                self.ipad_scrollview_height.constant=294;
+//                
+//                self.ipad_scrollview_bottomheight.constant=90;
 //            
 //                [self.scrollview needsUpdateConstraints];
 //                
@@ -94,9 +124,10 @@
 //            
 //            
 //        }
-// 
-//    }
-//}
+    }
+ 
+   
+}
 
 - (void)didReceiveMemoryWarning
 {
