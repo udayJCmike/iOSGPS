@@ -433,8 +433,8 @@
         [alertView show];
     }
     
-    
-    
+    textMessage=@"";
+    alertMessageTextView.text=@"";
    
 }
 
