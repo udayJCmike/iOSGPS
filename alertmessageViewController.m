@@ -84,7 +84,7 @@
             }
             if (con.firstItem == alertMessageTextView && con.firstAttribute == NSLayoutAttributeTop) {
                 con.constant = 170;
-                self.textwidth.constant=295;
+                self.textwidth.constant=297;
                 
             }
             if (con.firstItem == sendmessage && con.firstAttribute == NSLayoutAttributeTop) {

@@ -269,11 +269,11 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Ez-i0-yMe">
-                                <rect key="frame" x="14" y="209" width="293" height="129"/>
+                                <rect key="frame" x="12" y="207" width="297" height="132"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="293" id="MhC-Tf-0m5"/>
+                                    <constraint firstAttribute="width" constant="297" id="MhC-Tf-0m5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -337,9 +337,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8Ez-i0-yMe" secondAttribute="trailing" constant="11" id="5W7-cm-sEu"/>
                             <constraint firstAttribute="trailing" secondItem="0MZ-Fx-Diz" secondAttribute="trailing" id="Ikq-75-QpH"/>
                             <constraint firstItem="0MZ-Fx-Diz" firstAttribute="top" secondItem="7E0-Ic-Rdo" secondAttribute="top" id="LHC-qo-Nog"/>
-                            <constraint firstAttribute="trailing" secondItem="8Ez-i0-yMe" secondAttribute="trailing" constant="13" id="PG9-yz-cq0"/>
                             <constraint firstItem="0MZ-Fx-Diz" firstAttribute="leading" secondItem="7E0-Ic-Rdo" secondAttribute="leading" id="Q1g-bn-qce"/>
                             <constraint firstAttribute="bottom" secondItem="0MZ-Fx-Diz" secondAttribute="bottom" id="co9-ZT-tCe"/>
                         </constraints>
@@ -354,7 +354,7 @@
                         <outlet property="logout" destination="BHD-4G-iVH" id="dLV-D6-qJW"/>
                         <outlet property="segment" destination="7oh-MP-KcR" id="QI6-pD-Fjf"/>
                         <outlet property="sendmessage" destination="c3J-mQ-nAh" id="8BM-47-UrO"/>
-                        <outlet property="textwidth" destination="MhC-Tf-0m5" id="W2G-DS-IAm"/>
+                        <outlet property="textwidth" destination="MhC-Tf-0m5" id="wFE-IX-l0G"/>
                         <outlet property="welcome" destination="jLk-ym-wEi" id="N8P-zX-7vn"/>
                         <segue destination="GPI-Jy-4eI" kind="push" identifier="alerttohis" id="C1F-ev-vyf"/>
                         <segue destination="Rw9-8b-hjh" kind="push" identifier="alerttolive" id="Ar1-6u-s9b"/>
@@ -378,8 +378,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Lgc-bc-OqT"/>
-        <segue reference="iFZ-H0-84R"/>
+        <segue reference="Ar1-6u-s9b"/>
         <segue reference="34y-xG-DC7"/>
+        <segue reference="C1F-ev-vyf"/>
     </inferredMetricsTieBreakers>
 </document>
