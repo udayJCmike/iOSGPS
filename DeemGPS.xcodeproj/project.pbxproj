@@ -117,7 +117,6 @@
 		8498BE7A197569CC00B810F0 /* Vehiclelocationlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 8498BE79197569CC00B810F0 /* Vehiclelocationlist.m */; };
 		84992C791982334C002304EE /* CalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84992C771982334C002304EE /* CalloutView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		84992C7A1982334C002304EE /* calloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84992C781982334C002304EE /* calloutView.xib */; };
-		84992C7F19825393002304EE /* bluebg.png in Resources */ = {isa = PBXBuildFile; fileRef = 84992C7E19825393002304EE /* bluebg.png */; };
 		8499653A198A7A6A00D5CB98 /* clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 84996533198A7A6A00D5CB98 /* clear.png */; };
 		8499653B198A7A6A00D5CB98 /* contactus.png in Resources */ = {isa = PBXBuildFile; fileRef = 84996534198A7A6A00D5CB98 /* contactus.png */; };
 		8499653C198A7A6A00D5CB98 /* loginbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 84996535198A7A6A00D5CB98 /* loginbutton.png */; };
@@ -161,6 +160,7 @@
 		8499685419795DC800A53BEF /* AKNumericFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499684F19795DC800A53BEF /* AKNumericFormatter.m */; };
 		8499685519795DC800A53BEF /* NSString+AKNumericFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499685119795DC800A53BEF /* NSString+AKNumericFormatter.m */; };
 		8499685619795DC800A53BEF /* UITextField+AKNumericFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499685319795DC800A53BEF /* UITextField+AKNumericFormatter.m */; };
+		849B2E0C1990E55200AD18E0 /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = 849B2E0B1990E55200AD18E0 /* point.png */; };
 		849CA556197810E50005309F /* green_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 849CA553197810E50005309F /* green_pin.png */; };
 		849CA557197810E50005309F /* pink_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 849CA554197810E50005309F /* pink_pin.png */; };
 		849CA558197810E50005309F /* red_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 849CA555197810E50005309F /* red_pin.png */; };
@@ -325,7 +325,6 @@
 		84992C761982334C002304EE /* CalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalloutView.h; sourceTree = "<group>"; };
 		84992C771982334C002304EE /* CalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalloutView.m; sourceTree = "<group>"; };
 		84992C781982334C002304EE /* calloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = calloutView.xib; sourceTree = "<group>"; };
-		84992C7E19825393002304EE /* bluebg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluebg.png; sourceTree = "<group>"; };
 		84996533198A7A6A00D5CB98 /* clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear.png; sourceTree = "<group>"; };
 		84996534198A7A6A00D5CB98 /* contactus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contactus.png; sourceTree = "<group>"; };
 		84996535198A7A6A00D5CB98 /* loginbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginbutton.png; sourceTree = "<group>"; };
@@ -373,6 +372,7 @@
 		8499685119795DC800A53BEF /* NSString+AKNumericFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AKNumericFormatter.m"; sourceTree = "<group>"; };
 		8499685219795DC800A53BEF /* UITextField+AKNumericFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+AKNumericFormatter.h"; sourceTree = "<group>"; };
 		8499685319795DC800A53BEF /* UITextField+AKNumericFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+AKNumericFormatter.m"; sourceTree = "<group>"; };
+		849B2E0B1990E55200AD18E0 /* point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point.png; sourceTree = "<group>"; };
 		849CA553197810E50005309F /* green_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_pin.png; sourceTree = "<group>"; };
 		849CA554197810E50005309F /* pink_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pink_pin.png; sourceTree = "<group>"; };
 		849CA555197810E50005309F /* red_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_pin.png; sourceTree = "<group>"; };
@@ -770,8 +770,8 @@
 		84992C751982333D002304EE /* Custom Callouts */ = {
 			isa = PBXGroup;
 			children = (
+				849B2E0B1990E55200AD18E0 /* point.png */,
 				84992C761982334C002304EE /* CalloutView.h */,
-				84992C7E19825393002304EE /* bluebg.png */,
 				84992C771982334C002304EE /* CalloutView.m */,
 				84992C781982334C002304EE /* calloutView.xib */,
 			);
@@ -923,6 +923,7 @@
 				84188B39198B51AC002D55BA /* contact@2x~ipad.png in Resources */,
 				84996566198A7A9100D5CB98 /* privacy-568h@2x.png in Resources */,
 				8499654E198A7A7F00D5CB98 /* historytrack@2x.png in Resources */,
+				849B2E0C1990E55200AD18E0 /* point.png in Resources */,
 				849965A5198A89BE00D5CB98 /* message@2x~ipad.png in Resources */,
 				8499653C198A7A6A00D5CB98 /* loginbutton.png in Resources */,
 				8492E1331975054300AA9291 /* red_light.png in Resources */,
@@ -946,7 +947,6 @@
 				84951A8D1973C7C2003C603B /* InfoPlist.strings in Resources */,
 				84188B44198B69B7002D55BA /* clear_iPad.png in Resources */,
 				8492853C198F653E00A4F7CE /* Icon-57@2x.png in Resources */,
-				84992C7F19825393002304EE /* bluebg.png in Resources */,
 				84188B7B198BCCF7002D55BA /* Icon_Small@2x.png in Resources */,
 				84996553198A7A7F00D5CB98 /* terms@2x.png in Resources */,
 				8492853E198F653E00A4F7CE /* Icon-120.png in Resources */,

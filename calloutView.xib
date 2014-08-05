@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="222" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluebg.png" id="P66-OX-eLh">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="point.png" id="P66-OX-eLh">
                     <rect key="frame" x="0.0" y="0.0" width="222" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -30,6 +30,6 @@
         </view>
     </objects>
     <resources>
-        <image name="bluebg.png" width="1427" height="882"/>
+        <image name="point.png" width="1427" height="882"/>
     </resources>
 </document>

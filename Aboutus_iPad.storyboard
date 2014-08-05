@@ -312,7 +312,7 @@ Deemsys Inc</string>
             <objects>
                 <tabBarController definesPresentationContext="YES" id="YNe-4i-dmR" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="sfu-Lz-gVp">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -366,10 +366,10 @@ Deemsys Inc</string>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="694" translatesAutoresizingMaskIntoConstraints="NO" id="Gxa-Z4-xwm">
                                                 <rect key="frame" x="5" y="1" width="694" height="237"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">By submitting your personal information through Leadtek Research Inc. (“LEDATEK")'s website, you hereby give your consent to the handling of your personal data in the manner described in this statement.
+                                                <string key="text">By submitting your personal information through Deemsys Inc ( "DEEMSYS INC")'s website, you hereby give your consent to the handling of your personal data in the manner described in this statement.
 This privacy statement is to inform you of our online information practiced and the choices available regarding the collection and use of your personal information via this website.
-You acknowledge and agree that this statement has the same effect as a written consent. By accessing or using this website or providing information to LEADTEK through this website, you acknowledge that you have reviewed the content of this statement and consent to the practices described in this statement.
-Except this statement, LEADTEK might provide different or additional information or terms for specific products, discounts, areas, services, or activities.
+You acknowledge and agree that this statement has the same effect as a written consent. By accessing or using this website or providing information to DEEMSYS INC through this website, you acknowledge that you have reviewed the content of this statement and consent to the practices described in this statement.
+Except this statement, DEEMSYS INC might provide different or additional information or terms for specific products,discounts, areas, services, or activities.
 </string>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -385,11 +385,10 @@ Except this statement, LEADTEK might provide different or additional information
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="694" translatesAutoresizingMaskIntoConstraints="NO" id="mru-Ie-cPw">
                                                 <rect key="frame" x="5" y="269" width="694" height="184"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">Collection of Personal Information:
+                                                <mutableString key="text">Collection of Personal Information:
 This privacy statement is to inform you of our online information practiced and the choices available regarding the collection and use of your personal information via this website.
-You acknowledge and agree that this statement has the same effect as a written consent. By accessing or using this website or providing information to DEEM GPS through this website, you acknowledge that you have reviewed the content of this statement and consent to the practices described in this statement.
-Except this statement, DEEM GPS might provide different or additional information or terms for specific products, discounts, areas, services, or activities.
-</string>
+You acknowledge and agree that this statement has the same effect as a written consent. By accessing or using this website or providing information to DeemGPS  through this website, you acknowledge that you have reviewed the content of this statement and consent to the practices described in this statement.
+Except this statement, DeemGPS might provide different or additional information or terms for specific products,discounts, areas, services, or activities.</mutableString>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -404,7 +403,7 @@ Except this statement, DEEM GPS might provide different or additional informatio
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="694" translatesAutoresizingMaskIntoConstraints="NO" id="pNz-xS-y1C">
                                                 <rect key="frame" x="5" y="486" width="694" height="109"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">We may hold and process your Personal Information in your home country or overseas, and on our own information technology systems or on systems owned by third parties that may hold and process your Personal Information on our behalf.  The DEEM GPS entity that holds your Personal Information is the entity set out in the Contact Details section applicable to the country in which you acquired the relevant product or Service.</string>
+                                                <string key="text">We may hold and process your Personal Information in your home country or overseas, and on our own information technology systems or on systems owned by third parties that may hold and process your Personal Information on our behalf. The DeemGPS entity that holds your Personal Information is the entity set out in the Contact Details section applicable to the country in which you acquired the relevant product or Service.</string>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -419,7 +418,7 @@ Except this statement, DEEM GPS might provide different or additional informatio
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="694" translatesAutoresizingMaskIntoConstraints="NO" id="lWn-wp-dSx">
                                                 <rect key="frame" x="5" y="865" width="694" height="90"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">Wherever your information may be held within DEEM GPS or on its behalf, we intend to take reasonable and appropriate steps to protect the personal information that you share with us from unauthorized access or disclosure. We use firewalls, encryption technologies (such as SSL) and physical security measures in order to prevent unauthorized use of personal information. </string>
+                                                <string key="text">Wherever your information may be held within DeemGPS or on its behalf, we intend to take reasonable and appropriate steps to protect the personal information that you share with us from unauthorized access or disclosure.We use firewalls, encryption technologies (such as SSL) and physical security measures in order to prevent unauthorized use of personal information.</string>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -434,10 +433,9 @@ Except this statement, DEEM GPS might provide different or additional informatio
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="694" translatesAutoresizingMaskIntoConstraints="NO" id="rjb-JJ-8aK">
                                                 <rect key="frame" x="5" y="985" width="694" height="130"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">You have the right to access and correct the Personal Information that we keep about you.  To do so, please contact us in writing at the address below.
+                                                <string key="text">You have the right to access and correct the Personal Information that we keep about you. To do so, please contact us in writing at the address below.
 Complaints procedure
-If you think we have breached applicable privacy laws, please write to us at the address below.  We will investigate any complaint and will notify you of the making of a decision in relation to your complaint as soon as is practicable after it has been made.
-</string>
+If you think we have breached applicable privacy laws, please write to us at the address below. We will investigate any complaint and will notify you of the making of a decision in relation to your complaint as soon as is practicable after it has been made.</string>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -452,7 +450,7 @@ If you think we have breached applicable privacy laws, please write to us at the
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="694" translatesAutoresizingMaskIntoConstraints="NO" id="g1F-0T-XHC">
                                                 <rect key="frame" x="5" y="1144" width="694" height="150"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">Links on our websites or accessible through our other Services to websites that are operated by third parties are provided solely as a convenience to you. If you use these links, you will leave our website or other Service. DEEM GPS has not reviewed all of these third-party sites and does not control and is not responsible for any of these sites or their content. Thus, DEEM GPS does not endorse or make any representations about them, or any information, software or other products or materials found there, or any results that may be obtained from using them. If you decide to access any third-party websites, you do this entirely at your own risk.</string>
+                                                <mutableString key="text">Links on our websites or accessible through our other Services to websites that are operated by third parties are provided solely as a convenience to you. If you use these links, you will leave our website or other Service. DeemGPS has not reviewed all of these third-party sites and does not control and is not responsible for any of these sites or their content. Thus,DeemGPS does not endorse or make any representations about them, or any information,software or other products or materials found there, or any results that may be obtained from using them. If you decide to access any third-party websites, you do this entirely at your own risk.</mutableString>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -467,24 +465,22 @@ If you think we have breached applicable privacy laws, please write to us at the
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="694" translatesAutoresizingMaskIntoConstraints="NO" id="R7N-f1-iWy">
                                                 <rect key="frame" x="5" y="1326" width="694" height="150"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">We reserve the right to change and update this Privacy Policy at any time. Any such changes will be posted at this website. The date of the latest update to the Privacy Policy is set out at the top of the Privacy Policy. Changes to the Privacy Policy are effective at the time they are posted to this website, and your continued use of a Service shall signify your acceptance of, and agreement to be bound by, those changes.  We recommend you check this website regularly for changes to the Privacy Policy.
-Effective date: 2014/07/14
-</string>
+                                                <string key="text">We reserve the right to change and update this Privacy Policy at any time. Any such changes will be posted at this website. The date of the latest update to the Privacy Policy is set out at the top of the Privacy Policy. Changes to the Privacy Policy are effective at the time they are posted to this website, and your continued use of a Service shall signify your acceptance of, and agreement to be bound by, those changes. We recommend you check this website regularly for changes to the Privacy Policy.</string>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We Use Cookies" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdR-Ox-M9o">
-                                                <rect key="frame" x="5" y="607" width="137" height="21"/>
+                                                <rect key="frame" x="5" y="605" width="137" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="694" translatesAutoresizingMaskIntoConstraints="NO" id="RO0-kA-hpz">
-                                                <rect key="frame" x="5" y="628" width="694" height="207"/>
+                                                <rect key="frame" x="5" y="621" width="694" height="222"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">Some of our web pages utilize "cookies" and other tracking technologies. A "cookie" is a small text file that may be used to collect information about web site activity. Some cookies and other technologies may recall personal information previously provided by a web user. Most browsers allow you to control cookies, including whether or not to accept them and how to remove them. You may set most browsers to notify you if you receive a cookie or you may choose to block cookies with your browser. Tracking technologies record information such as Internet domain and host names; Internet protocol (IP) addresses; browser software and operating system types; clickstream patterns; and dates and times that our site is accessed. We use cookies and other tracking technologies so that we can improve our web site and your web experience. We may also analyze information for trends and statistics. We do not generate e-mail lists from cookies.</string>
+                                                <mutableString key="text">Some of our web pages utilize "cookies" and other tracking technologies. A "cookie" is a small text file that may be used to collect information about web site activity. Some cookies and other technologies may recall personal information previously provided by a web user. Most browsers allow you to control cookies, including whether or not to accept them and how to remove them. You may set most browsers to notify you if you receive a cookie or you may choose to block cookies with your browser. Tracking technologies record information such as Internet domain and host names; Internet protocol (IP) addresses; browser software and operating system types; clickstream patterns; and dates and times that our site is accessed. We use cookies and other tracking technologies so that we can improve our web site and your web experience. We may also analyze information for trends and statistics. We do not generate e-mail lists from cookies.</mutableString>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -547,17 +543,17 @@ Effective date: 2014/07/14
                                         <rect key="frame" x="0.0" y="0.0" width="706" height="1847"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deem GPS Refund Policy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMs-Xu-4IN">
-                                                <rect key="frame" x="5" y="106" width="210" height="21"/>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DeemGPS Refund Policy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMs-Xu-4IN">
+                                                <rect key="frame" x="5" y="91" width="210" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="692" translatesAutoresizingMaskIntoConstraints="NO" id="Vme-7q-EBq">
-                                                <rect key="frame" x="5" y="130" width="692" height="149"/>
+                                                <rect key="frame" x="5" y="115" width="692" height="149"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">The DEEM GPS Return/Refund Policy only applies to hardware and software goods purchased from the DEEM GPS website or a telephone order. Other products such as map downloads, subscriptions, and opened software programs are not refundable. In order to return an item for refund you will need a Return Authorization. Please contact DEEM GPS by phone or email to obtain a Return Authorization.
+                                                <string key="text">The DeemGPS Return/Refund Policy only applies to hardware and software goods purchased from the DeemGPS website or a telephone order. In order to return an item for refund you will need a Return Authorization. Please contact DeemGPS by phone or email to obtain a Return Authorization.
 
 We accept returns of devices and accessories within 7 days of purchase.
 </string>
@@ -565,43 +561,43 @@ We accept returns of devices and accessories within 7 days of purchase.
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DEEM GPS Warranty &amp; Replacement Policy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RC1-iG-cFD">
-                                                <rect key="frame" x="5" y="299" width="353" height="21"/>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DeemGPS Warranty &amp; Replacement Policy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RC1-iG-cFD">
+                                                <rect key="frame" x="5" y="259" width="353" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="In-Warranty Repairs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ldx-5P-WGg">
-                                                <rect key="frame" x="5" y="334" width="171" height="21"/>
+                                                <rect key="frame" x="5" y="294" width="171" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="692" translatesAutoresizingMaskIntoConstraints="NO" id="zwW-EG-cys">
-                                                <rect key="frame" x="5" y="363" width="692" height="108"/>
+                                                <rect key="frame" x="5" y="323" width="692" height="108"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">All Deem GPS products are warranted to be free from defects in materials or workmanship for:
+                                                <mutableString key="text">All DeemGPS products are warranted to be free from defects in materials or workmanship for:
 	● 1 month from the date of purchase for new GPS receivers
 	● 1 month  from the date of purchase for reconditioned GPS receivers
-	● The greater of 1 month or the remainder of the original warranty for GPS receivers exchanged by Deem GPS as part of in-warranty servicing.
-</string>
+	● The greater of 1 month or the remainder of the original warranty for GPS receivers exchanged by DeemGPS as part of in-warranty servicing.
+</mutableString>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="In-warranty Services require a valid Proof-of Purchase." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zef-xL-7Li">
-                                                <rect key="frame" x="5" y="487" width="434" height="21"/>
+                                                <rect key="frame" x="5" y="453" width="434" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="692" translatesAutoresizingMaskIntoConstraints="NO" id="zXO-Cm-xYm">
-                                                <rect key="frame" x="5" y="509" width="692" height="130"/>
+                                                <rect key="frame" x="5" y="475" width="692" height="130"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">If returned within the applicable warranty period, Deem GPS will, at its sole discretion and at no cost to the customer, replace the defective GPS receiver with a reconditioned unit of the same model, as available. If the same model is not available, a different reconditioned model GPS receiver will be used for the exchange.
+                                                <string key="text">If returned within the applicable warranty period, DeemGPS will, at its sole discretion and at no cost to the customer, replace the defective GPS receiver with a reconditioned unit of the same model, as available. If the same model is not available, a different reconditioned model GPS receiver will be used for the exchange.
 This warranty does not cover failures due to abuse, misuse, accident or unauthorized alterations or repairs.
 </string>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
@@ -618,7 +614,7 @@ This warranty does not cover failures due to abuse, misuse, accident or unauthor
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="692" translatesAutoresizingMaskIntoConstraints="NO" id="aiv-Pp-pQ7">
                                                 <rect key="frame" x="5" y="669" width="692" height="73"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">Deem GPS does not service products. For receivers returned after the warranty period or for damage not covered by the warranty, customers may purchase a new unit at a reduced cost or reconditioned unit also at a reduced cost.</string>
+                                                <string key="text">DeemGPS does not service products. For receivers returned after the warranty period or for damage not covered by the warranty, customers may purchase a new unit at a reduced cost or reconditioned unit also at a reduced cost.</string>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -633,7 +629,7 @@ This warranty does not cover failures due to abuse, misuse, accident or unauthor
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="692" translatesAutoresizingMaskIntoConstraints="NO" id="cIj-CT-Jx7">
                                                 <rect key="frame" x="5" y="780" width="692" height="106"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">Deem GPS will replace receivers with a broken display returned within the warranty period with a reconditioned unit of the same or comparable model at a reduced cost to customer. Customers with a broken display unit returned outside the warranty period will be given the opportunity to purchase a new unit at a reduced cost or reconditioned unit also at a reduced cost.</string>
+                                                <string key="text">DeemGPS will replace receivers with a broken display returned within the warranty period with a reconditioned unit of the same or comparable model at a reduced cost to customer. Customers with a broken display unit returned outside the warranty period will be given the opportunity to purchase a new unit at a reduced cost or reconditioned unit also at a reduced cost.</string>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -648,7 +644,7 @@ This warranty does not cover failures due to abuse, misuse, accident or unauthor
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="692" translatesAutoresizingMaskIntoConstraints="NO" id="Yoj-k8-FxF">
                                                 <rect key="frame" x="5" y="920" width="692" height="106"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">You will need a Return Authorization (RA) number prior to shipping your product to Deem GPS for repair. Please contact our technical support group at the phone numbers listed above. Any package that is sent into our repair facilities without an RA number will be rejected and sent back at the owner's expense and will be assessed a INR 500.00 service charge fee prior to returning the item. </string>
+                                                <string key="text">You will need a Return Authorization (RA) number prior to shipping your product to DeemGPS for repair. Please contact our technical support group at the phone numbers listed above. Any package that is sent into our repair facilities without an RA number will be rejected and sent back at the owner's expense and will be assessed a INR 500.00  service charge fee prior to returning the item. </string>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -663,7 +659,7 @@ This warranty does not cover failures due to abuse, misuse, accident or unauthor
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="692" translatesAutoresizingMaskIntoConstraints="NO" id="kEu-5U-RXk">
                                                 <rect key="frame" x="5" y="1060" width="692" height="106"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">After obtaining your Return Authorization number from Magellan we strongly suggest you ship your product back to our service center via a trackable shipping method, and clearly write your Return Authorization number on the 2nd line of the address label as well as on three sides of the box you are shipping your product back in. Please note that the Repair Authorization number is only valid for 30 Days. </string>
+                                                <string key="text">After obtaining your Return Authorization number from Deemsys Inc we strongly suggest you ship your product back to our service center via a trackable shipping method, and clearly write your Return Authorization number on the 2nd line of the address label as well as on three sides of the box you are shipping your product back in. Please note that the Repair Authorization number is only valid for 30 Days.</string>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -671,14 +667,14 @@ This warranty does not cover failures due to abuse, misuse, accident or unauthor
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="692" translatesAutoresizingMaskIntoConstraints="NO" id="xhr-Zl-Bug">
                                                 <rect key="frame" x="5" y="1341" width="692" height="330"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">Note: We strongly recommend shipping your product using a reliable and trackable shipping method . This will help keep track of your product as it's delivered, and signed for at our facility. Please insure the package at cost value as Magellan is not responsible for lost or damaged product during transit. 
+                                                <mutableString key="text">Note: We strongly recommend shipping your product using a reliable and trackable shipping method. This will help keep track of your product as it's delivered, and signed for at our facility. Please insure the package at cost value as Deemsys Inc is not responsible for lost or damaged product during transit.
 
-WARRANTY DISCLAIMER: Deem GPS will, at its sole discretion and at no cost to the customer replace the defective GPS receiver with a reconditioned unit of the same model, as available. If the same model is not available, a comparable model GPS receiver will be used for the exchange. 
+WARRANTY DISCLAIMER: DeemGPS will, at its sole discretion and at no cost to the customer replace the defective GPS receiver with a reconditioned unit of the same model, as available. If the same model is not available, a comparable model GPS receiver will be used for the exchange.
 
 The warranty does not cover failures due to abuse, misuse, accident, unauthorized alterations and/or repairs. 
 
 Expected Turn Around Time: Customer(s) can expect to receive their replacement product back within 7-10 days after the returned product has been received at our Service Center.
- </string>
+ </mutableString>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -704,7 +700,7 @@ Tel: +91-9841122989
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deem GPS Return Policy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQl-cF-xH1">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DeemGPS Return Policy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQl-cF-xH1">
                                                 <rect key="frame" x="5" y="6" width="210" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="18"/>
@@ -714,7 +710,7 @@ Tel: +91-9841122989
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="692" translatesAutoresizingMaskIntoConstraints="NO" id="wRE-Vp-Fd6">
                                                 <rect key="frame" x="5" y="20" width="692" height="78"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <string key="text">You will need a Return Authorization (RA) number prior to shipping your product to DEEM GPS for repair. Please contact our technical support group by calling or emailing us. Click Here for Contact Information.</string>
+                                                <string key="text">You will need a Return Authorization (RA) number prior to shipping your product to DeemGPS for repair. Please contact our technical support group by calling or emailing us.</string>
                                                 <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
