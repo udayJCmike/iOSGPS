@@ -405,6 +405,7 @@ int i;
                 [self styleCustomAlertView:alertView];
                 [self addButtonsWithBackgroundImagesToAlertView:alertView];
                 [alertView show];
+                [self performSelector:@selector(dismissalert:) withObject:alertView afterDelay:15.0];
             }
         }
         
@@ -414,6 +415,10 @@ int i;
         NSLog(@"failure");
     }
     
+}
+-(void)dismissalert:(UIAlertView*)alert
+{
+    [alert dismissWithClickedButtonIndex:0 animated:YES];
 }
 -(void)setpin
 {
