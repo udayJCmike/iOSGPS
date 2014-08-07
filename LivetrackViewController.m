@@ -273,7 +273,7 @@ int i;
     [mapview setRegion:region animated:YES];
 
     
-    NSString *filename = [du imagecheck:@"livetrack.png"];
+    NSString *filename = [du imagecheck:@"livetrack.jpg"];
     NSLog(@"image name %@",filename);
     
     mapview.delegate=self;

@@ -256,7 +256,7 @@ int c;
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     du=[[databaseurl alloc]init];
     
-    NSString *filename = [du imagecheck:@"login.png"];
+    NSString *filename = [du imagecheck:@"login.jpg"];
     NSLog(@"image name %@",filename);
 
     

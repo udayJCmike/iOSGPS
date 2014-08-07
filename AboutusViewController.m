@@ -44,7 +44,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     du=[[databaseurl alloc]init];
     
-    NSString *filename = [du imagecheck:@"about.png"];
+    NSString *filename = [du imagecheck:@"about.jpg"];
     NSLog(@"image name %@",filename);
     
     imageview.image = [UIImage imageNamed:filename];

@@ -118,7 +118,7 @@
    
    
     du=[[databaseurl alloc]init];
-    NSString *filename = [du imagecheck:@"dashboard.png"];
+    NSString *filename = [du imagecheck:@"dashboard.jpg"];
     imageview.image = [UIImage imageNamed:filename];
      [self getData];
     // Do any additional setup after loading the view.

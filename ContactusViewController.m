@@ -147,7 +147,7 @@ int message_count;
     addressTextView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     
     i = 0;
-    NSString *filename = [du imagecheck:@"contact.png"];
+    NSString *filename = [du imagecheck:@"contact.jpg"];
     NSLog(@"image name %@",filename);
     imageView.image = [UIImage imageNamed:filename];
     

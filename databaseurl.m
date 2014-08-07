@@ -151,10 +151,10 @@ static databaseurl * appInstance;
         CGRect screenRect = [[UIScreen mainScreen] bounds];
         if (screenRect.size.height == 1024.0f)
         {
-            filename = [filename stringByReplacingOccurrencesOfString:@".png" withString:@"~ipad.png"];
+            filename = [filename stringByReplacingOccurrencesOfString:@".jpg" withString:@"~ipad.jpg"];
             // code for 4-inch screen
         } else {
-            filename = [filename stringByReplacingOccurrencesOfString:@".png" withString:@"@2x~ipad.png"];
+            filename = [filename stringByReplacingOccurrencesOfString:@".jpg" withString:@"@2x~ipad.jpg"];
             // code for 3.5-inch screen
         }
         
@@ -164,10 +164,10 @@ static databaseurl * appInstance;
         CGRect screenRect = [[UIScreen mainScreen] bounds];
         if (screenRect.size.height == 568.0f)
         {
-            filename = [filename stringByReplacingOccurrencesOfString:@".png" withString:@"-568h@2x.png"];
+            filename = [filename stringByReplacingOccurrencesOfString:@".jpg" withString:@"-568h@2x.jpg"];
             // code for 4-inch screen
         } else {
-            filename = [filename stringByReplacingOccurrencesOfString:@".png" withString:@"@2x.png"];
+            filename = [filename stringByReplacingOccurrencesOfString:@".jpg" withString:@"@2x.jpg"];
             // code for 3.5-inch screen
         }
         

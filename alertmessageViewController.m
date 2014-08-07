@@ -140,7 +140,7 @@
         
     }
     [segment setSelectedSegmentIndex:2];
-    NSString *filename = [du imagecheck:@"message.png"];
+    NSString *filename = [du imagecheck:@"message.jpg"];
     NSLog(@"image name %@",filename);
     
     //    for (int i = 0; i<mobileNumbers.count; i++)
