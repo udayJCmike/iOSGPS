@@ -639,15 +639,15 @@ int message_count;
 -(void) sendEmailInBackground {
   //  NSLog(@"Start Sending");
     SKPSMTPMessage *emailMessage = [[SKPSMTPMessage alloc] init];
-    emailMessage.fromEmail = @"deemgpsapp@gmail.com"; //sender email address
+    emailMessage.fromEmail = @"deemgps@gmail.com"; //sender email address
     emailMessage.toEmail = [NSString stringWithFormat:@"%@",emailTextField.text];  //receiver email address
     NSLog(@" TO EMAIL ID IS -- %@",emailMessage.toEmail);
     emailMessage.relayHost = @"smtp.gmail.com";
     //emailMessage.ccEmail =@"your cc address";
     //emailMessage.bccEmail =@"your bcc address";
     emailMessage.requiresAuth = YES;
-    emailMessage.login = @"deemgpsapp@gmail.com"; //sender email address
-    emailMessage.pass = @"pentagon7"; //sender email password
+    emailMessage.login = @"deemgps@gmail.com"; //sender email address
+    emailMessage.pass = @"deemsys@123"; //sender email password
     emailMessage.subject =@"Acknowledgement";
     emailMessage.wantsSecure = YES;
     emailMessage.delegate = self; // you must include <SKPSMTPMessageDelegate> to your class
@@ -673,14 +673,14 @@ int message_count;
 -(void) sendEmailInBackgroundToSuperAdmin {
   //  NSLog(@"Start Sending");
     SKPSMTPMessage *emailMessage = [[SKPSMTPMessage alloc] init];
-    emailMessage.fromEmail = @"deemgpsapp@gmail.com"; //sender email address
-    emailMessage.toEmail = @"udayjc@icloud.com";  //receiver email address
+    emailMessage.fromEmail = @"deemgps@gmail.com"; //sender email address
+    emailMessage.toEmail = @"sales@deemsysinc.com";  //receiver email address
     emailMessage.relayHost = @"smtp.gmail.com";
     //emailMessage.ccEmail =@"your cc address";
     //emailMessage.bccEmail =@"your bcc address";
     emailMessage.requiresAuth = YES;
-    emailMessage.login = @"deemgpsapp@gmail.com"; //sender email address
-    emailMessage.pass = @"pentagon7"; //sender email password
+    emailMessage.login = @"deemgps@gmail.com"; //sender email address
+    emailMessage.pass = @"deemsys@123"; //sender email password
     emailMessage.subject =@"Contact Us Information";
     emailMessage.wantsSecure = YES;
     emailMessage.delegate = self; // you must include <SKPSMTPMessageDelegate> to your class
