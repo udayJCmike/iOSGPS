@@ -339,11 +339,21 @@
             
             CLLocation* currentLocation = [[[CLLocation alloc] initWithLatitude:latitude longitude:longitude] autorelease];
             [points addObject:currentLocation];
-            
-            annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
-                                                       annotationType:CSMapAnnotationTypeRedImage
-                                                                title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
-            [annotation setUserData:@"red_pin.png"];
+            if([list1.exceed_speed_limit isEqualToString:@"1"])
+            {
+                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
+                                                           annotationType:CSMapAnnotationTypePinkImage
+                                                                    title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
+                [annotation setUserData:@"pink_pin.png"];
+            }
+            else
+            {
+                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
+                                                           annotationType:CSMapAnnotationTypeRedImage
+                                                                    title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
+                [annotation setUserData:@"red_pin.png"];
+            }
+           
             
             [mapview addAnnotation:annotation];
             CLLocationCoordinate2D coord = {.latitude =  [list1.latitude doubleValue], .longitude = [list1.longitude doubleValue]};
