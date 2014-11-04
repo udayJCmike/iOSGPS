@@ -33,6 +33,7 @@
 		84188B7E198BCCF7002D55BA /* Icon-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B77198BCCF7002D55BA /* Icon-50@2x.png */; };
 		84188B7F198BCCF7002D55BA /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B78198BCCF7002D55BA /* Icon-72@2x.png */; };
 		84188B81198BCD4F002D55BA /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B80198BCD4F002D55BA /* Icon-40.png */; };
+		845D84901A08986F000BB36B /* TheftAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D848F1A08986F000BB36B /* TheftAlarmViewController.m */; };
 		84660F791994E2BD00446C4E /* red_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 84660F771994E2BD00446C4E /* red_light.png */; };
 		84660F7A1994E2BD00446C4E /* yellow_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 84660F781994E2BD00446C4E /* yellow_light.png */; };
 		848E49D3198CB37200B8BD96 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 848E49D1198CB37200B8BD96 /* Icon-76.png */; };
@@ -214,6 +215,8 @@
 		84188B77198BCCF7002D55BA /* Icon-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50@2x.png"; sourceTree = "<group>"; };
 		84188B78198BCCF7002D55BA /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		84188B80198BCD4F002D55BA /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
+		845D848E1A08986F000BB36B /* TheftAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheftAlarmViewController.h; sourceTree = "<group>"; };
+		845D848F1A08986F000BB36B /* TheftAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheftAlarmViewController.m; sourceTree = "<group>"; };
 		84660F771994E2BD00446C4E /* red_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_light.png; sourceTree = "<group>"; };
 		84660F781994E2BD00446C4E /* yellow_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellow_light.png; sourceTree = "<group>"; };
 		848E49D1198CB37200B8BD96 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
@@ -426,6 +429,15 @@
 				0D80949F197791CC00521E39 /* SKPSMTPMessage.m */,
 			);
 			path = SMTPLibrary;
+			sourceTree = "<group>";
+		};
+		845D84911A08987C000BB36B /* Theftalarm */ = {
+			isa = PBXGroup;
+			children = (
+				845D848E1A08986F000BB36B /* TheftAlarmViewController.h */,
+				845D848F1A08986F000BB36B /* TheftAlarmViewController.m */,
+			);
+			name = Theftalarm;
 			sourceTree = "<group>";
 		};
 		8492D0DF197F780E00E1101A /* iPhone_icons */ = {
@@ -705,6 +717,7 @@
 				8498BE79197569CC00B810F0 /* Vehiclelocationlist.m */,
 				84951AE61973E2E5003C603B /* Vehicletrack_iPad.storyboard */,
 				84951AE41973E2A0003C603B /* Vehicletrack_iPhone.storyboard */,
+				845D84911A08987C000BB36B /* Theftalarm */,
 				84951AF31973E35E003C603B /* Alert Message */,
 				84951AEC1973E31A003C603B /* History Track */,
 				84951AEB1973E30A003C603B /* LiveTrack */,
@@ -1051,6 +1064,7 @@
 				84951B141973FB14003C603B /* MBProgressHUD.m in Sources */,
 				84951B171973FB14003C603B /* Reachability.m in Sources */,
 				84968B3719766D4400DD80E5 /* CustomPickerView.m in Sources */,
+				845D84901A08986F000BB36B /* TheftAlarmViewController.m in Sources */,
 				0D8094A0197791CC00521E39 /* Base64Transcoder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

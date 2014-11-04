@@ -28,7 +28,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="home:" destination="pxf-Ge-cAA" eventType="touchUpInside" id="8Tt-Lm-gvx"/>
                                     <action selector="home:" destination="SnF-lu-w2d" eventType="touchUpInside" id="WXp-Qw-0wY"/>
                                 </connections>
                             </button>
@@ -97,11 +96,12 @@
                         <outlet property="welcome" destination="GfA-gT-PTu" id="7QM-lB-JyF"/>
                         <segue destination="pxf-Ge-cAA" kind="push" identifier="livetohis" id="Qf8-w5-U9y"/>
                         <segue destination="Vdd-SE-Tio" kind="push" identifier="livetoalert" id="wxR-kA-MvR"/>
+                        <segue destination="w6b-n0-Ina" kind="push" identifier="livetotheft" id="rdl-wh-Tcb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w4a-CA-Y6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-481" y="-788"/>
+            <point key="canvasLocation" x="-826" y="-358"/>
         </scene>
         <!--Historytrack View Controller-->
         <scene sceneID="v5b-uu-Brn">
@@ -129,7 +129,6 @@
                                     <segment title="Alert Message"/>
                                 </segments>
                                 <connections>
-                                    <action selector="segmentaction:" destination="SnF-lu-w2d" eventType="valueChanged" id="76T-Bp-a4A"/>
                                     <action selector="segmentaction:" destination="pxf-Ge-cAA" eventType="valueChanged" id="J47-DI-lHL"/>
                                 </connections>
                             </segmentedControl>
@@ -202,11 +201,108 @@
                         <outlet property="welcome" destination="gag-32-Jll" id="Rco-Tk-0mK"/>
                         <segue destination="SnF-lu-w2d" kind="push" identifier="histolive" id="t0H-Pa-pEa"/>
                         <segue destination="Vdd-SE-Tio" kind="push" identifier="histoalert" id="m2a-ud-Z1a"/>
+                        <segue destination="w6b-n0-Ina" kind="push" identifier="histotheft" id="8EN-fA-DG8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPK-ue-Z07" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="507" y="-1016"/>
+            <point key="canvasLocation" x="125" y="-2467"/>
+        </scene>
+        <!--Theft Alarm View Controller-->
+        <scene sceneID="VGq-52-Lgd">
+            <objects>
+                <viewController id="w6b-n0-Ina" customClass="TheftAlarmViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cuY-QV-kPW"/>
+                        <viewControllerLayoutGuide type="bottom" id="bkw-Vc-Ll8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hiq-aI-csT">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c4d-Qs-Qq0">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaW-Ry-Z3R">
+                                <rect key="frame" x="674" y="168" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="home.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="home:" destination="w6b-n0-Ina" eventType="touchUpInside" id="t7J-Ff-UBB"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="S2A-BH-Dga">
+                                <rect key="frame" x="94" y="295" width="587" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <segments>
+                                    <segment title="Live Track"/>
+                                    <segment title="Tracking History"/>
+                                    <segment title="Theft Alarm"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentaction:" destination="w6b-n0-Ina" eventType="valueChanged" id="qge-Wd-LBm"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome User!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6l-n2-IVJ">
+                                <rect key="frame" x="52" y="222" width="283" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="20"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9k6-II-5sn">
+                                <rect key="frame" x="598" y="225" width="120" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="logout.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout:" destination="w6b-n0-Ina" eventType="touchUpInside" id="3iF-n3-WF3"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uzR-eH-uL0">
+                                <rect key="frame" x="403" y="437" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="onTintColor" red="1" green="0.61176470589999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="switchaction:" destination="w6b-n0-Ina" eventType="valueChanged" id="uzO-pR-ZwV"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Turn On/Off Theft Alarm:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0i-vx-vJt">
+                                <rect key="frame" x="149" y="442" width="239" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Off" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQ1-Le-7AM">
+                                <rect key="frame" x="479" y="442" width="60" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tkF-wg-ezG"/>
+                    <connections>
+                        <outlet property="alarmswitch" destination="uzR-eH-uL0" id="qMH-gs-mLN"/>
+                        <outlet property="bgimage" destination="c4d-Qs-Qq0" id="xNF-qd-LmL"/>
+                        <outlet property="home" destination="uaW-Ry-Z3R" id="gad-yV-R13"/>
+                        <outlet property="logout" destination="9k6-II-5sn" id="2OT-eQ-Cbv"/>
+                        <outlet property="segment" destination="S2A-BH-Dga" id="JPn-nj-ubz"/>
+                        <outlet property="switchres" destination="DQ1-Le-7AM" id="FXA-5L-d4I"/>
+                        <outlet property="welcome" destination="A6l-n2-IVJ" id="0W0-74-hJu"/>
+                        <segue destination="SnF-lu-w2d" kind="push" identifier="thefttolive" id="cdr-2C-wve"/>
+                        <segue destination="pxf-Ge-cAA" kind="push" identifier="thefttohis" id="Zh5-4G-24a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jWx-H7-pDh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2400" y="-1551"/>
         </scene>
         <!--Alertmessage View Controller-->
         <scene sceneID="SpU-Xb-80v">
@@ -259,7 +355,6 @@
                                 </state>
                                 <connections>
                                     <action selector="home:" destination="Vdd-SE-Tio" eventType="touchUpInside" id="0mb-4i-sFr"/>
-                                    <action selector="home:" destination="pxf-Ge-cAA" eventType="touchUpInside" id="FIE-Mf-Q1u"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qEW-LW-VGU">
@@ -272,7 +367,6 @@
                                     <segment title="Alert Message"/>
                                 </segments>
                                 <connections>
-                                    <action selector="segmentaction:" destination="SnF-lu-w2d" eventType="valueChanged" id="Gf6-qg-kJh"/>
                                     <action selector="segmentaction:" destination="Vdd-SE-Tio" eventType="valueChanged" id="PEv-bc-90x"/>
                                 </connections>
                             </segmentedControl>
@@ -314,7 +408,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VxM-pq-0cX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1658" y="-1087"/>
+            <point key="canvasLocation" x="786" y="-51"/>
         </scene>
     </scenes>
     <resources>
@@ -330,8 +424,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="t0H-Pa-pEa"/>
-        <segue reference="Qf8-w5-U9y"/>
-        <segue reference="wxR-kA-MvR"/>
+        <segue reference="Zh5-4G-24a"/>
+        <segue reference="rdl-wh-Tcb"/>
+        <segue reference="cdr-2C-wve"/>
+        <segue reference="m2a-ud-Z1a"/>
     </inferredMetricsTieBreakers>
 </document>

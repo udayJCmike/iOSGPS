@@ -20,8 +20,8 @@ static databaseurl * appInstance;
 
 -(NSString*)DBurl
 {
-   NSString * link=@"http://208.109.248.89:80/gpsios/service/";
-     //  NSString * link=@"http://192.168.1.106:8888/gpsios/service/";
+   //NSString * link=@"http://208.109.248.89:80/gpsios/service/";
+      NSString * link=@"http://192.168.1.106:8888/gpsios/service/";
     return link;
     
 }
@@ -123,6 +123,8 @@ static databaseurl * appInstance;
 
 -(NSString *)returndbresult:(NSString *)post URL:(NSURL *)url
 {
+//    NSLog(@"url %@",url);
+//    NSLog(@"post %@",post);
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
@@ -134,14 +136,18 @@ static databaseurl * appInstance;
     
     //when we user https, we need to allow any HTTPS cerificates, so add the one line code,to tell teh NSURLRequest to accept any https certificate, i'm not sure //about the security aspects
     
-    
+   // NSLog(@"mutable request %@",request);
     NSError *error;
     NSURLResponse *response;
     NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+//    NSLog(@"urlData %@",urlData);
     NSString *data=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
- //NSLog(@"data %@",data);
-    
+//NSLog(@"data %@",data);
+   
     return data;
+    
+  
+
     
 }
 -(NSString *)imagecheck:(NSString*)imagename

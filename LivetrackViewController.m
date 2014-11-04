@@ -129,8 +129,10 @@ int i;
         }
         
     }
-    if ([sender selectedSegmentIndex]==2)
+    if (([sender selectedSegmentIndex]==2)&&([[segment titleForSegmentAtIndex:segment.selectedSegmentIndex]isEqualToString:@"Alert Message"]))
+    
     {
+        
         if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
         {
             
@@ -139,6 +141,20 @@ int i;
         else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
             
              [self performSegueWithIdentifier:@"livetoalert" sender:self];
+            
+        }
+        
+    }
+    if (([sender selectedSegmentIndex]==2)&&([[segment titleForSegmentAtIndex:segment.selectedSegmentIndex]isEqualToString:@"Theft Alarm"]))
+    {
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+        {
+            
+            [self performSegueWithIdentifier:@"livetotheft" sender:self];
+        }
+        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+            
+            [self performSegueWithIdentifier:@"livetotheft" sender:self];
             
         }
         
@@ -230,7 +246,8 @@ int i;
     }
     else  if (([role isEqualToString:@"ROLE_PCLIENT"]) ||   ([role isEqualToString:@"ROLE_FCLIENT"]))
     {
-        [segment removeSegmentAtIndex:2 animated:YES];
+        //[segment removeSegmentAtIndex:2 animated:YES];
+        [segment setTitle:@"Theft Alarm" forSegmentAtIndex:2];
     }
      locationlist=[[NSMutableArray alloc]init];
     welcome.text=[NSString stringWithFormat:@"Welcome %@ !",[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];

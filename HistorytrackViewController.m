@@ -142,7 +142,8 @@
     }
     else  if (([role isEqualToString:@"ROLE_PCLIENT"]) ||   ([role isEqualToString:@"ROLE_FCLIENT"]))
     {
-        [segment removeSegmentAtIndex:2 animated:YES];
+       // [segment removeSegmentAtIndex:2 animated:YES];
+        [segment setTitle:@"Theft Alarm" forSegmentAtIndex:2];
     }
 
      self.allPins = [[NSMutableArray alloc]init];
@@ -481,7 +482,7 @@
         }
         
     }
-    if ([sender selectedSegmentIndex]==2)
+   if (([sender selectedSegmentIndex]==2)&&([[segment titleForSegmentAtIndex:segment.selectedSegmentIndex]isEqualToString:@"Alert Message"]))
     {
         if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
         {
@@ -495,6 +496,23 @@
         }
         
     }
+    
+    
+    if (([sender selectedSegmentIndex]==2)&&([[segment titleForSegmentAtIndex:segment.selectedSegmentIndex]isEqualToString:@"Theft Alarm"]))
+    {
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+        {
+            
+            [self performSegueWithIdentifier:@"histotheft" sender:self];
+        }
+        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+            
+            [self performSegueWithIdentifier:@"histotheft" sender:self];
+            
+        }
+        
+    }
+
 }
 
 

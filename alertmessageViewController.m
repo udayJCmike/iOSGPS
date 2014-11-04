@@ -107,7 +107,8 @@
     }
     else  if (([role isEqualToString:@"ROLE_PCLIENT"]) ||   ([role isEqualToString:@"ROLE_FCLIENT"]))
     {
-        [segment removeSegmentAtIndex:2 animated:YES];
+       // [segment removeSegmentAtIndex:2 animated:YES];
+        [segment setTitle:@"Theft Alarm" forSegmentAtIndex:2];
     }
 
     du=[[databaseurl alloc]init];
