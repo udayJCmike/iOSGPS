@@ -304,7 +304,8 @@ int i;
                                                userInfo:nil
                                                 repeats:YES];
     }
-    [self getData];
+    [self performSelector:@selector(getData) withObject:self afterDelay:0.1f];
+  
     
 }
 

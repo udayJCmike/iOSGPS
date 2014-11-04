@@ -94,7 +94,8 @@ int c;
                 [HUD show:YES];
                 if ([[du submitvalues]isEqualToString:@"Success"])
                 {
-                    [self checkdata];
+                    [self performSelector:@selector(checkdata) withObject:self afterDelay:0.1f];
+                   
                 }
                 else
                 {
