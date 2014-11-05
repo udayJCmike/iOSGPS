@@ -60,9 +60,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <segments>
-                                    <segment title="Live Track" width="70"/>
-                                    <segment title="Tracking History"/>
+                                    <segment title="Live Track"/>
+                                    <segment title="Tracking History" width="90"/>
                                     <segment title="Alert Message"/>
+                                    <segment title="Over Speed"/>
                                 </segments>
                                 <color key="tintColor" red="1" green="0.61176470589999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -115,11 +116,12 @@
                         <segue destination="GPI-Jy-4eI" kind="push" identifier="livetohis" id="iFZ-H0-84R"/>
                         <segue destination="SG4-7S-vFb" kind="push" identifier="livetoalert" id="34y-xG-DC7"/>
                         <segue destination="jt2-GC-4sv" kind="push" identifier="livetotheft" id="SY0-mj-tEt"/>
+                        <segue destination="nH1-xF-kCQ" kind="push" identifier="livetospeed" id="0AT-uR-EOx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yi-tQ-daR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1304" y="-834"/>
+            <point key="canvasLocation" x="-1120" y="-914"/>
         </scene>
         <!--Historytrack View Controller-->
         <scene sceneID="ypu-0S-pOj">
@@ -153,8 +155,9 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <segments>
                                     <segment title="Live Track" width="70"/>
-                                    <segment title="Tracking History"/>
+                                    <segment title="Tracking History" width="90"/>
                                     <segment title="Alert Message"/>
+                                    <segment title="Over Speed"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentaction:" destination="GPI-Jy-4eI" eventType="valueChanged" id="b5h-CS-W4l"/>
@@ -236,11 +239,12 @@
                         <segue destination="Rw9-8b-hjh" kind="push" identifier="histolive" id="Lgc-bc-OqT"/>
                         <segue destination="SG4-7S-vFb" kind="push" identifier="histoalert" id="iQi-xp-qgJ"/>
                         <segue destination="jt2-GC-4sv" kind="push" identifier="histotheft" id="m4c-x6-04e"/>
+                        <segue destination="nH1-xF-kCQ" kind="push" identifier="histospeed" id="qA8-7G-Dz7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wPD-TC-JtR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="95" y="-1471"/>
+            <point key="canvasLocation" x="147" y="-1623"/>
         </scene>
         <!--Theft Alarm View Controller-->
         <scene sceneID="sO4-lu-Y4T">
@@ -274,8 +278,9 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <segments>
                                     <segment title="Live Track" width="70"/>
-                                    <segment title="Tracking History"/>
+                                    <segment title="Tracking History" width="90"/>
                                     <segment title="Theft Alarm"/>
+                                    <segment title="Over Speed"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentaction:" destination="jt2-GC-4sv" eventType="valueChanged" id="GEs-4i-3Au"/>
@@ -295,7 +300,6 @@
                                 </state>
                                 <connections>
                                     <action selector="logout:" destination="jt2-GC-4sv" eventType="touchUpInside" id="Mvw-rg-BUp"/>
-                                    <action selector="logout:" destination="SG4-7S-vFb" eventType="touchUpInside" id="rju-yu-Uz2"/>
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="JJX-Ew-dP6">
@@ -333,11 +337,195 @@
                         <outlet property="welcome" destination="YkO-Xe-bV3" id="eDh-tA-d1M"/>
                         <segue destination="Rw9-8b-hjh" kind="push" identifier="thefttolive" id="aVZ-2m-yNt"/>
                         <segue destination="GPI-Jy-4eI" kind="push" identifier="thefttohis" id="LNq-F6-k78"/>
+                        <segue destination="nH1-xF-kCQ" kind="push" identifier="thefttospeed" id="TGL-dX-98Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ufq-QT-JK5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="68" y="783"/>
+            <point key="canvasLocation" x="-374" y="393"/>
+        </scene>
+        <!--Over Speed View Controller-->
+        <scene sceneID="aua-mh-uze">
+            <objects>
+                <viewController id="nH1-xF-kCQ" customClass="OverSpeedViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dLD-yY-fNe"/>
+                        <viewControllerLayoutGuide type="bottom" id="4d4-lh-5bf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k90-Uc-yaB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y5q-z7-ew8">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ZE-Kx-7bq">
+                                <rect key="frame" x="273" y="93" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="home.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="home:" destination="nH1-xF-kCQ" eventType="touchUpInside" id="Qj8-W2-spC"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="I1U-AZ-1zs">
+                                <rect key="frame" x="15" y="165" width="290" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <segments>
+                                    <segment title="Live Track" width="70"/>
+                                    <segment title="Tracking History" width="90"/>
+                                    <segment title="Theft Alarm"/>
+                                    <segment title="Over Speed"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentaction:" destination="nH1-xF-kCQ" eventType="valueChanged" id="KqY-lE-ORB"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome user!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8G-Qw-Sen">
+                                <rect key="frame" x="17" y="122" width="201" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tgb-hB-KUD">
+                                <rect key="frame" x="216" y="125" width="69" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="logout.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout:" destination="nH1-xF-kCQ" eventType="touchUpInside" id="bl2-x7-AtN"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="From Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdC-GK-Pio">
+                                <rect key="frame" x="17" y="212" width="85" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpg-Ry-5fS">
+                                <rect key="frame" x="110" y="208" width="114" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="frombuttonClicked:" destination="nH1-xF-kCQ" eventType="touchUpInside" id="zi5-Wh-0ae"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPC-Ot-ZbQ">
+                                <rect key="frame" x="110" y="208" width="116" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJh-Pd-EHX">
+                                <rect key="frame" x="110" y="251" width="114" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tobuttonClicked:" destination="nH1-xF-kCQ" eventType="touchUpInside" id="1io-l5-wLs"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyj-nz-5MH">
+                                <rect key="frame" x="110" y="251" width="116" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vehicle Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLf-wy-VR7">
+                                <rect key="frame" x="17" y="336" width="120" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="108" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCG-RP-Q3G">
+                                <rect key="frame" x="143" y="336" width="103" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Driver Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6D-XB-28J">
+                                <rect key="frame" x="17" y="304" width="103" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kamal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhm-zq-HBP">
+                                <rect key="frame" x="143" y="304" width="103" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Over Speed Count:" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="103" translatesAutoresizingMaskIntoConstraints="NO" id="d8v-v9-f6o">
+                                <rect key="frame" x="18" y="368" width="103" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMa-96-rnK">
+                                <rect key="frame" x="143" y="377" width="103" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4j-P4-Ua8">
+                                <rect key="frame" x="17" y="255" width="67" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jww-xf-A3e">
+                                <rect key="frame" x="227" y="230" width="58" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="search:" destination="nH1-xF-kCQ" eventType="touchUpInside" id="MWf-9M-LVa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iY0-we-j2c"/>
+                    <connections>
+                        <outlet property="bgimage" destination="Y5q-z7-ew8" id="oig-XD-1q8"/>
+                        <outlet property="drivername" destination="hhm-zq-HBP" id="RRu-Bg-aC2"/>
+                        <outlet property="drivernamelab" destination="Z6D-XB-28J" id="pCV-RK-VcQ"/>
+                        <outlet property="fromdate" destination="vPC-Ot-ZbQ" id="Nv1-E2-f9S"/>
+                        <outlet property="home" destination="2ZE-Kx-7bq" id="RU7-4m-GBb"/>
+                        <outlet property="logout" destination="Tgb-hB-KUD" id="duC-Wc-XtR"/>
+                        <outlet property="segment" destination="I1U-AZ-1zs" id="OPA-Cg-apU"/>
+                        <outlet property="speedcount" destination="KMa-96-rnK" id="bld-6Z-MlV"/>
+                        <outlet property="speedcountlab" destination="d8v-v9-f6o" id="ax5-jd-lcU"/>
+                        <outlet property="todate" destination="yyj-nz-5MH" id="g0y-fN-Hlg"/>
+                        <outlet property="vecnumber" destination="GCG-RP-Q3G" id="KQG-Aa-Ary"/>
+                        <outlet property="vecnumberlab" destination="zLf-wy-VR7" id="Y9m-ut-Alj"/>
+                        <outlet property="welcome" destination="S8G-Qw-Sen" id="hk7-ta-yPL"/>
+                        <segue destination="jt2-GC-4sv" kind="push" identifier="speedtotheft" id="POD-8J-B98"/>
+                        <segue destination="Rw9-8b-hjh" kind="push" identifier="speedtolive" id="daT-RJ-Ezi"/>
+                        <segue destination="GPI-Jy-4eI" kind="push" identifier="speedtohis" id="kG2-hX-Vga"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uHr-3j-ceY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="705" y="277"/>
         </scene>
         <!--Alertmessage View Controller-->
         <scene sceneID="xGI-7n-Ney">
@@ -473,9 +661,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="daT-RJ-Ezi"/>
+        <segue reference="0AT-uR-EOx"/>
+        <segue reference="kG2-hX-Vga"/>
+        <segue reference="POD-8J-B98"/>
         <segue reference="34y-xG-DC7"/>
-        <segue reference="aVZ-2m-yNt"/>
-        <segue reference="SY0-mj-tEt"/>
-        <segue reference="LNq-F6-k78"/>
     </inferredMetricsTieBreakers>
 </document>

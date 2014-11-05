@@ -159,6 +159,19 @@ int i;
         }
         
     }
+    if ([sender selectedSegmentIndex]==3)
+    {
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+        {
+            [self performSegueWithIdentifier:@"livetospeed" sender:self];
+        }
+        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+            
+            [self performSegueWithIdentifier:@"livetospeed" sender:self];
+            
+        }
+        
+    }
 }
 
 - (void)styleCustomAlertView:(TTAlertView *)alertView
@@ -242,7 +255,7 @@ int i;
     NSString *role=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
    
     if ([role isEqualToString:@"ROLE_ADMIN"]) {
-        
+        [segment removeSegmentAtIndex:3 animated:YES];
     }
     else  if (([role isEqualToString:@"ROLE_PCLIENT"]) ||   ([role isEqualToString:@"ROLE_FCLIENT"]))
     {
@@ -265,7 +278,7 @@ int i;
     else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
         
         NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIFont fontWithName:@"Times New Roman" size:15], UITextAttributeFont,nil];
+                                    [UIFont fontWithName:@"Times New Roman" size:12], UITextAttributeFont,nil];
         [segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
         
     }
@@ -463,6 +476,7 @@ int i;
             CLLocationManager *manager=[[CLLocationManager alloc]init];
             manager.delegate=self;
             Vehiclelocationlist *list1=[locationlist objectAtIndex:i];
+           
             CLLocationDegrees latitude  = [list1.latitude  doubleValue];
             CLLocationDegrees longitude = [list1.longitude doubleValue];
             CLLocation* currentLocation = [[[CLLocation alloc] initWithLatitude:latitude longitude:longitude] autorelease];
@@ -503,6 +517,7 @@ int i;
             
             
         }
+        
         
          Vehiclelocationlist *list1=[locationlist objectAtIndex:0];
         CLLocationCoordinate2D coord = {.latitude =  [list1.latitude doubleValue], .longitude = [list1.longitude doubleValue]};

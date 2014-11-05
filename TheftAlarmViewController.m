@@ -46,6 +46,9 @@
     welcome.text=[NSString stringWithFormat:@"Welcome %@ !",[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
    
     
+    
+   
+
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
         NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -56,7 +59,7 @@
     else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
         
         NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIFont fontWithName:@"Times New Roman" size:15], UITextAttributeFont,nil];
+                                    [UIFont fontWithName:@"Times New Roman" size:12], UITextAttributeFont,nil];
         [segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
         
     }
@@ -130,6 +133,20 @@
         }
         
     }
+    if ([sender selectedSegmentIndex]==3)
+    {
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+        {
+            [self performSegueWithIdentifier:@"thefttospeed" sender:self];
+        }
+        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+            
+            [self performSegueWithIdentifier:@"thefttospeed" sender:self];
+            
+        }
+        
+    }
+
 }
 - (IBAction)logout:(id)sender {
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)

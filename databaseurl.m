@@ -20,8 +20,8 @@ static databaseurl * appInstance;
 
 -(NSString*)DBurl
 {
-  NSString * link=@"http://208.109.248.89/mobile/gps/gpsios/service/";
-    //  NSString * link=@"http://192.168.1.106:8888/gpsios/service/";
+  //NSString * link=@"http://208.109.248.89/mobile/gps/gpsios/service/";
+    NSString * link=@"http://192.168.1.106:8888/gpsios/service/";
     return link;
     
 }
@@ -136,7 +136,7 @@ static databaseurl * appInstance;
     
     //when we user https, we need to allow any HTTPS cerificates, so add the one line code,to tell teh NSURLRequest to accept any https certificate, i'm not sure //about the security aspects
     
-   // NSLog(@"mutable request %@",request);
+//   NSLog(@"mutable request %@",request);
     NSError *error;
     NSURLResponse *response;
     NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];

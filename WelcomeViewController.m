@@ -169,6 +169,7 @@
                     list1.device_status =[arrayList1 objectForKey:@"device_status"];
                     list1.bus_tracking_timestamp =[arrayList1 objectForKey:@"bus_tracking_timestamp"];
                     list1.address =[arrayList1 objectForKey:@"address"];
+                     list1.driver_name =[arrayList1 objectForKey:@"driver_name"];
                     [list addObject:list1];
                 }
                
@@ -269,6 +270,7 @@
 {
     BusNameList *list1=[list objectAtIndex:indexPath.row];
     [[NSUserDefaults standardUserDefaults]setValue:list1.vehicle_reg_no forKey:@"vehicleregno"];
+     [[NSUserDefaults standardUserDefaults]setValue:list1.driver_name forKey:@"driver_name"];
     [[NSUserDefaults standardUserDefaults]synchronize];
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {

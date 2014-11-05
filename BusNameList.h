@@ -15,6 +15,6 @@
 @property(nonatomic,retain)NSString *speed;
 @property(nonatomic,retain)NSString *device_status;
 @property(nonatomic,retain)NSString *address;
-
+@property(nonatomic,retain)NSString *driver_name;
 
 @end

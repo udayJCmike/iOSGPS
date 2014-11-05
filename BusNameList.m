@@ -14,6 +14,7 @@
 @synthesize speed;
 @synthesize device_status;
 @synthesize address;
+@synthesize driver_name;
 
 
 @end

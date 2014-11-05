@@ -103,7 +103,7 @@
     NSString *role=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
     
     if ([role isEqualToString:@"ROLE_ADMIN"]) {
-        
+           //[segment removeSegmentAtIndex:3 animated:YES];
     }
     else  if (([role isEqualToString:@"ROLE_PCLIENT"]) ||   ([role isEqualToString:@"ROLE_FCLIENT"]))
     {
@@ -136,7 +136,7 @@
     else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
         
         NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIFont fontWithName:@"Times New Roman" size:15], UITextAttributeFont,nil];
+                                    [UIFont fontWithName:@"Times New Roman" size:12], UITextAttributeFont,nil];
         [segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
         
     }

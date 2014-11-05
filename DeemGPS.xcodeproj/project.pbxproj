@@ -33,6 +33,8 @@
 		84188B7E198BCCF7002D55BA /* Icon-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B77198BCCF7002D55BA /* Icon-50@2x.png */; };
 		84188B7F198BCCF7002D55BA /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B78198BCCF7002D55BA /* Icon-72@2x.png */; };
 		84188B81198BCD4F002D55BA /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B80198BCD4F002D55BA /* Icon-40.png */; };
+		842BA4B61A0A432900CDE021 /* OverSpeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842BA4B51A0A432800CDE021 /* OverSpeedViewController.m */; };
+		842BA4BA1A0A5DB100CDE021 /* DateTimePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 842BA4B91A0A5DB100CDE021 /* DateTimePicker.m */; };
 		845D84901A08986F000BB36B /* TheftAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D848F1A08986F000BB36B /* TheftAlarmViewController.m */; };
 		84660F791994E2BD00446C4E /* red_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 84660F771994E2BD00446C4E /* red_light.png */; };
 		84660F7A1994E2BD00446C4E /* yellow_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 84660F781994E2BD00446C4E /* yellow_light.png */; };
@@ -215,6 +217,10 @@
 		84188B77198BCCF7002D55BA /* Icon-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50@2x.png"; sourceTree = "<group>"; };
 		84188B78198BCCF7002D55BA /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		84188B80198BCD4F002D55BA /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
+		842BA4B41A0A432800CDE021 /* OverSpeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverSpeedViewController.h; sourceTree = "<group>"; };
+		842BA4B51A0A432800CDE021 /* OverSpeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverSpeedViewController.m; sourceTree = "<group>"; };
+		842BA4B81A0A5DB100CDE021 /* DateTimePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTimePicker.h; sourceTree = "<group>"; };
+		842BA4B91A0A5DB100CDE021 /* DateTimePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateTimePicker.m; sourceTree = "<group>"; };
 		845D848E1A08986F000BB36B /* TheftAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheftAlarmViewController.h; sourceTree = "<group>"; };
 		845D848F1A08986F000BB36B /* TheftAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheftAlarmViewController.m; sourceTree = "<group>"; };
 		84660F771994E2BD00446C4E /* red_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_light.png; sourceTree = "<group>"; };
@@ -431,6 +437,24 @@
 			path = SMTPLibrary;
 			sourceTree = "<group>";
 		};
+		842BA4B31A0A42FC00CDE021 /* Over Speed */ = {
+			isa = PBXGroup;
+			children = (
+				842BA4B41A0A432800CDE021 /* OverSpeedViewController.h */,
+				842BA4B51A0A432800CDE021 /* OverSpeedViewController.m */,
+			);
+			name = "Over Speed";
+			sourceTree = "<group>";
+		};
+		842BA4B71A0A5D9500CDE021 /* DatePickerDoneButton */ = {
+			isa = PBXGroup;
+			children = (
+				842BA4B81A0A5DB100CDE021 /* DateTimePicker.h */,
+				842BA4B91A0A5DB100CDE021 /* DateTimePicker.m */,
+			);
+			name = DatePickerDoneButton;
+			sourceTree = "<group>";
+		};
 		845D84911A08987C000BB36B /* Theftalarm */ = {
 			isa = PBXGroup;
 			children = (
@@ -509,6 +533,7 @@
 		84951A761973C7C2003C603B = {
 			isa = PBXGroup;
 			children = (
+				842BA4B71A0A5D9500CDE021 /* DatePickerDoneButton */,
 				84992C751982333D002304EE /* Custom Callouts */,
 				8492D0E0197F781700E1101A /* iPad_icons */,
 				8492D0DF197F780E00E1101A /* iPhone_icons */,
@@ -717,6 +742,7 @@
 				8498BE79197569CC00B810F0 /* Vehiclelocationlist.m */,
 				84951AE61973E2E5003C603B /* Vehicletrack_iPad.storyboard */,
 				84951AE41973E2A0003C603B /* Vehicletrack_iPhone.storyboard */,
+				842BA4B31A0A42FC00CDE021 /* Over Speed */,
 				845D84911A08987C000BB36B /* Theftalarm */,
 				84951AF31973E35E003C603B /* Alert Message */,
 				84951AEC1973E31A003C603B /* History Track */,
@@ -1027,6 +1053,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				842BA4B61A0A432900CDE021 /* OverSpeedViewController.m in Sources */,
 				0D8094A3197791CC00521E39 /* NSStream+SKPSMTPExtensions.m in Sources */,
 				8494C4BA1977B13500FCB97F /* CSImageAnnotationView.m in Sources */,
 				84951B181973FB14003C603B /* SBJSON.m in Sources */,
@@ -1039,6 +1066,7 @@
 				84951AEF1973E332003C603B /* HistorytrackViewController.m in Sources */,
 				84951ACA1973D60A003C603B /* WelcomeViewController.m in Sources */,
 				84951ACF1973D78E003C603B /* BuslistTableViewCell.m in Sources */,
+				842BA4BA1A0A5DB100CDE021 /* DateTimePicker.m in Sources */,
 				84951B121973FB14003C603B /* databaseurl.m in Sources */,
 				8492E1101974ECE100AA9291 /* TTAlertView.m in Sources */,
 				84951B1B1973FB14003C603B /* SBJsonWriter.m in Sources */,
