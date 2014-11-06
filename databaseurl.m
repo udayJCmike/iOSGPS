@@ -136,7 +136,7 @@ static databaseurl * appInstance;
     
     //when we user https, we need to allow any HTTPS cerificates, so add the one line code,to tell teh NSURLRequest to accept any https certificate, i'm not sure //about the security aspects
     
-//   NSLog(@"mutable request %@",request);
+  // NSLog(@"mutable request %@",request);
     NSError *error;
     NSURLResponse *response;
     NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];

@@ -336,7 +336,7 @@ int i;
         SBJSON *json = [[SBJSON new] autorelease];
         
         NSDictionary *parsedvalue = [json objectWithString:response error:&error];
-       
+      // NSLog(@"parsedvalue %@",parsedvalue);
         
         if (parsedvalue == nil)
         {
@@ -432,6 +432,7 @@ int i;
             }
             else
             {
+                NSLog(@"alert");
                 TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"No location's found." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [self styleCustomAlertView:alertView];
                 [self addButtonsWithBackgroundImagesToAlertView:alertView];

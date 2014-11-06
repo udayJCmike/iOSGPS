@@ -53,6 +53,7 @@
         
         self.picker = picker;
         self.picker.backgroundColor=[UIColor whiteColor];
+       
         picker.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
         
         self.autoresizesSubviews = YES;

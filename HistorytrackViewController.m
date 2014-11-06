@@ -15,6 +15,7 @@
 #import "CSMapAnnotation.h"
 #import "CSImageAnnotationView.h"
 #import "CalloutView.h"
+#import "DateTimePicker.h"
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define SCREEN_35 (SCREEN_HEIGHT == 480)
 #define SCREEN_40 (SCREEN_HEIGHT == 568)
@@ -23,6 +24,7 @@
 {
     databaseurl *du;
     float stepper_initial_value;
+        DateTimePicker *picker;
     
 }
 @property (nonatomic, strong) NSMutableArray *allPins;
@@ -34,14 +36,19 @@
 @end
 
 @implementation HistorytrackViewController
+@synthesize search;
 @synthesize stepper;
 @synthesize maptype;
 @synthesize segment;
 @synthesize welcome;
 @synthesize mapview;
 @synthesize imageview;
-@synthesize _customPicker;
-@synthesize view1;
+@synthesize from;
+@synthesize fromtime;
+@synthesize to;
+@synthesize totime;
+@synthesize selecteddate;
+@synthesize s_date;
 @synthesize home;
 @synthesize logout;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -105,16 +112,37 @@
         for (NSLayoutConstraint *con in self.view.constraints)
         {
             if (con.firstItem == welcome && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant = 102;
+                con.constant =98;
             }
             if (con.firstItem == home && con.firstAttribute == NSLayoutAttributeTop) {
                 con.constant = 74;
             }
             if (con.firstItem == logout && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant = 106;
+                con.constant = 102;
             }
             if (con.firstItem == segment && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant =135;
+                con.constant =124;
+            }
+            if (con.firstItem == selecteddate && con.firstAttribute == NSLayoutAttributeTop) {
+                con.constant = 148;
+            }
+            if (con.firstItem == s_date && con.firstAttribute == NSLayoutAttributeTop) {
+                con.constant = 148;
+            }
+            if (con.firstItem == fromtime && con.firstAttribute == NSLayoutAttributeTop) {
+                con.constant = 150;
+            }
+            if (con.firstItem == from && con.firstAttribute == NSLayoutAttributeTop) {
+                con.constant = 150;
+            }
+            if (con.firstItem == totime && con.firstAttribute == NSLayoutAttributeTop) {
+                con.constant = 150;
+            }
+            if (con.firstItem == to && con.firstAttribute == NSLayoutAttributeTop) {
+                con.constant = 150;
+            }
+            if (con.firstItem == search && con.firstAttribute == NSLayoutAttributeTop) {
+                con.constant = 146;
             }
             if (con.firstItem == stepper && con.firstAttribute == NSLayoutAttributeTop) {
                 con.constant = 435;
@@ -128,9 +156,7 @@
                 self.mapheightConstraint.constant = 302;
                 [self.mapview needsUpdateConstraints];
             }
-            if (con.firstItem == view1 && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant =170;
-            }
+            
         }
     }
 
@@ -147,7 +173,7 @@
     }
 
      self.allPins = [[NSMutableArray alloc]init];
-    _customPicker.backgroundColor = [UIColor clearColor];
+   
       welcome.text=[NSString stringWithFormat:@"Welcome %@ !",[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
     
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
@@ -188,30 +214,218 @@
     imageview.image = [UIImage imageNamed:filename];
     
    
+}
+- (IBAction)dateClicked:(id)sender {
     
-    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
-    [self.view addGestureRecognizer:tap];
+    
+    [self cancelPressed];
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenRect.size.width;
+        CGFloat screenHeight = screenRect.size.height;
+        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0,(screenHeight-230), screenWidth, screenHeight/2 + 35)];
+        [picker addTargetForDoneButton:self action:@selector(donePressed)];
+        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
+        [self.view addSubview:picker];
+        picker.hidden = NO;
+        [picker setMode:UIDatePickerModeDate];
+        picker.picker.tag=3;
+        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
+    }
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+    {
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenRect.size.width;
+        CGFloat screenHeight = screenRect.size.height;
+        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+100, screenWidth, screenHeight/2 + 35)];
+        if(SCREEN_35)
+        {
+            picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+20, screenWidth, screenHeight/2 + 35)];
+        }
+        [picker addTargetForDoneButton:self action:@selector(donePressed)];
+        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
+        [self.view addSubview:picker];
+        picker.hidden = NO;
+        [picker setMode:UIDatePickerModeDate];
+        picker.picker.tag=3;
+        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
+    }
+    
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"US"];
+    [picker.picker setLocale:locale];
 }
 
--(void)dismissKeyboard
-{
-    if (view1.window!=nil) {
-        [self.view1 removeFromSuperview];
+- (IBAction)fromtimeClicked:(id)sender {
+    
+    
+    [self cancelPressed];
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenRect.size.width;
+        CGFloat screenHeight = screenRect.size.height;
+        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0,(screenHeight-230), screenWidth, screenHeight/2 + 35)];
+        [picker addTargetForDoneButton:self action:@selector(donePressed)];
+        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
+        [self.view addSubview:picker];
+        picker.hidden = NO;
+        [picker setMode:UIDatePickerModeTime];
+        picker.picker.tag=1;
+        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
+    }
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+    {
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenRect.size.width;
+        CGFloat screenHeight = screenRect.size.height;
         
-      
+        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+100, screenWidth, screenHeight/2 + 35)];
+        if(SCREEN_35)
+        {
+            picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+20, screenWidth, screenHeight/2 + 35)];
+        }
+        [picker addTargetForDoneButton:self action:@selector(donePressed)];
+        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
+        [self.view addSubview:picker];
+        picker.hidden = NO;
+        [picker setMode:UIDatePickerModeTime];
+        picker.picker.tag=1;
+        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
+    }
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"UK"];
+    [picker.picker setLocale:locale];
+    
+}
+-(void)pickerChanged:(id)sender {
+    UIDatePicker *dp=(UIDatePicker*)sender;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *strDate =[dateFormatter stringFromDate:[dp date]];
+    
+    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+    [dateFormatter1 setDateFormat:@"HH:mm"];
+    NSString *timeDate =[dateFormatter1 stringFromDate:[dp date]];
+    if (dp.tag==1) {
+        self.fromtime.text = timeDate;
+    }
+    else if (dp.tag==2) {
+        self.totime.text = timeDate;
+    }
+    else if (dp.tag==3) {
+        self.selecteddate.text = strDate;
+    }
+    
+}
+
+-(void)donePressed {
+    UIDatePicker *dp=picker.picker;
+   
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *strDate =[dateFormatter stringFromDate:[dp date]];
+    
+    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+    [dateFormatter1 setDateFormat:@"HH:mm"];
+    NSString *timeDate =[dateFormatter1 stringFromDate:[dp date]];
+    if (dp.tag==1) {
+        self.fromtime.text = timeDate;
+    }
+    else if (dp.tag==2) {
+        self.totime.text = timeDate;
+    }
+    else if (dp.tag==3) {
+        self.selecteddate.text = strDate;
+    }
+    [picker removeFromSuperview];
+    //    NSLog(@"Done button tapped");
+    
+}
+
+-(void)cancelPressed {
+    [picker removeFromSuperview];
+    //    NSLog(@"Cancel pressed");
+}
+
+- (IBAction)totimeClicked:(id)sender {
+    [self cancelPressed];
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenRect.size.width;
+        CGFloat screenHeight = screenRect.size.height;
+        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0,screenHeight-230, screenWidth, screenHeight/2 + 35)];
+        [picker addTargetForDoneButton:self action:@selector(donePressed)];
+        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
+        [self.view addSubview:picker];
+        picker.hidden = NO;
+        [picker setMode:UIDatePickerModeTime];
+        picker.picker.tag=2;
+        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
+    }
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+    {
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenRect.size.width;
+        CGFloat screenHeight = screenRect.size.height;
+        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+100, screenWidth, screenHeight/2 + 35)];
+        if(SCREEN_35)
+        {
+            picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+20, screenWidth, screenHeight/2 + 35)];
+        }
+        [picker addTargetForDoneButton:self action:@selector(donePressed)];
+        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
+        [self.view addSubview:picker];
+        picker.hidden = NO;
+        [picker setMode:UIDatePickerModeTime];
+        picker.picker.tag=2;
+        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
+    }
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"UK"];
+    [picker.picker setLocale:locale];
+}
+
+- (IBAction)search:(id)sender {
+    if ((![selecteddate.text isEqualToString:@"Select Date"])&&(![fromtime.text isEqualToString:@"From"])&&(![totime.text isEqualToString:@"To"]))
+    {
         HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
         HUD.mode=MBProgressHUDModeIndeterminate;
         HUD.delegate = self;
         HUD.labelText = @"Please wait";
         [HUD show:YES];
+        [self performSelector:@selector(getData) withObject:self afterDelay:0.1f];
+       
         
-        [self getData];
 
         
-        
     }
-    
+    else if ([selecteddate.text isEqualToString:@"Select Date"])
+    {
+        
+        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select Date." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [self styleCustomAlertView:alertView];
+        [self addButtonsWithBackgroundImagesToAlertView:alertView];
+        [alertView show];
+    }
+    else if ([fromtime.text isEqualToString:@"From"])
+    {
+        
+        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select From Time." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [self styleCustomAlertView:alertView];
+        [self addButtonsWithBackgroundImagesToAlertView:alertView];
+        [alertView show];
+    }
+   else if ([totime.text isEqualToString:@"To"])
+    {
+        
+        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select To Time." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [self styleCustomAlertView:alertView];
+        [self addButtonsWithBackgroundImagesToAlertView:alertView];
+        [alertView show];
+    }
 }
+
+
 -(void)getData
 {
     
@@ -283,14 +497,12 @@
                 [[NSUserDefaults standardUserDefaults]synchronize];
 
                 if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
-                     self.view1.center=CGPointMake(237, 365);
-                     [self.view addSubview:view1];
+                    
                 }
                 else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
                
                 {
-                    self.view1.center=CGPointMake(32, 204);
-                    [self.view addSubview:view1];
+                 
                 }
                
                 TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"No location's found." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
@@ -431,25 +643,10 @@
 {
     NSString *vehicleregno=[[NSUserDefaults standardUserDefaults]objectForKey:@"vehicleregno"];
     
-    NSString *day=[[NSUserDefaults standardUserDefaults]objectForKey:@"day"];
-  
-    if ([day length]==1) {
-        day=[NSString stringWithFormat:@"0%@",day];
-    }
-   // NSLog(@"day2 %@",day);
-    NSString *month=[[NSUserDefaults standardUserDefaults]objectForKey:@"month"];
-    if ([month length]==1) {
-        month=[NSString stringWithFormat:@"0%@",month];
-    }
-     NSString *year=[[NSUserDefaults standardUserDefaults]objectForKey:@"year"];
-    
-     NSString *date=[NSString stringWithFormat:@"%@-%@-%@",year,month,day];
-    
-    
     NSString *urltemp=[[databaseurl sharedInstance]DBurl];
     NSString *url1=@"Vehicledetails.php?service=vehiclehistorylist";
     NSString *url2=[NSString stringWithFormat:@"%@%@",urltemp,url1];
-    NSString *post =[[NSString alloc] initWithFormat:@"%@=%@&vehicleregno=%@&date=%@&%@=%@",firstEntity,value1,vehicleregno,date,secondEntity,value2];
+    NSString *post =[[NSString alloc] initWithFormat:@"%@=%@&vehicleregno=%@&date=%@&from=%@&to=%@&%@=%@",firstEntity,value1,vehicleregno,selecteddate.text,fromtime.text,totime.text,secondEntity,value2];
    // NSLog(@"post %@",post);
     NSURL *url = [NSURL URLWithString:url2];
     

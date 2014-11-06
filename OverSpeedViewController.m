@@ -45,12 +45,17 @@
 {
     [super viewDidLoad];
     du=[[databaseurl alloc]init];
-    HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
-    HUD.mode=MBProgressHUDModeIndeterminate;
-    HUD.delegate = self;
-    HUD.labelText = @"Please wait";
-    [HUD show:YES];
-     [self performSelector:@selector(CountOverSpeed) withObject:self afterDelay:0.1f];
+//    HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
+//    HUD.mode=MBProgressHUDModeIndeterminate;
+//    HUD.delegate = self;
+//    HUD.labelText = @"Please wait";
+//    [HUD show:YES];
+    speedcount.text=@"";
+    NSString *vehicleregno=[[NSUserDefaults standardUserDefaults]objectForKey:@"vehicleregno"];
+    NSString *driver_name=[[NSUserDefaults standardUserDefaults]objectForKey:@"driver_name"];
+    vecnumber.text=vehicleregno;
+    drivername.text=driver_name;
+//     [self performSelector:@selector(CountOverSpeed) withObject:self afterDelay:0.1f];
     welcome.text=[NSString stringWithFormat:@"Welcome %@ !",[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
@@ -86,7 +91,8 @@
         
         NSString *vehicleregno=[[NSUserDefaults standardUserDefaults]objectForKey:@"vehicleregno"];
         NSString *driver_name=[[NSUserDefaults standardUserDefaults]objectForKey:@"driver_name"];
-        
+        vecnumber.text=vehicleregno;
+        drivername.text=driver_name;
         NSString *response=[self countSpeed:@"vecid" ForValue1:vehicleregno EntitySecond:@"authkey" ForValue2:@"rzTFevN099Km39PV"];
         
         NSError *error;
@@ -255,17 +261,43 @@
 //    textField.inputView          = datePicker;
 //    
 //    [textField becomeFirstResponder];
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
-    picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+100, screenWidth, screenHeight/2 + 35)];
-    [picker addTargetForDoneButton:self action:@selector(donePressed)];
-    [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
-    [self.view addSubview:picker];
-    picker.hidden = NO;
-    [picker setMode:UIDatePickerModeDate];
-    picker.picker.tag=1;
-    [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    
+       [self cancelPressed];
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenRect.size.width;
+        CGFloat screenHeight = screenRect.size.height;
+        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0,(screenHeight-230), screenWidth, screenHeight/2 + 35)];
+        [picker addTargetForDoneButton:self action:@selector(donePressed)];
+        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
+        [self.view addSubview:picker];
+        picker.hidden = NO;
+        [picker setMode:UIDatePickerModeDate];
+        picker.picker.tag=1;
+        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
+    }
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+    {
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenRect.size.width;
+        CGFloat screenHeight = screenRect.size.height;
+        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+100, screenWidth, screenHeight/2 + 35)];
+        if(SCREEN_35)
+        {
+            picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+20, screenWidth, screenHeight/2 + 35)];
+        }
+        [picker addTargetForDoneButton:self action:@selector(donePressed)];
+        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
+        [self.view addSubview:picker];
+        picker.hidden = NO;
+        [picker setMode:UIDatePickerModeDate];
+        picker.picker.tag=1;
+        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
+    }
+    
+    
 }
 -(void)pickerChanged:(id)sender {
     UIDatePicker *dp=(UIDatePicker*)sender;
@@ -294,34 +326,56 @@
         self.todate.text = strDate;
     }
     [picker removeFromSuperview];
-    NSLog(@"Done button tapped");
+//    NSLog(@"Done button tapped");
     
 }
 
 -(void)cancelPressed {
     [picker removeFromSuperview];
-    NSLog(@"Cancel pressed");
+//    NSLog(@"Cancel pressed");
 }
 
 - (IBAction)tobuttonClicked:(id)sender {
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
-    picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+100, screenWidth, screenHeight/2 + 35)];
-    [picker addTargetForDoneButton:self action:@selector(donePressed)];
-    [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
-    [self.view addSubview:picker];
-    picker.hidden = NO;
-    [picker setMode:UIDatePickerModeDate];
-    picker.picker.tag=2;
-    [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
+    [self cancelPressed];
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenRect.size.width;
+        CGFloat screenHeight = screenRect.size.height;
+        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0,screenHeight-230, screenWidth, screenHeight/2 + 35)];
+        [picker addTargetForDoneButton:self action:@selector(donePressed)];
+        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
+        [self.view addSubview:picker];
+        picker.hidden = NO;
+        [picker setMode:UIDatePickerModeDate];
+         picker.picker.tag=2;
+        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
+    }
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+    {
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenRect.size.width;
+        CGFloat screenHeight = screenRect.size.height;
+        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+100, screenWidth, screenHeight/2 + 35)];
+        if(SCREEN_35)
+        {
+            picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+20, screenWidth, screenHeight/2 + 35)];
+        }
+        [picker addTargetForDoneButton:self action:@selector(donePressed)];
+        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
+        [self.view addSubview:picker];
+        picker.hidden = NO;
+        [picker setMode:UIDatePickerModeDate];
+          picker.picker.tag=2;
+        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
+    }
 }
 
 
 
 - (IBAction)search:(id)sender {
    
-    if ((![fromdate.text isEqualToString:@"Select Date"])&&(![todate.text isEqualToString:@"Select Date"])) {
+    if ((![fromdate.text isEqualToString:@"From Date"])&&(![todate.text isEqualToString:@"To Date"])) {
         HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
         HUD.mode=MBProgressHUDModeIndeterminate;
         HUD.delegate = self;
@@ -349,7 +403,7 @@
         NSString *driver_name=[[NSUserDefaults standardUserDefaults]objectForKey:@"driver_name"];
         
         NSString *response=[self countSpeedInTime:@"vecid" ForValue1:vehicleregno EntitySecond:@"authkey" ForValue2:@"rzTFevN099Km39PV"];
-        NSLog(@"response %@",response);
+//        NSLog(@"response %@",response);
         NSError *error;
         SBJSON *json = [[SBJSON new] autorelease];
         

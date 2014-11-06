@@ -26,5 +26,5 @@
 @property (retain, nonatomic) IBOutlet UIImageView *bgimage;
 @property (retain, nonatomic) IBOutlet UISwitch *alarmswitch;
 @property (retain, nonatomic) IBOutlet UILabel *switchres;
-
+@property (retain, nonatomic) IBOutlet UILabel *alertblink;
 @end

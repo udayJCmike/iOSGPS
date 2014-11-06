@@ -21,7 +21,7 @@
 - (MKCoordinateRegion)setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate
                   zoomLevel:(NSUInteger)zoomLevel
                    animated:(BOOL)animated;
-@property (retain, nonatomic) IBOutlet UIView *view1;
+
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segment;
 @property (retain, nonatomic) IBOutlet UILabel *welcome;
 @property (retain, nonatomic) IBOutlet MKMapView *mapview;
@@ -30,6 +30,13 @@
 @property (retain, nonatomic) IBOutlet UIStepper *stepper;
 @property (retain, nonatomic) IBOutlet UIButton *home;
 @property (retain, nonatomic) IBOutlet UIButton *logout;
-@property (retain, nonatomic) IBOutlet CustomDatePicker* _customPicker;
+
 @property(retain,nonatomic)IBOutlet NSLayoutConstraint *mapheightConstraint;
+@property (retain, nonatomic) IBOutlet UILabel *fromtime;
+@property (retain, nonatomic) IBOutlet UILabel *totime;
+@property (retain, nonatomic) IBOutlet UILabel *selecteddate;
+@property (retain, nonatomic) IBOutlet UIButton *from;
+@property (retain, nonatomic) IBOutlet UIButton *to;
+@property (retain, nonatomic) IBOutlet UIButton *s_date;
+@property (retain, nonatomic) IBOutlet UIButton *search;
 @end

@@ -17,6 +17,7 @@
 @end
 
 @implementation TheftAlarmViewController
+@synthesize alertblink;
 @synthesize switchres;
 @synthesize alarmswitch;
 @synthesize bgimage;
@@ -36,6 +37,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//    alertblink.hidden=NO;
+//     [self displayLabel];
     du=[[databaseurl alloc]init];
     HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
     HUD.mode=MBProgressHUDModeIndeterminate;
@@ -46,7 +49,7 @@
     welcome.text=[NSString stringWithFormat:@"Welcome %@ !",[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
    
     
-    
+//     [alarmswitch setTintColor:[UIColor colorWithRed:255 green:156 blue:0 alpha:0.1f]];
    
 
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
@@ -172,6 +175,7 @@
     }
 }
 - (IBAction)switchaction:(id)sender {
+//    NSLog(@"switch action");
     HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
     HUD.mode=MBProgressHUDModeIndeterminate;
     HUD.delegate = self;
@@ -204,7 +208,7 @@
         SBJSON *json = [[SBJSON new] autorelease];
         
         NSDictionary *parsedvalue = [json objectWithString:response error:&error];
-        NSLog(@"parsedvalue %@",parsedvalue);
+//        NSLog(@"parsedvalue %@",parsedvalue);
         
         if (parsedvalue == nil)
         {
@@ -265,6 +269,7 @@
             NSDictionary* menu = [parsedvalue objectForKey:@"serviceresponse"];
             if([[menu objectForKey:@"success"]isEqualToString:@"Yes"])
             {
+                alertblink.hidden=YES;
                 TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Theft alarm turned off." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [self styleCustomAlertView:alertView];
                 [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -299,7 +304,7 @@
         
         NSDictionary *parsedvalue = [json objectWithString:response error:&error];
         
-        
+//        NSLog(@"parsedvalue %@",parsedvalue);
         if (parsedvalue == nil)
         {
             [HUD hide:YES];
@@ -313,9 +318,17 @@
             if([[menu objectForKey:@"success"]isEqualToString:@"Yes"])
             {
                 NSString *status=[menu objectForKey:@"status"];
+//                NSLog(@"%@ status recevied ",status);
                 if ([status isEqualToString:@"1"]) {
                     switchres.text=@"On";
                     [alarmswitch setOn:YES animated:YES];
+                }
+                else if ([status isEqualToString:@"2"]) {
+                    alertblink.hidden=NO;
+                    switchres.text=@"On";
+                    [alarmswitch setOn:YES animated:YES];
+                   
+                    [self displayLabel];
                 }
                 else
                 {
@@ -328,6 +341,20 @@
     }
     
     
+}
+-(void)displayLabel
+{
+   
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+    [alertblink setAlpha:0.0];
+    [UIView setAnimationDelay:0.40f];
+    [UIView commitAnimations];
+}
+- (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+      [alertblink setAlpha:1.0];
+    [self displayLabel];
 }
 -(NSString *)InsertAction:(NSString*)firstEntity ForValue1:(NSString*)value1 EntitySecond:(NSString*)secondEntity ForValue2:(NSString*)value2
 {
