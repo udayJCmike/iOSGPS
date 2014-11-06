@@ -402,7 +402,7 @@
     else if ([selecteddate.text isEqualToString:@"Select Date"])
     {
         
-        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select Date." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select date." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [self styleCustomAlertView:alertView];
         [self addButtonsWithBackgroundImagesToAlertView:alertView];
         [alertView show];
@@ -410,7 +410,7 @@
     else if ([fromtime.text isEqualToString:@"From"])
     {
         
-        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select From Time." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select from time." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [self styleCustomAlertView:alertView];
         [self addButtonsWithBackgroundImagesToAlertView:alertView];
         [alertView show];
@@ -418,7 +418,7 @@
    else if ([totime.text isEqualToString:@"To"])
     {
         
-        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select To Time." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select to time." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [self styleCustomAlertView:alertView];
         [self addButtonsWithBackgroundImagesToAlertView:alertView];
         [alertView show];
