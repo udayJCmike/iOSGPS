@@ -374,32 +374,28 @@
                                 <color key="textColor" red="0.85490196080000003" green="0.0" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Off" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3U-yD-b9x">
-                                <rect key="frame" x="258" y="241" width="42" height="21"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VCk-zZ-kK1">
+                                <rect key="frame" x="200" y="237" width="108" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IVH-U1-phY">
-                                <rect key="frame" x="201" y="236" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="onTintColor" red="1" green="0.61176470589999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <segments>
+                                    <segment title="On"/>
+                                    <segment title="Off"/>
+                                </segments>
                                 <connections>
-                                    <action selector="switchaction:" destination="jt2-GC-4sv" eventType="valueChanged" id="ihd-wv-iVg"/>
+                                    <action selector="of_off:" destination="jt2-GC-4sv" eventType="valueChanged" id="fbX-Pk-C6w"/>
                                 </connections>
-                            </switch>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="qcC-HQ-Hpd"/>
                     <connections>
-                        <outlet property="alarmswitch" destination="IVH-U1-phY" id="LfD-jo-fUM"/>
                         <outlet property="alertblink" destination="opv-NG-RYG" id="mP7-hd-keL"/>
                         <outlet property="bgimage" destination="Y2L-Yj-KhQ" id="cgg-3h-cXu"/>
                         <outlet property="home" destination="Yzb-9p-4Rc" id="8ba-B0-pcK"/>
                         <outlet property="logout" destination="6NX-i9-TqY" id="0bB-Tf-1le"/>
+                        <outlet property="onoff" destination="VCk-zZ-kK1" id="MlG-oU-orN"/>
                         <outlet property="segment" destination="lsU-Fb-1qh" id="GAV-ba-yH0"/>
-                        <outlet property="switchres" destination="c3U-yD-b9x" id="kCz-iG-82Q"/>
                         <outlet property="welcome" destination="YkO-Xe-bV3" id="eDh-tA-d1M"/>
                         <segue destination="Rw9-8b-hjh" kind="push" identifier="thefttolive" id="aVZ-2m-yNt"/>
                         <segue destination="GPI-Jy-4eI" kind="push" identifier="thefttohis" id="LNq-F6-k78"/>
@@ -713,10 +709,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kG2-hX-Vga"/>
-        <segue reference="TGL-dX-98Y"/>
+        <segue reference="LNq-F6-k78"/>
         <segue reference="POD-8J-B98"/>
-        <segue reference="daT-RJ-Ezi"/>
+        <segue reference="TGL-dX-98Y"/>
+        <segue reference="aVZ-2m-yNt"/>
         <segue reference="iQi-xp-qgJ"/>
     </inferredMetricsTieBreakers>
 </document>

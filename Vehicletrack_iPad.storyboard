@@ -333,14 +333,6 @@
                                     <action selector="logout:" destination="w6b-n0-Ina" eventType="touchUpInside" id="3iF-n3-WF3"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uzR-eH-uL0">
-                                <rect key="frame" x="403" y="437" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="onTintColor" red="1" green="0.61176470589999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="switchaction:" destination="w6b-n0-Ina" eventType="valueChanged" id="uzO-pR-ZwV"/>
-                                </connections>
-                            </switch>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Turn On/Off Theft Alarm:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0i-vx-vJt">
                                 <rect key="frame" x="149" y="442" width="239" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -348,24 +340,28 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Off" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQ1-Le-7AM">
-                                <rect key="frame" x="479" y="442" width="60" height="19"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="97c-ff-TZO">
+                                <rect key="frame" x="385" y="438" width="123" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <segments>
+                                    <segment title="On"/>
+                                    <segment title="Off"/>
+                                </segments>
+                                <connections>
+                                    <action selector="of_off:" destination="w6b-n0-Ina" eventType="valueChanged" id="3c1-s4-evi"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="tkF-wg-ezG"/>
                     <connections>
-                        <outlet property="alarmswitch" destination="uzR-eH-uL0" id="qMH-gs-mLN"/>
                         <outlet property="alertblink" destination="285-gk-UNH" id="lkj-nq-nSC"/>
                         <outlet property="bgimage" destination="c4d-Qs-Qq0" id="xNF-qd-LmL"/>
                         <outlet property="home" destination="uaW-Ry-Z3R" id="gad-yV-R13"/>
                         <outlet property="logout" destination="9k6-II-5sn" id="2OT-eQ-Cbv"/>
+                        <outlet property="onoff" destination="97c-ff-TZO" id="QBg-Ht-Fel"/>
                         <outlet property="segment" destination="S2A-BH-Dga" id="JPn-nj-ubz"/>
-                        <outlet property="switchres" destination="DQ1-Le-7AM" id="FXA-5L-d4I"/>
                         <outlet property="welcome" destination="A6l-n2-IVJ" id="0W0-74-hJu"/>
                         <segue destination="SnF-lu-w2d" kind="push" identifier="thefttolive" id="cdr-2C-wve"/>
                         <segue destination="pxf-Ge-cAA" kind="push" identifier="thefttohis" id="Zh5-4G-24a"/>
@@ -668,8 +664,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="Bzf-23-aJW"/>
         <segue reference="70m-SG-q4n"/>
-        <segue reference="Bbe-fT-qAD"/>
-        <segue reference="BM2-2l-WWG"/>
+        <segue reference="Zh5-4G-24a"/>
+        <segue reference="cdr-2C-wve"/>
         <segue reference="m2a-ud-Z1a"/>
     </inferredMetricsTieBreakers>
 </document>

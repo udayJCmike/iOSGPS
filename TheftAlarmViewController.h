@@ -18,6 +18,7 @@
 {
     
     MBProgressHUD *HUD;
+   
 }
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segment;
 @property (retain, nonatomic) IBOutlet UILabel *welcome;
@@ -27,4 +28,5 @@
 @property (retain, nonatomic) IBOutlet UISwitch *alarmswitch;
 @property (retain, nonatomic) IBOutlet UILabel *switchres;
 @property (retain, nonatomic) IBOutlet UILabel *alertblink;
+@property (retain, nonatomic) IBOutlet UISegmentedControl *onoff;
 @end

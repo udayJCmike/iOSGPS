@@ -17,6 +17,7 @@
 @end
 
 @implementation TheftAlarmViewController
+@synthesize onoff;
 @synthesize alertblink;
 @synthesize switchres;
 @synthesize alarmswitch;
@@ -47,9 +48,8 @@
     [HUD show:YES];
     [self performSelector:@selector(statusAction) withObject:self afterDelay:0.1f];
     welcome.text=[NSString stringWithFormat:@"Welcome %@ !",[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
-   
-    
-//     [alarmswitch setTintColor:[UIColor colorWithRed:255 green:156 blue:0 alpha:0.1f]];
+  
+    //     [alarmswitch setTintColor:[UIColor colorWithRed:255 green:156 blue:0 alpha:0.1f]];
    
 
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
@@ -174,8 +174,35 @@
         }
     }
 }
+- (IBAction)of_off:(id)sender {
+    HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
+    HUD.mode=MBProgressHUDModeIndeterminate;
+    HUD.delegate = self;
+    HUD.labelText = @"Please wait";
+    [HUD show:YES];
+    if (onoff.selectedSegmentIndex==0) {
+           [self performSelector:@selector(insertAction) withObject:self afterDelay:0.1f];
+    }
+    else if (onoff.selectedSegmentIndex==1)
+    {
+        [self performSelector:@selector(updateAction) withObject:self afterDelay:0.1f];
+    }
+}
+
 - (IBAction)switchaction:(id)sender {
-//    NSLog(@"switch action");
+  
+//    [HUD hide:YES];
+//    @try
+//    {
+//        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(insertAction) object:self];
+//        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateAction) object:self];
+//    }
+//    @catch (NSException *exception)
+//    {
+//        NSLog(@"exception in switch");
+//    }
+//   
+    
     HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
     HUD.mode=MBProgressHUDModeIndeterminate;
     HUD.delegate = self;
@@ -183,10 +210,12 @@
     [HUD show:YES];
     if (alarmswitch.on) {
         switchres.text=@"On";
+        NSLog(@"switch on action");
           [self performSelector:@selector(insertAction) withObject:self afterDelay:0.1f];
     }
-    else
+    else if (!alarmswitch.on)
     {
+        NSLog(@"switch off action");
         switchres.text=@"Off";
           [self performSelector:@selector(updateAction) withObject:self afterDelay:0.1f];
     }
@@ -229,8 +258,10 @@
             }
             else
             {
+                [HUD hide:YES];
                 switchres.text=@"Off";
                 [alarmswitch setOn:NO animated:YES];
+                [onoff setSelectedSegmentIndex:1];
                 TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"Can't reachable" message:@"Make sure the device is turned on. Try again!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [self styleCustomAlertView:alertView];
                 [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -239,6 +270,7 @@
             }
         }
     }
+     [HUD hide:YES];
  
 }
 -(void)updateAction
@@ -279,6 +311,7 @@
             {
                 switchres.text=@"On";
                 [alarmswitch setOn:YES animated:YES];
+                  [onoff setSelectedSegmentIndex:0];
                 TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Can't reach server." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [self styleCustomAlertView:alertView];
                 [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -322,16 +355,19 @@
                 if ([status isEqualToString:@"1"]) {
                     switchres.text=@"On";
                     [alarmswitch setOn:YES animated:YES];
+                      [onoff setSelectedSegmentIndex:0];
+                    
                 }
                 else if ([status isEqualToString:@"2"]) {
                     alertblink.hidden=NO;
                     switchres.text=@"On";
                     [alarmswitch setOn:YES animated:YES];
-                   
+                     [onoff setSelectedSegmentIndex:0];
                     [self displayLabel];
                 }
                 else
                 {
+                      [onoff setSelectedSegmentIndex:1];
                     switchres.text=@"Off";
                     [alarmswitch setOn:NO animated:YES];
                 }
