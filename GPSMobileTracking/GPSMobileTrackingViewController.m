@@ -43,7 +43,11 @@ int c;
     [alertView setButtonBackgroundImage:redButtonImageOn forState:UIControlStateHighlighted atIndex:0];
     
 }
-
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 -(void)login:(id)sender
 {
      [self dismissKeyboard];

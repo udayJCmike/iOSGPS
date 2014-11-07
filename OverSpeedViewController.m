@@ -370,22 +370,75 @@
         [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
     }
 }
+-(BOOL)From_to_dateCheck
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    //   NSLocale *indianEnglishLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_IN"] autorelease];
+    //    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Kolkata"];
+    //   [formatter setLocale:indianEnglishLocale];
+    //    [formatter setTimeZone:timeZone];
+    NSString *fromtime1=fromdate.text;
+    NSString *totime1=todate.text;
+    NSDate *date1= [formatter dateFromString:fromtime1];
+    NSDate *date2 = [formatter dateFromString:totime1];
+    NSComparisonResult result = [date1 compare:date2];
+       NSLog(@"from time %@",date1);
+         NSLog(@"to time %@",date2);
+         NSLog(@"result %ld",result);
+    if(result == NSOrderedDescending)
+    {
+        NSLog(@"date1 is later than date2");
+        return 0;
+    }
+    else if(result == NSOrderedAscending)
+    {
+        NSLog(@"date2 is later than date1");
+        return 1;
+    }
+    else
+    {
+        NSLog(@"date1 is equal to date2");
+        return 1;
+    }
+    return 0;
+}
 
 
 
 - (IBAction)search:(id)sender {
    
     if ((![fromdate.text isEqualToString:@"From Date"])&&(![todate.text isEqualToString:@"To Date"])) {
-        HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
-        HUD.mode=MBProgressHUDModeIndeterminate;
-        HUD.delegate = self;
-        HUD.labelText = @"Please wait";
-        [HUD show:YES];
-        [self performSelector:@selector(CountOverSpeedByTime) withObject:self afterDelay:0.1f];
+        BOOL res= [self From_to_dateCheck];
+        if (res)
+        {
+            HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
+            HUD.mode=MBProgressHUDModeIndeterminate;
+            HUD.delegate = self;
+            HUD.labelText = @"Please wait";
+            [HUD show:YES];
+            [self performSelector:@selector(CountOverSpeedByTime) withObject:self afterDelay:0.1f];
+        }
+        else
+        {
+            TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"To date must be greater than from date." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [self styleCustomAlertView:alertView];
+            [self addButtonsWithBackgroundImagesToAlertView:alertView];
+            [alertView show];
+        }
+
+       
     }
-    else
+    else if ([fromdate.text isEqualToString:@"From Date"])
     {
-        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select date." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select from date." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [self styleCustomAlertView:alertView];
+        [self addButtonsWithBackgroundImagesToAlertView:alertView];
+        [alertView show];
+    }
+    else if ([todate.text isEqualToString:@"To Date"])
+    {
+        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select to date." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [self styleCustomAlertView:alertView];
         [self addButtonsWithBackgroundImagesToAlertView:alertView];
         [alertView show];

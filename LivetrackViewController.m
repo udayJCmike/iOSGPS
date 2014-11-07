@@ -458,12 +458,12 @@ int i;
      NSMutableArray *points=[[NSMutableArray alloc]init];
       self.allPins = [[NSMutableArray alloc]init];
     MKMapRect visibleMapRect = mapview.visibleMapRect;
-    NSLog(@"visible");
+//    NSLog(@"visible");
     NSSet *visibleAnnotations = [mapview annotationsInMapRect:visibleMapRect];
-      NSLog(@"visible1");
+//      NSLog(@"visible1");
     if ([visibleAnnotations count]>0)
     {
-          NSLog(@"visible3");
+//          NSLog(@"visible3");
         //check annotations present in map if >0 remove everything
         [self.mapview removeAnnotations:self.mapview.annotations];
     }

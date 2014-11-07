@@ -299,6 +299,7 @@
 }
 -(void)pickerChanged:(id)sender {
     UIDatePicker *dp=(UIDatePicker*)sender;
+//    NSLog(@"time in picker %@",dp.date);
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *strDate =[dateFormatter stringFromDate:[dp date]];
@@ -384,16 +385,62 @@
     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"UK"];
     [picker.picker setLocale:locale];
 }
-
+-(BOOL)From_to_dateCheck
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+//   NSLocale *indianEnglishLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_IN"] autorelease];
+//    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Kolkata"];
+//   [formatter setLocale:indianEnglishLocale];
+//    [formatter setTimeZone:timeZone];
+    NSString *fromtime1=[NSString stringWithFormat:@"%@ %@",selecteddate.text,fromtime.text];
+      NSString *totime1=[NSString stringWithFormat:@"%@ %@",selecteddate.text,totime.text];
+    NSDate *date1= [formatter dateFromString:fromtime1];
+    NSDate *date2 = [formatter dateFromString:totime1];
+    NSComparisonResult result = [date1 compare:date2];
+//    NSLog(@"from time %@",date1);
+//     NSLog(@"to time %@",date2);
+//     NSLog(@"result %ld",result);
+    if(result == NSOrderedDescending)
+    {
+        NSLog(@"date1 is later than date2");
+        return 0;
+    }
+    else if(result == NSOrderedAscending)
+    {
+        NSLog(@"date2 is later than date1");
+         return 1;
+    }
+    else
+    {
+        NSLog(@"date1 is equal to date2");
+         return 1;
+    }
+    return 0;
+}
 - (IBAction)search:(id)sender {
     if ((![selecteddate.text isEqualToString:@"Select Date"])&&(![fromtime.text isEqualToString:@"From"])&&(![totime.text isEqualToString:@"To"]))
     {
-        HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
-        HUD.mode=MBProgressHUDModeIndeterminate;
-        HUD.delegate = self;
-        HUD.labelText = @"Please wait";
-        [HUD show:YES];
-        [self performSelector:@selector(getData) withObject:self afterDelay:0.1f];
+      
+     BOOL res= [self From_to_dateCheck];
+        if (res)
+        {
+            HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
+            HUD.mode=MBProgressHUDModeIndeterminate;
+            HUD.delegate = self;
+            HUD.labelText = @"Please wait";
+            [HUD show:YES];
+            [self performSelector:@selector(getData) withObject:self afterDelay:0.1f];
+        }
+        else
+        {
+            TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"To time must be greater than from time." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [self styleCustomAlertView:alertView];
+            [self addButtonsWithBackgroundImagesToAlertView:alertView];
+            [alertView show];
+        }
+        
+       
        
         
 
@@ -538,7 +585,20 @@
 }
 -(void)setpin
 {
+    
     NSMutableArray *points=[[NSMutableArray alloc]init];
+    self.allPins = [[NSMutableArray alloc]init];
+    MKMapRect visibleMapRect = mapview.visibleMapRect;
+//    NSLog(@"visible");
+    NSSet *visibleAnnotations = [mapview annotationsInMapRect:visibleMapRect];
+//    NSLog(@"visible1");
+    if ([visibleAnnotations count]>0)
+    {
+//        NSLog(@"visible3");
+        //check annotations present in map if >0 remove everything
+        [self.mapview removeAnnotations:self.mapview.annotations];
+    }
+  
     if ([locationlist count]>0)
     {
         CSMapAnnotation* annotation = nil;
