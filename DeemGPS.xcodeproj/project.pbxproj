@@ -171,6 +171,12 @@
 		8499685619795DC800A53BEF /* UITextField+AKNumericFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8499685319795DC800A53BEF /* UITextField+AKNumericFormatter.m */; };
 		849B2E0C1990E55200AD18E0 /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = 849B2E0B1990E55200AD18E0 /* point.png */; };
 		84D77B9119829C6A008D9542 /* mygps_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D77B9019829C6A008D9542 /* mygps_logo.png */; };
+		84F796FA1A0CE3FD00152B17 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F796F91A0CE3FD00152B17 /* AudioToolbox.framework */; };
+		84F796FC1A0CE3FD00152B17 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84F796FB1A0CE3FD00152B17 /* beep.mp3 */; };
+		84F796FE1A0CE3FD00152B17 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F796FD1A0CE3FD00152B17 /* AVFoundation.framework */; };
+		84F797001A0CE3FD00152B17 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F796FF1A0CE3FD00152B17 /* CoreAudio.framework */; };
+		84F797021A0CE46300152B17 /* dairymilk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84F797011A0CE46300152B17 /* dairymilk.mp3 */; };
+		84F797041A0CF29B00152B17 /* beep1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 84F797031A0CF29B00152B17 /* beep1.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -392,6 +398,12 @@
 		8499685319795DC800A53BEF /* UITextField+AKNumericFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+AKNumericFormatter.m"; sourceTree = "<group>"; };
 		849B2E0B1990E55200AD18E0 /* point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point.png; sourceTree = "<group>"; };
 		84D77B9019829C6A008D9542 /* mygps_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mygps_logo.png; sourceTree = "<group>"; };
+		84F796F91A0CE3FD00152B17 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		84F796FB1A0CE3FD00152B17 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
+		84F796FD1A0CE3FD00152B17 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		84F796FF1A0CE3FD00152B17 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		84F797011A0CE46300152B17 /* dairymilk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = dairymilk.mp3; path = ../../../Downloads/dairymilk.mp3; sourceTree = "<group>"; };
+		84F797031A0CF29B00152B17 /* beep1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = beep1.caf; path = ../../../Downloads/beep1.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -399,6 +411,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F797001A0CE3FD00152B17 /* CoreAudio.framework in Frameworks */,
+				84F796FE1A0CE3FD00152B17 /* AVFoundation.framework in Frameworks */,
+				84F796FA1A0CE3FD00152B17 /* AudioToolbox.framework in Frameworks */,
 				0D8094A61977921700521E39 /* CFNetwork.framework in Frameworks */,
 				84951ABB1973C80A003C603B /* MapKit.framework in Frameworks */,
 				84951A851973C7C2003C603B /* CoreGraphics.framework in Frameworks */,
@@ -458,8 +473,11 @@
 		845D84911A08987C000BB36B /* Theftalarm */ = {
 			isa = PBXGroup;
 			children = (
+				84F796FB1A0CE3FD00152B17 /* beep.mp3 */,
+				84F797011A0CE46300152B17 /* dairymilk.mp3 */,
 				845D848E1A08986F000BB36B /* TheftAlarmViewController.h */,
 				845D848F1A08986F000BB36B /* TheftAlarmViewController.m */,
+				84F797031A0CF29B00152B17 /* beep1.caf */,
 			);
 			name = Theftalarm;
 			sourceTree = "<group>";
@@ -566,6 +584,9 @@
 		84951A811973C7C2003C603B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84F796FF1A0CE3FD00152B17 /* CoreAudio.framework */,
+				84F796FD1A0CE3FD00152B17 /* AVFoundation.framework */,
+				84F796F91A0CE3FD00152B17 /* AudioToolbox.framework */,
 				0D8094A51977921700521E39 /* CFNetwork.framework */,
 				84951ABA1973C80A003C603B /* MapKit.framework */,
 				84951A821973C7C2003C603B /* Foundation.framework */,
@@ -964,6 +985,7 @@
 				84D77B9119829C6A008D9542 /* mygps_logo.png in Resources */,
 				8499653F198A7A6A00D5CB98 /* send.png in Resources */,
 				8494011019934762006F161A /* about-568h@2x.jpg in Resources */,
+				84F797041A0CF29B00152B17 /* beep1.caf in Resources */,
 				84951AC71973D5EE003C603B /* Welcome_iPhone.storyboard in Resources */,
 				848E49D4198CB37200B8BD96 /* Icon-76@2x.png in Resources */,
 				84951AE51973E2A0003C603B /* Vehicletrack_iPhone.storyboard in Resources */,
@@ -986,6 +1008,7 @@
 				8494011A19934762006F161A /* dashboard@2x~ipad.jpg in Resources */,
 				8492E1291974ECF300AA9291 /* large.button.red.off.png in Resources */,
 				8494013219934762006F161A /* message-568h@2x.jpg in Resources */,
+				84F797021A0CE46300152B17 /* dairymilk.mp3 in Resources */,
 				8494012019934762006F161A /* Default@2x.jpg in Resources */,
 				8492E12C1974ECF300AA9291 /* large.button.red.on@2x.png in Resources */,
 				84951A961973C7C2003C603B /* Main_iPhone.storyboard in Resources */,
@@ -996,6 +1019,7 @@
 				84188B44198B69B7002D55BA /* clear_iPad.png in Resources */,
 				8492853C198F653E00A4F7CE /* Icon-57@2x.png in Resources */,
 				84188B7B198BCCF7002D55BA /* Icon_Small@2x.png in Resources */,
+				84F796FC1A0CE3FD00152B17 /* beep.mp3 in Resources */,
 				8494013E19934762006F161A /* terms@2x.jpg in Resources */,
 				8494013719934762006F161A /* privacy-568h@2x.jpg in Resources */,
 				8492853E198F653E00A4F7CE /* Icon-120.png in Resources */,

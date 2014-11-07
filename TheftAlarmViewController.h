@@ -11,15 +11,18 @@
 #import "TTAlertView.h"
 #import "MBProgressHUD.h"
 #import "WelcomeViewController.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define SCREEN_35 (SCREEN_HEIGHT == 480)
 #define SCREEN_40 (SCREEN_HEIGHT == 568)
-@interface TheftAlarmViewController : UIViewController<MBProgressHUDDelegate>
+@interface TheftAlarmViewController : UIViewController<MBProgressHUDDelegate,AVAudioPlayerDelegate>
 {
-    
+    SystemSoundID soundClick;
     MBProgressHUD *HUD;
    
 }
+@property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segment;
 @property (retain, nonatomic) IBOutlet UILabel *welcome;
 @property (retain, nonatomic) IBOutlet UIButton *home;
@@ -29,4 +32,5 @@
 @property (retain, nonatomic) IBOutlet UILabel *switchres;
 @property (retain, nonatomic) IBOutlet UILabel *alertblink;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *onoff;
+@property(nonatomic,retain)NSTimer *timer;
 @end

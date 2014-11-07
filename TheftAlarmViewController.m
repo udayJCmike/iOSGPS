@@ -10,9 +10,13 @@
 #import "MBProgressHUD.h"
 #import "databaseurl.h"
 #import "SBJSON.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
+#define interval 120
 @interface TheftAlarmViewController ()
 {
-      databaseurl *du;
+    databaseurl *du; NSString *path;
+    NSURL *soundUrl;   NSError *error;;
 }
 @end
 
@@ -26,6 +30,8 @@
 @synthesize home;
 @synthesize logout;
 @synthesize segment;
+@synthesize timer;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -68,11 +74,42 @@
     }
     [segment setSelectedSegmentIndex:2];
     [onoff setSelectedSegmentIndex:1];
+    
+//    path = [NSString stringWithFormat:@"%@/dairymilk.mp3", [[NSBundle mainBundle] resourcePath]];
+    path   =   [[NSBundle mainBundle] pathForResource:@"beep1" ofType:@"caf"];
+    soundUrl = [NSURL fileURLWithPath:path];
+    NSLog(@"path %@",path);
+    // Create audio player object and initialize with URL to sound
+    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:&error];
+    if (error)
+    {
+        NSLog(@"Error in audioPlayer: %@",
+              [error localizedDescription]);
+    } else {
+        _audioPlayer.delegate = self;
+       // [_audioPlayer setNumberOfLoops:3];
+    }
+ 
     NSString *filename = [du imagecheck:@"message.jpg"];
     NSLog(@"image name %@",filename);
     bgimage.image = [UIImage imageNamed:filename];
 }
-
+//-(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+//{
+//   // NSLog(@"finished playing");
+//}
+//-(void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError *)error
+//{
+//     // NSLog(@"audioPlayerDecodeErrorDidOccur");
+//}
+//-(void)audioPlayerBeginInterruption:(AVAudioPlayer *)player
+//{
+//     //NSLog(@"audioPlayerBeginInterruption");
+//}
+//-(void)audioPlayerEndInterruption:(AVAudioPlayer *)player
+//{
+//    // NSLog(@"audioPlayerEndInterruption");
+//}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -252,6 +289,10 @@
             NSDictionary* menu = [parsedvalue objectForKey:@"serviceresponse"];
             if([[menu objectForKey:@"success"]isEqualToString:@"Yes"])
             {
+                if (!timer) {
+                    NSLog(@"timer start");
+                    timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(CheckTheftAlarmStatus)  userInfo:nil  repeats:YES];
+                }
                 TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Theft alarm turned on." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [self styleCustomAlertView:alertView];
                 [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -263,6 +304,8 @@
                 switchres.text=@"Off";
                 [alarmswitch setOn:NO animated:YES];
                 [onoff setSelectedSegmentIndex:1];
+               
+               
                 TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"Can't reachable" message:@"Make sure the device is turned on. Try again!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [self styleCustomAlertView:alertView];
                 [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -303,6 +346,15 @@
             if([[menu objectForKey:@"success"]isEqualToString:@"Yes"])
             {
                 alertblink.hidden=YES;
+//                if ([timer isValid]) {
+//                    //        NSLog(@"timer stopped in will disappeae");
+//                    [timer invalidate];
+//                }
+                 [self.view.layer removeAllAnimations];
+                    [_audioPlayer pause];
+                    [_audioPlayer stop];
+                    _audioPlayer=nil;
+                
                 TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Theft alarm turned off." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [self styleCustomAlertView:alertView];
                 [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -313,6 +365,10 @@
                 switchres.text=@"On";
                 [alarmswitch setOn:YES animated:YES];
                   [onoff setSelectedSegmentIndex:0];
+                if (!timer) {
+                    NSLog(@"timer start");
+                    timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(CheckTheftAlarmStatus)  userInfo:nil  repeats:YES];
+                }
                 TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Can't reach server." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [self styleCustomAlertView:alertView];
                 [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -358,6 +414,10 @@
                     switchres.text=@"On";
                     [alarmswitch setOn:YES animated:YES];
                       [onoff setSelectedSegmentIndex:0];
+                    if (!timer) {
+                        NSLog(@"timer start");
+                        timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(CheckTheftAlarmStatus)  userInfo:nil  repeats:YES];
+                    }
                     
                 }
                 else if ([status isEqualToString:@"2"]) {
@@ -380,9 +440,74 @@
     
     
 }
+-(void)CheckTheftAlarmStatus
+{
+    du=[[databaseurl alloc]init];
+    if ([[du submitvalues]isEqualToString:@"Success"])
+    {
+        
+        NSString *vehicleregno=[[NSUserDefaults standardUserDefaults]objectForKey:@"vehicleregno"];
+        
+        NSString *response=[self StatusCheck:@"vecid" ForValue1:vehicleregno EntitySecond:@"authkey" ForValue2:@"rzTFevN099Km39PV"];
+        
+        NSError *error;
+        SBJSON *json = [[SBJSON new] autorelease];
+        
+        NSDictionary *parsedvalue = [json objectWithString:response error:&error];
+        
+        //        NSLog(@"parsedvalue %@",parsedvalue);
+        if (parsedvalue == nil)
+        {
+            
+            //NSLog(@"parsedvalue == nil");
+            
+        }
+        else
+        {
+            //            NSLog(@"parsedvalue else");
+           
+            NSDictionary* menu = [parsedvalue objectForKey:@"serviceresponse"];
+            if([[menu objectForKey:@"success"]isEqualToString:@"Yes"])
+            {
+                NSString *status=[menu objectForKey:@"status"];
+                //                NSLog(@"%@ status recevied ",status);
+                if ([status isEqualToString:@"1"]) {
+                    switchres.text=@"On";
+                    [alarmswitch setOn:YES animated:YES];
+                    [onoff setSelectedSegmentIndex:0];
+                    
+                }
+                else if ([status isEqualToString:@"2"]) {
+                    alertblink.hidden=NO;
+                    switchres.text=@"On";
+                    [alarmswitch setOn:YES animated:YES];
+                    [onoff setSelectedSegmentIndex:0];
+                    [self displayLabel];
+                }
+                else
+                {
+                    [onoff setSelectedSegmentIndex:1];
+                    switchres.text=@"Off";
+                    [alarmswitch setOn:NO animated:YES];
+                }
+            }
+            
+        }
+    }
+ 
+    
+}
 -(void)displayLabel
 {
+    if (_audioPlayer) {
+        [_audioPlayer prepareToPlay];
+        [_audioPlayer play];
+    }
+    else{
+       // NSLog(@"audio player not init");
+    }
    
+ 
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
@@ -430,8 +555,21 @@
     
     return [du returndbresult:post URL:url];
 }
+-(void)viewWillDisappear:(BOOL)animated
+{
+    if ([timer isValid]) {
+        //        NSLog(@"timer stopped in will disappeae");
+        [timer invalidate];
+    }
+    [self.view.layer removeAllAnimations];
+     [_audioPlayer pause];
+        [_audioPlayer stop];
+    _audioPlayer=nil;
+ 
+}
 - (void)dealloc {
 
     [super dealloc];
+  
 }
 @end
