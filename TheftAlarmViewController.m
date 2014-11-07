@@ -67,6 +67,7 @@
         
     }
     [segment setSelectedSegmentIndex:2];
+    [onoff setSelectedSegmentIndex:1];
     NSString *filename = [du imagecheck:@"message.jpg"];
     NSLog(@"image name %@",filename);
     bgimage.image = [UIImage imageNamed:filename];
@@ -346,6 +347,7 @@
         }
         else
         {
+//            NSLog(@"parsedvalue else");
             [HUD hide:YES];
             NSDictionary* menu = [parsedvalue objectForKey:@"serviceresponse"];
             if([[menu objectForKey:@"success"]isEqualToString:@"Yes"])
