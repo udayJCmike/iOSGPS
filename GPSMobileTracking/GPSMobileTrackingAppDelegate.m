@@ -7,28 +7,46 @@
 //
 
 #import "GPSMobileTrackingAppDelegate.h"
-
+#define interval 120
 @implementation GPSMobileTrackingAppDelegate
-
+@synthesize login_status;
+@synthesize Vehicle_List;
+@synthesize Background_Runner;
+@synthesize GPSViewController;
+@synthesize login_session_status;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    UIStoryboard *welcome;
-//    UIViewController *initialvc;
-//    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-//    {
-//        welcome=[UIStoryboard storyboardWithName:@"Aboutus_iPad" bundle:nil];
-//        initialvc=[welcome instantiateInitialViewController];
-//    }
-//    else   if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
-//    {
-//        welcome=[UIStoryboard storyboardWithName:@"Aboutus_iPhone" bundle:nil];
-//        initialvc=[welcome instantiateInitialViewController];
-//    }
-//
-//    [self.window setRootViewController:initialvc ];
+    GPSViewController=[[GPSMobileTrackingViewController alloc]init];
+    login_status =@"0";
+    Vehicle_List=[[NSMutableArray alloc]init];
+     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(PlaySound) name:@"PlaySound"object:nil];
+      [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(StopSound) name:@"StopSound"object:nil];
+    if (([[[NSUserDefaults standardUserDefaults]valueForKey:@"username"] length]>0)&&([[[NSUserDefaults standardUserDefaults]valueForKey:@"password"] length]>0))
+    {
+        login_session_status=@"1";
+        [GPSViewController LoginWithSession];
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+        {
+            UIStoryboard *welcome=[UIStoryboard storyboardWithName:@"Welcome_iPad" bundle:nil];
+            UIViewController *initialvc=[welcome instantiateInitialViewController];
+           
+            UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+            [navigationController pushViewController:initialvc animated:YES];
+        }
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+        {
+            UIStoryboard *welcome=[UIStoryboard storyboardWithName:@"Welcome_iPhone" bundle:nil];
+            UIViewController *initialvc=[welcome instantiateInitialViewController];
+             self.window.rootViewController=initialvc;
+        }
+    }
+    else
+    {
+        login_session_status=@"0";
+    }
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -37,8 +55,25 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+     if ([login_status isEqualToString:@"1"]) {
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+        __block UIBackgroundTaskIdentifier bgTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+            [[UIApplication sharedApplication] endBackgroundTask:bgTask];
+            bgTask = UIBackgroundTaskInvalid;
+        }];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            
+            [Background_Runner invalidate];
+            Background_Runner = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(getVehiceList1) userInfo:nil repeats:YES];
+            [[NSRunLoop currentRunLoop] addTimer:Background_Runner forMode:NSDefaultRunLoopMode];
+            [[NSRunLoop currentRunLoop] run];
+        });
+    }
+    
+     }
+
+
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -48,12 +83,75 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+   
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"StopSound" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PlaySound" object:nil];
 }
-
+-(void)DownloadVehicleListInBackend
+{
+  //  NSLog(@"perform trigger action");
+   dispatch_async(dispatch_get_main_queue(), ^{
+                            
+//                             if (![Background_Runner isValid]) {
+                               //  NSLog(@"timer start");
+                                 Background_Runner = [NSTimer scheduledTimerWithTimeInterval:interval
+                                                                          target:self
+                                                                        selector:@selector(getVehiceList1)
+                                                                        userInfo:nil
+                                                                         repeats:YES];
+                             //}
+                             
+                             dispatch_async(dispatch_get_main_queue(), ^{
+                                 
+                             });
+                             
+                             
+                         });
+}
+-(void)getVehiceList1
+{
+   //NSLog(@"perform trigger action1");
+    
+    [GPSViewController getVehicleList];
+   [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(PlaySound) name:@"PlaySound"object:nil];
+     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(StopSound) name:@"StopSound"object:nil];
+    
+}
+-(void)StopSound
+{
+    [_audioPlayer pause];
+    [_audioPlayer stop];
+    _audioPlayer=nil;
+  //  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"StopSound" object:nil];
+}
+-(void)PlaySound
+{
+     if (!_audioPlayer)
+    {
+        path   =   [[NSBundle mainBundle] pathForResource:@"beep1" ofType:@"caf"];
+        soundUrl = [NSURL fileURLWithPath:path];
+        _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:&error];
+        _audioPlayer.numberOfLoops=-1;
+        
+        if (error)
+        {
+            NSLog(@"Error in audioPlayer: %@",
+                  [error localizedDescription]);
+        }
+        else
+        {
+            _audioPlayer.delegate = self;
+            // [_audioPlayer setNumberOfLoops:3];
+        }
+        
+    }
+    [_audioPlayer prepareToPlay];
+    [_audioPlayer play];
+    
+   // [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PlaySound" object:nil];
+}
 @end

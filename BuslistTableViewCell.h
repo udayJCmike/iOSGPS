@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *device_status;
 @property(nonatomic,retain)IBOutlet UILabel *current_speed;
 @property(nonatomic,retain)IBOutlet UILabel *current_location;
+@property (retain, nonatomic) IBOutlet UILabel *alert_label_red;
 //@property(nonatomic,retain)IBOutlet UILabel *driver_name;
 //@property(nonatomic,retain)IBOutlet UILabel *driver_licence_number;
 //@property(nonatomic,retain)IBOutlet UILabel *driver_licence_exp_date;

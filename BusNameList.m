@@ -15,6 +15,6 @@
 @synthesize device_status;
 @synthesize address;
 @synthesize driver_name;
-
+@synthesize alarm_status;
 
 @end

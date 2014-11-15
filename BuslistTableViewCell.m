@@ -14,6 +14,7 @@
 @synthesize current_location;
 @synthesize current_speed;
 @synthesize device_status;
+@synthesize alert_label_red;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

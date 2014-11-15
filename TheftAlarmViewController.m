@@ -15,8 +15,11 @@
 #define interval 120
 @interface TheftAlarmViewController ()
 {
-    databaseurl *du; NSString *path;
-    NSURL *soundUrl;   NSError *error;;
+    databaseurl *du;
+    NSString *path;
+    NSURL *soundUrl;
+    NSError *error;
+    GPSMobileTrackingAppDelegate *delegate;
 }
 @end
 
@@ -75,11 +78,12 @@
     [segment setSelectedSegmentIndex:2];
     [onoff setSelectedSegmentIndex:1];
     
-//    path = [NSString stringWithFormat:@"%@/dairymilk.mp3", [[NSBundle mainBundle] resourcePath]];
+    delegate=AppDelegate;
+    
     path   =   [[NSBundle mainBundle] pathForResource:@"beep1" ofType:@"caf"];
     soundUrl = [NSURL fileURLWithPath:path];
-    NSLog(@"path %@",path);
-    // Create audio player object and initialize with URL to sound
+  
+    
     _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:&error];
     if (error)
     {
@@ -94,22 +98,7 @@
     NSLog(@"image name %@",filename);
     bgimage.image = [UIImage imageNamed:filename];
 }
-//-(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
-//{
-//   // NSLog(@"finished playing");
-//}
-//-(void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError *)error
-//{
-//     // NSLog(@"audioPlayerDecodeErrorDidOccur");
-//}
-//-(void)audioPlayerBeginInterruption:(AVAudioPlayer *)player
-//{
-//     //NSLog(@"audioPlayerBeginInterruption");
-//}
-//-(void)audioPlayerEndInterruption:(AVAudioPlayer *)player
-//{
-//    // NSLog(@"audioPlayerEndInterruption");
-//}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -346,14 +335,15 @@
             if([[menu objectForKey:@"success"]isEqualToString:@"Yes"])
             {
                 alertblink.hidden=YES;
-//                if ([timer isValid]) {
-//                    //        NSLog(@"timer stopped in will disappeae");
-//                    [timer invalidate];
-//                }
+          BusNameList *bus_list= [delegate.Vehicle_List objectAtIndex:[[[NSUserDefaults standardUserDefaults]valueForKey:@"selected_row"] intValue]];
+                [bus_list setAlarm_status:@"0"];
+                [delegate.Vehicle_List replaceObjectAtIndex:[[[NSUserDefaults standardUserDefaults]valueForKey:@"selected_row"] intValue] withObject:bus_list];
+
                  [self.view.layer removeAllAnimations];
                     [_audioPlayer pause];
                     [_audioPlayer stop];
                     _audioPlayer=nil;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"StopSound"   object:self userInfo:nil];
                 
                 TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Theft alarm turned off." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [self styleCustomAlertView:alertView];
@@ -499,14 +489,14 @@
 }
 -(void)displayLabel
 {
-    if (_audioPlayer) {
-        [_audioPlayer prepareToPlay];
-        [_audioPlayer play];
-    }
-    else{
-       // NSLog(@"audio player not init");
-    }
-   
+//    if (_audioPlayer) {
+//        [_audioPlayer prepareToPlay];
+//        [_audioPlayer play];
+//    }
+//    else{
+//       // NSLog(@"audio player not init");
+//    }
+//   
  
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDelegate:self];

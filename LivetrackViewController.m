@@ -310,7 +310,7 @@ int i;
     
     imageview.image = [UIImage imageNamed:filename];
     if (!timer) {
-        NSLog(@"timer start");
+      //  NSLog(@"timer start");
         timer = [NSTimer scheduledTimerWithTimeInterval:interval
                                                  target:self
                                                selector:@selector(getData)
@@ -432,7 +432,7 @@ int i;
             }
             else
             {
-                NSLog(@"alert");
+               // NSLog(@"alert");
                 TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"No location's found." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [self styleCustomAlertView:alertView];
                 [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -444,7 +444,7 @@ int i;
     }
     else
     {
-        NSLog(@"failure");
+       // NSLog(@"failure");
     }
     
 }

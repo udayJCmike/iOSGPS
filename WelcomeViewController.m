@@ -11,12 +11,15 @@
 #import "BuslistTableViewCell.h"
 #import "databaseurl.h"
 #import "SBJSON.h"
+#import "GPSMobileTrackingAppDelegate.h"
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define SCREEN_35 (SCREEN_HEIGHT == 480)
 #define SCREEN_40 (SCREEN_HEIGHT == 568)
 @interface WelcomeViewController ()
 {
     databaseurl *du;
+    GPSMobileTrackingAppDelegate *delegate;
+    
 }
 @end
 
@@ -27,6 +30,7 @@
 @synthesize aboutus;
 @synthesize contactus;
 @synthesize logout;
+
 @synthesize tableheightConstraint;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,13 +41,49 @@
     return self;
 }
 - (IBAction)logout:(id)sender {
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    
+delegate.login_status=@"0";
+  if([delegate.Background_Runner isValid])
+  {
+    [delegate.Background_Runner invalidate];
+    
+  }
+   [[NSNotificationCenter defaultCenter] postNotificationName:@"StopSound" object:self  userInfo:nil];
+    [[NSUserDefaults standardUserDefaults]setValue:@"" forKey:@"username"];
+    [[NSUserDefaults standardUserDefaults]setValue:@"" forKey:@"password"];
+    [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"username"];
+    [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"password"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    if ([delegate.login_session_status isEqualToString:@"1"])
     {
-          [self.navigationController popToRootViewControllerAnimated:YES];
+       // NSLog(@"logged out using session");
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+        {
+            UIStoryboard *welcome1=[UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
+            UIViewController *initialvc=[welcome1 instantiateInitialViewController];
+            delegate.window.rootViewController =initialvc;
+            
+        }
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+        {
+            
+            UIStoryboard *welcome1=[UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+            UIViewController *initialvc=[welcome1 instantiateInitialViewController];
+            delegate.window.rootViewController =initialvc;
+            
+        }
+       
     }
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+    else
     {
-          [self.navigationController popToRootViewControllerAnimated:YES];
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+        {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+        {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
     }
 
 }
@@ -65,7 +105,7 @@
         self.navigationItem.hidesBackButton=YES;
         [self.navigationController setNavigationBarHidden:YES animated:NO];
     }
-      [self getData];
+   list= delegate.Vehicle_List;
     [self.tableView reloadData];
 }
 - (void)viewDidLoad
@@ -116,91 +156,133 @@
 
     welcome.text=[NSString stringWithFormat:@"Welcome %@ !",[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
    
-   
+    delegate=AppDelegate;
     du=[[databaseurl alloc]init];
     NSString *filename = [du imagecheck:@"dashboard.jpg"];
     imageview.image = [UIImage imageNamed:filename];
-     [self getData];
+   // NSLog(@"%@ vehicle list",delegate.Vehicle_List);
+  list= delegate.Vehicle_List;
+   // [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(ReloadTable_Method) name:@"ReloadTable"object:nil];
+    if ([delegate.login_session_status isEqualToString:@"1"])
+    {
+        HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
+        HUD.mode=MBProgressHUDModeIndeterminate;
+        HUD.delegate = self;
+        HUD.labelText = @"Please wait";
+        [HUD show:YES];
+        [HUD hide:YES afterDelay:0.5f];
+      // NSLog(@"observer added");
+        
+    }
     // Do any additional setup after loading the view.
 }
-
--(void)getData
+-(void)ReloadTable_Method
 {
-    
-    if ([[du submitvalues]isEqualToString:@"Success"])
+    //  NSLog(@"observer called");
+    if ([delegate.login_status isEqualToString:@"1"])
     {
-       
-        NSString *orgid=[[NSUserDefaults standardUserDefaults]objectForKey:@"orgid"];
-  
-        NSString *response=[self HttpPostEntityFirst1:@"orgid" ForValue1:orgid  EntitySecond:@"authkey" ForValue2:@"rzTFevN099Km39PV"];
-      
-        NSError *error;
-        SBJSON *json = [[SBJSON new] autorelease];
-       
-        NSDictionary *parsedvalue = [json objectWithString:response error:&error];
-        list=[[NSMutableArray alloc]init];
-      
-        if (parsedvalue == nil)
-        {
-            
-            //NSLog(@"parsedvalue == nil");
-            
-        }
-        else
-        {
-            
-            NSDictionary* menu = [parsedvalue objectForKey:@"serviceresponse"];
-            NSArray *datas=[menu objectForKey:@"vehicle List"];
-            
-          
-            //     To check whether its having data or not
-//              NSLog(@"datas %lu",(unsigned long)[datas count]);
-            
-            if ([datas count]>0)
-            {
-                
-                for (id anUpdate1 in datas)
-                {
-                    NSDictionary *arrayList1=[(NSDictionary*)anUpdate1 objectForKey:@"serviceresponse"];
-                    
-                    BusNameList *list1=[[BusNameList alloc]init];
-                   list1.vehicle_reg_no=[arrayList1 objectForKey:@"vehicle_reg_no"];
-                    list1.speed =[arrayList1 objectForKey:@"speed"];
-                    list1.device_status =[arrayList1 objectForKey:@"device_status"];
-                    list1.bus_tracking_timestamp =[arrayList1 objectForKey:@"bus_tracking_timestamp"];
-                    list1.address =[arrayList1 objectForKey:@"address"];
-                     list1.driver_name =[arrayList1 objectForKey:@"driver_name"];
-                    [list addObject:list1];
-                }
-               
-            }
-            else
-            {
-                
-            }
-        }
-        
+        //  NSLog(@"observer called");
+     list= delegate.Vehicle_List;
+    [self.tableView reloadData];
+    [HUD hide:YES];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ReloadTable" object:nil];
     }
     else
     {
-     NSLog(@"failure");
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+        {
+            UIStoryboard *welcome1=[UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
+            UIViewController *initialvc=[welcome1 instantiateInitialViewController];
+            delegate.window.rootViewController =initialvc;
+            
+        }
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+        {
+            
+            UIStoryboard *welcome1=[UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+            UIViewController *initialvc=[welcome1 instantiateInitialViewController];
+            delegate.window.rootViewController =initialvc;
+            
+        }
     }
-
 }
--(NSString *)HttpPostEntityFirst1:(NSString*)firstEntity ForValue1:(NSString*)value1 EntitySecond:(NSString*)secondEntity ForValue2:(NSString*)value2
-{
-    
-    
-    NSString *urltemp=[[databaseurl sharedInstance]DBurl];
-    NSString *url1=@"Vehicledetails.php?service=vehiclelist";
-    NSString *url2=[NSString stringWithFormat:@"%@%@",urltemp,url1];
-    NSString *post =[[NSString alloc] initWithFormat:@"%@=%@&%@=%@",firstEntity,value1,secondEntity,value2];
-    NSURL *url = [NSURL URLWithString:url2];
-//    NSLog(@"post %@",post);
-    NSString *data=[du returndbresult:post URL:url];
-//    NSLog(@"datas in wel %@",data);
-    return data;
-}
+//-(void)getData
+//{
+//    
+//    if ([[du submitvalues]isEqualToString:@"Success"])
+//    {
+//       
+//        NSString *orgid=[[NSUserDefaults standardUserDefaults]objectForKey:@"orgid"];
+//  
+//        NSString *response=[self HttpPostEntityFirst1:@"orgid" ForValue1:orgid  EntitySecond:@"authkey" ForValue2:@"rzTFevN099Km39PV"];
+//      
+//        NSError *error;
+//        SBJSON *json = [[SBJSON new] autorelease];
+//       
+//        NSDictionary *parsedvalue = [json objectWithString:response error:&error];
+//        list=[[NSMutableArray alloc]init];
+//      
+//        if (parsedvalue == nil)
+//        {
+//            
+//            //NSLog(@"parsedvalue == nil");
+//            
+//        }
+//        else
+//        {
+//            
+//            NSDictionary* menu = [parsedvalue objectForKey:@"serviceresponse"];
+//            NSArray *datas=[menu objectForKey:@"vehicle List"];
+//            
+//          
+//            //     To check whether its having data or not
+////              NSLog(@"datas %lu",(unsigned long)[datas count]);
+//            
+//            if ([datas count]>0)
+//            {
+//                
+//                for (id anUpdate1 in datas)
+//                {
+//                    NSDictionary *arrayList1=[(NSDictionary*)anUpdate1 objectForKey:@"serviceresponse"];
+//                    
+//                    BusNameList *list1=[[BusNameList alloc]init];
+//                   list1.vehicle_reg_no=[arrayList1 objectForKey:@"vehicle_reg_no"];
+//                    list1.speed =[arrayList1 objectForKey:@"speed"];
+//                    list1.device_status =[arrayList1 objectForKey:@"device_status"];
+//                    list1.bus_tracking_timestamp =[arrayList1 objectForKey:@"bus_tracking_timestamp"];
+//                    list1.address =[arrayList1 objectForKey:@"address"];
+//                     list1.driver_name =[arrayList1 objectForKey:@"driver_name"];
+//                    [list addObject:list1];
+//                }
+//               
+//            }
+//            else
+//            {
+//                
+//            }
+//        }
+//        
+//    }
+//    else
+//    {
+//     NSLog(@"failure");
+//    }
+//
+//}
+//-(NSString *)HttpPostEntityFirst1:(NSString*)firstEntity ForValue1:(NSString*)value1 EntitySecond:(NSString*)secondEntity ForValue2:(NSString*)value2
+//{
+//    
+//    
+//    NSString *urltemp=[[databaseurl sharedInstance]DBurl];
+//    NSString *url1=@"Vehicledetails.php?service=vehiclelist";
+//    NSString *url2=[NSString stringWithFormat:@"%@%@",urltemp,url1];
+//    NSString *post =[[NSString alloc] initWithFormat:@"%@=%@&%@=%@",firstEntity,value1,secondEntity,value2];
+//    NSURL *url = [NSURL URLWithString:url2];
+////    NSLog(@"post %@",post);
+//    NSString *data=[du returndbresult:post URL:url];
+////    NSLog(@"datas in wel %@",data);
+//    return data;
+//}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [list count];
@@ -219,7 +301,16 @@
     cell.current_speed.text=list1.speed;
     cell.current_location.text=list1.address;
     cell.last_update.text=list1.bus_tracking_timestamp;
-    
+    if (([list1.alarm_status isEqualToString:@"0"])||([list1.alarm_status isEqualToString:@"1"]) ) {
+       cell. alert_label_red.hidden=YES;
+    }
+    else if ([list1.alarm_status isEqualToString:@"2"]) {
+       cell.  alert_label_red.hidden=NO;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"PlaySound"
+                                                                object:self
+                                                              userInfo:nil];
+        
+    }
        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
         if ([list1.device_status isEqualToString:@"0"]) {
@@ -268,9 +359,11 @@
 }
 -(void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+      NSLog(@"did select called");
     BusNameList *list1=[list objectAtIndex:indexPath.row];
     [[NSUserDefaults standardUserDefaults]setValue:list1.vehicle_reg_no forKey:@"vehicleregno"];
      [[NSUserDefaults standardUserDefaults]setValue:list1.driver_name forKey:@"driver_name"];
+    [[NSUserDefaults standardUserDefaults]setValue:[NSString stringWithFormat:@"%d",indexPath.row] forKey:@"selected_row"];
     [[NSUserDefaults standardUserDefaults]synchronize];
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
@@ -311,6 +404,7 @@
     
   
     [super dealloc];
+     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ReloadTable" object:nil];
 }
 - (IBAction)about:(id)sender {
     

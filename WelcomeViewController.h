@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface WelcomeViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+#import "MBProgressHUD.h"
+#define  AppDelegate (GPSMobileTrackingAppDelegate *)[[UIApplication sharedApplication] delegate]
+@interface WelcomeViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,MBProgressHUDDelegate>
 {
 IBOutlet UITableView *tableView;
 NSMutableArray *list;
+    MBProgressHUD *HUD;
 }
 - (IBAction)about:(id)sender;
 - (IBAction)contact:(id)sender;
@@ -23,4 +25,5 @@ NSMutableArray *list;
 @property (retain, nonatomic) IBOutlet UIButton *aboutus;
 @property (retain, nonatomic) IBOutlet UIButton *contactus;
 @property(retain,nonatomic)IBOutlet NSLayoutConstraint *tableheightConstraint;
+
 @end

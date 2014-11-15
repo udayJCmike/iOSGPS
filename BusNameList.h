@@ -16,5 +16,5 @@
 @property(nonatomic,retain)NSString *device_status;
 @property(nonatomic,retain)NSString *address;
 @property(nonatomic,retain)NSString *driver_name;
-
+@property(nonatomic,retain)NSString *alarm_status;
 @end

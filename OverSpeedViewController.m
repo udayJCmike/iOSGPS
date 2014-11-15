@@ -383,9 +383,9 @@
     NSDate *date1= [formatter dateFromString:fromtime1];
     NSDate *date2 = [formatter dateFromString:totime1];
     NSComparisonResult result = [date1 compare:date2];
-       NSLog(@"from time %@",date1);
-         NSLog(@"to time %@",date2);
-         NSLog(@"result %ld",result);
+//       NSLog(@"from time %@",date1);
+//         NSLog(@"to time %@",date2);
+//         NSLog(@"result %ld",result);
     if(result == NSOrderedDescending)
     {
         NSLog(@"date1 is later than date2");
