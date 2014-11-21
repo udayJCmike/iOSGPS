@@ -175,8 +175,6 @@
 		84F796FC1A0CE3FD00152B17 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84F796FB1A0CE3FD00152B17 /* beep.mp3 */; };
 		84F796FE1A0CE3FD00152B17 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F796FD1A0CE3FD00152B17 /* AVFoundation.framework */; };
 		84F797001A0CE3FD00152B17 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F796FF1A0CE3FD00152B17 /* CoreAudio.framework */; };
-		84F797021A0CE46300152B17 /* dairymilk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84F797011A0CE46300152B17 /* dairymilk.mp3 */; };
-		84F797041A0CF29B00152B17 /* beep1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 84F797031A0CF29B00152B17 /* beep1.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,6 +203,7 @@
 		0D80949E197791CC00521E39 /* SKPSMTPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPSMTPMessage.h; sourceTree = "<group>"; };
 		0D80949F197791CC00521E39 /* SKPSMTPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPSMTPMessage.m; sourceTree = "<group>"; };
 		0D8094A51977921700521E39 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		840C8FCC1A1F0A5300EA1198 /* beep1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep1.caf; sourceTree = "<group>"; };
 		84188B40198B69B7002D55BA /* clear_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clear_iPad.png; sourceTree = "<group>"; };
 		84188B41198B69B7002D55BA /* logo_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_iPad.png; sourceTree = "<group>"; };
 		84188B42198B69B7002D55BA /* logout_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logout_iPad.png; sourceTree = "<group>"; };
@@ -402,8 +401,6 @@
 		84F796FB1A0CE3FD00152B17 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
 		84F796FD1A0CE3FD00152B17 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		84F796FF1A0CE3FD00152B17 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
-		84F797011A0CE46300152B17 /* dairymilk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = dairymilk.mp3; path = ../../../Downloads/dairymilk.mp3; sourceTree = "<group>"; };
-		84F797031A0CF29B00152B17 /* beep1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = beep1.caf; path = ../../../Downloads/beep1.caf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,11 +470,10 @@
 		845D84911A08987C000BB36B /* Theftalarm */ = {
 			isa = PBXGroup;
 			children = (
+				840C8FCC1A1F0A5300EA1198 /* beep1.caf */,
 				84F796FB1A0CE3FD00152B17 /* beep.mp3 */,
-				84F797011A0CE46300152B17 /* dairymilk.mp3 */,
 				845D848E1A08986F000BB36B /* TheftAlarmViewController.h */,
 				845D848F1A08986F000BB36B /* TheftAlarmViewController.m */,
-				84F797031A0CF29B00152B17 /* beep1.caf */,
 			);
 			name = Theftalarm;
 			sourceTree = "<group>";
@@ -990,7 +986,6 @@
 				84D77B9119829C6A008D9542 /* mygps_logo.png in Resources */,
 				8499653F198A7A6A00D5CB98 /* send.png in Resources */,
 				8494011019934762006F161A /* about-568h@2x.jpg in Resources */,
-				84F797041A0CF29B00152B17 /* beep1.caf in Resources */,
 				84951AC71973D5EE003C603B /* Welcome_iPhone.storyboard in Resources */,
 				848E49D4198CB37200B8BD96 /* Icon-76@2x.png in Resources */,
 				84951AE51973E2A0003C603B /* Vehicletrack_iPhone.storyboard in Resources */,
@@ -1013,7 +1008,6 @@
 				8494011A19934762006F161A /* dashboard@2x~ipad.jpg in Resources */,
 				8492E1291974ECF300AA9291 /* large.button.red.off.png in Resources */,
 				8494013219934762006F161A /* message-568h@2x.jpg in Resources */,
-				84F797021A0CE46300152B17 /* dairymilk.mp3 in Resources */,
 				8494012019934762006F161A /* Default@2x.jpg in Resources */,
 				8492E12C1974ECF300AA9291 /* large.button.red.on@2x.png in Resources */,
 				84951A961973C7C2003C603B /* Main_iPhone.storyboard in Resources */,
