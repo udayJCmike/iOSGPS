@@ -31,20 +31,32 @@
     }
     return self;
 }
-
+- (void) doneButtonSelected{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 - (void)viewDidLoad
 {
-    self.navigationController.navigationBarHidden=NO;
-    self.navigationItem.hidesBackButton=NO;
+    [self.navigationController.navigationBar setTranslucent:NO];
     [super viewDidLoad];
     
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+  // [self.navigationController setNavigationBarHidden:NO animated:YES];
     du=[[databaseurl alloc]init];
-    
-    NSString *filename = [du imagecheck:@"privacy.jpg"];
-    NSLog(@"image name %@",filename);
-    
-    imageview.image = [UIImage imageNamed:filename];
+     self.navigationController.topViewController.title=@"Privacy Policy";
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+    {
+        [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:15.0]} forState:UIControlStateNormal];
+        UIButton *rightBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 70, 40 )];
+        [rightBtn addTarget:self action:@selector(doneButtonSelected) forControlEvents:UIControlEventTouchUpInside];
+        [rightBtn setTitle:@"Done" forState:UIControlStateNormal];
+        
+        rightBtn.frame = CGRectMake(0, 0, 70, 40 );
+        UIBarButtonItem *fixedItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        fixedItem.width = -16;
+        UIBarButtonItem *right=[[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+         [self.navigationItem setRightBarButtonItems:@[fixedItem,right,fixedItem]];
+    }
+
     if(SCREEN_35)
     {
         

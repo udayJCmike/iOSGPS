@@ -61,6 +61,7 @@
 @property (retain, nonatomic) IBOutlet NSLayoutConstraint *state_height;
 @property (retain, nonatomic) IBOutlet NSLayoutConstraint *send_height;
 @property (retain, nonatomic) IBOutlet NSLayoutConstraint *reset_height;
+@property (retain, nonatomic) IBOutlet UIView *greView;
 
 
 

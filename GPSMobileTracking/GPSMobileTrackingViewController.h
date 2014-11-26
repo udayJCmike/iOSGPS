@@ -21,8 +21,11 @@
 @interface GPSMobileTrackingViewController : UIViewController<UITextFieldDelegate,MBProgressHUDDelegate,TTAlertViewDelegate, UIAlertViewDelegate,UINavigationBarDelegate,UINavigationControllerDelegate>
 {
 MBProgressHUD *HUD;
-    
+  
 }
+
+
+@property (strong, nonatomic) IBOutlet UIView *LoginView;
 @property (strong, nonatomic) IBOutlet UIImageView *imageview;
 - (IBAction)login:(id)sender;
 @property (strong, nonatomic) IBOutlet UITextField *username;

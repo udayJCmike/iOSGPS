@@ -47,8 +47,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    alertblink.hidden=NO;
-//     [self displayLabel];
+ self.navigationController.topViewController.title=@"Theft Alarm";
     du=[[databaseurl alloc]init];
     HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
     HUD.mode=MBProgressHUDModeIndeterminate;
@@ -94,9 +93,9 @@
        // [_audioPlayer setNumberOfLoops:3];
     }
  
-    NSString *filename = [du imagecheck:@"message.jpg"];
-    NSLog(@"image name %@",filename);
-    bgimage.image = [UIImage imageNamed:filename];
+//    NSString *filename = [du imagecheck:@"message.jpg"];
+//    NSLog(@"image name %@",filename);
+//    bgimage.image = [UIImage imageNamed:filename];
 }
 
 - (void)didReceiveMemoryWarning

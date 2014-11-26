@@ -105,7 +105,7 @@
 {
     [super viewDidLoad];
     
-    
+     self.navigationController.topViewController.title=@"History Track";
     if(SCREEN_35)
     {
         
@@ -206,12 +206,13 @@
    
     // Do any additional setup after loading the view.
     du=[[databaseurl alloc]init];
-    NSString *filename = [du imagecheck:@"historytrack.jpg"];
-    NSLog(@"image name %@",filename);
+//    NSString *filename = [du imagecheck:@"historytrack.jpg"];
+//    NSLog(@"image name %@",filename);
+//     imageview.image = [UIImage imageNamed:filename];
     
     mapview.delegate=self;
     
-    imageview.image = [UIImage imageNamed:filename];
+   
     
    
 }

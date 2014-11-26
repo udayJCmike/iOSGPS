@@ -8,6 +8,7 @@
 
 #import "GPSMobileTrackingAppDelegate.h"
 #define interval 120
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/25
 @implementation GPSMobileTrackingAppDelegate
 @synthesize login_status;
 @synthesize Vehicle_List;
@@ -15,7 +16,23 @@
 @synthesize GPSViewController;
 @synthesize login_session_status;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+
 {
+    //Navigation bar color
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"Navbarbg.jpg"] forBarMetrics:UIBarMetricsDefault];
+    
+    // Override point for customization after application launch.
+    NSShadow *shadow = [[NSShadow alloc] init];
+    shadow.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];
+    shadow.shadowOffset = CGSizeMake(0, 1);
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                           [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
+                                                           shadow, NSShadowAttributeName,
+                                                           [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:21.0], NSFontAttributeName, nil]];
+    
+    
+
+  [UINavigationBar appearance].barTintColor   = [UIColor whiteColor];
     GPSViewController=[[GPSMobileTrackingViewController alloc]init];
     login_status =@"0";
     Vehicle_List=[[NSMutableArray alloc]init];
@@ -37,13 +54,16 @@
         {
             UIStoryboard *welcome=[UIStoryboard storyboardWithName:@"Welcome_iPhone" bundle:nil];
             UIViewController *initialvc=[welcome instantiateInitialViewController];
-             self.window.rootViewController=initialvc;
+            UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+            [navigationController pushViewController:initialvc animated:YES];
+           
         }
     }
     else
     {
         login_session_status=@"0";
     }
+   
     return YES;
 }
 

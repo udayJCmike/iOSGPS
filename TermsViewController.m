@@ -35,16 +35,16 @@
 
 - (void)viewDidLoad
 {
-    self.navigationController.navigationBarHidden=NO;
-    self.navigationItem.hidesBackButton=NO;
+ //   self.navigationController.navigationBarHidden=NO;
+  //  self.navigationItem.hidesBackButton=NO;
     [super viewDidLoad];
-    
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+     self.navigationController.topViewController.title=@"Terms And Conditions";
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
     du=[[databaseurl alloc]init];
     
-    NSString *filename = [du imagecheck:@"terms.jpg"];
-    NSLog(@"image name %@",filename);
-     imageview.image = [UIImage imageNamed:filename];
+//    NSString *filename = [du imagecheck:@"terms.jpg"];
+//    NSLog(@"image name %@",filename);
+//     imageview.image = [UIImage imageNamed:filename];
     if(SCREEN_35)
     {
         

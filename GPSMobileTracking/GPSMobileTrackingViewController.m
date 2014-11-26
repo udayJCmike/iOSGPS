@@ -43,8 +43,22 @@ int c;
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
-    return YES;
+    
+        NSInteger nextTag = textField.tag + 1;
+        // Try to find next responder
+        UIResponder* nextResponder = [textField.superview viewWithTag:nextTag];
+        if (nextResponder) {
+            // Found next responder, so set it.
+            [nextResponder becomeFirstResponder];
+        } else {
+            // Not found, so remove keyboard.
+            [textField resignFirstResponder];
+            if (nextTag==3) {
+                
+            }
+        }
+        return NO; // We do not want UITextField to insert line-breaks.
+    
 }
 -(void)login:(id)sender
 {
@@ -177,18 +191,16 @@ int c;
                 if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
                 {
                     UIStoryboard *welcome=[UIStoryboard storyboardWithName:@"Welcome_iPad" bundle:nil];
+
                     UIViewController *initialvc=[welcome instantiateInitialViewController];
                     [self.navigationController pushViewController:initialvc animated:YES];
-                    //    initialvc.modalTransitionStyle=UIModalTransitionStyleFlipHorizontal;
-                    //    [self presentModalViewController:initialvc animated:YES];
                 }
                 if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
                 {
                     UIStoryboard *welcome=[UIStoryboard storyboardWithName:@"Welcome_iPhone" bundle:nil];
                     UIViewController *initialvc=[welcome instantiateInitialViewController];
                     [self.navigationController pushViewController:initialvc animated:YES];
-                    //    initialvc.modalTransitionStyle=UIModalTransitionStyleFlipHorizontal;
-                    //    [self presentModalViewController:initialvc animated:YES];
+                   
                 }
                 
                 [HUD hide:YES];
@@ -228,19 +240,47 @@ int c;
     
     return [du returndbresult:post URL:url];
 }
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:YES];
-    self.navigationController.navigationBarHidden=YES;
-    self.navigationItem.hidesBackButton=YES;
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+/*-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self animateTextField:textField up:YES];
 }
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self animateTextField:textField up:NO];
+}
+
+-(void)animateTextField:(UITextField*)textField up:(BOOL)up
+{
+     int movementDistance = -263; // tweak as needed
+     float movementDuration = 0.3f; // tweak as needed
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        movementDistance = -263; // tweak as needed
+       movementDuration = 0.3f; // tweak as needed
+    }
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+    {
+        movementDistance = -216; // tweak as needed
+         movementDuration = 0.3f; // tweak as needed
+    }
+   
+    
+    int movement = (up ? movementDistance : -movementDistance);
+    
+    [UIView beginAnimations: @"animateTextField" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
+}*/
 - (void)viewDidLoad
 {
     username.delegate=self;
     password.delegate=self;
     delegate=AppDelegate;
-    self.navigationController.navigationBarHidden=YES;
-    self.navigationItem.hidesBackButton=YES;
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [super viewDidLoad];
     if(SCREEN_35)
     {
@@ -263,14 +303,20 @@ int c;
         }
     }
     
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
     du=[[databaseurl alloc]init];
+    
+    
+    
+    self.LoginView.layer.cornerRadius=10;
+    self.LoginView.clipsToBounds=YES;
+    self.login.layer.cornerRadius=5;
+    self.login.clipsToBounds=YES;
+    self.reset.layer.cornerRadius=5;
+    self.reset.clipsToBounds=YES;
     
     NSString *filename = [du imagecheck:@"login.jpg"];
     NSLog(@"image name %@",filename);
-    
-
-    
     imageview.image = [UIImage imageNamed:filename];
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
@@ -464,6 +510,7 @@ int c;
     
     return [du returndbresult:post URL:url];
 }
+
 - (void)dealloc {
     
     [super dealloc];

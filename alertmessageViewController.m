@@ -64,7 +64,7 @@
 {
     [super viewDidLoad];
     self.activityIndicator.hidden=YES;
-    
+     self.navigationController.topViewController.title=@"Alert Message";
     if(SCREEN_35)
     {
         
@@ -141,15 +141,10 @@
         
     }
     [segment setSelectedSegmentIndex:2];
-    NSString *filename = [du imagecheck:@"message.jpg"];
-    NSLog(@"image name %@",filename);
-    
-    //    for (int i = 0; i<mobileNumbers.count; i++)
-    //    {
-    //        NSLog(@"The Mobile Number of the Student/Person of Organisation id %@ and in Vehicle number %@ is : %@",orgid,vehicleNo,[mobileNumbers objectAtIndex:i]);
-    //    }
-    
-    imageview.image = [UIImage imageNamed:filename];
+//    NSString *filename = [du imagecheck:@"message.jpg"];
+//    NSLog(@"image name %@",filename);
+//    
+//    imageview.image = [UIImage imageNamed:filename];
     // Do any additional setup after loading the view.
 }
 

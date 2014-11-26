@@ -20,8 +20,8 @@ static databaseurl * appInstance;
 
 -(NSString*)DBurl
 {
-  NSString * link=@"http://208.109.248.89/mobile/gps/gpsios/service/";
-  //  NSString * link=@"http://223.30.194.134:80/gpsios/service/";
+//  NSString * link=@"http://208.109.248.89/mobile/gps/gpsios/service/";
+  NSString * link=@"http://223.30.194.134/gps/gpsios/service/";
   //  NSString * link=@"http://192.168.1.106:8888/gpsios/service/";
     
     return link;

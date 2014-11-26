@@ -40,6 +40,7 @@ int message_count;
 @synthesize state_height;
 @synthesize reset_height;
 @synthesize send_height;
+
 - (void)styleCustomAlertView:(TTAlertView *)alertView
 {
     [alertView.containerView setImage:[[UIImage imageNamed:@"alert.bg.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(11.0f, 13.0f, 14.0f, 13.0f)]];
@@ -65,11 +66,46 @@ int message_count;
     }
     return self;
 }
+- (void) doneButtonSelected{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
+- (void) cancelButtonSelected{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     message_count=0;
+//    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+//    {
+    
+//        UIButton *rightBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 70, 40 )];
+//        [rightBtn addTarget:self action:@selector(doneButtonSelected) forControlEvents:UIControlEventTouchUpInside];
+//        [rightBtn setTitle:@"Send" forState:UIControlStateNormal];
+//        [rightBtn setFont:[UIFont fontWithName:@"Helvetica Neue"size:18.0]];
+//        [rightBtn setBackgroundImage:[UIImage imageNamed:@"Navbarbg.jpg"] forState:UIControlStateNormal];
+//        rightBtn.frame = CGRectMake(0, 0, 70, 40 );
+//        
+//
+//        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonSelected)];
+//        self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+//    }
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        addressTextView.layer.borderWidth = 1.0;
+        //    addressTextView.layer.cornerRadius = 5;
+        addressTextView.clipsToBounds = YES;
+        addressTextView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    }
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+    {
+        addressTextView.layer.borderWidth = 0.5;
+           addressTextView.layer.cornerRadius = 5;
+        addressTextView.clipsToBounds = YES;
+        addressTextView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    }
     if(SCREEN_35)
     {
         
@@ -122,11 +158,11 @@ int message_count;
             
         }
     }
-
+ self.navigationController.topViewController.title=@"Contact Us";
     
-    self.navigationController.navigationBarHidden=NO;
-    self.navigationItem.hidesBackButton=NO;
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
+//    self.navigationController.navigationBarHidden=NO;
+//    self.navigationItem.hidesBackButton=NO;
+//    [self.navigationController setNavigationBarHidden:NO animated:NO];
     AKNumericFormatterMode mode = AKNumericFormatterMixed;
     mobileNumberTextField.numericFormatter = [AKNumericFormatter formatterWithMask:@"(***)***-****" placeholderCharacter:'*'mode:mode];
 
@@ -141,15 +177,18 @@ int message_count;
     stateTextField.delegate = self;
     emailTextField.delegate=self;
     
-    addressTextView.layer.borderWidth = 0.5;
-    addressTextView.layer.cornerRadius = 5;
-    addressTextView.clipsToBounds = YES;
-    addressTextView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+
     
     i = 0;
-    NSString *filename = [du imagecheck:@"contact.jpg"];
-    NSLog(@"image name %@",filename);
-    imageView.image = [UIImage imageNamed:filename];
+    self.sendmessage.layer.cornerRadius=5;
+    self.sendmessage.clipsToBounds=YES;
+    self.resetButton.layer.cornerRadius=5;
+    self.resetButton.clipsToBounds=YES;
+    self.greView.layer.cornerRadius=10;
+    self.greView.clipsToBounds=YES;
+//    NSString *filename = [du imagecheck:@"contact.jpg"];
+//    NSLog(@"image name %@",filename);
+//    imageView.image = [UIImage imageNamed:filename];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
@@ -207,6 +246,7 @@ int message_count;
     [resetButton release];
     [imageView release];
    
+    [_greView release];
     [super dealloc];
 }
 - (IBAction)addContactToDB:(UIButton *)sender
@@ -632,6 +672,7 @@ int message_count;
     addressTextView.text=@"Address";
     cityTextField.text=@"";
     stateTextField.text=@"";
+    [self cancelButtonSelected];
 }
 
 #pragma Sending Mail Automatically in Background
@@ -709,13 +750,15 @@ int message_count;
 -(void)messageSent:(SKPSMTPMessage *)message{
     message_count++;
     if (message_count==2) {
-         [self resetButtonAction:self.resetButton];
+        
         message_count=0;
         [HUD hide:YES];
-        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Message sent." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [self styleCustomAlertView:alertView];
-        [self addButtonsWithBackgroundImagesToAlertView:alertView];
-        [alertView show];
+         [self resetButtonAction:self.resetButton];
+    
+//        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Message sent." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+//        [self styleCustomAlertView:alertView];
+//        [self addButtonsWithBackgroundImagesToAlertView:alertView];
+//        [alertView show];
     }
     NSLog(@"delegate - message sent");
 }

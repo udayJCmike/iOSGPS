@@ -37,17 +37,20 @@
 
 - (void)viewDidLoad
 {
-    self.navigationController.navigationBarHidden=NO;
-    self.navigationItem.hidesBackButton=NO;
+   // self.navigationController.navigationBarHidden=NO;
+   // self.navigationItem.hidesBackButton=NO;
     [super viewDidLoad];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+  //  [self.navigationController setNavigationBarHidden:NO animated:YES];
+     self.navigationController.topViewController.title=@"About Us";
     
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
     du=[[databaseurl alloc]init];
     
-    NSString *filename = [du imagecheck:@"about.jpg"];
-    NSLog(@"image name %@",filename);
-    
-    imageview.image = [UIImage imageNamed:filename];
+//    NSString *filename = [du imagecheck:@"about.jpg"];
+//    NSLog(@"image name %@",filename);
+//    
+//    imageview.image = [UIImage imageNamed:filename];
     
     if(SCREEN_35)
     {

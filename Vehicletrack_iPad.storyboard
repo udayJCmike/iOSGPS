@@ -652,10 +652,10 @@
     <resources>
         <image name="clear.png" width="287" height="50"/>
         <image name="home.png" width="75" height="75"/>
-        <image name="logout.png" width="270" height="66"/>
+        <image name="logout.png" width="24" height="24"/>
         <image name="send.png" width="287" height="50"/>
     </resources>
-    <color key="tintColor" red="1" green="0.61176470589999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" red="0.058823529409999999" green="0.64313725489999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

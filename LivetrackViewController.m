@@ -204,16 +204,7 @@ int i;
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        
-        [self.navigationController setNavigationBarHidden:YES animated:NO];
-    }
-    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-        
-        [self.navigationController setNavigationBarHidden:YES animated:NO];
-        
-    }
+
 }
 - (void)viewDidLoad
 {
@@ -283,16 +274,7 @@ int i;
         
     }
    
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        [self.navigationController setNavigationBarHidden:YES animated:NO];
-        
-    }
-    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-        
-        [self.navigationController setNavigationBarHidden:YES animated:NO];
-        
-    }
+     self.navigationController.topViewController.title=@"Live Track";
     CLLocationCoordinate2D coord = {.latitude =  22.3512639, .longitude =78.9542827};
     MKCoordinateSpan span = {.latitudeDelta =  30, .longitudeDelta =  30};
     //  MKCoordinateRegion region = {coord, span};
@@ -303,12 +285,11 @@ int i;
     [mapview setRegion:region animated:YES];
 
     
-    NSString *filename = [du imagecheck:@"livetrack.jpg"];
-    NSLog(@"image name %@",filename);
+//    NSString *filename = [du imagecheck:@"livetrack.jpg"];
+//    NSLog(@"image name %@",filename);
+//    imageview.image = [UIImage imageNamed:filename];
     
-    mapview.delegate=self;
-    
-    imageview.image = [UIImage imageNamed:filename];
+        mapview.delegate=self;
     if (!timer) {
       //  NSLog(@"timer start");
         timer = [NSTimer scheduledTimerWithTimeInterval:interval

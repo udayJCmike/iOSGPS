@@ -17,138 +17,98 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nne-x9-wSK">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Firstname" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qHx-Ce-Ja0">
+                                <rect key="frame" x="39" y="108" width="241" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Firstname" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qHx-Ce-Ja0">
-                                <rect key="frame" x="39" y="189" width="241" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="241" id="Fvf-UQ-Tti"/>
-                                    <constraint firstAttribute="height" constant="30" id="Pda-Wg-H51"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="xqU-0p-tY2" id="MUg-Xu-bPr"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lastname" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="meZ-eP-WqZ">
-                                <rect key="frame" x="40" y="226" width="241" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lastname" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="meZ-eP-WqZ">
+                                <rect key="frame" x="40" y="145" width="241" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="241" id="Ey1-8q-Vtu"/>
-                                    <constraint firstAttribute="height" constant="30" id="v42-Ca-t28"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="xqU-0p-tY2" id="BQ0-4q-i0o"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rRJ-gH-wcl">
-                                <rect key="frame" x="40" y="262" width="241" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rRJ-gH-wcl">
+                                <rect key="frame" x="40" y="181" width="241" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="241" id="H5F-Sk-4YA"/>
-                                    <constraint firstAttribute="height" constant="30" id="MiS-XU-aQQ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                                 <connections>
                                     <outlet property="delegate" destination="xqU-0p-tY2" id="F43-V8-eD3"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Organization Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T9V-Oe-SrW">
-                                <rect key="frame" x="40" y="297" width="241" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Organization Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T9V-Oe-SrW">
+                                <rect key="frame" x="40" y="216" width="241" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="TE3-fp-iuw"/>
-                                    <constraint firstAttribute="width" constant="241" id="k7h-GS-yu8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="xqU-0p-tY2" id="OVO-Va-Zgq"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mobile Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s4s-4q-WUB">
-                                <rect key="frame" x="40" y="333" width="241" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mobile Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s4s-4q-WUB">
+                                <rect key="frame" x="40" y="252" width="241" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="2ql-jk-wEF"/>
-                                    <constraint firstAttribute="width" constant="241" id="qfp-Dq-Vf3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad"/>
                                 <connections>
                                     <outlet property="delegate" destination="xqU-0p-tY2" id="XgO-PR-BGL"/>
                                 </connections>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Address" translatesAutoresizingMaskIntoConstraints="NO" id="cd3-Ed-xdA">
-                                <rect key="frame" x="40" y="373" width="241" height="63"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Address" translatesAutoresizingMaskIntoConstraints="NO" id="cd3-Ed-xdA">
+                                <rect key="frame" x="40" y="292" width="241" height="63"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="63" id="13G-Hg-gIj"/>
-                                    <constraint firstAttribute="width" constant="241" id="n8m-oR-o9j"/>
-                                </constraints>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="xqU-0p-tY2" id="ylQ-Oz-SF7"/>
                                 </connections>
                             </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Im8-QZ-mCM">
-                                <rect key="frame" x="40" y="443" width="241" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Im8-QZ-mCM">
+                                <rect key="frame" x="40" y="362" width="241" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="241" id="aXD-2Z-j8T"/>
-                                    <constraint firstAttribute="height" constant="30" id="fCJ-PT-Y3R"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="xqU-0p-tY2" id="bJB-Oy-B04"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YDD-In-heE">
-                                <rect key="frame" x="40" y="477" width="241" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YDD-In-heE">
+                                <rect key="frame" x="40" y="396" width="241" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="dnI-vY-cLX"/>
-                                    <constraint firstAttribute="width" constant="241" id="mQQ-Aj-DAm"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="xqU-0p-tY2" id="n1F-Qi-i3g"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVS-Fj-8A2">
-                                <rect key="frame" x="46" y="520" width="107" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVS-Fj-8A2">
+                                <rect key="frame" x="45" y="453" width="231" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="107" id="NhM-uD-KWe"/>
-                                    <constraint firstAttribute="height" constant="20" id="d7S-mQ-BAK"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="send.png">
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Send Message" backgroundImage="Navbarbg.jpg">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="addContactToDB:" destination="xqU-0p-tY2" eventType="touchUpInside" id="VrY-kc-ERw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ck-XQ-AOz">
-                                <rect key="frame" x="166" y="520" width="107" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ck-XQ-AOz">
+                                <rect key="frame" x="45" y="499" width="231" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="107" id="Txz-xp-mWw"/>
-                                    <constraint firstAttribute="height" constant="20" id="Zaa-56-Pj3"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="clear.png">
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Clear Message" backgroundImage="Navbarbg.jpg">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -157,55 +117,18 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="T9V-Oe-SrW" firstAttribute="top" secondItem="S1W-Eh-mLI" secondAttribute="top" constant="297" id="04o-Pf-ZLE"/>
-                            <constraint firstItem="Nne-x9-wSK" firstAttribute="top" secondItem="S1W-Eh-mLI" secondAttribute="top" constant="64" id="2SK-nD-Wnl"/>
-                            <constraint firstItem="cd3-Ed-xdA" firstAttribute="leading" secondItem="S1W-Eh-mLI" secondAttribute="leading" constant="40" id="2wZ-Yp-RZr"/>
-                            <constraint firstItem="8Ck-XQ-AOz" firstAttribute="top" secondItem="S1W-Eh-mLI" secondAttribute="top" constant="520" id="39t-ws-vBV"/>
-                            <constraint firstItem="qHx-Ce-Ja0" firstAttribute="top" secondItem="S1W-Eh-mLI" secondAttribute="top" constant="189" id="4Jj-wG-0Pb"/>
-                            <constraint firstItem="tVS-Fj-8A2" firstAttribute="top" secondItem="S1W-Eh-mLI" secondAttribute="top" constant="520" id="4vR-BE-Vdf"/>
-                            <constraint firstItem="YDD-In-heE" firstAttribute="leading" secondItem="S1W-Eh-mLI" secondAttribute="leading" constant="40" id="620-J0-NVl"/>
-                            <constraint firstItem="qHx-Ce-Ja0" firstAttribute="leading" secondItem="S1W-Eh-mLI" secondAttribute="leading" constant="39" id="CUd-jD-8EK"/>
-                            <constraint firstItem="Im8-QZ-mCM" firstAttribute="top" secondItem="S1W-Eh-mLI" secondAttribute="top" constant="443" id="DLy-ud-qZ8"/>
-                            <constraint firstItem="YDD-In-heE" firstAttribute="top" secondItem="S1W-Eh-mLI" secondAttribute="top" constant="477" id="KKK-S0-2Jq"/>
-                            <constraint firstAttribute="trailing" secondItem="Nne-x9-wSK" secondAttribute="trailing" id="LF9-wz-ghM"/>
-                            <constraint firstItem="T9V-Oe-SrW" firstAttribute="leading" secondItem="S1W-Eh-mLI" secondAttribute="leading" constant="40" id="VOb-AQ-Ad3"/>
-                            <constraint firstAttribute="bottom" secondItem="Nne-x9-wSK" secondAttribute="bottom" id="WXx-O9-nSQ"/>
-                            <constraint firstItem="meZ-eP-WqZ" firstAttribute="top" secondItem="S1W-Eh-mLI" secondAttribute="top" constant="226" id="Xdb-DL-45k"/>
-                            <constraint firstItem="cd3-Ed-xdA" firstAttribute="top" secondItem="S1W-Eh-mLI" secondAttribute="top" constant="373" id="Xex-8t-Iee"/>
-                            <constraint firstItem="s4s-4q-WUB" firstAttribute="top" secondItem="S1W-Eh-mLI" secondAttribute="top" constant="333" id="Zos-NN-N53"/>
-                            <constraint firstItem="rRJ-gH-wcl" firstAttribute="leading" secondItem="S1W-Eh-mLI" secondAttribute="leading" constant="40" id="a20-2V-HmF"/>
-                            <constraint firstItem="s4s-4q-WUB" firstAttribute="leading" secondItem="S1W-Eh-mLI" secondAttribute="leading" constant="40" id="awc-fc-q7h"/>
-                            <constraint firstItem="tVS-Fj-8A2" firstAttribute="leading" secondItem="S1W-Eh-mLI" secondAttribute="leading" constant="46" id="bGe-mh-vZT"/>
-                            <constraint firstItem="Nne-x9-wSK" firstAttribute="leading" secondItem="S1W-Eh-mLI" secondAttribute="leading" id="h6T-7g-cVB"/>
-                            <constraint firstItem="8Ck-XQ-AOz" firstAttribute="leading" secondItem="S1W-Eh-mLI" secondAttribute="leading" constant="166" id="m9B-7k-DeI"/>
-                            <constraint firstItem="meZ-eP-WqZ" firstAttribute="leading" secondItem="S1W-Eh-mLI" secondAttribute="leading" constant="40" id="ohX-wH-v46"/>
-                            <constraint firstItem="Im8-QZ-mCM" firstAttribute="leading" secondItem="S1W-Eh-mLI" secondAttribute="leading" constant="40" id="rMc-Ly-PIA"/>
-                            <constraint firstItem="rRJ-gH-wcl" firstAttribute="top" secondItem="S1W-Eh-mLI" secondAttribute="top" constant="262" id="xLr-cl-80r"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="addressTextView" destination="cd3-Ed-xdA" id="iQ6-SJ-ECG"/>
                         <outlet property="cityTextField" destination="Im8-QZ-mCM" id="ioS-7l-rdB"/>
-                        <outlet property="city_height" destination="fCJ-PT-Y3R" id="ipQ-tc-b0G"/>
                         <outlet property="emailTextField" destination="rRJ-gH-wcl" id="YqO-vB-EMF"/>
-                        <outlet property="email_height" destination="MiS-XU-aQQ" id="gjf-vv-Nei"/>
                         <outlet property="firstNameTextField" destination="qHx-Ce-Ja0" id="s4a-Y2-ODY"/>
-                        <outlet property="fname_height" destination="Pda-Wg-H51" id="oPq-2h-qXd"/>
-                        <outlet property="imageView" destination="Nne-x9-wSK" id="Yjw-lk-oUt"/>
                         <outlet property="lastNameTextField" destination="meZ-eP-WqZ" id="4w5-rg-cL5"/>
-                        <outlet property="lname_height" destination="v42-Ca-t28" id="ebL-kV-W4o"/>
                         <outlet property="mobileNumberTextField" destination="s4s-4q-WUB" id="c1c-gE-k2a"/>
-                        <outlet property="mobile_height" destination="2ql-jk-wEF" id="2ac-5D-dTB"/>
-                        <outlet property="oname_height" destination="TE3-fp-iuw" id="s7j-7h-95l"/>
                         <outlet property="organizationNameTextField" destination="T9V-Oe-SrW" id="YAe-pv-9Cp"/>
                         <outlet property="resetButton" destination="8Ck-XQ-AOz" id="bSD-Aa-mYv"/>
-                        <outlet property="reset_height" destination="Zaa-56-Pj3" id="KOZ-z2-sJ8"/>
-                        <outlet property="send_height" destination="d7S-mQ-BAK" id="Lc2-Fb-ZOy"/>
                         <outlet property="sendmessage" destination="tVS-Fj-8A2" id="xM8-JA-5t7"/>
                         <outlet property="stateTextField" destination="YDD-In-heE" id="87F-aq-hgA"/>
-                        <outlet property="state_height" destination="dnI-vY-cLX" id="AGR-Kd-diH"/>
-                        <outlet property="text_height" destination="13G-Hg-gIj" id="bmy-fZ-q9g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qnj-cR-I6I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -214,10 +137,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="clear.png" width="287" height="50"/>
-        <image name="send.png" width="287" height="50"/>
+        <image name="Navbarbg.jpg" width="768" height="63"/>
     </resources>
-    <color key="tintColor" red="1" green="0.61176470589999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" red="0.058823529409999999" green="0.64313725489999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -7,11 +7,8 @@
 //
 
 #import "WelcomeViewController.h"
-#import "BusNameList.h"
-#import "BuslistTableViewCell.h"
-#import "databaseurl.h"
-#import "SBJSON.h"
-#import "GPSMobileTrackingAppDelegate.h"
+
+
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define SCREEN_35 (SCREEN_HEIGHT == 480)
 #define SCREEN_40 (SCREEN_HEIGHT == 568)
@@ -21,6 +18,7 @@
     GPSMobileTrackingAppDelegate *delegate;
     
 }
+
 @end
 
 @implementation WelcomeViewController
@@ -39,6 +37,54 @@
         
     }
     return self;
+}
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+
+{
+    
+        if(item.tag == 0)
+        {
+            [self profile:nil];
+            
+        }
+        if(item.tag == 1)
+        {
+            [self aboutUS:nil];
+            
+        }
+        if(item.tag == 2)
+        {
+            [self contactUS:nil];
+        }
+        if(item.tag == 3)
+        {
+            [self settings:nil];
+        }
+        if(item.tag == 4)
+        {
+            [self logout:nil];
+        }
+    
+}
+- (IBAction)settings:(id)sender
+{
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        UIStoryboard *welcome1=[UIStoryboard storyboardWithName:@"Settings_iPad" bundle:nil];
+        UIViewController *initialvc=[welcome1 instantiateInitialViewController];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:initialvc];
+        navController.modalPresentationStyle = UIModalPresentationFormSheet;
+        [self presentViewController:navController animated:YES completion:nil];
+        
+    }
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+    {
+        
+        UIStoryboard *welcome1=[UIStoryboard storyboardWithName:@"Settings_iPhone" bundle:nil];
+        UIViewController *initialvc=[welcome1 instantiateInitialViewController];
+        [self.navigationController pushViewController:initialvc animated:YES];
+        
+    }
 }
 - (IBAction)logout:(id)sender {
     
@@ -91,26 +137,36 @@ delegate.login_status=@"0";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
    
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        self.navigationController.navigationBarHidden=YES;
-        self.navigationItem.hidesBackButton=YES;
-        [self.navigationController setNavigationBarHidden:YES animated:NO];
-        
-    }
-    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-        
-        
-        self.navigationController.navigationBarHidden=YES;
-        self.navigationItem.hidesBackButton=YES;
-        [self.navigationController setNavigationBarHidden:YES animated:NO];
-    }
+//    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+//    {
+//        self.navigationController.navigationBarHidden=YES;
+//        self.navigationItem.hidesBackButton=YES;
+//        [self.navigationController setNavigationBarHidden:YES animated:NO];
+//        
+//    }
+//    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+//        
+//        
+//        self.navigationController.navigationBarHidden=YES;
+//        self.navigationItem.hidesBackButton=YES;
+//        [self.navigationController setNavigationBarHidden:YES animated:NO];
+//    }
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
    list= delegate.Vehicle_List;
     [self.tableView reloadData];
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+    
+
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    UIButton* back = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+    UIBarButtonItem *button11 = [[UIBarButtonItem alloc] initWithCustomView:back];
+    self.navigationItem.leftBarButtonItem = button11;
     if(SCREEN_35)
     {
         
@@ -138,31 +194,23 @@ delegate.login_status=@"0";
             }
         }
     }
-
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        self.navigationController.navigationBarHidden=YES;
-        self.navigationItem.hidesBackButton=YES;
-        [self.navigationController setNavigationBarHidden:YES animated:NO];
-        
-    }
-    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-        
-        
-        self.navigationController.navigationBarHidden=YES;
-        self.navigationItem.hidesBackButton=YES;
-        [self.navigationController setNavigationBarHidden:YES animated:NO];
-    }
+    
+ self.navigationController.topViewController.title=@"Dashboard";
 
     welcome.text=[NSString stringWithFormat:@"Welcome %@ !",[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
    
     delegate=AppDelegate;
     du=[[databaseurl alloc]init];
-    NSString *filename = [du imagecheck:@"dashboard.jpg"];
-    imageview.image = [UIImage imageNamed:filename];
-   // NSLog(@"%@ vehicle list",delegate.Vehicle_List);
-  list= delegate.Vehicle_List;
-   // [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(ReloadTable_Method) name:@"ReloadTable"object:nil];
+//    NSString *filename = [du imagecheck:@"dashboard.jpg"];
+//    imageview.image = [UIImage imageNamed:filename];
+     list= delegate.Vehicle_List;
+    UIImage *image = [UIImage imageNamed:@"Menu_Icon.png"];
+    UIButton* requestButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 45, 35)];
+    [requestButton setImage:image forState:UIControlStateNormal];
+    [requestButton addTarget:self action:@selector(MenuButton) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *button1 = [[UIBarButtonItem alloc] initWithCustomView:requestButton];
+    self.navigationItem.rightBarButtonItem = button1;
+    
     if ([delegate.login_session_status isEqualToString:@"1"])
     {
         HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
@@ -175,6 +223,10 @@ delegate.login_status=@"0";
         
     }
     // Do any additional setup after loading the view.
+}
+-(void)MenuButton
+{
+    
 }
 -(void)ReloadTable_Method
 {
@@ -206,83 +258,6 @@ delegate.login_status=@"0";
         }
     }
 }
-//-(void)getData
-//{
-//    
-//    if ([[du submitvalues]isEqualToString:@"Success"])
-//    {
-//       
-//        NSString *orgid=[[NSUserDefaults standardUserDefaults]objectForKey:@"orgid"];
-//  
-//        NSString *response=[self HttpPostEntityFirst1:@"orgid" ForValue1:orgid  EntitySecond:@"authkey" ForValue2:@"rzTFevN099Km39PV"];
-//      
-//        NSError *error;
-//        SBJSON *json = [[SBJSON new] autorelease];
-//       
-//        NSDictionary *parsedvalue = [json objectWithString:response error:&error];
-//        list=[[NSMutableArray alloc]init];
-//      
-//        if (parsedvalue == nil)
-//        {
-//            
-//            //NSLog(@"parsedvalue == nil");
-//            
-//        }
-//        else
-//        {
-//            
-//            NSDictionary* menu = [parsedvalue objectForKey:@"serviceresponse"];
-//            NSArray *datas=[menu objectForKey:@"vehicle List"];
-//            
-//          
-//            //     To check whether its having data or not
-////              NSLog(@"datas %lu",(unsigned long)[datas count]);
-//            
-//            if ([datas count]>0)
-//            {
-//                
-//                for (id anUpdate1 in datas)
-//                {
-//                    NSDictionary *arrayList1=[(NSDictionary*)anUpdate1 objectForKey:@"serviceresponse"];
-//                    
-//                    BusNameList *list1=[[BusNameList alloc]init];
-//                   list1.vehicle_reg_no=[arrayList1 objectForKey:@"vehicle_reg_no"];
-//                    list1.speed =[arrayList1 objectForKey:@"speed"];
-//                    list1.device_status =[arrayList1 objectForKey:@"device_status"];
-//                    list1.bus_tracking_timestamp =[arrayList1 objectForKey:@"bus_tracking_timestamp"];
-//                    list1.address =[arrayList1 objectForKey:@"address"];
-//                     list1.driver_name =[arrayList1 objectForKey:@"driver_name"];
-//                    [list addObject:list1];
-//                }
-//               
-//            }
-//            else
-//            {
-//                
-//            }
-//        }
-//        
-//    }
-//    else
-//    {
-//     NSLog(@"failure");
-//    }
-//
-//}
-//-(NSString *)HttpPostEntityFirst1:(NSString*)firstEntity ForValue1:(NSString*)value1 EntitySecond:(NSString*)secondEntity ForValue2:(NSString*)value2
-//{
-//    
-//    
-//    NSString *urltemp=[[databaseurl sharedInstance]DBurl];
-//    NSString *url1=@"Vehicledetails.php?service=vehiclelist";
-//    NSString *url2=[NSString stringWithFormat:@"%@%@",urltemp,url1];
-//    NSString *post =[[NSString alloc] initWithFormat:@"%@=%@&%@=%@",firstEntity,value1,secondEntity,value2];
-//    NSURL *url = [NSURL URLWithString:url2];
-////    NSLog(@"post %@",post);
-//    NSString *data=[du returndbresult:post URL:url];
-////    NSLog(@"datas in wel %@",data);
-//    return data;
-//}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [list count];
@@ -311,44 +286,28 @@ delegate.login_status=@"0";
                                                               userInfo:nil];
         
     }
-       if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
+    
         if ([list1.device_status isEqualToString:@"0"]) {
-            cell.device_status.image=[UIImage imageNamed:@"indicator_red.png"];
+            cell.device_status.image=[UIImage imageNamed:@"Circle_Red.png"];
         }
         else if ([list1.device_status isEqualToString:@"1"]) {
-            cell.device_status.image=[UIImage imageNamed:@"indicator_green.png"];
+            cell.device_status.image=[UIImage imageNamed:@"Circle_Green.png"];
         }
-        else if (([list1.device_status isEqualToString:@"2"])|| ([list1.device_status isEqualToString:@"3"]))
+        else if ([list1.device_status isEqualToString:@"2"])
         {
-            cell.device_status.image=[UIImage imageNamed:@"indicator_yellow.png"];
+            cell.device_status.image=[UIImage imageNamed:@"Circle_Yellow.png"];
         }
-        else
+        else if ([list1.device_status isEqualToString:@"3"])
         {
-            cell.device_status.image=[UIImage imageNamed:@"indicator_red.png"];
+            cell.device_status.image=[UIImage imageNamed:@"Circle_Orange.png"];
             
         }
-
-    }
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
-    {
-        if ([list1.device_status isEqualToString:@"0"]) {
-            cell.device_status.image=[UIImage imageNamed:@"red_light.png"];
-        }
-        else if ([list1.device_status isEqualToString:@"1"]) {
-            cell.device_status.image=[UIImage imageNamed:@"green_light.png"];
-        }
-        else if (([list1.device_status isEqualToString:@"2"])|| ([list1.device_status isEqualToString:@"3"]))
-        {
-            cell.device_status.image=[UIImage imageNamed:@"yellow_light.png"];
-        }
         else
-        {
-            cell.device_status.image=[UIImage imageNamed:@"red_light.png"];
-            
-        }
+            cell.device_status.image=[UIImage imageNamed:@"Circle_Red.png"];
 
-    }
+    
+
+   
     
     
     return cell;
@@ -359,7 +318,7 @@ delegate.login_status=@"0";
 }
 -(void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-      NSLog(@"did select called");
+    
     BusNameList *list1=[list objectAtIndex:indexPath.row];
     [[NSUserDefaults standardUserDefaults]setValue:list1.vehicle_reg_no forKey:@"vehicleregno"];
      [[NSUserDefaults standardUserDefaults]setValue:list1.driver_name forKey:@"driver_name"];
@@ -389,16 +348,7 @@ delegate.login_status=@"0";
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (void)dealloc {
     
@@ -406,15 +356,15 @@ delegate.login_status=@"0";
     [super dealloc];
      [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ReloadTable" object:nil];
 }
-- (IBAction)about:(id)sender {
+- (IBAction)aboutUS:(id)sender {
     
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
         UIStoryboard *welcome1=[UIStoryboard storyboardWithName:@"Aboutus_iPad" bundle:nil];
         UIViewController *initialvc=[welcome1 instantiateInitialViewController];
-        [self.navigationController pushViewController:initialvc animated:YES];
-        //    initialvc.modalTransitionStyle=UIModalTransitionStyleFlipHorizontal;
-        //    [self presentModalViewController:initialvc animated:YES];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:initialvc];
+        navController.modalPresentationStyle = UIModalPresentationFormSheet;
+        [self presentViewController:navController animated:YES completion:nil];
     }
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
     {
@@ -427,15 +377,17 @@ delegate.login_status=@"0";
 
 }
 
-- (IBAction)contact:(id)sender {
+- (IBAction)contactUS:(id)sender {
     
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
         UIStoryboard *welcome1=[UIStoryboard storyboardWithName:@"Contactus_iPad" bundle:nil];
         UIViewController *initialvc=[welcome1 instantiateInitialViewController];
-        [self.navigationController pushViewController:initialvc animated:YES];
-        //    initialvc.modalTransitionStyle=UIModalTransitionStyleFlipHorizontal;
-        //    [self presentModalViewController:initialvc animated:YES];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:initialvc];
+        navController.modalPresentationStyle = UIModalPresentationFormSheet;
+        [self presentViewController:navController animated:YES completion:nil];
+
+     
     }
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
     {
@@ -447,4 +399,28 @@ delegate.login_status=@"0";
     }
 
 }
+- (IBAction)profile:(id)sender {
+    
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        
+        UIStoryboard *welcome1=[UIStoryboard storyboardWithName:@"Profile_iPad" bundle:nil];
+        UIViewController *initialvc=[welcome1 instantiateInitialViewController];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:initialvc];
+        navController.modalPresentationStyle = UIModalPresentationFormSheet;
+        [self presentViewController:navController animated:YES completion:nil];
+       
+    }
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+    {
+        UIStoryboard *welcome1=[UIStoryboard storyboardWithName:@"Profile_iPhone" bundle:nil];
+        UIViewController *initialvc=[welcome1 instantiateInitialViewController];
+        [self.navigationController pushViewController:initialvc animated:YES];
+       
+    }
+    
+}
+
+
 @end
+

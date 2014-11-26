@@ -44,12 +44,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+     self.navigationController.topViewController.title=@"OverSpeed";
     du=[[databaseurl alloc]init];
-//    HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
-//    HUD.mode=MBProgressHUDModeIndeterminate;
-//    HUD.delegate = self;
-//    HUD.labelText = @"Please wait";
-//    [HUD show:YES];
+
     speedcount.text=@"";
     NSString *vehicleregno=[[NSUserDefaults standardUserDefaults]objectForKey:@"vehicleregno"];
     NSString *driver_name=[[NSUserDefaults standardUserDefaults]objectForKey:@"driver_name"];
@@ -72,14 +69,10 @@
         
     }
     [segment setSelectedSegmentIndex:3];
-    NSString *filename = [du imagecheck:@"message.jpg"];
-    NSLog(@"image name %@",filename);
-    bgimage.image = [UIImage imageNamed:filename];
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-//    NSString *strDate =[dateFormatter stringFromDate:[NSDate date]];
-//    fromdate.text=strDate;
-//    todate.text=strDate;
+//    NSString *filename = [du imagecheck:@"message.jpg"];
+//    NSLog(@"image name %@",filename);
+//    bgimage.image = [UIImage imageNamed:filename];
+
 
 }
 -(void)CountOverSpeed
