@@ -43,12 +43,10 @@ int i;
 @synthesize mapview;
 @synthesize stepper;
 @synthesize maptype;
-@synthesize imageview;
-@synthesize segment;
-@synthesize welcome;
+
+
 @synthesize timer;
-@synthesize home;
-@synthesize logout;
+
 - (IBAction)maptype:(id)sender {
     if (maptype.selectedSegmentIndex==0) {
         mapview.mapType=MKMapTypeStandard;
@@ -102,77 +100,6 @@ int i;
     }
     return self;
 }
-- (IBAction)segmentaction:(id)sender {
-    if ([sender selectedSegmentIndex]==0)
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-           // [self performSegueWithIdentifier:@"livetolive" sender:self];
-           
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-            //  [self performSegueWithIdentifier:@"livetolive" sender:self];
-            
-        }
-    }
-    if ([sender selectedSegmentIndex]==1)
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-              [self performSegueWithIdentifier:@"livetohis" sender:self];
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-              [self performSegueWithIdentifier:@"livetohis" sender:self];
-            
-        }
-        
-    }
-    if (([sender selectedSegmentIndex]==2)&&([[segment titleForSegmentAtIndex:segment.selectedSegmentIndex]isEqualToString:@"Alert Message"]))
-    
-    {
-        
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            
-              [self performSegueWithIdentifier:@"livetoalert" sender:self];
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-             [self performSegueWithIdentifier:@"livetoalert" sender:self];
-            
-        }
-        
-    }
-    if (([sender selectedSegmentIndex]==2)&&([[segment titleForSegmentAtIndex:segment.selectedSegmentIndex]isEqualToString:@"Theft Alarm"]))
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            
-            [self performSegueWithIdentifier:@"livetotheft" sender:self];
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-            [self performSegueWithIdentifier:@"livetotheft" sender:self];
-            
-        }
-        
-    }
-    if ([sender selectedSegmentIndex]==3)
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            [self performSegueWithIdentifier:@"livetospeed" sender:self];
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-            [self performSegueWithIdentifier:@"livetospeed" sender:self];
-            
-        }
-        
-    }
-}
 
 - (void)styleCustomAlertView:(TTAlertView *)alertView
 {
@@ -202,33 +129,170 @@ int i;
     
     return [du returndbresult:post URL:url];
 }
+
+- (void)toolButtonTapped:(id)sender {
+    UIBarButtonItem *button = (UIBarButtonItem *)sender;
+    
+    NSMutableArray *items = [NSMutableArray array];
+    [items addObject:[YLMenuItem menuItemWithTitle:@"Live Track"
+                                              icon:[UIImage imageNamed:@"home.png"]
+                                       pressedIcon:[UIImage imageNamed:@"home.png"]
+                                          selector:@selector(LiveTapped)]];
+    [items addObject:[YLMenuItem menuItemWithTitle:@"History Track"
+                                              icon:[UIImage imageNamed:@"home.png"]
+                                       pressedIcon:[UIImage imageNamed:@"home.png"]
+                                          selector:@selector(HistoryTapped)]];
+	[items addObject:[YLMenuItem menuItemWithTitle:@"Theft Alarm"
+                                              icon:[UIImage imageNamed:@"home.png"]
+                                       pressedIcon:[UIImage imageNamed:@"home.png"]
+                                          selector:@selector(TheftTapped)]];
+    [items addObject:[YLMenuItem menuItemWithTitle:@"Over Speed"
+                                              icon:[UIImage imageNamed:@"home.png"]
+                                       pressedIcon:[UIImage imageNamed:@"home.png"]
+                                          selector:@selector(OverspeedTapped)]];
+    [items addObject:[YLMenuItem menuItemWithTitle:@"Alert Message"
+                                              icon:[UIImage imageNamed:@"home.png"]
+                                       pressedIcon:[UIImage imageNamed:@"home.png"]
+                                          selector:@selector(alertTapped)]];
+	YLPopoverMenu* menu = [YLPopoverMenu popoverMenuWithItems:items target:self];
+    [menu presentPopoverFromBarButtonItem:button animated:YES];
+}
+
+- (void)LiveTapped {
+    
+        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+        {
+            // [self performSegueWithIdentifier:@"livetolive" sender:self];
+            
+        }
+        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+            
+            //  [self performSegueWithIdentifier:@"livetolive" sender:self];
+            
+        }
+    
+    
+    
+
+}
+
+- (void)HistoryTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        [self performSegueWithIdentifier:@"livetohis" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        [self performSegueWithIdentifier:@"livetohis" sender:self];
+        
+    }
+}
+
+- (void)TheftTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        
+        [self performSegueWithIdentifier:@"livetotheft" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        [self performSegueWithIdentifier:@"livetotheft" sender:self];
+        
+    }
+}
+- (void)OverspeedTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        [self performSegueWithIdentifier:@"livetospeed" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        [self performSegueWithIdentifier:@"livetospeed" sender:self];
+        
+    }
+}
+- (void)alertTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        
+        [self performSegueWithIdentifier:@"livetoalert" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        [self performSegueWithIdentifier:@"livetoalert" sender:self];
+        
+    }
+}
+- (void)infoViewTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        
+       
+        UIViewController *initialvc=[self.storyboard instantiateViewControllerWithIdentifier:@"InformationPageForLive"];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:initialvc];
+        navController.modalPresentationStyle = UIModalPresentationFormSheet;
+        [self presentViewController:navController animated:YES completion:nil];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        
+        
+        
+    }
+}
+
+
+-(void)UpdateCountDown:(NSTimer*)theTimer
+{
+    if (TotalSec>1) {
+        TotalSec--;
+    }
+    else if(TotalSec==1)
+    {
+        TotalSec=30;
+    }
+  //  NSLog(@"Tick time %d and timeinterval %@ startDate %@",TotalSec, [theTimer fireDate],[CountDownTimer userInfo]);
+   
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",TotalSec] forKey:@"tickcount"];
+      [[NSUserDefaults standardUserDefaults] setObject:[theTimer fireDate] forKey:@"ticktime"];
+    [[NSUserDefaults standardUserDefaults] setObject:[[theTimer userInfo] objectForKey:@"StartDate"] forKey:@"StartDate"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    NSLog(@"Disappear called");
+   
+        if ([timer isValid]) {
+            //        NSLog(@"timer stopped in will disappeae");
+            [timer invalidate];
+        }
+    if ([CountDownTimer isValid]) {
+        //        NSLog(@"timer stopped in will disappeae");
+        TotalSec=0;
+        [CountDownTimer invalidate];
+    }
+    
+    
+}
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-
+    NSLog(@"appear called");
+    TotalSec=30;
+    
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     i=1;
-  
+  self.navigationController.topViewController.title=@"Live Track";
+    self.navigationController.navigationItem.title=@"Live Track";
+
     if(SCREEN_35)
     {
         
         for (NSLayoutConstraint *con in self.view.constraints)
         {
-            if (con.firstItem == welcome && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant = 102;
-            }
-            if (con.firstItem == home && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant = 74;
-            }
-            if (con.firstItem == logout && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant = 106;
-            }
-            if (con.firstItem == segment && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant =135;
-            }
-            if (con.firstItem == stepper && con.firstAttribute == NSLayoutAttributeTop) {
+          if (con.firstItem == stepper && con.firstAttribute == NSLayoutAttributeTop) {
                 con.constant = 435;
                 
             }
@@ -242,37 +306,56 @@ int i;
             }
         }
     }
+   //Right BAr Button Items...
+    UIBarButtonItem *b = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Icon.png"]
+                                                          style:UIBarButtonItemStylePlain
+                                                         target:self
+                                                         action:@selector(toolButtonTapped:)];
+    
+   // self.navigationItem.rightBarButtonItem = b;
+    
+    UIButton* homeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 45, 35)];
+    [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
+    [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *homebutton = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
+    
+    
+    UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedItem1.width = 10;
+   
+       [self.navigationItem setRightBarButtonItems:@[fixedItem1,homebutton,fixedItem1,b]];
+    
+    //Left Bar Button Items..
+    UIButton* infoButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 45, 45)];
+    [infoButton setImage:[UIImage imageNamed:@"Info_Icon.png"] forState:UIControlStateNormal];
+    [infoButton addTarget:self action:@selector(infoViewTapped) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *button1 = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+   
+
+    UIBarButtonItem *fixedItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedItem.width = 10;
+    
+    [self.navigationItem setLeftBarButtonItems:@[fixedItem,button1,fixedItem]];
+    
+    
+
     
     NSString *role=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
    
     if ([role isEqualToString:@"ROLE_ADMIN"]) {
-        [segment removeSegmentAtIndex:3 animated:YES];
+       
     }
     else  if (([role isEqualToString:@"ROLE_PCLIENT"]) ||   ([role isEqualToString:@"ROLE_FCLIENT"]))
     {
         //[segment removeSegmentAtIndex:2 animated:YES];
-        [segment setTitle:@"Theft Alarm" forSegmentAtIndex:2];
+       
     }
      locationlist=[[NSMutableArray alloc]init];
-    welcome.text=[NSString stringWithFormat:@"Welcome %@ !",[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
+   
     mapview.delegate=self;
     du=[[databaseurl alloc]init];
  
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIFont fontWithName:@"Times New Roman" size:20], UITextAttributeFont,nil];
-        [segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
-        
-        
-    }
-    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-        
-        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIFont fontWithName:@"Times New Roman" size:12], UITextAttributeFont,nil];
-        [segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
-        
-    }
+   
    
      self.navigationController.topViewController.title=@"Live Track";
     CLLocationCoordinate2D coord = {.latitude =  22.3512639, .longitude =78.9542827};
@@ -284,12 +367,8 @@ int i;
     
     [mapview setRegion:region animated:YES];
 
-    
-//    NSString *filename = [du imagecheck:@"livetrack.jpg"];
-//    NSLog(@"image name %@",filename);
-//    imageview.image = [UIImage imageNamed:filename];
-    
         mapview.delegate=self;
+       [self performSelector:@selector(getData) withObject:self afterDelay:0.1f];
     if (!timer) {
       //  NSLog(@"timer start");
         timer = [NSTimer scheduledTimerWithTimeInterval:interval
@@ -298,7 +377,18 @@ int i;
                                                userInfo:nil
                                                 repeats:YES];
     }
-    [self performSelector:@selector(getData) withObject:self afterDelay:0.1f];
+    if (!CountDownTimer) {
+        //  NSLog(@"timer start");
+        NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
+        [dict setValue:[NSDate date] forKey:@"StartDate"];
+        CountDownTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                 target:self
+                                                        selector:@selector(UpdateCountDown:)
+                                               userInfo:dict
+                                                repeats:YES];
+        TotalSec=30;
+    }
+ 
   
     
 }
@@ -691,13 +781,7 @@ int i;
 
 
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    if ([timer isValid]) {
-//        NSLog(@"timer stopped in will disappeae");
-        [timer invalidate];
-    }
-}
+
 - (void)dealloc {
     
     

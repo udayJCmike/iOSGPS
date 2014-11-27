@@ -45,6 +45,7 @@
 {
     [super viewDidLoad];
      self.navigationController.topViewController.title=@"OverSpeed";
+    
     du=[[databaseurl alloc]init];
 
     speedcount.text=@"";

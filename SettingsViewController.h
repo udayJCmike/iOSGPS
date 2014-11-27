@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NIDropDown.h"
 
-@interface SettingsViewController : UIViewController
-
+@interface SettingsViewController : UIViewController<NIDropDownDelegate>
+{
+    NIDropDown *dropDown;
+}
+- (IBAction)selectClicked:(id)sender;
+-(void)rel;
+@property (retain, nonatomic) IBOutlet UIButton *savetone;
+@property (retain, nonatomic) IBOutlet UIButton *selectedtone;
 @end

@@ -134,9 +134,15 @@ delegate.login_status=@"0";
 
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+  //  NSLog(@"Disappear called");
+    
+
+}
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-   
+  //  NSLog(@"appear called");
 //    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
 //    {
 //        self.navigationController.navigationBarHidden=YES;
@@ -201,16 +207,8 @@ delegate.login_status=@"0";
    
     delegate=AppDelegate;
     du=[[databaseurl alloc]init];
-//    NSString *filename = [du imagecheck:@"dashboard.jpg"];
-//    imageview.image = [UIImage imageNamed:filename];
      list= delegate.Vehicle_List;
-    UIImage *image = [UIImage imageNamed:@"Menu_Icon.png"];
-    UIButton* requestButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 45, 35)];
-    [requestButton setImage:image forState:UIControlStateNormal];
-    [requestButton addTarget:self action:@selector(MenuButton) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *button1 = [[UIBarButtonItem alloc] initWithCustomView:requestButton];
-    self.navigationItem.rightBarButtonItem = button1;
-    
+        
     if ([delegate.login_session_status isEqualToString:@"1"])
     {
         HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
@@ -224,10 +222,7 @@ delegate.login_status=@"0";
     }
     // Do any additional setup after loading the view.
 }
--(void)MenuButton
-{
-    
-}
+
 -(void)ReloadTable_Method
 {
     //  NSLog(@"observer called");
@@ -326,11 +321,13 @@ delegate.login_status=@"0";
     [[NSUserDefaults standardUserDefaults]synchronize];
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
+        
         UIStoryboard *welcome1=[UIStoryboard storyboardWithName:@"Vehicletrack_iPad" bundle:nil];
         UIViewController *initialvc=[welcome1 instantiateInitialViewController];
         [self.navigationController pushViewController:initialvc animated:YES];
-        //    initialvc.modalTransitionStyle=UIModalTransitionStyleFlipHorizontal;
-        //    [self presentModalViewController:initialvc animated:YES];
+//        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:initialvc];
+//        [navController.navigationBar setBarTintColor:[UIColor whiteColor]];
+//        [self presentViewController:navController animated:YES completion:nil];
     }
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
     {

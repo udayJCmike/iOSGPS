@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-     self.navigationController.topViewController.title=@"Settings";
+    self.navigationController.topViewController.title=@"Settings";
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
         [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:15.0]} forState:UIControlStateNormal];
@@ -38,27 +38,60 @@
         
         self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     }
+   
+    self.savetone.layer.cornerRadius=5;
+    self.savetone.clipsToBounds=YES;
+    self.selectedtone.layer.cornerRadius=5;
+    self.selectedtone.clipsToBounds=YES;
 }
-    - (void) doneButtonSelected{
-        
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
+- (void) doneButtonSelected{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (IBAction)selectClicked:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    NSArray * arr = [[NSArray alloc] init];
+    arr = [NSArray arrayWithObjects:@"Default",@"Alarm 1", @"Alarm 2",@"Alarm 3", @"Alarm 4",nil];
+    NSArray * arrImage = [[NSArray alloc] init];
+   
+    if(dropDown == nil)
+    {
+        CGFloat f = 200;
+        dropDown = [[NIDropDown alloc]showDropDown:sender :&f :arr :arrImage :@"down"];
+        dropDown.delegate = self;
+    }
+    else
+    {
+        [dropDown hideDropDown:sender];
+        [self rel];
+    }
+  
 }
-*/
 
+- (void) niDropDownDelegateMethod: (NSString *) sender
+{
+   NSLog(@"selected type %@",sender);
+ 
+  
+    [self rel];
+}
+
+-(void)rel{
+  
+    dropDown = nil;
+}
+- (void)viewDidUnload {
+   
+    self.selectedtone = nil;
+    
+    [super viewDidUnload];
+    
+}
 @end

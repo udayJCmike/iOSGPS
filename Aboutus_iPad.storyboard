@@ -809,7 +809,7 @@ Tel: +91-9841122989
     </scenes>
     <resources>
         <image name="icon.png" width="142" height="60"/>
-        <image name="logo_iPad.png" width="155" height="50"/>
+        <image name="logo_iPad.png" width="768" height="63"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

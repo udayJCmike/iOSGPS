@@ -19,6 +19,16 @@
 		84188B4E198B8465002D55BA /* month.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B4B198B8465002D55BA /* month.png */; };
 		84188B4F198B8465002D55BA /* year.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B4C198B8465002D55BA /* year.png */; };
 		84188B51198B9B42002D55BA /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B50198B9B42002D55BA /* home.png */; };
+		8427C4CE1A26E2E40021B912 /* NIDropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 8427C4CD1A26E2E40021B912 /* NIDropDown.m */; };
+		8427C4E91A270A4F0021B912 /* YLMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8427C4E61A270A4F0021B912 /* YLMenuItem.m */; };
+		8427C4EA1A270A4F0021B912 /* YLPopoverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 8427C4E81A270A4F0021B912 /* YLPopoverMenu.m */; };
+		8427C4ED1A270DCC0021B912 /* button_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8427C4EB1A270DCC0021B912 /* button_bg.png */; };
+		8427C4EE1A270DCC0021B912 /* button_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8427C4EC1A270DCC0021B912 /* button_bg@2x.png */; };
+		8427C4F01A270F1B0021B912 /* Menu_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8427C4EF1A270F1B0021B912 /* Menu_Icon@2x.png */; };
+		8427C4F31A2726F00021B912 /* LiveTrackInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8427C4F21A2726F00021B912 /* LiveTrackInformationViewController.m */; };
+		8427C4F71A27378F0021B912 /* CircularTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8427C4F61A27378F0021B912 /* CircularTimer.m */; };
+		8427C51F1A2768B30021B912 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 8427C51E1A2768B30021B912 /* close.png */; };
+		8427C5221A276D750021B912 /* InformationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8427C5211A276D750021B912 /* InformationVC.m */; };
 		842BA4B61A0A432900CDE021 /* OverSpeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842BA4B51A0A432800CDE021 /* OverSpeedViewController.m */; };
 		842BA4BA1A0A5DB100CDE021 /* DateTimePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 842BA4B91A0A5DB100CDE021 /* DateTimePicker.m */; };
 		845D84901A08986F000BB36B /* TheftAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D848F1A08986F000BB36B /* TheftAlarmViewController.m */; };
@@ -180,6 +190,22 @@
 		84188B4B198B8465002D55BA /* month.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = month.png; sourceTree = "<group>"; };
 		84188B4C198B8465002D55BA /* year.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = year.png; sourceTree = "<group>"; };
 		84188B50198B9B42002D55BA /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		8427C4CC1A26E2E40021B912 /* NIDropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIDropDown.h; sourceTree = "<group>"; };
+		8427C4CD1A26E2E40021B912 /* NIDropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIDropDown.m; sourceTree = "<group>"; };
+		8427C4E51A270A4F0021B912 /* YLMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLMenuItem.h; sourceTree = "<group>"; };
+		8427C4E61A270A4F0021B912 /* YLMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLMenuItem.m; sourceTree = "<group>"; };
+		8427C4E71A270A4F0021B912 /* YLPopoverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLPopoverMenu.h; sourceTree = "<group>"; };
+		8427C4E81A270A4F0021B912 /* YLPopoverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLPopoverMenu.m; sourceTree = "<group>"; };
+		8427C4EB1A270DCC0021B912 /* button_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_bg.png; sourceTree = "<group>"; };
+		8427C4EC1A270DCC0021B912 /* button_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_bg@2x.png"; sourceTree = "<group>"; };
+		8427C4EF1A270F1B0021B912 /* Menu_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu_Icon@2x.png"; sourceTree = "<group>"; };
+		8427C4F11A2726F00021B912 /* LiveTrackInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveTrackInformationViewController.h; sourceTree = "<group>"; };
+		8427C4F21A2726F00021B912 /* LiveTrackInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveTrackInformationViewController.m; sourceTree = "<group>"; };
+		8427C4F51A27378F0021B912 /* CircularTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularTimer.h; sourceTree = "<group>"; };
+		8427C4F61A27378F0021B912 /* CircularTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircularTimer.m; sourceTree = "<group>"; };
+		8427C51E1A2768B30021B912 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		8427C5201A276D750021B912 /* InformationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationVC.h; sourceTree = "<group>"; };
+		8427C5211A276D750021B912 /* InformationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationVC.m; sourceTree = "<group>"; };
 		842BA4B41A0A432800CDE021 /* OverSpeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverSpeedViewController.h; sourceTree = "<group>"; };
 		842BA4B51A0A432800CDE021 /* OverSpeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverSpeedViewController.m; sourceTree = "<group>"; };
 		842BA4B81A0A5DB100CDE021 /* DateTimePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTimePicker.h; sourceTree = "<group>"; };
@@ -398,6 +424,37 @@
 			path = SMTPLibrary;
 			sourceTree = "<group>";
 		};
+		8427C4CB1A26E2CC0021B912 /* DropDownButtonForToneSetting */ = {
+			isa = PBXGroup;
+			children = (
+				8427C4CC1A26E2E40021B912 /* NIDropDown.h */,
+				8427C4CD1A26E2E40021B912 /* NIDropDown.m */,
+			);
+			name = DropDownButtonForToneSetting;
+			sourceTree = "<group>";
+		};
+		8427C4CF1A26FBC40021B912 /* MenuDropDown */ = {
+			isa = PBXGroup;
+			children = (
+				8427C4EB1A270DCC0021B912 /* button_bg.png */,
+				8427C4EC1A270DCC0021B912 /* button_bg@2x.png */,
+				8427C4E51A270A4F0021B912 /* YLMenuItem.h */,
+				8427C4E61A270A4F0021B912 /* YLMenuItem.m */,
+				8427C4E71A270A4F0021B912 /* YLPopoverMenu.h */,
+				8427C4E81A270A4F0021B912 /* YLPopoverMenu.m */,
+			);
+			name = MenuDropDown;
+			sourceTree = "<group>";
+		};
+		8427C4F41A2737820021B912 /* CircularTimer */ = {
+			isa = PBXGroup;
+			children = (
+				8427C4F51A27378F0021B912 /* CircularTimer.h */,
+				8427C4F61A27378F0021B912 /* CircularTimer.m */,
+			);
+			name = CircularTimer;
+			sourceTree = "<group>";
+		};
 		842BA4B31A0A42FC00CDE021 /* Over Speed */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,9 +521,13 @@
 		84951A761973C7C2003C603B = {
 			isa = PBXGroup;
 			children = (
+				8427C5201A276D750021B912 /* InformationVC.h */,
+				8427C5211A276D750021B912 /* InformationVC.m */,
+				8427C4F41A2737820021B912 /* CircularTimer */,
+				8427C4CF1A26FBC40021B912 /* MenuDropDown */,
+				8427C4CB1A26E2CC0021B912 /* DropDownButtonForToneSetting */,
 				84E743851A25B754007C9639 /* Icon Images */,
-				84C44ECB1A24B7830091B4B8 /* Settings */,
-				84C44EB31A249CA30091B4B8 /* Profile */,
+				84951ABC1973C887003C603B /* images */,
 				84C44EA21A2482300091B4B8 /* MockupImages */,
 				84C44EA01A2469E10091B4B8 /* beep1.caf */,
 				842BA4B71A0A5D9500CDE021 /* DatePickerDoneButton */,
@@ -476,10 +537,12 @@
 				84968B3119766D2B00DD80E5 /* Custom date picker */,
 				8492E10D1974EC9800AA9291 /* Alertview */,
 				84951AFC1973FAAA003C603B /* NetworkChecking */,
+				84C44ECB1A24B7830091B4B8 /* Settings */,
+				84C44EB31A249CA30091B4B8 /* Profile */,
 				84951AE31973E270003C603B /* Vehicle Track */,
 				84951ADB1973E1E1003C603B /* About Us */,
 				84951AD31973E0F8003C603B /* Contact Us */,
-				84951ABC1973C887003C603B /* images */,
+				84951AC51973D5D1003C603B /* Welcome Page */,
 				84951A881973C7C2003C603B /* GPSMobileTracking */,
 				84951AAA1973C7C2003C603B /* GPSMobileTrackingTests */,
 				84951A811973C7C2003C603B /* Frameworks */,
@@ -515,7 +578,6 @@
 		84951A881973C7C2003C603B /* GPSMobileTracking */ = {
 			isa = PBXGroup;
 			children = (
-				84951AC51973D5D1003C603B /* Welcome Page */,
 				84951A911973C7C2003C603B /* GPSMobileTrackingAppDelegate.h */,
 				84951A921973C7C2003C603B /* GPSMobileTrackingAppDelegate.m */,
 				84951A941973C7C2003C603B /* Main_iPhone.storyboard */,
@@ -581,7 +643,6 @@
 				84951AC61973D5EE003C603B /* Welcome_iPhone.storyboard */,
 			);
 			name = "Welcome Page";
-			path = ..;
 			sourceTree = "<group>";
 		};
 		84951AD31973E0F8003C603B /* Contact Us */ = {
@@ -634,6 +695,8 @@
 			children = (
 				84951AE81973E2FA003C603B /* LivetrackViewController.h */,
 				84951AE91973E2FA003C603B /* LivetrackViewController.m */,
+				8427C4F11A2726F00021B912 /* LiveTrackInformationViewController.h */,
+				8427C4F21A2726F00021B912 /* LiveTrackInformationViewController.m */,
 			);
 			name = LiveTrack;
 			sourceTree = "<group>";
@@ -723,10 +786,12 @@
 		84C44EA21A2482300091B4B8 /* MockupImages */ = {
 			isa = PBXGroup;
 			children = (
+				8427C51E1A2768B30021B912 /* close.png */,
 				84E743AE1A261472007C9639 /* back_Icon.png */,
 				84E743AF1A261472007C9639 /* Home_Icon.png */,
 				84E743B01A261472007C9639 /* Info_Icon.png */,
 				84E743B11A261472007C9639 /* Menu_Icon.png */,
+				8427C4EF1A270F1B0021B912 /* Menu_Icon@2x.png */,
 				84E743B21A261472007C9639 /* Search_Icon.png */,
 				84E743A61A2611D2007C9639 /* Circle_Green.png */,
 				84E743A71A2611D2007C9639 /* Circle_Orange.png */,
@@ -888,8 +953,11 @@
 			files = (
 				84E743771A259482007C9639 /* spalsh_320_480.png in Resources */,
 				84C44ED21A24B7C20091B4B8 /* Settings_iPhone.storyboard in Resources */,
+				8427C4F01A270F1B0021B912 /* Menu_Icon@2x.png in Resources */,
 				84951A991973C7C2003C603B /* Main_iPad.storyboard in Resources */,
+				8427C4EE1A270DCC0021B912 /* button_bg@2x.png in Resources */,
 				84C44EB01A2498490091B4B8 /* multiple25.png in Resources */,
+				8427C51F1A2768B30021B912 /* close.png in Resources */,
 				84E7439E1A25B772007C9639 /* icon144.png in Resources */,
 				84E7437F1A259576007C9639 /* login@2x~ipad.jpg in Resources */,
 				8494015519934C04006F161A /* red_pin.png in Resources */,
@@ -950,6 +1018,7 @@
 				84E743B41A261472007C9639 /* Home_Icon.png in Resources */,
 				8492E1261974ECF300AA9291 /* large.button.grey.off@2x.png in Resources */,
 				8492E1241974ECF300AA9291 /* large.button.green.on@2x.png in Resources */,
+				8427C4ED1A270DCC0021B912 /* button_bg.png in Resources */,
 				84C44EB71A249CD40091B4B8 /* Profile_iPad.storyboard in Resources */,
 				84E7439B1A25B772007C9639 /* icon100.png in Resources */,
 				8492E1271974ECF300AA9291 /* large.button.grey.on.png in Resources */,
@@ -993,9 +1062,12 @@
 				84951B181973FB14003C603B /* SBJSON.m in Sources */,
 				84C44EBA1A249CED0091B4B8 /* ProfileViewController.m in Sources */,
 				0D8094A4197791CC00521E39 /* SKPSMTPMessage.m in Sources */,
+				8427C4F71A27378F0021B912 /* CircularTimer.m in Sources */,
 				84968B3619766D4400DD80E5 /* CustomDatePicker.m in Sources */,
 				8499685619795DC800A53BEF /* UITextField+AKNumericFormatter.m in Sources */,
+				8427C4E91A270A4F0021B912 /* YLMenuItem.m in Sources */,
 				84E743A51A260209007C9639 /* ProfileContentTableViewCell.m in Sources */,
+				8427C5221A276D750021B912 /* InformationVC.m in Sources */,
 				84951A931973C7C2003C603B /* GPSMobileTrackingAppDelegate.m in Sources */,
 				8499685519795DC800A53BEF /* NSString+AKNumericFormatter.m in Sources */,
 				8499685419795DC800A53BEF /* AKNumericFormatter.m in Sources */,
@@ -1012,10 +1084,12 @@
 				84951B191973FB14003C603B /* SBJsonBase.m in Sources */,
 				84951ADE1973E203003C603B /* AboutusViewController.m in Sources */,
 				84951A8F1973C7C2003C603B /* main.m in Sources */,
+				8427C4CE1A26E2E40021B912 /* NIDropDown.m in Sources */,
 				84951ADA1973E16A003C603B /* ContactusViewController.m in Sources */,
 				8498BE7A197569CC00B810F0 /* Vehiclelocationlist.m in Sources */,
 				84951B151973FB14003C603B /* NSObject+SBJSON.m in Sources */,
 				84951B1A1973FB14003C603B /* SBJsonParser.m in Sources */,
+				8427C4EA1A270A4F0021B912 /* YLPopoverMenu.m in Sources */,
 				84951AF21973E351003C603B /* alertmessageViewController.m in Sources */,
 				84951AD01973D78E003C603B /* BusNameList.m in Sources */,
 				84951AEA1973E2FA003C603B /* LivetrackViewController.m in Sources */,
@@ -1024,6 +1098,7 @@
 				84951B161973FB14003C603B /* NSString+SBJSON.m in Sources */,
 				0D8094A1197791CC00521E39 /* HSK_CFUtilities.m in Sources */,
 				84E743A21A25DB2E007C9639 /* AboutPageViewController.m in Sources */,
+				8427C4F31A2726F00021B912 /* LiveTrackInformationViewController.m in Sources */,
 				0027DC65197551FB00A84C66 /* TermsViewController.m in Sources */,
 				84C44ECE1A24B7950091B4B8 /* SettingsViewController.m in Sources */,
 				0027DC62197551E500A84C66 /* PrivacyPolicyViewController.m in Sources */,

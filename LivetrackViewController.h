@@ -10,21 +10,22 @@
 #import <MapKit/MapKit.h>
 #import "Pin.h"
 #import "CalloutView.h"
+#import "YLPopoverMenu.h"
+#import "YLMenuItem.h"
+
 @class CSWebDetailsViewController;
-@interface LivetrackViewController : UIViewController<MKMapViewDelegate,MKAnnotation,MKOverlay,CLLocationManagerDelegate>
+@interface LivetrackViewController : UIViewController<MKMapViewDelegate,MKAnnotation,MKOverlay,CLLocationManagerDelegate,YLPopoverMenuDelegate>
 {
     NSMutableArray *locationlist;
     NSTimer *timer;
-    
+    NSTimer *CountDownTimer;
+    int TotalSec;
 }
 @property(nonatomic,retain)NSTimer *timer;
-@property (retain, nonatomic) IBOutlet UIImageView *imageview;
+
 @property (retain, nonatomic) IBOutlet MKMapView *mapview;
-@property (retain, nonatomic) IBOutlet UILabel *welcome;
-@property (retain, nonatomic) IBOutlet UISegmentedControl *segment;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *maptype;
 @property (retain, nonatomic) IBOutlet UIStepper *stepper;
-@property (retain, nonatomic) IBOutlet UIButton *home;
-@property (retain, nonatomic) IBOutlet UIButton *logout;
+
 @property(retain,nonatomic)IBOutlet NSLayoutConstraint *mapheightConstraint;
 @end

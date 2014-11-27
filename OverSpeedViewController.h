@@ -11,6 +11,7 @@
 #import "TTAlertView.h"
 #import "MBProgressHUD.h"
 #import "WelcomeViewController.h"
+
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define SCREEN_35 (SCREEN_HEIGHT == 480)
 #define SCREEN_40 (SCREEN_HEIGHT == 568)
