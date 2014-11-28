@@ -26,13 +26,6 @@
 @implementation TheftAlarmViewController
 @synthesize onoff;
 @synthesize alertblink;
-@synthesize switchres;
-@synthesize alarmswitch;
-@synthesize bgimage;
-@synthesize welcome;
-@synthesize home;
-@synthesize logout;
-@synthesize segment;
 @synthesize timer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -43,11 +36,197 @@
     }
     return self;
 }
+#pragma mark - customSwitch delegate
+-(void)customSwitchSetStatus:(CustomSwitchStatus)status
+{
+    switch (status) {
+        case CustomSwitchStatusOn:
+        {
+            NSLog(@"on");
+            [onoff setSelectedSegmentIndex:0];
+            HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
+            HUD.mode=MBProgressHUDModeIndeterminate;
+            HUD.delegate = self;
+            HUD.labelText = @"Please wait";
+            [HUD show:YES];
+            [self performSelector:@selector(insertAction) withObject:self afterDelay:0.1f];
+        }
+            break;
+        case CustomSwitchStatusOff:
+        {
+            NSLog(@"off");
+            [onoff setSelectedSegmentIndex:1];
+            HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
+            HUD.mode=MBProgressHUDModeIndeterminate;
+            HUD.delegate = self;
+            HUD.labelText = @"Please wait";
+            [HUD show:YES];
+            [self performSelector:@selector(updateAction) withObject:self afterDelay:0.1f];
+        }
+            break;
+        default:
+            break;
+    }
+}
+#pragma mark - YLMenuItemActions
+- (void)toolButtonTapped:(id)sender {
+    UIBarButtonItem *button = (UIBarButtonItem *)sender;
+    
+    NSMutableArray *items = [NSMutableArray array];
+    [items addObject:[YLMenuItem menuItemWithTitle:@"Live Track"
+                                              icon:[UIImage imageNamed:@"liveicon.png"]
+                                       pressedIcon:[UIImage imageNamed:@"liveicon.png"]
+                                          selector:@selector(LiveTapped)]];
+    [items addObject:[YLMenuItem menuItemWithTitle:@"History Track"
+                                              icon:[UIImage imageNamed:@"historyicon.png"]
+                                       pressedIcon:[UIImage imageNamed:@"historyicon.png"]
+                                          selector:@selector(HistoryTapped)]];
+	
+    NSString *role=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
+    
+	
+    if ([role isEqualToString:@"ROLE_ADMIN"])
+    {
+        
+        [items addObject:[YLMenuItem menuItemWithTitle:@"Alert Message"
+                                                  icon:[UIImage imageNamed:@"home.png"]
+                                           pressedIcon:[UIImage imageNamed:@"home.png"]
+                                              selector:@selector(alertTapped)]];
+        
+    }
+    else  if (([role isEqualToString:@"ROLE_PCLIENT"]) ||   ([role isEqualToString:@"ROLE_FCLIENT"]))
+    {
+        [items addObject:[YLMenuItem menuItemWithTitle:@"Theft Alarm"
+                                                  icon:[UIImage imageNamed:@"alarmicon.png"]
+                                           pressedIcon:[UIImage imageNamed:@"alarmicon.png"]
+                                              selector:@selector(TheftTapped)]];
+        [items addObject:[YLMenuItem menuItemWithTitle:@"Over Speed"
+                                                  icon:[UIImage imageNamed:@"overspeedicon.png"]
+                                           pressedIcon:[UIImage imageNamed:@"overspeedicon.png"]
+                                              selector:@selector(OverspeedTapped)]];
+        
+    }
+    YLPopoverMenu* menu = [YLPopoverMenu popoverMenuWithItems:items target:self];
+    [menu presentPopoverFromBarButtonItem:button animated:YES];
+}
+- (void)LiveTapped {
+    
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        [self performSegueWithIdentifier:@"thefttolive" sender:self];
+        
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        [self performSegueWithIdentifier:@"thefttolive" sender:self];
+        
+    }
+    
+    
+    
+    
+}
 
+- (void)HistoryTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        [self performSegueWithIdentifier:@"thefttohis" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        [self performSegueWithIdentifier:@"thefttohis" sender:self];
+        
+    }
+}
+
+- (void)TheftTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        
+        ///  [self performSegueWithIdentifier:@"histoalert" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        //  [self performSegueWithIdentifier:@"histoalert" sender:self];
+        
+    }
+}
+- (void)OverspeedTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        [self performSegueWithIdentifier:@"thefttospeed" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        [self performSegueWithIdentifier:@"thefttospeed" sender:self];
+        
+    }
+}
+- (void)alertTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        
+       // [self performSegueWithIdentifier:@"livetoalert" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        //[self performSegueWithIdentifier:@"livetoalert" sender:self];
+        
+    }
+}
+#pragma mark - DidLoad
 - (void)viewDidLoad
 {
     [super viewDidLoad];
  self.navigationController.topViewController.title=@"Theft Alarm";
+    _theft_Custom.arrange = CustomSwitchArrangeONLeftOFFRight;
+    _theft_Custom.onImage = [UIImage imageNamed:@"switchOne_on.png"];
+    _theft_Custom.offImage = [UIImage imageNamed:@"switchOne_off.png"];
+    //_theft_Custom.status1 = CustomSwitchStatusOff;
+    
+    
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    UIButton* back = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+    UIBarButtonItem *button11 = [[UIBarButtonItem alloc] initWithCustomView:back];
+    self.navigationItem.leftBarButtonItem = button11;
+  
+    UIBarButtonItem *b= [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Icon.png"]
+                                                         style:UIBarButtonItemStylePlain
+                                                        target:self
+                                                        action:@selector(toolButtonTapped:)];
+  
+    //Right BAr Button Items...
+  
+    
+    UIButton* homeButton;
+    
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        homeButton= [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20,20)];
+        [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
+        [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *homebutton = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
+        
+        
+        UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        fixedItem1.width = 10;
+        
+        [self.navigationItem setRightBarButtonItems:@[fixedItem1,homebutton,fixedItem1,b]];
+    }
+    else if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        homeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25,25)];
+        [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
+        [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *homebutton = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
+        
+        
+        UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        fixedItem1.width = 20;
+        
+        [self.navigationItem setRightBarButtonItems:@[fixedItem1,homebutton,fixedItem1,b]];
+    }
+
+
     du=[[databaseurl alloc]init];
     HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
     HUD.mode=MBProgressHUDModeIndeterminate;
@@ -55,26 +234,14 @@
     HUD.labelText = @"Please wait";
     [HUD show:YES];
     [self performSelector:@selector(statusAction) withObject:self afterDelay:0.1f];
-    welcome.text=[NSString stringWithFormat:@"Welcome %@ !",[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
+    
+    self.greyView.clipsToBounds=YES;
+    self.greyView.layer.cornerRadius=10;
   
     //     [alarmswitch setTintColor:[UIColor colorWithRed:255 green:156 blue:0 alpha:0.1f]];
    
 
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIFont fontWithName:@"Times New Roman" size:20], UITextAttributeFont,nil];
-        [segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
-        
-    }
-    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-        
-        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIFont fontWithName:@"Times New Roman" size:12], UITextAttributeFont,nil];
-        [segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
-        
-    }
-    [segment setSelectedSegmentIndex:2];
+    
     [onoff setSelectedSegmentIndex:1];
     
     delegate=AppDelegate;
@@ -103,7 +270,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+#pragma mark - CustomAlertView
 - (void)styleCustomAlertView:(TTAlertView *)alertView
 {
     [alertView.containerView setImage:[[UIImage imageNamed:@"alert.bg.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(11.0f, 13.0f, 14.0f, 13.0f)]];
@@ -121,75 +288,8 @@
     
 }
 
-- (IBAction)segmentaction:(id)sender {
-    if ([sender selectedSegmentIndex]==0)
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            [self performSegueWithIdentifier:@"thefttolive" sender:self];
-            
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-            [self performSegueWithIdentifier:@"thefttolive" sender:self];
-            
-        }
-    }
-    if ([sender selectedSegmentIndex]==1)
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            [self performSegueWithIdentifier:@"thefttohis" sender:self];
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-            [self performSegueWithIdentifier:@"thefttohis" sender:self];
-            
-        }
-        
-    }
-    if ([sender selectedSegmentIndex]==2)
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            
-           ///  [self performSegueWithIdentifier:@"histoalert" sender:self];
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-            //  [self performSegueWithIdentifier:@"histoalert" sender:self];
-            
-        }
-        
-    }
-    if ([sender selectedSegmentIndex]==3)
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            [self performSegueWithIdentifier:@"thefttospeed" sender:self];
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-            [self performSegueWithIdentifier:@"thefttospeed" sender:self];
-            
-        }
-        
-    }
 
-}
-- (IBAction)logout:(id)sender {
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-        
-    }
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
-    {
-        
-        [self.navigationController popToRootViewControllerAnimated:YES];
-        
-    }
-}
+#pragma mark - Home
 - (IBAction)home:(id)sender {
     for (id controller in [self.navigationController viewControllers])
     {
@@ -200,6 +300,7 @@
         }
     }
 }
+
 - (IBAction)of_off:(id)sender {
     HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
     HUD.mode=MBProgressHUDModeIndeterminate;
@@ -215,39 +316,8 @@
     }
 }
 
-- (IBAction)switchaction:(id)sender {
-  
-//    [HUD hide:YES];
-//    @try
-//    {
-//        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(insertAction) object:self];
-//        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateAction) object:self];
-//    }
-//    @catch (NSException *exception)
-//    {
-//        NSLog(@"exception in switch");
-//    }
-//   
-    
-    HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
-    HUD.mode=MBProgressHUDModeIndeterminate;
-    HUD.delegate = self;
-    HUD.labelText = @"Please wait";
-    [HUD show:YES];
-    if (alarmswitch.on) {
-        switchres.text=@"On";
-        NSLog(@"switch on action");
-          [self performSelector:@selector(insertAction) withObject:self afterDelay:0.1f];
-    }
-    else if (!alarmswitch.on)
-    {
-        NSLog(@"switch off action");
-        switchres.text=@"Off";
-          [self performSelector:@selector(updateAction) withObject:self afterDelay:0.1f];
-    }
-    
 
-}
+#pragma mark - InsertStatus
 -(void)insertAction
 {
      du=[[databaseurl alloc]init];
@@ -289,8 +359,7 @@
             else
             {
                 [HUD hide:YES];
-                switchres.text=@"Off";
-                [alarmswitch setOn:NO animated:YES];
+                 _theft_Custom.status1 = CustomSwitchStatusOff;
                 [onoff setSelectedSegmentIndex:1];
                
                
@@ -305,6 +374,7 @@
      [HUD hide:YES];
  
 }
+#pragma mark - UpdateStatus
 -(void)updateAction
 {
     du=[[databaseurl alloc]init];
@@ -351,8 +421,7 @@
             }
             else
             {
-                switchres.text=@"On";
-                [alarmswitch setOn:YES animated:YES];
+                 _theft_Custom.status1 = CustomSwitchStatusOn;
                   [onoff setSelectedSegmentIndex:0];
                 if (!timer) {
                     NSLog(@"timer start");
@@ -367,6 +436,7 @@
         }
     }
 }
+#pragma mark - GetStatusAction
 -(void)statusAction
 {
     
@@ -400,8 +470,7 @@
                 NSString *status=[menu objectForKey:@"status"];
 //                NSLog(@"%@ status recevied ",status);
                 if ([status isEqualToString:@"1"]) {
-                    switchres.text=@"On";
-                    [alarmswitch setOn:YES animated:YES];
+                     _theft_Custom.status1 = CustomSwitchStatusOn;
                       [onoff setSelectedSegmentIndex:0];
                     if (!timer) {
                         NSLog(@"timer start");
@@ -411,16 +480,16 @@
                 }
                 else if ([status isEqualToString:@"2"]) {
                     alertblink.hidden=NO;
-                    switchres.text=@"On";
-                    [alarmswitch setOn:YES animated:YES];
+                     _theft_Custom.status1 = CustomSwitchStatusOn;
+                    
                      [onoff setSelectedSegmentIndex:0];
                     [self displayLabel];
                 }
                 else
                 {
+                     _theft_Custom.status1 = CustomSwitchStatusOff;
                       [onoff setSelectedSegmentIndex:1];
-                    switchres.text=@"Off";
-                    [alarmswitch setOn:NO animated:YES];
+                  
                 }
             }
             
@@ -429,6 +498,7 @@
     
     
 }
+#pragma mark - CheckFrequentlyStatusAction
 -(void)CheckTheftAlarmStatus
 {
     du=[[databaseurl alloc]init];
@@ -461,23 +531,20 @@
                 NSString *status=[menu objectForKey:@"status"];
                 //                NSLog(@"%@ status recevied ",status);
                 if ([status isEqualToString:@"1"]) {
-                    switchres.text=@"On";
-                    [alarmswitch setOn:YES animated:YES];
+                     _theft_Custom.status = CustomSwitchStatusOn;
                     [onoff setSelectedSegmentIndex:0];
                     
                 }
                 else if ([status isEqualToString:@"2"]) {
                     alertblink.hidden=NO;
-                    switchres.text=@"On";
-                    [alarmswitch setOn:YES animated:YES];
+                     _theft_Custom.status = CustomSwitchStatusOn;
                     [onoff setSelectedSegmentIndex:0];
                     [self displayLabel];
                 }
                 else
                 {
                     [onoff setSelectedSegmentIndex:1];
-                    switchres.text=@"Off";
-                    [alarmswitch setOn:NO animated:YES];
+                   _theft_Custom.status = CustomSwitchStatusOff;
                 }
             }
             
@@ -486,6 +553,7 @@
  
     
 }
+#pragma mark - Animate Label
 -(void)displayLabel
 {
 //    if (_audioPlayer) {
@@ -508,6 +576,7 @@
       [alertblink setAlpha:1.0];
     [self displayLabel];
 }
+#pragma mark - HTTPMethods
 -(NSString *)InsertAction:(NSString*)firstEntity ForValue1:(NSString*)value1 EntitySecond:(NSString*)secondEntity ForValue2:(NSString*)value2
 {
     NSString *vehicleregno=[[NSUserDefaults standardUserDefaults]objectForKey:@"vehicleregno"];
@@ -558,6 +627,9 @@
 }
 - (void)dealloc {
 
+    [_DeviceStatus release];
+    [_greyView release];
+    [_theft_Custom release];
     [super dealloc];
   
 }

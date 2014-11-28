@@ -11,7 +11,8 @@
 
 @interface YLPopoverMenu : UIView {
     NSArray *_menuItems;
-    
+  
+
     UIBarButtonItem *_button;
     CGRect _buttonRect;
     CGRect _parentRect;
@@ -38,7 +39,7 @@
 - (void)presentPopoverFromBarButtonItem:(UIBarButtonItem *)button animated:(BOOL)animated;
 - (void)dismissPopoverAnimated:(BOOL)animated;
 - (NSString *)buttonTitleAtIndex:(NSInteger)index;
-
+@property (nonatomic, assign) NSInteger role;
 @end
 
 

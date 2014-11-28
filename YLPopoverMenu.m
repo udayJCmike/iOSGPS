@@ -13,9 +13,17 @@
 #define kPopupBorderRadius      5
 #define kPopupShadowOffset      5
 #define kPopupShadowBlur        10
-#define kPopupButtonWidth       198
-#define kPopupButtonHeight      158
-#define kPopupColumns           3
+#ifdef UI_USER_INTERFACE_IDIOM
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#else
+#define IS_IPAD false
+#endif
+
+#define kPopupButtonHeight (IS_IPAD ? 100 : 75)
+#define kPopupButtonWidth (IS_IPAD ? 100 : 75)
+#define role [[NSUserDefaults standardUserDefaults]objectForKey:@"role"]
+
+#define kPopupColumns     (role=="ROLE_ADMIN" ? 3 : 2)
 #define kPopupAnimationDuration 0.1
 
 @interface YLPopoverMenu(Private)
@@ -43,10 +51,18 @@
         _delegate = nil;
         
         _textColor = [[UIColor whiteColor] retain];
-        _textFont = [[UIFont boldSystemFontOfSize:10] retain];
+        if (IS_IPAD) {
+             _textFont = [[UIFont boldSystemFontOfSize:15] retain];
+        }
+        else
+        {
+            _textFont = [[UIFont boldSystemFontOfSize:11] retain];
+        }
+       
         
         [self setBackgroundColor:[UIColor clearColor]];
         [self setOpaque:NO];
+        
         
         _menuItemsInitialized = NO;
     }
@@ -377,9 +393,17 @@
         }
 		[b setTag:counter];
 		
-		int labelWidth = bRect.size.width - 20;
+		int labelWidth = bRect.size.width;
 		int labelHeight = 15;
-		CGRect lRect = CGRectMake((bRect.size.width - labelWidth) / 2, (bRect.size.height - labelHeight), labelWidth, labelHeight);
+        CGRect lRect;
+        if (IS_IPAD) {
+             lRect = CGRectMake((bRect.size.width - labelWidth) / 2, (bRect.size.height - labelHeight)-5, labelWidth, labelHeight);
+        }
+        else
+        {
+             lRect = CGRectMake((bRect.size.width - labelWidth) / 2, (bRect.size.height - labelHeight)-3, labelWidth, labelHeight);
+        }
+		
 		UILabel* l = [[UILabel alloc] initWithFrame:lRect];
 		[l setTextAlignment:UITextAlignmentCenter];
         [l setShadowColor:[UIColor blackColor]];

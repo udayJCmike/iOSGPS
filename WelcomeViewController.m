@@ -86,6 +86,7 @@
         
     }
 }
+
 - (IBAction)logout:(id)sender {
     
 delegate.login_status=@"0";

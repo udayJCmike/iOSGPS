@@ -31,7 +31,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   
+    self.v1.clipsToBounds=YES;
+    self.v1.layer.cornerRadius=10;
+    
     self.navigationController.topViewController.title=@"Live Track Information";
         UIButton *rightBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 70, 40 )];
         [rightBtn addTarget:self action:@selector(doneButtonSelected) forControlEvents:UIControlEventTouchUpInside];
@@ -158,6 +160,7 @@
 
 - (void)dealloc {
     [_countDown release];
+    [_v2 release];
     [super dealloc];
 }
 @end

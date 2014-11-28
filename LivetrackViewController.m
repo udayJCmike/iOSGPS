@@ -30,7 +30,7 @@ int i;
     databaseurl *du;
     int stepper_initial_value;
     CLLocationCoordinate2D _coordinate;
-    
+    InformationVC *vc;
 }
 @property (nonatomic, strong) NSMutableArray *allPins;
 @property (nonatomic, strong) MKPolylineView *lineView;
@@ -135,26 +135,39 @@ int i;
     
     NSMutableArray *items = [NSMutableArray array];
     [items addObject:[YLMenuItem menuItemWithTitle:@"Live Track"
-                                              icon:[UIImage imageNamed:@"home.png"]
-                                       pressedIcon:[UIImage imageNamed:@"home.png"]
+                                              icon:[UIImage imageNamed:@"liveicon.png"]
+                                       pressedIcon:[UIImage imageNamed:@"liveicon.png"]
                                           selector:@selector(LiveTapped)]];
     [items addObject:[YLMenuItem menuItemWithTitle:@"History Track"
-                                              icon:[UIImage imageNamed:@"home.png"]
-                                       pressedIcon:[UIImage imageNamed:@"home.png"]
+                                              icon:[UIImage imageNamed:@"historyicon.png"]
+                                       pressedIcon:[UIImage imageNamed:@"historyicon.png"]
                                           selector:@selector(HistoryTapped)]];
-	[items addObject:[YLMenuItem menuItemWithTitle:@"Theft Alarm"
-                                              icon:[UIImage imageNamed:@"home.png"]
-                                       pressedIcon:[UIImage imageNamed:@"home.png"]
-                                          selector:@selector(TheftTapped)]];
-    [items addObject:[YLMenuItem menuItemWithTitle:@"Over Speed"
-                                              icon:[UIImage imageNamed:@"home.png"]
-                                       pressedIcon:[UIImage imageNamed:@"home.png"]
-                                          selector:@selector(OverspeedTapped)]];
-    [items addObject:[YLMenuItem menuItemWithTitle:@"Alert Message"
-                                              icon:[UIImage imageNamed:@"home.png"]
-                                       pressedIcon:[UIImage imageNamed:@"home.png"]
-                                          selector:@selector(alertTapped)]];
-	YLPopoverMenu* menu = [YLPopoverMenu popoverMenuWithItems:items target:self];
+	
+    NSString *role=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
+    
+	
+    if ([role isEqualToString:@"ROLE_ADMIN"])
+    {
+      
+        [items addObject:[YLMenuItem menuItemWithTitle:@"Alert Message"
+                                                  icon:[UIImage imageNamed:@"home.png"]
+                                           pressedIcon:[UIImage imageNamed:@"home.png"]
+                                              selector:@selector(alertTapped)]];
+
+    }
+    else  if (([role isEqualToString:@"ROLE_PCLIENT"]) ||   ([role isEqualToString:@"ROLE_FCLIENT"]))
+    {
+        [items addObject:[YLMenuItem menuItemWithTitle:@"Theft Alarm"
+                                                  icon:[UIImage imageNamed:@"alarmicon.png"]
+                                           pressedIcon:[UIImage imageNamed:@"alarmicon.png"]
+                                              selector:@selector(TheftTapped)]];
+        [items addObject:[YLMenuItem menuItemWithTitle:@"Over Speed"
+                                                  icon:[UIImage imageNamed:@"overspeedicon.png"]
+                                           pressedIcon:[UIImage imageNamed:@"overspeedicon.png"]
+                                              selector:@selector(OverspeedTapped)]];
+        
+    }
+    YLPopoverMenu* menu = [YLPopoverMenu popoverMenuWithItems:items target:self];
     [menu presentPopoverFromBarButtonItem:button animated:YES];
 }
 
@@ -235,12 +248,17 @@ int i;
     }
     else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
         
-        
-        
+       
+        vc=[[InformationVC alloc]initWithFrame:CGRectMake(0,0,320,568)]; //Initialize this way otherwise you cannt access controllers from view.
         
     }
 }
 
+
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
 
 -(void)UpdateCountDown:(NSTimer*)theTimer
 {
@@ -274,17 +292,21 @@ int i;
     
     
 }
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
-    NSLog(@"appear called");
-    TotalSec=30;
-    
+    self.navigationController.topViewController.title=@"Live Track";
+    self.navigationController.navigationItem.title=@"Live Track";
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     i=1;
-  self.navigationController.topViewController.title=@"Live Track";
+    
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+  
+    self.navigationController.topViewController.title=@"Live Track";
     self.navigationController.navigationItem.title=@"Live Track";
 
     if(SCREEN_35)
@@ -306,27 +328,67 @@ int i;
             }
         }
     }
+    
+    NSString *role=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
+    UIBarButtonItem *b= [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Icon.png"]
+                                                            style:UIBarButtonItemStylePlain
+                                                           target:self
+                                                           action:@selector(toolButtonTapped:)];
+    if ([role isEqualToString:@"ROLE_ADMIN"])
+    {
+        
+        
+    }
+    else  if (([role isEqualToString:@"ROLE_PCLIENT"]) ||   ([role isEqualToString:@"ROLE_FCLIENT"]))
+    {
+       
+        
+    }
    //Right BAr Button Items...
-    UIBarButtonItem *b = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Icon.png"]
-                                                          style:UIBarButtonItemStylePlain
-                                                         target:self
-                                                         action:@selector(toolButtonTapped:)];
+  
     
    // self.navigationItem.rightBarButtonItem = b;
-    
-    UIButton* homeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 45, 35)];
-    [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
-    [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *homebutton = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
-    
-    
-    UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    fixedItem1.width = 10;
    
-       [self.navigationItem setRightBarButtonItems:@[fixedItem1,homebutton,fixedItem1,b]];
+    UIButton* homeButton;
+   
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        homeButton= [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20,20)];
+        [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
+        [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *homebutton = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
+        
+        
+        UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        fixedItem1.width = 10;
+        
+        [self.navigationItem setRightBarButtonItems:@[fixedItem1,homebutton,fixedItem1,b]];
+    }
+    else if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        homeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25,25)];
+        [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
+        [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *homebutton = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
+        
+        
+        UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        fixedItem1.width = 20;
+        
+        [self.navigationItem setRightBarButtonItems:@[fixedItem1,homebutton,fixedItem1,b]];
+    }
+   
+   
     
     //Left Bar Button Items..
-    UIButton* infoButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 45, 45)];
+    UIButton* infoButton;
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        infoButton= [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+    }
+    else if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        infoButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
+    }
+    
     [infoButton setImage:[UIImage imageNamed:@"Info_Icon.png"] forState:UIControlStateNormal];
     [infoButton addTarget:self action:@selector(infoViewTapped) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *button1 = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
@@ -340,24 +402,14 @@ int i;
     
 
     
-    NSString *role=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
    
-    if ([role isEqualToString:@"ROLE_ADMIN"]) {
-       
-    }
-    else  if (([role isEqualToString:@"ROLE_PCLIENT"]) ||   ([role isEqualToString:@"ROLE_FCLIENT"]))
-    {
-        //[segment removeSegmentAtIndex:2 animated:YES];
-       
-    }
      locationlist=[[NSMutableArray alloc]init];
    
     mapview.delegate=self;
     du=[[databaseurl alloc]init];
  
-   
-   
-     self.navigationController.topViewController.title=@"Live Track";
+    self.navigationController.topViewController.title=@"Live Track";
+    self.navigationController.navigationItem.title=@"Live Track";
     CLLocationCoordinate2D coord = {.latitude =  22.3512639, .longitude =78.9542827};
     MKCoordinateSpan span = {.latitudeDelta =  30, .longitudeDelta =  30};
     //  MKCoordinateRegion region = {coord, span};
@@ -389,8 +441,10 @@ int i;
         TotalSec=30;
     }
  
-  
+    self.navigationController.topViewController.title=@"Live Track";
+    self.navigationController.navigationItem.title=@"Live Track";
     
+    NSLog(@" title %@",self.navigationController.navigationItem.title);
 }
 
 -(void)getData
@@ -606,6 +660,7 @@ int i;
         [self.view addSubview:maptype];
         [self.view addSubview:stepper];
         
+        
     }
     
     
@@ -788,6 +843,7 @@ int i;
    
 
     [super dealloc];
+   
     [mapview release];
  
  

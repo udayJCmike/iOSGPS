@@ -21,5 +21,6 @@
 @property (nonatomic, strong) NSDate *initialDate;
 @property (nonatomic, strong) NSDate *finalDate;
 @property (retain, nonatomic) IBOutlet UILabel *countDown;
-
+@property (retain, nonatomic) IBOutlet UIView *v2;
+@property (retain, nonatomic) IBOutlet UIView *v1;
 @end

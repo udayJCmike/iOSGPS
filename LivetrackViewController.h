@@ -12,14 +12,15 @@
 #import "CalloutView.h"
 #import "YLPopoverMenu.h"
 #import "YLMenuItem.h"
-
+#import "InformationVC.h"
 @class CSWebDetailsViewController;
-@interface LivetrackViewController : UIViewController<MKMapViewDelegate,MKAnnotation,MKOverlay,CLLocationManagerDelegate,YLPopoverMenuDelegate>
+@interface LivetrackViewController : UIViewController<MKMapViewDelegate,MKAnnotation,MKOverlay,CLLocationManagerDelegate,YLPopoverMenuDelegate,UIGestureRecognizerDelegate>
 {
     NSMutableArray *locationlist;
     NSTimer *timer;
     NSTimer *CountDownTimer;
     int TotalSec;
+   
 }
 @property(nonatomic,retain)NSTimer *timer;
 

@@ -15,6 +15,17 @@
 		0D8094A3197791CC00521E39 /* NSStream+SKPSMTPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D80949D197791CC00521E39 /* NSStream+SKPSMTPExtensions.m */; };
 		0D8094A4197791CC00521E39 /* SKPSMTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D80949F197791CC00521E39 /* SKPSMTPMessage.m */; };
 		0D8094A61977921700521E39 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8094A51977921700521E39 /* CFNetwork.framework */; };
+		84036BB91A286F39005E410A /* Passwordchange.m in Sources */ = {isa = PBXBuildFile; fileRef = 84036BB81A286F39005E410A /* Passwordchange.m */; };
+		84036BBE1A2890AB005E410A /* alarmicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84036BBA1A2890AB005E410A /* alarmicon.png */; };
+		84036BBF1A2890AB005E410A /* historyicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84036BBB1A2890AB005E410A /* historyicon.png */; };
+		84036BC01A2890AB005E410A /* liveicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84036BBC1A2890AB005E410A /* liveicon.png */; };
+		84036BC11A2890AB005E410A /* overspeedicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84036BBD1A2890AB005E410A /* overspeedicon.png */; };
+		84036BC71A28AC3C005E410A /* CustomSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 84036BC51A28AC3C005E410A /* CustomSwitch.m */; };
+		84036BC81A28AC3C005E410A /* CustomSwitch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84036BC61A28AC3C005E410A /* CustomSwitch.xib */; };
+		84036BCD1A28AC49005E410A /* switchOne_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84036BC91A28AC48005E410A /* switchOne_off@2x.png */; };
+		84036BCE1A28AC49005E410A /* switchOne_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84036BCA1A28AC48005E410A /* switchOne_on@2x.png */; };
+		84036BCF1A28AC49005E410A /* switchTwo_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84036BCB1A28AC49005E410A /* switchTwo_off@2x.png */; };
+		84036BD01A28AC49005E410A /* switchTwo_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84036BCC1A28AC49005E410A /* switchTwo_on@2x.png */; };
 		84188B4D198B8465002D55BA /* day.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B4A198B8465002D55BA /* day.png */; };
 		84188B4E198B8465002D55BA /* month.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B4B198B8465002D55BA /* month.png */; };
 		84188B4F198B8465002D55BA /* year.png in Resources */ = {isa = PBXBuildFile; fileRef = 84188B4C198B8465002D55BA /* year.png */; };
@@ -186,6 +197,19 @@
 		0D80949E197791CC00521E39 /* SKPSMTPMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPSMTPMessage.h; sourceTree = "<group>"; };
 		0D80949F197791CC00521E39 /* SKPSMTPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPSMTPMessage.m; sourceTree = "<group>"; };
 		0D8094A51977921700521E39 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		84036BB71A286F39005E410A /* Passwordchange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Passwordchange.h; sourceTree = "<group>"; };
+		84036BB81A286F39005E410A /* Passwordchange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Passwordchange.m; sourceTree = "<group>"; };
+		84036BBA1A2890AB005E410A /* alarmicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarmicon.png; sourceTree = "<group>"; };
+		84036BBB1A2890AB005E410A /* historyicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = historyicon.png; sourceTree = "<group>"; };
+		84036BBC1A2890AB005E410A /* liveicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = liveicon.png; sourceTree = "<group>"; };
+		84036BBD1A2890AB005E410A /* overspeedicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overspeedicon.png; sourceTree = "<group>"; };
+		84036BC41A28AC3C005E410A /* CustomSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSwitch.h; sourceTree = "<group>"; };
+		84036BC51A28AC3C005E410A /* CustomSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSwitch.m; sourceTree = "<group>"; };
+		84036BC61A28AC3C005E410A /* CustomSwitch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomSwitch.xib; sourceTree = "<group>"; };
+		84036BC91A28AC48005E410A /* switchOne_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switchOne_off@2x.png"; sourceTree = "<group>"; };
+		84036BCA1A28AC48005E410A /* switchOne_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switchOne_on@2x.png"; sourceTree = "<group>"; };
+		84036BCB1A28AC49005E410A /* switchTwo_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switchTwo_off@2x.png"; sourceTree = "<group>"; };
+		84036BCC1A28AC49005E410A /* switchTwo_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switchTwo_on@2x.png"; sourceTree = "<group>"; };
 		84188B4A198B8465002D55BA /* day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = day.png; sourceTree = "<group>"; };
 		84188B4B198B8465002D55BA /* month.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = month.png; sourceTree = "<group>"; };
 		84188B4C198B8465002D55BA /* year.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = year.png; sourceTree = "<group>"; };
@@ -424,6 +448,31 @@
 			path = SMTPLibrary;
 			sourceTree = "<group>";
 		};
+		84036BC21A28ABDB005E410A /* InformationPage */ = {
+			isa = PBXGroup;
+			children = (
+				8427C5201A276D750021B912 /* InformationVC.h */,
+				8427C5211A276D750021B912 /* InformationVC.m */,
+				8427C4F11A2726F00021B912 /* LiveTrackInformationViewController.h */,
+				8427C4F21A2726F00021B912 /* LiveTrackInformationViewController.m */,
+			);
+			name = InformationPage;
+			sourceTree = "<group>";
+		};
+		84036BC31A28AC02005E410A /* CustomSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				84036BC91A28AC48005E410A /* switchOne_off@2x.png */,
+				84036BCA1A28AC48005E410A /* switchOne_on@2x.png */,
+				84036BCB1A28AC49005E410A /* switchTwo_off@2x.png */,
+				84036BCC1A28AC49005E410A /* switchTwo_on@2x.png */,
+				84036BC41A28AC3C005E410A /* CustomSwitch.h */,
+				84036BC51A28AC3C005E410A /* CustomSwitch.m */,
+				84036BC61A28AC3C005E410A /* CustomSwitch.xib */,
+			);
+			name = CustomSwitch;
+			sourceTree = "<group>";
+		};
 		8427C4CB1A26E2CC0021B912 /* DropDownButtonForToneSetting */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,8 +570,9 @@
 		84951A761973C7C2003C603B = {
 			isa = PBXGroup;
 			children = (
-				8427C5201A276D750021B912 /* InformationVC.h */,
-				8427C5211A276D750021B912 /* InformationVC.m */,
+				84036BC31A28AC02005E410A /* CustomSwitch */,
+				84036BB71A286F39005E410A /* Passwordchange.h */,
+				84036BB81A286F39005E410A /* Passwordchange.m */,
 				8427C4F41A2737820021B912 /* CircularTimer */,
 				8427C4CF1A26FBC40021B912 /* MenuDropDown */,
 				8427C4CB1A26E2CC0021B912 /* DropDownButtonForToneSetting */,
@@ -695,8 +745,7 @@
 			children = (
 				84951AE81973E2FA003C603B /* LivetrackViewController.h */,
 				84951AE91973E2FA003C603B /* LivetrackViewController.m */,
-				8427C4F11A2726F00021B912 /* LiveTrackInformationViewController.h */,
-				8427C4F21A2726F00021B912 /* LiveTrackInformationViewController.m */,
+				84036BC21A28ABDB005E410A /* InformationPage */,
 			);
 			name = LiveTrack;
 			sourceTree = "<group>";
@@ -786,6 +835,10 @@
 		84C44EA21A2482300091B4B8 /* MockupImages */ = {
 			isa = PBXGroup;
 			children = (
+				84036BBA1A2890AB005E410A /* alarmicon.png */,
+				84036BBB1A2890AB005E410A /* historyicon.png */,
+				84036BBC1A2890AB005E410A /* liveicon.png */,
+				84036BBD1A2890AB005E410A /* overspeedicon.png */,
 				8427C51E1A2768B30021B912 /* close.png */,
 				84E743AE1A261472007C9639 /* back_Icon.png */,
 				84E743AF1A261472007C9639 /* Home_Icon.png */,
@@ -969,6 +1022,7 @@
 				84E743941A25B772007C9639 /* icon40.png in Resources */,
 				84C44EA11A2469E10091B4B8 /* beep1.caf in Resources */,
 				84951AE01973E21E003C603B /* Aboutus_iPhone.storyboard in Resources */,
+				84036BCD1A28AC49005E410A /* switchOne_off@2x.png in Resources */,
 				84188B51198B9B42002D55BA /* home.png in Resources */,
 				8492E12B1974ECF300AA9291 /* large.button.red.on.png in Resources */,
 				8492E1251974ECF300AA9291 /* large.button.grey.off.png in Resources */,
@@ -986,8 +1040,12 @@
 				84C44EAC1A2495420091B4B8 /* logout.png in Resources */,
 				849B2E0C1990E55200AD18E0 /* point.png in Resources */,
 				84E743B51A261472007C9639 /* Info_Icon.png in Resources */,
+				84036BBF1A2890AB005E410A /* historyicon.png in Resources */,
+				84036BC01A2890AB005E410A /* liveicon.png in Resources */,
 				84951AD21973D952003C603B /* Welcome_iPad.storyboard in Resources */,
 				8494015419934C04006F161A /* pink_pin.png in Resources */,
+				84036BCE1A28AC49005E410A /* switchOne_on@2x.png in Resources */,
+				84036BCF1A28AC49005E410A /* switchTwo_off@2x.png in Resources */,
 				84188B4F198B8465002D55BA /* year.png in Resources */,
 				8492E11F1974ECF300AA9291 /* alert.bg.png in Resources */,
 				84E7439A1A25B772007C9639 /* icon80.png in Resources */,
@@ -997,10 +1055,12 @@
 				8492E1291974ECF300AA9291 /* large.button.red.off.png in Resources */,
 				84C44EA71A2482480091B4B8 /* bg.jpg in Resources */,
 				8492E12C1974ECF300AA9291 /* large.button.red.on@2x.png in Resources */,
+				84036BBE1A2890AB005E410A /* alarmicon.png in Resources */,
 				84951A961973C7C2003C603B /* Main_iPhone.storyboard in Resources */,
 				84188B4D198B8465002D55BA /* day.png in Resources */,
 				84E7439F1A25B772007C9639 /* icon152.png in Resources */,
 				84E7439D1A25B772007C9639 /* icon120.png in Resources */,
+				84036BD01A28AC49005E410A /* switchTwo_on@2x.png in Resources */,
 				84E7439C1A25B772007C9639 /* icon114.png in Resources */,
 				84E743841A25A7D3007C9639 /* banner.jpg in Resources */,
 				84E743931A25B772007C9639 /* icon29.png in Resources */,
@@ -1011,6 +1071,7 @@
 				84E743AB1A2611D2007C9639 /* Circle_Orange.png in Resources */,
 				84E743B71A261472007C9639 /* Search_Icon.png in Resources */,
 				84E743981A25B772007C9639 /* icon72.png in Resources */,
+				84036BC11A2890AB005E410A /* overspeedicon.png in Resources */,
 				84C44EB21A2498740091B4B8 /* profile.png in Resources */,
 				84951AD71973E139003C603B /* Contactus_iPad.storyboard in Resources */,
 				8492E1221974ECF300AA9291 /* large.button.green.off@2x.png in Resources */,
@@ -1029,6 +1090,7 @@
 				84E7437D1A259576007C9639 /* login-568h@2x.jpg in Resources */,
 				84188B4E198B8465002D55BA /* month.png in Resources */,
 				84951AE21973E234003C603B /* Aboutus_iPad.storyboard in Resources */,
+				84036BC81A28AC3C005E410A /* CustomSwitch.xib in Resources */,
 				84E743951A25B772007C9639 /* icon50.png in Resources */,
 				8492E1211974ECF300AA9291 /* large.button.green.off.png in Resources */,
 				84992C7A1982334C002304EE /* calloutView.xib in Resources */,
@@ -1060,6 +1122,7 @@
 				0D8094A3197791CC00521E39 /* NSStream+SKPSMTPExtensions.m in Sources */,
 				8494C4BA1977B13500FCB97F /* CSImageAnnotationView.m in Sources */,
 				84951B181973FB14003C603B /* SBJSON.m in Sources */,
+				84036BB91A286F39005E410A /* Passwordchange.m in Sources */,
 				84C44EBA1A249CED0091B4B8 /* ProfileViewController.m in Sources */,
 				0D8094A4197791CC00521E39 /* SKPSMTPMessage.m in Sources */,
 				8427C4F71A27378F0021B912 /* CircularTimer.m in Sources */,
@@ -1071,6 +1134,7 @@
 				84951A931973C7C2003C603B /* GPSMobileTrackingAppDelegate.m in Sources */,
 				8499685519795DC800A53BEF /* NSString+AKNumericFormatter.m in Sources */,
 				8499685419795DC800A53BEF /* AKNumericFormatter.m in Sources */,
+				84036BC71A28AC3C005E410A /* CustomSwitch.m in Sources */,
 				84951AEF1973E332003C603B /* HistorytrackViewController.m in Sources */,
 				84951ACA1973D60A003C603B /* WelcomeViewController.m in Sources */,
 				84951ACF1973D78E003C603B /* BuslistTableViewCell.m in Sources */,
