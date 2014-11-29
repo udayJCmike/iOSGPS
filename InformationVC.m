@@ -65,7 +65,7 @@
         CGRect vecRegFrame=CGRectMake(7,14,124,21);
         self.vecreg=[[UILabel alloc]initWithFrame:vecRegFrame];
         [ self.vecreg setBackgroundColor:[UIColor clearColor]];
-        [ self.vecreg setText:@"Vehicle Regno:"];
+        [ self.vecreg setText:@"Vehicle Reg.No:"];
         [ self.vecreg setTextColor:[UIColor blackColor]];
         [ self.vecreg setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
         

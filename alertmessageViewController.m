@@ -243,6 +243,10 @@
     }
     
     alertMessageTextView.clipsToBounds = YES;
+    clearmessage.clipsToBounds = YES;
+    sendmessage.clipsToBounds = YES;
+    clearmessage.layer.cornerRadius = 10;
+    sendmessage.layer.cornerRadius = 10;
     NSString *role=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
     
     if ([role isEqualToString:@"ROLE_ADMIN"]) {

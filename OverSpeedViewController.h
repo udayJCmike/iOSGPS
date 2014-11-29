@@ -21,12 +21,10 @@
 {
     
     MBProgressHUD *HUD;
+    BOOL fullyOpen;
 }
-@property (retain, nonatomic) IBOutlet UISegmentedControl *segment;
-@property (retain, nonatomic) IBOutlet UILabel *welcome;
-@property (retain, nonatomic) IBOutlet UIButton *home;
-@property (retain, nonatomic) IBOutlet UIButton *logout;
-@property (retain, nonatomic) IBOutlet UIImageView *bgimage;
+
+
 
 @property (retain, nonatomic) IBOutlet UILabel *fromdate;
 @property (retain, nonatomic) IBOutlet UILabel *todate;

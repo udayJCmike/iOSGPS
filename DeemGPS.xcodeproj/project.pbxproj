@@ -168,6 +168,7 @@
 		84E743B71A261472007C9639 /* Search_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E743B21A261472007C9639 /* Search_Icon.png */; };
 		84F251DA1A2992C500576F9B /* SearchMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F251D91A2992C500576F9B /* SearchMenu.m */; };
 		84F251DF1A29CC1200576F9B /* HistroytrackInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F251DE1A29CC1200576F9B /* HistroytrackInformation.m */; };
+		84F251E21A29F76E00576F9B /* OverSpeedSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F251E11A29F76E00576F9B /* OverSpeedSearch.m */; };
 		84F796FA1A0CE3FD00152B17 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F796F91A0CE3FD00152B17 /* AudioToolbox.framework */; };
 		84F796FE1A0CE3FD00152B17 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F796FD1A0CE3FD00152B17 /* AVFoundation.framework */; };
 		84F797001A0CE3FD00152B17 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F796FF1A0CE3FD00152B17 /* CoreAudio.framework */; };
@@ -403,6 +404,8 @@
 		84F251D91A2992C500576F9B /* SearchMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchMenu.m; sourceTree = "<group>"; };
 		84F251DD1A29CC1200576F9B /* HistroytrackInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistroytrackInformation.h; sourceTree = "<group>"; };
 		84F251DE1A29CC1200576F9B /* HistroytrackInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistroytrackInformation.m; sourceTree = "<group>"; };
+		84F251E01A29F76E00576F9B /* OverSpeedSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverSpeedSearch.h; sourceTree = "<group>"; };
+		84F251E11A29F76E00576F9B /* OverSpeedSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverSpeedSearch.m; sourceTree = "<group>"; };
 		84F796F91A0CE3FD00152B17 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		84F796FD1A0CE3FD00152B17 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		84F796FF1A0CE3FD00152B17 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -513,6 +516,7 @@
 		842BA4B31A0A42FC00CDE021 /* Over Speed */ = {
 			isa = PBXGroup;
 			children = (
+				84F251E31A29F77900576F9B /* OverspeedSearch */,
 				842BA4B41A0A432800CDE021 /* OverSpeedViewController.h */,
 				842BA4B51A0A432800CDE021 /* OverSpeedViewController.m */,
 			);
@@ -945,6 +949,15 @@
 			name = Information;
 			sourceTree = "<group>";
 		};
+		84F251E31A29F77900576F9B /* OverspeedSearch */ = {
+			isa = PBXGroup;
+			children = (
+				84F251E01A29F76E00576F9B /* OverSpeedSearch.h */,
+				84F251E11A29F76E00576F9B /* OverSpeedSearch.m */,
+			);
+			name = OverspeedSearch;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1191,6 +1204,7 @@
 				0D8094A1197791CC00521E39 /* HSK_CFUtilities.m in Sources */,
 				84E743A21A25DB2E007C9639 /* AboutPageViewController.m in Sources */,
 				8427C4F31A2726F00021B912 /* LiveTrackInformationViewController.m in Sources */,
+				84F251E21A29F76E00576F9B /* OverSpeedSearch.m in Sources */,
 				0027DC65197551FB00A84C66 /* TermsViewController.m in Sources */,
 				84C44ECE1A24B7950091B4B8 /* SettingsViewController.m in Sources */,
 				0027DC62197551E500A84C66 /* PrivacyPolicyViewController.m in Sources */,

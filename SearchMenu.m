@@ -226,7 +226,12 @@
         
         
         }
-        
+        self.  handleHeight = 15.0f;
+        self. animationDuration = 0.3f;
+        self. topMarginPortrait = 0;
+        self. topMarginLandscape = 0;
+        self. cellFont = [UIFont fontWithName:@"GillSans-Bold" size:19.0f];
+        self.fullyOpen=NO;
         
         [popUpView addSubview:self.close];
         [popUpView addSubview:self.search];
@@ -260,12 +265,7 @@
 - (void)animateDropDown
 {
     
-    self.  handleHeight = 15.0f;
-    self. animationDuration = 0.3f;
-    self. topMarginPortrait = 0;
-    self. topMarginLandscape = 0;
-    self. cellFont = [UIFont fontWithName:@"GillSans-Bold" size:19.0f];
-   self.fullyOpen=NO;
+   
     [UIView animateWithDuration: 0.7
                           delay: 0.0
                         options: UIViewAnimationOptionCurveEaseOut
@@ -582,7 +582,7 @@
              [dict setValue:self.fromButton.titleLabel.text forKey:@"Selected_Fromtime"];
              [dict setValue:self.toButton.titleLabel.text forKey:@"Selected_Totime"];
              [[NSNotificationCenter defaultCenter] postNotificationName:@"SearchAction"  object:dict  userInfo:nil];
-            [self removeFromSuperview];
+            [self animateDropDown];
         }
         else
         {

@@ -235,8 +235,8 @@
     [HUD show:YES];
     [self performSelector:@selector(statusAction) withObject:self afterDelay:0.1f];
     
-    self.greyView.clipsToBounds=YES;
-    self.greyView.layer.cornerRadius=10;
+//    self.greyView.clipsToBounds=YES;
+//    self.greyView.layer.cornerRadius=10;
   
     //     [alarmswitch setTintColor:[UIColor colorWithRed:255 green:156 blue:0 alpha:0.1f]];
    

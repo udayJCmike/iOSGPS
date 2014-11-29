@@ -9,6 +9,12 @@
 #import "OverSpeedViewController.h"
 #import "SBJSON.h"
 #import "DateTimePicker.h"
+#import "OverSpeedSearch.h"
+#ifdef UI_USER_INTERFACE_IDIOM
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#else
+#define IS_IPAD false
+#endif
 @interface OverSpeedViewController ()
 {
     databaseurl *du;
@@ -17,11 +23,7 @@
 @end
 
 @implementation OverSpeedViewController
-@synthesize bgimage;
-@synthesize welcome;
-@synthesize home;
-@synthesize logout;
-@synthesize segment;
+
 
 @synthesize fromdate;
 @synthesize todate;
@@ -42,6 +44,12 @@
 }
 #pragma mark - YLMenuItemActions
 - (void)toolButtonTapped:(id)sender {
+    for(UIView *view in [[[UIApplication sharedApplication] keyWindow] subviews]){
+        if ([view isKindOfClass:[OverSpeedSearch class]]) {
+            [view removeFromSuperview];
+            [self.view setFrame:CGRectMake(0,0, 768,1024)];
+        }
+    }
     UIBarButtonItem *button = (UIBarButtonItem *)sender;
     
     NSMutableArray *items = [NSMutableArray array];
@@ -100,6 +108,7 @@
 }
 
 - (void)HistoryTapped {
+    
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
         [self performSegueWithIdentifier:@"speedtohis" sender:self];
@@ -113,6 +122,7 @@
 }
 
 - (void)TheftTapped {
+   
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
         
@@ -127,11 +137,11 @@
 - (void)OverspeedTapped {
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
-        [self performSegueWithIdentifier:@"thefttospeed" sender:self];
+       // [self performSegueWithIdentifier:@"thefttospeed" sender:self];
     }
     else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
         
-        [self performSegueWithIdentifier:@"thefttospeed" sender:self];
+      //  [self performSegueWithIdentifier:@"thefttospeed" sender:self];
         
     }
 }
@@ -147,12 +157,78 @@
         
     }
 }
+-(void)Search_Action:(id)sender
+{
+    for(UIView *view in [[[UIApplication sharedApplication] keyWindow] subviews]){
+        if ([view isKindOfClass:[OverSpeedSearch class]]) {
+            [view removeFromSuperview];
+             [self.view setFrame:CGRectMake(0,0, 768,1024)];
+        }
+    }
+    fromdate.text=@"From Date";
+    todate.text=@"To Date";
+    if (IS_IPAD) {
+        OverSpeedSearch *search=[[OverSpeedSearch alloc]initWithFrame:CGRectMake(0, 0, 768, 1024)];
+       [self animateView:self.view down:YES];
+         [[NSNotificationCenter defaultCenter]removeObserver:self name:@"SearchDone" object:nil];
+         [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(search:) name:@"SearchDone"object:nil];
+        
+    }
+    else
+    {
+       OverSpeedSearch *search=[[OverSpeedSearch alloc]initWithFrame:CGRectMake(0, 0, 768, 1024)];
+        [self animateView:self.view down:YES];
+         [[NSNotificationCenter defaultCenter]removeObserver:self name:@"SearchDone" object:nil];
+   [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(search:) name:@"SearchDone"object:nil];
+        
+    }
+}
+-(void)animateView:(UIView*)view down:(BOOL)down
+{
+    const int movementDistance = 63; // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    
+    int movement = (down ? movementDistance : -movementDistance);
+    
+    [UIView beginAnimations: @"animateView" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
+}
+//- (void)animateDropDown
+//{
+//    
+//    
+//    [UIView animateWithDuration: 0.7
+//                          delay: 0.0
+//                        options: UIViewAnimationOptionCurveEaseOut
+//                     animations:^{
+//                         if (fullyOpen)
+//                         {
+//                              self.OverspeedDate.frame = CGRectOffset(self.OverspeedDate.frame, 0, -63);
+//                             
+//                          //   self.OverspeedDate.center = CGPointMake(self.OverspeedDate.frame.size.width / 2, -((self.OverspeedDate.frame.size.height / 2)+63 ));
+//                              fullyOpen = NO;
+//                         }
+//                         else
+//                         {
+//                             self.OverspeedDate.frame = CGRectOffset(self.OverspeedDate.frame, 0, 63);
+//                            // self.OverspeedDate.center = CGPointMake(self.OverspeedDate.frame.size.width / 2, ((self.OverspeedDate.frame.size.height / 2)+63 ));
+//                             fullyOpen = YES;
+//                         }
+//                     }
+//                     completion:^(BOOL finished){
+//                         //  [delegate pullDownAnimated:fullyOpen];
+//                     }];
+//}
 #pragma mark - Didload
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.navigationController.topViewController.title=@"OverSpeed";
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    fullyOpen=NO;
     UIButton* back = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
     UIBarButtonItem *button11 = [[UIBarButtonItem alloc] initWithCustomView:back];
     self.navigationItem.leftBarButtonItem = button11;
@@ -192,7 +268,37 @@
         
         [self.navigationItem setRightBarButtonItems:@[fixedItem1,homebutton,fixedItem1,b]];
     }
+    UIButton* searchButton;
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        searchButton= [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20,20)];
+        [searchButton setImage:[UIImage imageNamed:@"Search_Icon.png"] forState:UIControlStateNormal];
+        [searchButton addTarget:self action:@selector(Search_Action:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *searchBarButton = [[UIBarButtonItem alloc] initWithCustomView:searchButton];
+        
+       
+        
+        
+        UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        fixedItem1.width = 10;
+        
+        [self.navigationItem setLeftBarButtonItems:@[fixedItem1,searchBarButton,fixedItem1]];
+    }
+    else if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        searchButton= [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25,25)];
+        [searchButton setImage:[UIImage imageNamed:@"Search_Icon.png"] forState:UIControlStateNormal];
+        [searchButton addTarget:self action:@selector(Search_Action:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *searchBarButton = [[UIBarButtonItem alloc] initWithCustomView:searchButton];
+      
+        
+        UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        fixedItem1.width = 20;
+        
+        [self.navigationItem setLeftBarButtonItems:@[fixedItem1,searchBarButton,fixedItem1]];
+    }
     
+
     du=[[databaseurl alloc]init];
     
     speedcount.text=@"";
@@ -201,26 +307,6 @@
     vecnumber.text=vehicleregno;
     drivername.text=driver_name;
     //     [self performSelector:@selector(CountOverSpeed) withObject:self afterDelay:0.1f];
-    welcome.text=[NSString stringWithFormat:@"Welcome %@ !",[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIFont fontWithName:@"Times New Roman" size:20], UITextAttributeFont,nil];
-        [segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
-        
-    }
-    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-        
-        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIFont fontWithName:@"Times New Roman" size:12], UITextAttributeFont,nil];
-        [segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
-        
-    }
-    [segment setSelectedSegmentIndex:3];
-    //    NSString *filename = [du imagecheck:@"message.jpg"];
-    //    NSLog(@"image name %@",filename);
-    //    bgimage.image = [UIImage imageNamed:filename];
-    
     
 }
 #pragma mark -OverspeedCount Method
@@ -287,6 +373,12 @@
 #pragma mark -Home Action
 
 - (IBAction)home:(id)sender {
+    for(UIView *view in [[[UIApplication sharedApplication] keyWindow] subviews]){
+        if ([view isKindOfClass:[OverSpeedSearch class]]) {
+            [view removeFromSuperview];
+            [self.view setFrame:CGRectMake(0,0, 768,1024)];
+        }
+    }
     for (id controller in [self.navigationController viewControllers])
     {
         if ([controller isKindOfClass:[WelcomeViewController class]])
@@ -321,7 +413,7 @@
     //
     //    [textField becomeFirstResponder];
     
-    
+   
     [self cancelPressed];
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
@@ -467,11 +559,12 @@
 #pragma mark -Search Action
 
 - (IBAction)search:(id)sender {
-    
+    [self animateView:self.view down:NO];
     if ((![fromdate.text isEqualToString:@"From Date"])&&(![todate.text isEqualToString:@"To Date"])) {
         BOOL res= [self From_to_dateCheck];
         if (res)
         {
+         
             HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
             HUD.mode=MBProgressHUDModeIndeterminate;
             HUD.delegate = self;
@@ -578,7 +671,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)dealloc {
-    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"SearchDone" object:nil];
     [super dealloc];
 }
 @end

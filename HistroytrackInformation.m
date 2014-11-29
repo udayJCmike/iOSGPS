@@ -78,7 +78,7 @@
             CGRect DistanceFrame=CGRectMake(26,103,204,21);
             self.totalDistance=[[UILabel alloc]initWithFrame:DistanceFrame];
             [ self.totalDistance setBackgroundColor:[UIColor clearColor]];
-            [ self.totalDistance setText:@"Total Distance Traveled:"];
+            [ self.totalDistance setText:@"Total Distance Travelled:"];
             [ self.totalDistance setTextColor:[UIColor blackColor]];
             [ self.totalDistance setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:19]];
             
