@@ -97,7 +97,7 @@
             self.indi_bg=[[UIImageView alloc]initWithFrame:indiimage];
             [ self.indi_bg setImage:[UIImage imageNamed:@"Navbarbg.jpg"]];
             
-            CGRect InsFrame=CGRectMake(158,14,163,21);
+            CGRect InsFrame=CGRectMake(178,14,163,21);
             self.instruction=[[UILabel alloc]initWithFrame:InsFrame];
             [ self.instruction setBackgroundColor:[UIColor clearColor]];
             [ self.instruction setText:@"Indicator Details"];
