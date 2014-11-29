@@ -7,24 +7,17 @@
 //
 
 #import "HistorytrackViewController.h"
-#import "Vehiclelocationlist.h"
-#import "databaseurl.h"
-#import "SBJSON.h"
-#import "TTAlertView.h"
-#import "WelcomeViewController.h"
-#import "CSMapAnnotation.h"
-#import "CSImageAnnotationView.h"
-#import "CalloutView.h"
-#import "DateTimePicker.h"
-#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
-#define SCREEN_35 (SCREEN_HEIGHT == 480)
-#define SCREEN_40 (SCREEN_HEIGHT == 568)
+#ifdef UI_USER_INTERFACE_IDIOM
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#else
+#define IS_IPAD false
+#endif
 
 @interface HistorytrackViewController ()
 {
     databaseurl *du;
     float stepper_initial_value;
-        DateTimePicker *picker;
+    DateTimePicker *picker;
     
 }
 @property (nonatomic, strong) NSMutableArray *allPins;
@@ -59,6 +52,7 @@
     }
     return self;
 }
+#pragma mark - Zooming  MapView
 - (void)zoomMapinc:(MKMapView*)mapView byDelta:(float) delta {
     
     MKCoordinateRegion region = mapView.region;
@@ -85,7 +79,7 @@
     }
     else
     {
-       mapview.mapType=MKMapTypeSatellite;
+        mapview.mapType=MKMapTypeSatellite;
     }
 }
 - (IBAction)zoom:(id)sender {
@@ -96,16 +90,246 @@
     }
     else if (stepper.value < stepper_initial_value)
     {
-       stepper_initial_value=stepper.value;
+        stepper_initial_value=stepper.value;
         [self zoomMapinc:self.mapview byDelta:2.0];
     }
 }
+#pragma mark - YLMenuItemActions
+- (void)toolButtonTapped:(id)sender {
+    for(UIView *view in [[[UIApplication sharedApplication] keyWindow] subviews]){
+        if ([view isKindOfClass:[SearchMenu class]]) {
+            [view removeFromSuperview];
+        }
+    }
+    UIBarButtonItem *button = (UIBarButtonItem *)sender;
+    
+    NSMutableArray *items = [NSMutableArray array];
+    [items addObject:[YLMenuItem menuItemWithTitle:@"Live Track"
+                                              icon:[UIImage imageNamed:@"liveicon.png"]
+                                       pressedIcon:[UIImage imageNamed:@"liveicon.png"]
+                                          selector:@selector(LiveTapped)]];
+    [items addObject:[YLMenuItem menuItemWithTitle:@"History Track"
+                                              icon:[UIImage imageNamed:@"historyicon.png"]
+                                       pressedIcon:[UIImage imageNamed:@"historyicon.png"]
+                                          selector:@selector(HistoryTapped)]];
+	
+    NSString *role=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
+    
+	
+    if ([role isEqualToString:@"ROLE_ADMIN"])
+    {
+        
+        [items addObject:[YLMenuItem menuItemWithTitle:@"Alert Message"
+                                                  icon:[UIImage imageNamed:@"home.png"]
+                                           pressedIcon:[UIImage imageNamed:@"home.png"]
+                                              selector:@selector(alertTapped)]];
+        
+    }
+    else  if (([role isEqualToString:@"ROLE_PCLIENT"]) ||   ([role isEqualToString:@"ROLE_FCLIENT"]))
+    {
+        [items addObject:[YLMenuItem menuItemWithTitle:@"Theft Alarm"
+                                                  icon:[UIImage imageNamed:@"alarmicon.png"]
+                                           pressedIcon:[UIImage imageNamed:@"alarmicon.png"]
+                                              selector:@selector(TheftTapped)]];
+        [items addObject:[YLMenuItem menuItemWithTitle:@"Over Speed"
+                                                  icon:[UIImage imageNamed:@"overspeedicon.png"]
+                                           pressedIcon:[UIImage imageNamed:@"overspeedicon.png"]
+                                              selector:@selector(OverspeedTapped)]];
+        
+    }
+    YLPopoverMenu* menu = [YLPopoverMenu popoverMenuWithItems:items target:self];
+    [menu presentPopoverFromBarButtonItem:button animated:YES];
+}
+- (void)LiveTapped {
+    
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        [self performSegueWithIdentifier:@"histolive" sender:self];
+        
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        [self performSegueWithIdentifier:@"histolive" sender:self];
+        
+    }
+    
+    
+}
 
+- (void)HistoryTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        // [self performSegueWithIdentifier:@"thefttohis" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        //
+        // [self performSegueWithIdentifier:@"thefttohis" sender:self];
+        
+    }
+}
+
+- (void)TheftTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        
+        [self performSegueWithIdentifier:@"histotheft" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        [self performSegueWithIdentifier:@"histotheft" sender:self];
+        
+    }
+    
+}
+- (void)OverspeedTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        [self performSegueWithIdentifier:@"histospeed" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        [self performSegueWithIdentifier:@"histospeed" sender:self];
+        
+    }
+}
+- (void)alertTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        
+        [self performSegueWithIdentifier:@"histoalert" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        [self performSegueWithIdentifier:@"histoalert" sender:self];
+        
+    }
+    
+}
+-(void)Search_Action:(id)sender
+{
+    for(UIView *view in [[[UIApplication sharedApplication] keyWindow] subviews]){
+        if ([view isKindOfClass:[SearchMenu class]]) {
+            [view removeFromSuperview];
+        }
+    }
+    if (IS_IPAD) {
+       
+        SearchMenu * vc=[[SearchMenu alloc]initWithFrame:CGRectMake(0,0,768,1024)];
+        
+    }
+    else
+    {
+        
+   SearchMenu * vc=[[SearchMenu alloc]initWithFrame:CGRectMake(0,0,320,568)]; //Initialize this way otherwise you cannt access controllers from view.
+        
+    }
+}
+- (void)infoViewTappedHistory {
+    
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        
+        
+         HistroytrackInformation * vc=[[HistroytrackInformation alloc]initWithFrame:CGRectMake(0,0,768,1024)];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        
+   HistroytrackInformation * vc=[[HistroytrackInformation alloc]initWithFrame:CGRectMake(0,0,320,568)]; //Initialize this way otherwise you cannt access controllers from view.
+        
+    }
+}
+
+#pragma mark - DidLoad
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-     self.navigationController.topViewController.title=@"History Track";
+    self.navigationController.topViewController.title=@"History Track";
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    UIButton* back = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+    UIBarButtonItem *button11 = [[UIBarButtonItem alloc] initWithCustomView:back];
+    self.navigationItem.leftBarButtonItem = button11;
+    
+    
+    
+    
+    UIButton* searchButton;
+    UIButton* infoButton;
+  
+   
+    
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        searchButton= [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20,20)];
+        [searchButton setImage:[UIImage imageNamed:@"Search_Icon.png"] forState:UIControlStateNormal];
+        [searchButton addTarget:self action:@selector(Search_Action:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *searchBarButton = [[UIBarButtonItem alloc] initWithCustomView:searchButton];
+        
+        infoButton= [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+        [infoButton setImage:[UIImage imageNamed:@"Info_Icon.png"] forState:UIControlStateNormal];
+        [infoButton addTarget:self action:@selector(infoViewTappedHistory) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+        
+      
+        UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        fixedItem1.width = 10;
+        
+        [self.navigationItem setLeftBarButtonItems:@[infoBarButton,fixedItem1,searchBarButton,fixedItem1]];
+    }
+    else if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        searchButton= [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25,25)];
+        [searchButton setImage:[UIImage imageNamed:@"Search_Icon.png"] forState:UIControlStateNormal];
+        [searchButton addTarget:self action:@selector(Search_Action:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *searchBarButton = [[UIBarButtonItem alloc] initWithCustomView:searchButton];
+        
+         infoButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
+        [infoButton setImage:[UIImage imageNamed:@"Info_Icon.png"] forState:UIControlStateNormal];
+        [infoButton addTarget:self action:@selector(infoViewTappedHistory) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *infoBarButton = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+        
+        UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        fixedItem1.width = 20;
+        
+        [self.navigationItem setLeftBarButtonItems:@[infoBarButton,fixedItem1,searchBarButton,fixedItem1]];
+    }
+    
+    
+    //Right BAr Button Items...
+    
+    UIBarButtonItem *b= [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Icon.png"]
+                                                         style:UIBarButtonItemStylePlain
+                                                        target:self
+                                                        action:@selector(toolButtonTapped:)];
+    UIButton* homeButton;
+    
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        homeButton= [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20,20)];
+        [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
+        [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *homebutton = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
+        
+        
+        UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        fixedItem1.width = 10;
+        
+        [self.navigationItem setRightBarButtonItems:@[fixedItem1,homebutton,fixedItem1,b]];
+    }
+    else if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        homeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25,25)];
+        [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
+        [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *homebutton = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
+        
+        
+        UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        fixedItem1.width = 20;
+        
+        [self.navigationItem setRightBarButtonItems:@[fixedItem1,homebutton,fixedItem1,b]];
+    }
+    
     if(SCREEN_35)
     {
         
@@ -159,37 +383,21 @@
             
         }
     }
-
+    
     
     NSString *role=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
     
     if ([role isEqualToString:@"ROLE_ADMIN"]) {
-           [segment removeSegmentAtIndex:3 animated:YES];
+        [segment removeSegmentAtIndex:3 animated:YES];
     }
     else  if (([role isEqualToString:@"ROLE_PCLIENT"]) ||   ([role isEqualToString:@"ROLE_FCLIENT"]))
     {
-       // [segment removeSegmentAtIndex:2 animated:YES];
+        // [segment removeSegmentAtIndex:2 animated:YES];
         [segment setTitle:@"Theft Alarm" forSegmentAtIndex:2];
     }
-
-     self.allPins = [[NSMutableArray alloc]init];
-   
-      welcome.text=[NSString stringWithFormat:@"Welcome %@ !",[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
     
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIFont fontWithName:@"Times New Roman" size:20], UITextAttributeFont,nil];
-        [segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
-        
-    }
-    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-        
-        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIFont fontWithName:@"Times New Roman" size:12], UITextAttributeFont,nil];
-        [segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
-        
-    }
+    self.allPins = [[NSMutableArray alloc]init];
+    
     
     CLLocationCoordinate2D coord = {.latitude =  22.3512639, .longitude =78.9542827};
     MKCoordinateSpan span = {.latitudeDelta =  30, .longitudeDelta =  30};
@@ -202,20 +410,21 @@
     [segment setSelectedSegmentIndex:1];
     
     stepper_initial_value=stepper.value;
-     
-   
+    
+    
     // Do any additional setup after loading the view.
     du=[[databaseurl alloc]init];
-//    NSString *filename = [du imagecheck:@"historytrack.jpg"];
-//    NSLog(@"image name %@",filename);
-//     imageview.image = [UIImage imageNamed:filename];
+    //    NSString *filename = [du imagecheck:@"historytrack.jpg"];
+    //    NSLog(@"image name %@",filename);
+    //     imageview.image = [UIImage imageNamed:filename];
     
     mapview.delegate=self;
     
-   
     
-   
+    
+    
 }
+#pragma mark - Search Action _ Date Selection
 - (IBAction)dateClicked:(id)sender {
     
     
@@ -256,7 +465,7 @@
     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"US"];
     [picker.picker setLocale:locale];
 }
-
+#pragma mark - FromTime
 - (IBAction)fromtimeClicked:(id)sender {
     
     
@@ -298,9 +507,10 @@
     [picker.picker setLocale:locale];
     
 }
+
 -(void)pickerChanged:(id)sender {
     UIDatePicker *dp=(UIDatePicker*)sender;
-//    NSLog(@"time in picker %@",dp.date);
+    //    NSLog(@"time in picker %@",dp.date);
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *strDate =[dateFormatter stringFromDate:[dp date]];
@@ -319,36 +529,7 @@
     }
     
 }
-
--(void)donePressed {
-    UIDatePicker *dp=picker.picker;
-   
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *strDate =[dateFormatter stringFromDate:[dp date]];
-    
-    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
-    [dateFormatter1 setDateFormat:@"HH:mm"];
-    NSString *timeDate =[dateFormatter1 stringFromDate:[dp date]];
-    if (dp.tag==1) {
-        self.fromtime.text = timeDate;
-    }
-    else if (dp.tag==2) {
-        self.totime.text = timeDate;
-    }
-    else if (dp.tag==3) {
-        self.selecteddate.text = strDate;
-    }
-    [picker removeFromSuperview];
-    //    NSLog(@"Done button tapped");
-    
-}
-
--(void)cancelPressed {
-    [picker removeFromSuperview];
-    //    NSLog(@"Cancel pressed");
-}
-
+#pragma mark - To time Picker
 - (IBAction)totimeClicked:(id)sender {
     [self cancelPressed];
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
@@ -386,22 +567,54 @@
     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"UK"];
     [picker.picker setLocale:locale];
 }
+
+#pragma mark - PickerAction
+
+-(void)donePressed {
+    UIDatePicker *dp=picker.picker;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *strDate =[dateFormatter stringFromDate:[dp date]];
+    
+    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+    [dateFormatter1 setDateFormat:@"HH:mm"];
+    NSString *timeDate =[dateFormatter1 stringFromDate:[dp date]];
+    if (dp.tag==1) {
+        self.fromtime.text = timeDate;
+    }
+    else if (dp.tag==2) {
+        self.totime.text = timeDate;
+    }
+    else if (dp.tag==3) {
+        self.selecteddate.text = strDate;
+    }
+    [picker removeFromSuperview];
+    //    NSLog(@"Done button tapped");
+    
+}
+
+-(void)cancelPressed {
+    [picker removeFromSuperview];
+    //    NSLog(@"Cancel pressed");
+}
+#pragma mark - Date and time comparison
 -(BOOL)From_to_dateCheck
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-//   NSLocale *indianEnglishLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_IN"] autorelease];
-//    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Kolkata"];
-//   [formatter setLocale:indianEnglishLocale];
-//    [formatter setTimeZone:timeZone];
+    //   NSLocale *indianEnglishLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_IN"] autorelease];
+    //    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Kolkata"];
+    //   [formatter setLocale:indianEnglishLocale];
+    //    [formatter setTimeZone:timeZone];
     NSString *fromtime1=[NSString stringWithFormat:@"%@ %@",selecteddate.text,fromtime.text];
-      NSString *totime1=[NSString stringWithFormat:@"%@ %@",selecteddate.text,totime.text];
+    NSString *totime1=[NSString stringWithFormat:@"%@ %@",selecteddate.text,totime.text];
     NSDate *date1= [formatter dateFromString:fromtime1];
     NSDate *date2 = [formatter dateFromString:totime1];
     NSComparisonResult result = [date1 compare:date2];
-//    NSLog(@"from time %@",date1);
-//     NSLog(@"to time %@",date2);
-//     NSLog(@"result %ld",result);
+    //    NSLog(@"from time %@",date1);
+    //     NSLog(@"to time %@",date2);
+    //     NSLog(@"result %ld",result);
     if(result == NSOrderedDescending)
     {
         NSLog(@"date1 is later than date2");
@@ -410,20 +623,22 @@
     else if(result == NSOrderedAscending)
     {
         NSLog(@"date2 is later than date1");
-         return 1;
+        return 1;
     }
     else
     {
         NSLog(@"date1 is equal to date2");
-         return 1;
+        return 1;
     }
     return 0;
 }
+
+#pragma mark - search Action
 - (IBAction)search:(id)sender {
     if ((![selecteddate.text isEqualToString:@"Select Date"])&&(![fromtime.text isEqualToString:@"From"])&&(![totime.text isEqualToString:@"To"]))
     {
-      
-     BOOL res= [self From_to_dateCheck];
+        
+        BOOL res= [self From_to_dateCheck];
         if (res)
         {
             HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
@@ -441,10 +656,10 @@
             [alertView show];
         }
         
-       
-       
         
-
+        
+        
+        
         
     }
     else if ([selecteddate.text isEqualToString:@"Select Date"])
@@ -463,7 +678,7 @@
         [self addButtonsWithBackgroundImagesToAlertView:alertView];
         [alertView show];
     }
-   else if ([totime.text isEqualToString:@"To"])
+    else if ([totime.text isEqualToString:@"To"])
     {
         
         TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select to time." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
@@ -531,7 +746,7 @@
             }
             else
             {
-                 [HUD hide:YES];
+                [HUD hide:YES];
                 NSUInteger componentFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
                 NSDateComponents *components = [[NSCalendar currentCalendar] components:componentFlags fromDate:[NSDate date]];
                 NSInteger value=[components year];
@@ -543,16 +758,16 @@
                 NSInteger value2=[components day];
                 [[NSUserDefaults standardUserDefaults]setValue:[NSString stringWithFormat:@"%d",(int)value2]  forKey:@"day"];
                 [[NSUserDefaults standardUserDefaults]synchronize];
-
+                
                 if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
                     
                 }
                 else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
-               
+                    
                 {
-                 
+                    
                 }
-               
+                
                 TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"No location's found." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [self styleCustomAlertView:alertView];
                 [self addButtonsWithBackgroundImagesToAlertView:alertView];
@@ -568,6 +783,7 @@
     [HUD hide:YES];
     
 }
+#pragma mark - CustomPicker
 - (void)styleCustomAlertView:(TTAlertView *)alertView
 {
     [alertView.containerView setImage:[[UIImage imageNamed:@"alert.bg.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(11.0f, 13.0f, 14.0f, 13.0f)]];
@@ -584,22 +800,23 @@
     [alertView setButtonBackgroundImage:redButtonImageOn forState:UIControlStateHighlighted atIndex:0];
     
 }
+#pragma mark - DrawPin with Lat nd Long
 -(void)setpin
 {
     
     NSMutableArray *points=[[NSMutableArray alloc]init];
     self.allPins = [[NSMutableArray alloc]init];
     MKMapRect visibleMapRect = mapview.visibleMapRect;
-//    NSLog(@"visible");
+    //    NSLog(@"visible");
     NSSet *visibleAnnotations = [mapview annotationsInMapRect:visibleMapRect];
-//    NSLog(@"visible1");
+    //    NSLog(@"visible1");
     if ([visibleAnnotations count]>0)
     {
-//        NSLog(@"visible3");
+        //        NSLog(@"visible3");
         //check annotations present in map if >0 remove everything
         [self.mapview removeAnnotations:self.mapview.annotations];
     }
-  
+    
     if ([locationlist count]>0)
     {
         CSMapAnnotation* annotation = nil;
@@ -627,7 +844,7 @@
                                                                     title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
                 [annotation setUserData:@"red_pin.png"];
             }
-           
+            
             
             [mapview addAnnotation:annotation];
             CLLocationCoordinate2D coord = {.latitude =  [list1.latitude doubleValue], .longitude = [list1.longitude doubleValue]};
@@ -659,9 +876,10 @@
     
     
 }
+#pragma mark - Draw PolyLine
 - (IBAction)drawLines:(id)sender {
     
-   
+    
     
     [self drawLineSubroutine];
     [self drawLineSubroutine];
@@ -700,128 +918,6 @@
     return self.lineView;
 }
 
--(NSString *)HttpPostEntityFirst1:(NSString*)firstEntity ForValue1:(NSString*)value1 EntitySecond:(NSString*)secondEntity ForValue2:(NSString*)value2
-{
-    NSString *vehicleregno=[[NSUserDefaults standardUserDefaults]objectForKey:@"vehicleregno"];
-    
-    NSString *urltemp=[[databaseurl sharedInstance]DBurl];
-    NSString *url1=@"Vehicledetails.php?service=vehiclehistorylist";
-    NSString *url2=[NSString stringWithFormat:@"%@%@",urltemp,url1];
-    NSString *post =[[NSString alloc] initWithFormat:@"%@=%@&vehicleregno=%@&date=%@&from=%@&to=%@&%@=%@",firstEntity,value1,vehicleregno,selecteddate.text,fromtime.text,totime.text,secondEntity,value2];
-   // NSLog(@"post %@",post);
-    NSURL *url = [NSURL URLWithString:url2];
-    
-    return [du returndbresult:post URL:url];
-}
-- (IBAction)segmentaction:(id)sender {
-    if ([sender selectedSegmentIndex]==0)
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            [self performSegueWithIdentifier:@"histolive" sender:self];
-            
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-             [self performSegueWithIdentifier:@"histolive" sender:self];
-            
-        }
-    }
-    if ([sender selectedSegmentIndex]==1)
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-           // [self performSegueWithIdentifier:@"livetohis" sender:self];
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-           // [self performSegueWithIdentifier:@"livetohis" sender:self];
-            
-        }
-        
-    }
-   if (([sender selectedSegmentIndex]==2)&&([[segment titleForSegmentAtIndex:segment.selectedSegmentIndex]isEqualToString:@"Alert Message"]))
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            
-            [self performSegueWithIdentifier:@"histoalert" sender:self];
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-            [self performSegueWithIdentifier:@"histoalert" sender:self];
-            
-        }
-        
-    }
-    
-    
-    if (([sender selectedSegmentIndex]==2)&&([[segment titleForSegmentAtIndex:segment.selectedSegmentIndex]isEqualToString:@"Theft Alarm"]))
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            
-            [self performSegueWithIdentifier:@"histotheft" sender:self];
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-            [self performSegueWithIdentifier:@"histotheft" sender:self];
-            
-        }
-        
-    }
-    if ([sender selectedSegmentIndex]==3)
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            [self performSegueWithIdentifier:@"histospeed" sender:self];
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-            [self performSegueWithIdentifier:@"histospeed" sender:self];
-            
-        }
-        
-    }
-
-
-}
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-- (IBAction)logout:(id)sender {
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-       [self.navigationController popToRootViewControllerAnimated:YES];
-        
-    }
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
-    {
-        
-         [self.navigationController popToRootViewControllerAnimated:YES];
-        
-    }
-}
-
-
-
-
-- (IBAction)home:(id)sender {
-    for (id controller in [self.navigationController viewControllers])
-    {
-        if ([controller isKindOfClass:[WelcomeViewController class]])
-        {
-            [self.navigationController popToViewController:controller animated:YES];
-            break;
-        }
-    }
-}
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
@@ -872,7 +968,7 @@
 			
 			annotationView = imageAnnotationView;
 		}
-       
+        
         [annotationView setEnabled:YES];
 		[annotationView setCanShowCallout:NO];
 		
@@ -886,7 +982,7 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-	  
+    
     CSImageAnnotationView* imageAnnotationView = (CSImageAnnotationView*) view;
 	CSMapAnnotation* annotation = (CSMapAnnotation*)[imageAnnotationView annotation];
     
@@ -918,13 +1014,55 @@
             [subview removeFromSuperview];
     }
 }
+#pragma mark - Http Method to getList
+-(NSString *)HttpPostEntityFirst1:(NSString*)firstEntity ForValue1:(NSString*)value1 EntitySecond:(NSString*)secondEntity ForValue2:(NSString*)value2
+{
+    NSString *vehicleregno=[[NSUserDefaults standardUserDefaults]objectForKey:@"vehicleregno"];
+    
+    NSString *urltemp=[[databaseurl sharedInstance]DBurl];
+    NSString *url1=@"Vehicledetails.php?service=vehiclehistorylist";
+    NSString *url2=[NSString stringWithFormat:@"%@%@",urltemp,url1];
+    NSString *post =[[NSString alloc] initWithFormat:@"%@=%@&vehicleregno=%@&date=%@&from=%@&to=%@&%@=%@",firstEntity,value1,vehicleregno,selecteddate.text,fromtime.text,totime.text,secondEntity,value2];
+    // NSLog(@"post %@",post);
+    NSURL *url = [NSURL URLWithString:url2];
+    
+    return [du returndbresult:post URL:url];
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+
+
+
+
+- (IBAction)home:(id)sender {
+    for(UIView *view in [[[UIApplication sharedApplication] keyWindow] subviews]){
+        if ([view isKindOfClass:[SearchMenu class]]) {
+            [view removeFromSuperview];
+        }
+    }
+    for (id controller in [self.navigationController viewControllers])
+    {
+        if ([controller isKindOfClass:[WelcomeViewController class]])
+        {
+            [self.navigationController popToViewController:controller animated:YES];
+            break;
+        }
+    }
+}
 
 - (void)viewDidUnload {
 	self.mapview   = nil;
-
+    
 }
 - (void)dealloc {
-
+    
     [super dealloc];
     [mapview release];
 }

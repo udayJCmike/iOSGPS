@@ -23,7 +23,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
                                     <tabBarItem title="Profile" image="profile.png" id="wFr-aE-nqF"/>
-                                    <tabBarItem tag="1" title="About Us" image="multiple25.png" id="0Mq-RB-RxY"/>
+                                    <tabBarItem tag="1" title="About " image="multiple25.png" id="0Mq-RB-RxY"/>
                                     <tabBarItem tag="2" title="Contact Us" image="contact.png" id="0gs-pa-LMG"/>
                                     <tabBarItem tag="3" title="Settings" image="multiple25.png" id="Rji-OQ-rvc"/>
                                     <tabBarItem tag="4" title="Logout" image="logout.png" id="siV-et-QfD"/>

@@ -166,6 +166,8 @@
 		84E743B51A261472007C9639 /* Info_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E743B01A261472007C9639 /* Info_Icon.png */; };
 		84E743B61A261472007C9639 /* Menu_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E743B11A261472007C9639 /* Menu_Icon.png */; };
 		84E743B71A261472007C9639 /* Search_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E743B21A261472007C9639 /* Search_Icon.png */; };
+		84F251DA1A2992C500576F9B /* SearchMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F251D91A2992C500576F9B /* SearchMenu.m */; };
+		84F251DF1A29CC1200576F9B /* HistroytrackInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F251DE1A29CC1200576F9B /* HistroytrackInformation.m */; };
 		84F796FA1A0CE3FD00152B17 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F796F91A0CE3FD00152B17 /* AudioToolbox.framework */; };
 		84F796FE1A0CE3FD00152B17 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F796FD1A0CE3FD00152B17 /* AVFoundation.framework */; };
 		84F797001A0CE3FD00152B17 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F796FF1A0CE3FD00152B17 /* CoreAudio.framework */; };
@@ -397,6 +399,10 @@
 		84E743B01A261472007C9639 /* Info_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Info_Icon.png; sourceTree = "<group>"; };
 		84E743B11A261472007C9639 /* Menu_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Menu_Icon.png; sourceTree = "<group>"; };
 		84E743B21A261472007C9639 /* Search_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Search_Icon.png; sourceTree = "<group>"; };
+		84F251D81A2992C500576F9B /* SearchMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchMenu.h; sourceTree = "<group>"; };
+		84F251D91A2992C500576F9B /* SearchMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchMenu.m; sourceTree = "<group>"; };
+		84F251DD1A29CC1200576F9B /* HistroytrackInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistroytrackInformation.h; sourceTree = "<group>"; };
+		84F251DE1A29CC1200576F9B /* HistroytrackInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistroytrackInformation.m; sourceTree = "<group>"; };
 		84F796F91A0CE3FD00152B17 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		84F796FD1A0CE3FD00152B17 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		84F796FF1A0CE3FD00152B17 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -755,6 +761,8 @@
 			children = (
 				84951AED1973E332003C603B /* HistorytrackViewController.h */,
 				84951AEE1973E332003C603B /* HistorytrackViewController.m */,
+				84F251DC1A29CBEE00576F9B /* Information */,
+				84F251DB1A2992CC00576F9B /* Search */,
 			);
 			name = "History Track";
 			sourceTree = "<group>";
@@ -917,6 +925,24 @@
 				84E743921A25B772007C9639 /* icon152.png */,
 			);
 			name = "Icon Images";
+			sourceTree = "<group>";
+		};
+		84F251DB1A2992CC00576F9B /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				84F251D81A2992C500576F9B /* SearchMenu.h */,
+				84F251D91A2992C500576F9B /* SearchMenu.m */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		84F251DC1A29CBEE00576F9B /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				84F251DD1A29CC1200576F9B /* HistroytrackInformation.h */,
+				84F251DE1A29CC1200576F9B /* HistroytrackInformation.m */,
+			);
+			name = Information;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1123,9 +1149,11 @@
 				8494C4BA1977B13500FCB97F /* CSImageAnnotationView.m in Sources */,
 				84951B181973FB14003C603B /* SBJSON.m in Sources */,
 				84036BB91A286F39005E410A /* Passwordchange.m in Sources */,
+				84F251DF1A29CC1200576F9B /* HistroytrackInformation.m in Sources */,
 				84C44EBA1A249CED0091B4B8 /* ProfileViewController.m in Sources */,
 				0D8094A4197791CC00521E39 /* SKPSMTPMessage.m in Sources */,
 				8427C4F71A27378F0021B912 /* CircularTimer.m in Sources */,
+				84F251DA1A2992C500576F9B /* SearchMenu.m in Sources */,
 				84968B3619766D4400DD80E5 /* CustomDatePicker.m in Sources */,
 				8499685619795DC800A53BEF /* UITextField+AKNumericFormatter.m in Sources */,
 				8427C4E91A270A4F0021B912 /* YLMenuItem.m in Sources */,

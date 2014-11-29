@@ -59,12 +59,155 @@
     }
     return self;
 }
+#pragma mark - YLMenuItemActions
+- (void)toolButtonTapped:(id)sender {
+    UIBarButtonItem *button = (UIBarButtonItem *)sender;
+    
+    NSMutableArray *items = [NSMutableArray array];
+    [items addObject:[YLMenuItem menuItemWithTitle:@"Live Track"
+                                              icon:[UIImage imageNamed:@"liveicon.png"]
+                                       pressedIcon:[UIImage imageNamed:@"liveicon.png"]
+                                          selector:@selector(LiveTapped)]];
+    [items addObject:[YLMenuItem menuItemWithTitle:@"History Track"
+                                              icon:[UIImage imageNamed:@"historyicon.png"]
+                                       pressedIcon:[UIImage imageNamed:@"historyicon.png"]
+                                          selector:@selector(HistoryTapped)]];
+	
+    NSString *role=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
+    
+	
+    if ([role isEqualToString:@"ROLE_ADMIN"])
+    {
+        
+        [items addObject:[YLMenuItem menuItemWithTitle:@"Alert Message"
+                                                  icon:[UIImage imageNamed:@"home.png"]
+                                           pressedIcon:[UIImage imageNamed:@"home.png"]
+                                              selector:@selector(alertTapped)]];
+        
+    }
+    else  if (([role isEqualToString:@"ROLE_PCLIENT"]) ||   ([role isEqualToString:@"ROLE_FCLIENT"]))
+    {
+        [items addObject:[YLMenuItem menuItemWithTitle:@"Theft Alarm"
+                                                  icon:[UIImage imageNamed:@"alarmicon.png"]
+                                           pressedIcon:[UIImage imageNamed:@"alarmicon.png"]
+                                              selector:@selector(TheftTapped)]];
+        [items addObject:[YLMenuItem menuItemWithTitle:@"Over Speed"
+                                                  icon:[UIImage imageNamed:@"overspeedicon.png"]
+                                           pressedIcon:[UIImage imageNamed:@"overspeedicon.png"]
+                                              selector:@selector(OverspeedTapped)]];
+        
+    }
+    YLPopoverMenu* menu = [YLPopoverMenu popoverMenuWithItems:items target:self];
+    [menu presentPopoverFromBarButtonItem:button animated:YES];
+}
+- (void)LiveTapped {
+    
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        [self performSegueWithIdentifier:@"alerttolive" sender:self];
+        
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        [self performSegueWithIdentifier:@"alerttolive" sender:self];
+        
+    }
+    
+}
 
+- (void)HistoryTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        [self performSegueWithIdentifier:@"alerttohis" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        [self performSegueWithIdentifier:@"alerttohis" sender:self];
+        
+    }
+}
+
+- (void)TheftTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        
+        ///  [self performSegueWithIdentifier:@"histoalert" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        //  [self performSegueWithIdentifier:@"histoalert" sender:self];
+        
+    }
+}
+- (void)OverspeedTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+       // [self performSegueWithIdentifier:@"thefttospeed" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+     //   [self performSegueWithIdentifier:@"thefttospeed" sender:self];
+        
+    }
+}
+- (void)alertTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        
+        // [self performSegueWithIdentifier:@"livetoalert" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        //[self performSegueWithIdentifier:@"livetoalert" sender:self];
+        
+    }
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.activityIndicator.hidden=YES;
      self.navigationController.topViewController.title=@"Alert Message";
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    UIButton* back = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+    UIBarButtonItem *button11 = [[UIBarButtonItem alloc] initWithCustomView:back];
+    self.navigationItem.leftBarButtonItem = button11;
+    
+    UIBarButtonItem *b= [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Icon.png"]
+                                                         style:UIBarButtonItemStylePlain
+                                                        target:self
+                                                        action:@selector(toolButtonTapped:)];
+    
+    //Right BAr Button Items...
+    
+    
+    UIButton* homeButton;
+    
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        homeButton= [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20,20)];
+        [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
+        [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *homebutton = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
+        
+        
+        UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        fixedItem1.width = 10;
+        
+        [self.navigationItem setRightBarButtonItems:@[fixedItem1,homebutton,fixedItem1,b]];
+    }
+    else if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        homeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25,25)];
+        [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
+        [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *homebutton = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
+        
+        
+        UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        fixedItem1.width = 20;
+        
+        [self.navigationItem setRightBarButtonItems:@[fixedItem1,homebutton,fixedItem1,b]];
+    }
+
     if(SCREEN_35)
     {
         
@@ -112,7 +255,7 @@
     }
 
     du=[[databaseurl alloc]init];
-    welcome.text=[NSString stringWithFormat:@"Welcome %@ !",[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
+    
     orgid=[[NSUserDefaults standardUserDefaults]objectForKey:@"orgid"];
     vehicleNo = [[NSUserDefaults standardUserDefaults]objectForKey:@"vehicleregno"];
     alertMessageTextView.layer.cornerRadius = 5;
@@ -126,26 +269,7 @@
     
     [self.view addGestureRecognizer:tap];
     
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIFont fontWithName:@"Times New Roman" size:20], UITextAttributeFont,nil];
-        [segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
-        
-    }
-    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-        
-        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [UIFont fontWithName:@"Times New Roman" size:12], UITextAttributeFont,nil];
-        [segment setTitleTextAttributes:attributes forState:UIControlStateNormal];
-        
-    }
-    [segment setSelectedSegmentIndex:2];
-//    NSString *filename = [du imagecheck:@"message.jpg"];
-//    NSLog(@"image name %@",filename);
-//    
-//    imageview.image = [UIImage imageNamed:filename];
-    // Do any additional setup after loading the view.
+    
 }
 
 -(void)dismissKeyboard
@@ -172,48 +296,6 @@
     return YES;
 }
 
-- (IBAction)segmentaction:(id)sender {
-    if ([sender selectedSegmentIndex]==0)
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            [self performSegueWithIdentifier:@"alerttolive" sender:self];
-            
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-            [self performSegueWithIdentifier:@"alerttolive" sender:self];
-            
-        }
-    }
-    if ([sender selectedSegmentIndex]==1)
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            [self performSegueWithIdentifier:@"alerttohis" sender:self];
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-            [self performSegueWithIdentifier:@"alerttohis" sender:self];
-            
-        }
-        
-    }
-    if ([sender selectedSegmentIndex]==2)
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            
-            // [self performSegueWithIdentifier:@"histoalert" sender:self];
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-            //  [self performSegueWithIdentifier:@"histoalert" sender:self];
-            
-        }
-        
-    }
-}
 
 -(void)getRouteNumber
 {
@@ -345,19 +427,7 @@
  // Pass the selected object to the new view controller.
  }
  */
-- (IBAction)logout:(id)sender {
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-        
-    }
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
-    {
-        
-        [self.navigationController popToRootViewControllerAnimated:YES];
-        
-    }
-}
+
 - (IBAction)home:(id)sender {
     for (id controller in [self.navigationController viewControllers])
     {

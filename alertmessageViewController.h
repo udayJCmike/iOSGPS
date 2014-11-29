@@ -11,7 +11,8 @@
 #import "databaseurl.h"
 #import "SBJSON.h"
 #import "TTAlertView.h"
-
+#import "YLPopoverMenu.h"
+#import "YLMenuItem.h"
 @interface alertmessageViewController : UIViewController<UITextViewDelegate>
 @property (retain, nonatomic) IBOutlet UISegmentedControl *segment;
 @property (retain, nonatomic) IBOutlet UILabel *welcome;

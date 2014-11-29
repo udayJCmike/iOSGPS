@@ -11,7 +11,7 @@
 #import "DateTimePicker.h"
 @interface OverSpeedViewController ()
 {
-     databaseurl *du;
+    databaseurl *du;
     DateTimePicker *picker;
 }
 @end
@@ -40,20 +40,167 @@
     }
     return self;
 }
+#pragma mark - YLMenuItemActions
+- (void)toolButtonTapped:(id)sender {
+    UIBarButtonItem *button = (UIBarButtonItem *)sender;
+    
+    NSMutableArray *items = [NSMutableArray array];
+    [items addObject:[YLMenuItem menuItemWithTitle:@"Live Track"
+                                              icon:[UIImage imageNamed:@"liveicon.png"]
+                                       pressedIcon:[UIImage imageNamed:@"liveicon.png"]
+                                          selector:@selector(LiveTapped)]];
+    [items addObject:[YLMenuItem menuItemWithTitle:@"History Track"
+                                              icon:[UIImage imageNamed:@"historyicon.png"]
+                                       pressedIcon:[UIImage imageNamed:@"historyicon.png"]
+                                          selector:@selector(HistoryTapped)]];
+	
+    NSString *role=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
+    
+	
+    if ([role isEqualToString:@"ROLE_ADMIN"])
+    {
+        
+        [items addObject:[YLMenuItem menuItemWithTitle:@"Alert Message"
+                                                  icon:[UIImage imageNamed:@"home.png"]
+                                           pressedIcon:[UIImage imageNamed:@"home.png"]
+                                              selector:@selector(alertTapped)]];
+        
+    }
+    else  if (([role isEqualToString:@"ROLE_PCLIENT"]) ||   ([role isEqualToString:@"ROLE_FCLIENT"]))
+    {
+        [items addObject:[YLMenuItem menuItemWithTitle:@"Theft Alarm"
+                                                  icon:[UIImage imageNamed:@"alarmicon.png"]
+                                           pressedIcon:[UIImage imageNamed:@"alarmicon.png"]
+                                              selector:@selector(TheftTapped)]];
+        [items addObject:[YLMenuItem menuItemWithTitle:@"Over Speed"
+                                                  icon:[UIImage imageNamed:@"overspeedicon.png"]
+                                           pressedIcon:[UIImage imageNamed:@"overspeedicon.png"]
+                                              selector:@selector(OverspeedTapped)]];
+        
+    }
+    YLPopoverMenu* menu = [YLPopoverMenu popoverMenuWithItems:items target:self];
+    [menu presentPopoverFromBarButtonItem:button animated:YES];
+}
+- (void)LiveTapped {
+    
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        [self performSegueWithIdentifier:@"speedtolive" sender:self];
+        
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        [self performSegueWithIdentifier:@"speedtolive" sender:self];
+        
+    }
+    
+    
+    
+    
+}
 
+- (void)HistoryTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        [self performSegueWithIdentifier:@"speedtohis" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        [self performSegueWithIdentifier:@"speedtohis" sender:self];
+        
+    }
+    
+}
+
+- (void)TheftTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        
+        [self performSegueWithIdentifier:@"speedtotheft" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        [self performSegueWithIdentifier:@"speedtotheft" sender:self];
+        
+    }
+}
+- (void)OverspeedTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        [self performSegueWithIdentifier:@"thefttospeed" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        [self performSegueWithIdentifier:@"thefttospeed" sender:self];
+        
+    }
+}
+- (void)alertTapped {
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        
+        // [self performSegueWithIdentifier:@"livetoalert" sender:self];
+    }
+    else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        //[self performSegueWithIdentifier:@"livetoalert" sender:self];
+        
+    }
+}
+#pragma mark - Didload
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-     self.navigationController.topViewController.title=@"OverSpeed";
+    self.navigationController.topViewController.title=@"OverSpeed";
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    UIButton* back = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+    UIBarButtonItem *button11 = [[UIBarButtonItem alloc] initWithCustomView:back];
+    self.navigationItem.leftBarButtonItem = button11;
+    
+    UIBarButtonItem *b= [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Icon.png"]
+                                                         style:UIBarButtonItemStylePlain
+                                                        target:self
+                                                        action:@selector(toolButtonTapped:)];
+    
+    //Right BAr Button Items...
+    
+    
+    UIButton* homeButton;
+    
+    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        homeButton= [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20,20)];
+        [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
+        [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *homebutton = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
+        
+        
+        UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        fixedItem1.width = 10;
+        
+        [self.navigationItem setRightBarButtonItems:@[fixedItem1,homebutton,fixedItem1,b]];
+    }
+    else if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+    {
+        homeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25,25)];
+        [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
+        [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *homebutton = [[UIBarButtonItem alloc] initWithCustomView:homeButton];
+        
+        
+        UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        fixedItem1.width = 20;
+        
+        [self.navigationItem setRightBarButtonItems:@[fixedItem1,homebutton,fixedItem1,b]];
+    }
     
     du=[[databaseurl alloc]init];
-
+    
     speedcount.text=@"";
     NSString *vehicleregno=[[NSUserDefaults standardUserDefaults]objectForKey:@"vehicleregno"];
     NSString *driver_name=[[NSUserDefaults standardUserDefaults]objectForKey:@"driver_name"];
     vecnumber.text=vehicleregno;
     drivername.text=driver_name;
-//     [self performSelector:@selector(CountOverSpeed) withObject:self afterDelay:0.1f];
+    //     [self performSelector:@selector(CountOverSpeed) withObject:self afterDelay:0.1f];
     welcome.text=[NSString stringWithFormat:@"Welcome %@ !",[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
@@ -70,12 +217,13 @@
         
     }
     [segment setSelectedSegmentIndex:3];
-//    NSString *filename = [du imagecheck:@"message.jpg"];
-//    NSLog(@"image name %@",filename);
-//    bgimage.image = [UIImage imageNamed:filename];
-
-
+    //    NSString *filename = [du imagecheck:@"message.jpg"];
+    //    NSLog(@"image name %@",filename);
+    //    bgimage.image = [UIImage imageNamed:filename];
+    
+    
 }
+#pragma mark -OverspeedCount Method
 -(void)CountOverSpeed
 {
     
@@ -117,24 +265,8 @@
     
     
 }
--(NSString *)countSpeed:(NSString*)firstEntity ForValue1:(NSString*)value1 EntitySecond:(NSString*)secondEntity ForValue2:(NSString*)value2
-{
-    
-     NSString * orgid=[[NSUserDefaults standardUserDefaults]objectForKey:@"orgid"];
-    NSString *urltemp=[[databaseurl sharedInstance]DBurl];
-    NSString *url1=@"OverSpeed.php?service=VehicleOverSpeedCount";
-    NSString *url2=[NSString stringWithFormat:@"%@%@",urltemp,url1];
-    NSString *post =[[NSString alloc] initWithFormat:@"%@=%@&orgid=%@&%@=%@",firstEntity,value1,orgid,secondEntity,value2];
-    NSURL *url = [NSURL URLWithString:url2];
-    
-    return [du returndbresult:post URL:url];
-}
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
+#pragma mark -CustomAlert
 - (void)styleCustomAlertView:(TTAlertView *)alertView
 {
     [alertView.containerView setImage:[[UIImage imageNamed:@"alert.bg.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(11.0f, 13.0f, 14.0f, 13.0f)]];
@@ -152,75 +284,8 @@
     
 }
 
-- (IBAction)segmentaction:(id)sender {
-    if ([sender selectedSegmentIndex]==0)
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            [self performSegueWithIdentifier:@"speedtolive" sender:self];
-            
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-            [self performSegueWithIdentifier:@"speedtolive" sender:self];
-            
-        }
-    }
-    if ([sender selectedSegmentIndex]==1)
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            [self performSegueWithIdentifier:@"speedtohis" sender:self];
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-            [self performSegueWithIdentifier:@"speedtohis" sender:self];
-            
-        }
-        
-    }
-    if ([sender selectedSegmentIndex]==2)
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            
-              [self performSegueWithIdentifier:@"speedtotheft" sender:self];
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-              [self performSegueWithIdentifier:@"speedtotheft" sender:self];
-            
-        }
-        
-    }
-    if ([sender selectedSegmentIndex]==3)
-    {
-        if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-        {
-            //[self performSegueWithIdentifier:@"livetospeed" sender:self];
-        }
-        else if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
-            
-          //  [self performSegueWithIdentifier:@"livetospeed" sender:self];
-            
-        }
-        
-    }
+#pragma mark -Home Action
 
-}
-- (IBAction)logout:(id)sender {
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-        
-    }
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
-    {
-        
-        [self.navigationController popToRootViewControllerAnimated:YES];
-        
-    }
-}
 - (IBAction)home:(id)sender {
     for (id controller in [self.navigationController viewControllers])
     {
@@ -231,33 +296,33 @@
         }
     }
 }
-
+#pragma mark -From Date Selection
 - (IBAction)frombuttonClicked:(id)sender {
-//    fromdateselection.hidden=NO;
-//    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 100, 320, 44)];
-//    textField.text         = @"done";
-//    textField.userInteractionEnabled=YES;
-//    [self.view addSubview:textField];
-//    
-//    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-//    toolbar.barStyle   = UIBarStyleBlackTranslucent;
-//    
-//    UIBarButtonItem *itemDone  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:textField action:@selector(resignFirstResponder)];
-//    UIBarButtonItem *itemSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-//    
-//    toolbar.items = @[itemSpace,itemDone];
-//    
-//    UIDatePicker *datePicker =fromdateselection;
-//    [fromdateselection setFrame:CGRectMake(0, 0, 320, 216)];
-//   
-//      
-//    textField.inputAccessoryView = toolbar;
-//    textField.inputView          = datePicker;
-//    
-//    [textField becomeFirstResponder];
+    //    fromdateselection.hidden=NO;
+    //    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 100, 320, 44)];
+    //    textField.text         = @"done";
+    //    textField.userInteractionEnabled=YES;
+    //    [self.view addSubview:textField];
+    //
+    //    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    //    toolbar.barStyle   = UIBarStyleBlackTranslucent;
+    //
+    //    UIBarButtonItem *itemDone  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:textField action:@selector(resignFirstResponder)];
+    //    UIBarButtonItem *itemSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    //
+    //    toolbar.items = @[itemSpace,itemDone];
+    //
+    //    UIDatePicker *datePicker =fromdateselection;
+    //    [fromdateselection setFrame:CGRectMake(0, 0, 320, 216)];
+    //
+    //
+    //    textField.inputAccessoryView = toolbar;
+    //    textField.inputView          = datePicker;
+    //
+    //    [textField becomeFirstResponder];
     
     
-       [self cancelPressed];
+    [self cancelPressed];
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
         CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -299,7 +364,7 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *strDate =[dateFormatter stringFromDate:[dp date]];
     if (dp.tag==1) {
-          self.fromdate.text = strDate;
+        self.fromdate.text = strDate;
     }
     else if (dp.tag==2) {
         self.todate.text = strDate;
@@ -320,14 +385,15 @@
         self.todate.text = strDate;
     }
     [picker removeFromSuperview];
-//    NSLog(@"Done button tapped");
+    //    NSLog(@"Done button tapped");
     
 }
 
 -(void)cancelPressed {
     [picker removeFromSuperview];
-//    NSLog(@"Cancel pressed");
+    //    NSLog(@"Cancel pressed");
 }
+#pragma mark -To Date Selection
 
 - (IBAction)tobuttonClicked:(id)sender {
     [self cancelPressed];
@@ -342,7 +408,7 @@
         [self.view addSubview:picker];
         picker.hidden = NO;
         [picker setMode:UIDatePickerModeDate];
-         picker.picker.tag=2;
+        picker.picker.tag=2;
         [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
     }
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
@@ -360,7 +426,7 @@
         [self.view addSubview:picker];
         picker.hidden = NO;
         [picker setMode:UIDatePickerModeDate];
-          picker.picker.tag=2;
+        picker.picker.tag=2;
         [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
     }
 }
@@ -377,9 +443,9 @@
     NSDate *date1= [formatter dateFromString:fromtime1];
     NSDate *date2 = [formatter dateFromString:totime1];
     NSComparisonResult result = [date1 compare:date2];
-//       NSLog(@"from time %@",date1);
-//         NSLog(@"to time %@",date2);
-//         NSLog(@"result %ld",result);
+    //       NSLog(@"from time %@",date1);
+    //         NSLog(@"to time %@",date2);
+    //         NSLog(@"result %ld",result);
     if(result == NSOrderedDescending)
     {
         NSLog(@"date1 is later than date2");
@@ -398,10 +464,10 @@
     return 0;
 }
 
-
+#pragma mark -Search Action
 
 - (IBAction)search:(id)sender {
-   
+    
     if ((![fromdate.text isEqualToString:@"From Date"])&&(![todate.text isEqualToString:@"To Date"])) {
         BOOL res= [self From_to_dateCheck];
         if (res)
@@ -420,8 +486,8 @@
             [self addButtonsWithBackgroundImagesToAlertView:alertView];
             [alertView show];
         }
-
-       
+        
+        
     }
     else if ([fromdate.text isEqualToString:@"From Date"])
     {
@@ -437,8 +503,9 @@
         [self addButtonsWithBackgroundImagesToAlertView:alertView];
         [alertView show];
     }
-   
+    
 }
+#pragma mark -Search by specified time
 -(void)CountOverSpeedByTime
 {
     
@@ -450,7 +517,7 @@
         NSString *driver_name=[[NSUserDefaults standardUserDefaults]objectForKey:@"driver_name"];
         
         NSString *response=[self countSpeedInTime:@"vecid" ForValue1:vehicleregno EntitySecond:@"authkey" ForValue2:@"rzTFevN099Km39PV"];
-//        NSLog(@"response %@",response);
+        //        NSLog(@"response %@",response);
         NSError *error;
         SBJSON *json = [[SBJSON new] autorelease];
         
@@ -467,7 +534,7 @@
         {
             [HUD hide:YES];
             NSDictionary* menu = [parsedvalue objectForKey:@"serviceresponse"];
-//            NSLog(@"menu %@",menu);
+            //            NSLog(@"menu %@",menu);
             if([[menu objectForKey:@"success"]isEqualToString:@"Yes"])
             {
                 speedcount.text=[menu objectForKey:@"total"];
@@ -488,13 +555,30 @@
     NSString *url1=@"OverSpeed.php?service=VehicleOverSpeedInTime";
     NSString *url2=[NSString stringWithFormat:@"%@%@",urltemp,url1];
     NSString *post =[[NSString alloc] initWithFormat:@"%@=%@&orgid=%@&from=%@&to=%@&%@=%@",firstEntity,value1,orgid,fromdate.text,todate.text,secondEntity,value2];
-   // NSLog(@"post %@",post);
+    // NSLog(@"post %@",post);
     NSURL *url = [NSURL URLWithString:url2];
     
     return [du returndbresult:post URL:url];
 }
+-(NSString *)countSpeed:(NSString*)firstEntity ForValue1:(NSString*)value1 EntitySecond:(NSString*)secondEntity ForValue2:(NSString*)value2
+{
+    
+    NSString * orgid=[[NSUserDefaults standardUserDefaults]objectForKey:@"orgid"];
+    NSString *urltemp=[[databaseurl sharedInstance]DBurl];
+    NSString *url1=@"OverSpeed.php?service=VehicleOverSpeedCount";
+    NSString *url2=[NSString stringWithFormat:@"%@%@",urltemp,url1];
+    NSString *post =[[NSString alloc] initWithFormat:@"%@=%@&orgid=%@&%@=%@",firstEntity,value1,orgid,secondEntity,value2];
+    NSURL *url = [NSURL URLWithString:url2];
+    
+    return [du returndbresult:post URL:url];
+}
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 - (void)dealloc {
-  
+    
     [super dealloc];
 }
 @end

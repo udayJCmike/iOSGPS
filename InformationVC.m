@@ -44,13 +44,13 @@
         
        
         UIBarButtonItem *item11=[[UIBarButtonItem alloc]initWithCustomView:self.close];
-        UINavigationBar *navbar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 282, 30)];
+        UINavigationBar *navbar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 282, 44)];
         UINavigationItem *item=[[UINavigationItem alloc]initWithTitle:@"Live Information"];
         navbar.items=[NSArray arrayWithObjects:item,nil];
        navbar.topItem.rightBarButtonItems=@[fixedItem,item11,fixedItem,fixedItem];
        // [navbar addSubview:v3];
         
-         CGRect countLabelFrame=CGRectMake(123,73,45,44);
+         CGRect countLabelFrame=CGRectMake(123,100,45,44);
         self.countDown=[[UILabel alloc]initWithFrame:countLabelFrame];
         [ self.countDown setBackgroundColor:[UIColor clearColor]];
         [ self.countDown setText:@"00"];
@@ -58,7 +58,7 @@
         [ self.countDown setFont:[UIFont fontWithName:@"Arial Rounded MT Bold" size:25]];
         
         
-         UIView *v1  = [[UIView alloc] initWithFrame:CGRectMake(4,161,274,71)];
+         UIView *v1  = [[UIView alloc] initWithFrame:CGRectMake(4,185,274,71)];
         v1.clipsToBounds=YES;
         v1.layer.cornerRadius=10;
         [v1 setBackgroundColor:[UIColor colorWithRed:204.0/255 green:204.0/255 blue:204.0/255 alpha:1.0]];
@@ -69,7 +69,7 @@
         [ self.vecreg setTextColor:[UIColor blackColor]];
         [ self.vecreg setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
         
-        CGRect vecRegansFrame=CGRectMake(113,14,144,21);
+        CGRect vecRegansFrame=CGRectMake(118,14,144,21);
         self.vecreg_ans=[[UILabel alloc]initWithFrame:vecRegansFrame];
         [ self.vecreg_ans setBackgroundColor:[UIColor clearColor]];
         [ self.vecreg_ans setText:@"TN0942358"];
@@ -83,7 +83,7 @@
         [ self.ownername setTextColor:[UIColor blackColor]];
         [ self.ownername setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
         
-        CGRect OwnerNameansFrame=CGRectMake(113,45,194,21);
+        CGRect OwnerNameansFrame=CGRectMake(118,45,194,21);
         self.ownername_ans=[[UILabel alloc]initWithFrame:OwnerNameansFrame];
         [ self.ownername_ans setBackgroundColor:[UIColor clearColor]];
         [ self.ownername_ans setText:@"John"];
@@ -91,7 +91,7 @@
         [ self.ownername_ans setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
         
      
-        UIView *v2  = [[UIView alloc] initWithFrame:CGRectMake(4,235,274,231)];
+        UIView *v2  = [[UIView alloc] initWithFrame:CGRectMake(4,258,274,209)];
         [v2 setBackgroundColor:[UIColor colorWithRed:204.0/255 green:204.0/255 blue:204.0/255 alpha:1.0]];
         
         CGRect indiimage=CGRectMake(0,2,274,41);
@@ -190,7 +190,8 @@
         [UIView beginAnimations:@"curlup" context:nil];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDuration:.5];
-        [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:greyView cache:YES];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft  forView:greyView cache:YES];
+     //    [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp  forView:greyView cache:YES];
         [self addSubview:greyView];
         [UIView commitAnimations];
         
@@ -232,20 +233,20 @@
      self.xOffset = 0.0f;
      self.yOffset = 0.0f;
  // Center HUD
- CGRect allRect = self.bounds;
- // Draw rounded HUD bacgroud rect
- CGRect boxRect = CGRectMake(roundf((allRect.size.width - 140) / 2) + self.xOffset,
- roundf((allRect.size.height - 230) / 2) + self.yOffset, 140, 230);
- float radius = 5.0f;
- CGContextBeginPath(context);
- CGContextSetGrayFillColor(context, 0.0f, 0.9);
- CGContextMoveToPoint(context, CGRectGetMinX(boxRect) + radius, CGRectGetMinY(boxRect));
- CGContextAddArc(context, CGRectGetMaxX(boxRect) - radius, CGRectGetMinY(boxRect) + radius, radius, 3 * (float)M_PI / 2, 0, 0);
- CGContextAddArc(context, CGRectGetMaxX(boxRect) - radius, CGRectGetMaxY(boxRect) - radius, radius, 0, (float)M_PI / 2, 0);
- CGContextAddArc(context, CGRectGetMinX(boxRect) + radius, CGRectGetMaxY(boxRect) - radius, radius, (float)M_PI / 2, (float)M_PI, 0);
- CGContextAddArc(context, CGRectGetMinX(boxRect) + radius, CGRectGetMinY(boxRect) + radius, radius, (float)M_PI, 3 * (float)M_PI / 2, 0);
- CGContextClosePath(context);
- CGContextFillPath(context);
+// CGRect allRect = self.bounds;
+// // Draw rounded HUD bacgroud rect
+// CGRect boxRect = CGRectMake(roundf((allRect.size.width - 140) / 2) + self.xOffset,
+// roundf((allRect.size.height - 230) / 2) + self.yOffset, 140, 230);
+// float radius = 5.0f;
+// CGContextBeginPath(context);
+// CGContextSetGrayFillColor(context, 0.0f, 0.9);
+// CGContextMoveToPoint(context, CGRectGetMinX(boxRect) + radius, CGRectGetMinY(boxRect));
+// CGContextAddArc(context, CGRectGetMaxX(boxRect) - radius, CGRectGetMinY(boxRect) + radius, radius, 3 * (float)M_PI / 2, 0, 0);
+// CGContextAddArc(context, CGRectGetMaxX(boxRect) - radius, CGRectGetMaxY(boxRect) - radius, radius, 0, (float)M_PI / 2, 0);
+// CGContextAddArc(context, CGRectGetMinX(boxRect) + radius, CGRectGetMaxY(boxRect) - radius, radius, (float)M_PI / 2, (float)M_PI, 0);
+// CGContextAddArc(context, CGRectGetMinX(boxRect) + radius, CGRectGetMinY(boxRect) + radius, radius, (float)M_PI, 3 * (float)M_PI / 2, 0);
+// CGContextClosePath(context);
+// CGContextFillPath(context);
  }
 
 
@@ -284,7 +285,7 @@
 }
 - (void)createCircle
 {
-    self.circularTimer = [[CircularTimer alloc] initWithPosition:CGPointMake(78.0f, 35.0f)
+    self.circularTimer = [[CircularTimer alloc] initWithPosition:CGPointMake(78.0f, 55.0f)
                                                           radius:self.radius
                                                   internalRadius:self.internalRadius
                                                circleStrokeColor:self.circleStrokeColor
