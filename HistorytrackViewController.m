@@ -245,7 +245,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationController.topViewController.title=@"History Track";
+    self.navigationController.topViewController.title=@"Tracking History";
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     UIButton* back = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
     UIBarButtonItem *button11 = [[UIBarButtonItem alloc] initWithCustomView:back];

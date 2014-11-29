@@ -69,7 +69,7 @@
         [ self.vecreg setTextColor:[UIColor blackColor]];
         [ self.vecreg setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
         
-        CGRect vecRegansFrame=CGRectMake(118,14,144,21);
+        CGRect vecRegansFrame=CGRectMake(120,14,144,21);
         self.vecreg_ans=[[UILabel alloc]initWithFrame:vecRegansFrame];
         [ self.vecreg_ans setBackgroundColor:[UIColor clearColor]];
         [ self.vecreg_ans setText:@"TN0942358"];
@@ -83,7 +83,7 @@
         [ self.ownername setTextColor:[UIColor blackColor]];
         [ self.ownername setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
         
-        CGRect OwnerNameansFrame=CGRectMake(118,45,194,21);
+        CGRect OwnerNameansFrame=CGRectMake(120,45,194,21);
         self.ownername_ans=[[UILabel alloc]initWithFrame:OwnerNameansFrame];
         [ self.ownername_ans setBackgroundColor:[UIColor clearColor]];
         [ self.ownername_ans setText:@"John"];

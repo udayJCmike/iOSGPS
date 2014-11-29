@@ -44,7 +44,7 @@
     address=@"8/41,Jakkappan Nagar,1St Cross,Krishnagiri-635001";
     number=@"9940854293";
     
-    profileContent=[[NSArray alloc]initWithObjects:@"Organization Name :",@"Organization Type :",@"Contact Address :",@"Tel :",nil];
+    profileContent=[[NSArray alloc]initWithObjects:@"Organisation Name :",@"Organization Type :",@"Contact Address :",@"Tel :",nil];
     self.ProfileContent.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
