@@ -94,15 +94,19 @@ int message_count;
 //    }
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
-        addressTextView.layer.borderWidth = 1.0;
+        addressTextView.layer.borderWidth = 1.3;
         //    addressTextView.layer.cornerRadius = 5;
         addressTextView.clipsToBounds = YES;
         addressTextView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     }
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
     {
-        addressTextView.layer.borderWidth = 0.5;
-           addressTextView.layer.cornerRadius = 5;
+//        addressTextView.layer.borderWidth = 0.5;
+//           addressTextView.layer.cornerRadius = 5;
+//        addressTextView.clipsToBounds = YES;
+//        addressTextView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+        addressTextView.layer.borderWidth = 1.3;
+        //    addressTextView.layer.cornerRadius = 5;
         addressTextView.clipsToBounds = YES;
         addressTextView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     }

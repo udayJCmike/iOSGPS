@@ -160,6 +160,7 @@ delegate.login_status=@"0";
 //    }
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+     self.navigationController.topViewController.title=@"Dashboard";
    list= delegate.Vehicle_List;
     [self.tableView reloadData];
 }
@@ -203,7 +204,9 @@ delegate.login_status=@"0";
     }
     
  self.navigationController.topViewController.title=@"Dashboard";
-
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+//    
+//    [self.tableView setSeparatorColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Divider_line@2x.png"]]];
     welcome.text=[NSString stringWithFormat:@"Welcome %@ !",[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
    
     delegate=AppDelegate;
@@ -302,7 +305,22 @@ delegate.login_status=@"0";
             cell.device_status.image=[UIImage imageNamed:@"Circle_Red.png"];
 
     
-
+    if (IS_IPAD) {
+        UIView* separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(10, 198, self.tableView.frame.size.width-5, 1)];/// change size as you need.
+        
+        separatorLineView.backgroundColor = [UIColor grayColor];// you can also put image here
+        [cell.contentView addSubview:separatorLineView];
+    }
+    else
+    {
+        UIView* separatorLineView = [[UIView alloc] initWithFrame:CGRectMake(10, 218, self.tableView.frame.size.width-5, 1)];/// change size as you need.
+        
+        separatorLineView.backgroundColor = [UIColor grayColor];// you can also put image here
+        [cell.contentView addSubview:separatorLineView];
+    }
+    
+    
+    
    
     
     

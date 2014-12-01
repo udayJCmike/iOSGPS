@@ -37,5 +37,8 @@
 @property (retain, nonatomic) IBOutlet UILabel *DeviceStatus;
 @property (retain, nonatomic) IBOutlet UIView *greyView;
 @property (retain, nonatomic) IBOutlet CustomSwitch *theft_Custom;
+@property (retain, nonatomic) IBOutlet UILabel *VecRegNo;
+@property (retain, nonatomic) IBOutlet UILabel *OwnerName;
+@property (retain, nonatomic) IBOutlet UILabel *DriverName;
 
 @end

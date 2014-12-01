@@ -233,10 +233,7 @@
     UIBarButtonItem *button11 = [[UIBarButtonItem alloc] initWithCustomView:back];
     self.navigationItem.leftBarButtonItem = button11;
     
-    UIBarButtonItem *b= [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Icon.png"]
-                                                         style:UIBarButtonItemStylePlain
-                                                        target:self
-                                                        action:@selector(toolButtonTapped:)];
+  
     
     //Right BAr Button Items...
     
@@ -244,6 +241,10 @@
     UIButton* homeButton;
     
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        UIBarButtonItem *b= [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Icon.png"]
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(toolButtonTapped:)];
         homeButton= [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20,20)];
         [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
         [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
@@ -257,6 +258,10 @@
     }
     else if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
+        UIBarButtonItem *b= [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Test.png"]
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(toolButtonTapped:)];
         homeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25,25)];
         [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
         [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];

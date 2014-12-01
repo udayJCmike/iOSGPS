@@ -159,7 +159,7 @@ int c;
     SBJSON *json = [[SBJSON new] autorelease];
     NSDictionary *parsedvalue = [json objectWithString:response error:&error];
     
-    //NSLog(@"%@ parsedvalue",parsedvalue);
+   //  NSLog(@"%@ parsedvalue",parsedvalue);
     if (parsedvalue == nil)
     {
         
@@ -180,6 +180,13 @@ int c;
                 [[NSUserDefaults standardUserDefaults]setValue:username.text forKey:@"username"];
                  [[NSUserDefaults standardUserDefaults]setValue:password.text forKey:@"password"];
                 [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"role"] forKey:@"role"];
+                
+                [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"org_name"] forKey:@"org_name"];
+                [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"phone"]  forKey:@"phone"];
+                [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"Org_address"]  forKey:@"Org_address"];
+                [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"type_of_organization"] forKey:@"type_of_organization"];
+                
+                
               //  NSLog(@"role %@",[menu objectForKey:@"role"]);
                 [[NSUserDefaults standardUserDefaults]synchronize];
                 [self getVehicleList];
@@ -434,7 +441,7 @@ int c;
     SBJSON *json = [[SBJSON new] autorelease];
     NSDictionary *parsedvalue = [json objectWithString:response error:&error];
    
-   // NSLog(@"%@ parsedvalue",parsedvalue);
+//  NSLog(@"%@ parsedvalue",parsedvalue);
     if (parsedvalue == nil)
     {
         
@@ -454,7 +461,10 @@ int c;
                 [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"orgid"] forKey:@"orgid"];
                
                 [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"role"] forKey:@"role"];
-               
+                [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"org_name"] forKey:@"org_name"];
+                [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"phone"]  forKey:@"phone"];
+                [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"Org_address"]  forKey:@"Org_address"];
+                [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"type_of_organization"] forKey:@"type_of_organization"];
                 [[NSUserDefaults standardUserDefaults]synchronize];
                 [self getVehicleList];
 
@@ -487,9 +497,33 @@ int c;
                 [self styleCustomAlertView:alertView];
                 [self addButtonsWithBackgroundImagesToAlertView:alertView];
                 [alertView show];
-                
-                
                 delegate.login_status=@"0";
+               
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"StopSound" object:self  userInfo:nil];
+                [[NSUserDefaults standardUserDefaults]setValue:@"" forKey:@"username"];
+                [[NSUserDefaults standardUserDefaults]setValue:@"" forKey:@"password"];
+                [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"username"];
+                [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"password"];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+               
+                    // NSLog(@"logged out using session");
+                    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+                    {
+                        UIStoryboard *welcome1=[UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
+                        UIViewController *initialvc=[welcome1 instantiateInitialViewController];
+                        delegate.window.rootViewController =initialvc;
+                        
+                    }
+                    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
+                    {
+                        
+                        UIStoryboard *welcome1=[UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+                        UIViewController *initialvc=[welcome1 instantiateInitialViewController];
+                        delegate.window.rootViewController =initialvc;
+                        
+                    }
+              
+
                 
             }
             

@@ -15,7 +15,11 @@
 #import "GPSMobileTrackingAppDelegate.h"
 #import "SettingsViewController.h"
 
-
+#ifdef UI_USER_INTERFACE_IDIOM
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#else
+#define IS_IPAD false
+#endif
 #define  AppDelegate (GPSMobileTrackingAppDelegate *)[[UIApplication sharedApplication] delegate]
 @interface WelcomeViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITabBarDelegate,MBProgressHUDDelegate>
 {

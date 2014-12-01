@@ -34,7 +34,7 @@
     self.v1.clipsToBounds=YES;
     self.v1.layer.cornerRadius=10;
     
-    self.navigationController.topViewController.title=@"Live Track Information";
+    self.navigationController.topViewController.title=@"Live Information";
         UIButton *rightBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 70, 40 )];
         [rightBtn addTarget:self action:@selector(doneButtonSelected) forControlEvents:UIControlEventTouchUpInside];
         [rightBtn setTitle:@"Done" forState:UIControlStateNormal];
@@ -70,6 +70,9 @@
         self.circleStrokeColor=[UIColor grayColor];
         self.activeCircleStrokeColor=[UIColor colorWithRed:15/255.0 green:164/255.0 blue:225/255.0 alpha:1.0] ;
     }
+   self.VecRegNo.text= [[NSUserDefaults standardUserDefaults]valueForKey:@"vehicleregno"];
+   self.DriverName.text= [[NSUserDefaults standardUserDefaults]valueForKey:@"driver_name"];
+   
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -161,6 +164,8 @@
 - (void)dealloc {
     [_countDown release];
     [_v2 release];
+    [_VecRegNo release];
+    [_DriverName release];
     [super dealloc];
 }
 @end

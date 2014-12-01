@@ -273,9 +273,9 @@
         
       
         UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        fixedItem1.width = 10;
+        fixedItem1.width =-14;
         
-        [self.navigationItem setLeftBarButtonItems:@[infoBarButton,fixedItem1,searchBarButton,fixedItem1]];
+        [self.navigationItem setLeftBarButtonItems:@[fixedItem1,infoBarButton,fixedItem1,searchBarButton,fixedItem1]];
     }
     else if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
@@ -298,13 +298,14 @@
     
     //Right BAr Button Items...
     
-    UIBarButtonItem *b= [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Icon.png"]
-                                                         style:UIBarButtonItemStylePlain
-                                                        target:self
-                                                        action:@selector(toolButtonTapped:)];
     UIButton* homeButton;
     
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        UIBarButtonItem *b= [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Icon.png"]
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(toolButtonTapped:)];
+       
         homeButton= [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20,20)];
         [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
         [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
@@ -312,12 +313,20 @@
         
         
         UIBarButtonItem *fixedItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        fixedItem1.width = 10;
+        fixedItem1.width = -12;
+        UIBarButtonItem *fixedItem2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+        fixedItem2.width = -14;
         
-        [self.navigationItem setRightBarButtonItems:@[fixedItem1,homebutton,fixedItem1,b]];
+        [self.navigationItem setRightBarButtonItems:@[fixedItem1,homebutton,fixedItem2,b]];
     }
     else if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
+        UIBarButtonItem *b= [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Test.png"]
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(toolButtonTapped:)];
+//        [b setBackgroundImage:[UIImage imageNamed:@"Menu_ipad.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+//        [b setImageInsets:UIEdgeInsetsMake(0, 5, 0, -10)];
         homeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25,25)];
         [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
         [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];

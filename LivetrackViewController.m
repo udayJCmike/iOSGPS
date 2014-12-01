@@ -329,21 +329,7 @@ int i;
         }
     }
     
-    NSString *role=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
-    UIBarButtonItem *b= [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Icon.png"]
-                                                            style:UIBarButtonItemStylePlain
-                                                           target:self
-                                                           action:@selector(toolButtonTapped:)];
-    if ([role isEqualToString:@"ROLE_ADMIN"])
-    {
-        
-        
-    }
-    else  if (([role isEqualToString:@"ROLE_PCLIENT"]) ||   ([role isEqualToString:@"ROLE_FCLIENT"]))
-    {
-       
-        
-    }
+   
    //Right BAr Button Items...
   
     
@@ -352,6 +338,15 @@ int i;
     UIButton* homeButton;
    
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        
+        
+        UIBarButtonItem *b= [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Icon.png"]
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(toolButtonTapped:)];
+//        UIImage *imgBack = [UIImage imageNamed:@"Menu_iphone.png"];
+//        [b setBackgroundImage:imgBack forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+       
         homeButton= [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20,20)];
         [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
         [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
@@ -365,6 +360,12 @@ int i;
     }
     else if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
+        UIBarButtonItem *b= [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Test.png"]
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(toolButtonTapped:)];
+     //  UIImage *imgBack = [UIImage imageNamed:@"Menu_ipad.png"];
+      //  [b setBackgroundImage:imgBack forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
         homeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25,25)];
         [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
         [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
@@ -572,6 +573,8 @@ int i;
        // NSLog(@"failure");
     }
     
+    self.navigationController.topViewController.title=@"Live Track";
+    self.navigationController.navigationItem.title=@"Live Track";
 }
 -(void)dismissalert:(UIAlertView*)alert
 {
@@ -663,7 +666,8 @@ int i;
         
     }
     
-    
+    self.navigationController.topViewController.title=@"Live Track";
+    self.navigationController.navigationItem.title=@"Live Track";
 }
 
 

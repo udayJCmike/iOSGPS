@@ -27,26 +27,27 @@
     shadow.shadowOffset = CGSizeMake(0, 1);
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
-    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-                                                           [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
-                                                           shadow, NSShadowAttributeName,
-                                                           [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:21.0], NSFontAttributeName, nil]];
-    
+        [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                               [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
+                                                               shadow, NSShadowAttributeName,
+                                                               [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:21.0], NSFontAttributeName, nil]];
+        
+        
     }
     else
     {
         [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                                [UIColor colorWithRed:245.0/255.0 green:245.0/255.0 blue:245.0/255.0 alpha:1.0], NSForegroundColorAttributeName,
                                                                shadow, NSShadowAttributeName,
-                                                               [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:19.0], NSFontAttributeName, nil]];
+                                                               [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:18.0], NSFontAttributeName, nil]];
     }
-
-  [UINavigationBar appearance].barTintColor   = [UIColor whiteColor];
+    
+    [UINavigationBar appearance].barTintColor   = [UIColor whiteColor];
     GPSViewController=[[GPSMobileTrackingViewController alloc]init];
     login_status =@"0";
     Vehicle_List=[[NSMutableArray alloc]init];
-     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(PlaySound) name:@"PlaySound"object:nil];
-      [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(StopSound) name:@"StopSound"object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(PlaySound) name:@"PlaySound"object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(StopSound) name:@"StopSound"object:nil];
     if (([[[NSUserDefaults standardUserDefaults]valueForKey:@"username"] length]>0)&&([[[NSUserDefaults standardUserDefaults]valueForKey:@"password"] length]>0))
     {
         login_session_status=@"1";
@@ -55,7 +56,7 @@
         {
             UIStoryboard *welcome=[UIStoryboard storyboardWithName:@"Welcome_iPad" bundle:nil];
             UIViewController *initialvc=[welcome instantiateInitialViewController];
-           
+            
             UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
             [navigationController pushViewController:initialvc animated:YES];
         }
@@ -65,14 +66,14 @@
             UIViewController *initialvc=[welcome instantiateInitialViewController];
             UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
             [navigationController pushViewController:initialvc animated:YES];
-           
+            
         }
     }
     else
     {
         login_session_status=@"0";
     }
-   
+    
     return YES;
 }
 
@@ -84,25 +85,25 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-     if ([login_status isEqualToString:@"1"]) {
-    if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
-        __block UIBackgroundTaskIdentifier bgTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-            [[UIApplication sharedApplication] endBackgroundTask:bgTask];
-            bgTask = UIBackgroundTaskInvalid;
-        }];
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+    if ([login_status isEqualToString:@"1"]) {
+        if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+            __block UIBackgroundTaskIdentifier bgTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+                [[UIApplication sharedApplication] endBackgroundTask:bgTask];
+                bgTask = UIBackgroundTaskInvalid;
+            }];
             
-            [Background_Runner invalidate];
-            Background_Runner = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(getVehiceList1) userInfo:nil repeats:YES];
-            [[NSRunLoop currentRunLoop] addTimer:Background_Runner forMode:NSDefaultRunLoopMode];
-            [[NSRunLoop currentRunLoop] run];
-        });
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+                
+                [Background_Runner invalidate];
+                Background_Runner = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(getVehiceList1) userInfo:nil repeats:YES];
+                [[NSRunLoop currentRunLoop] addTimer:Background_Runner forMode:NSDefaultRunLoopMode];
+                [[NSRunLoop currentRunLoop] run];
+            });
+        }
+        
     }
     
-     }
-
-
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -112,7 +113,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-   
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -122,32 +123,32 @@
 }
 -(void)DownloadVehicleListInBackend
 {
-  //  NSLog(@"perform trigger action");
-   dispatch_async(dispatch_get_main_queue(), ^{
-                            
-//                             if (![Background_Runner isValid]) {
-                               //  NSLog(@"timer start");
-                                 Background_Runner = [NSTimer scheduledTimerWithTimeInterval:interval
-                                                                          target:self
-                                                                        selector:@selector(getVehiceList1)
-                                                                        userInfo:nil
-                                                                         repeats:YES];
-                             //}
-                             
-                             dispatch_async(dispatch_get_main_queue(), ^{
-                                 
-                             });
-                             
-                             
-                         });
+    //  NSLog(@"perform trigger action");
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        //                             if (![Background_Runner isValid]) {
+        //  NSLog(@"timer start");
+        Background_Runner = [NSTimer scheduledTimerWithTimeInterval:interval
+                                                             target:self
+                                                           selector:@selector(getVehiceList1)
+                                                           userInfo:nil
+                                                            repeats:YES];
+        //}
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+        });
+        
+        
+    });
 }
 -(void)getVehiceList1
 {
-   //NSLog(@"perform trigger action1");
+    //NSLog(@"perform trigger action1");
     
     [GPSViewController getVehicleList];
-   [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(PlaySound) name:@"PlaySound"object:nil];
-     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(StopSound) name:@"StopSound"object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(PlaySound) name:@"PlaySound"object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(StopSound) name:@"StopSound"object:nil];
     
 }
 -(void)StopSound
@@ -155,13 +156,19 @@
     [_audioPlayer pause];
     [_audioPlayer stop];
     _audioPlayer=nil;
-  //  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"StopSound" object:nil];
+    //  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"StopSound" object:nil];
 }
 -(void)PlaySound
 {
-     if (!_audioPlayer)
+    if (!_audioPlayer)
     {
-        path   =   [[NSBundle mainBundle] pathForResource:@"beep1" ofType:@"caf"];
+        NSString *tonename=[[NSUserDefaults standardUserDefaults]valueForKey:[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
+        if ([tonename length]>0) {
+            path   =   [[NSBundle mainBundle] pathForResource:tonename ofType:@"mp3"];
+        }
+        else
+            path   =   [[NSBundle mainBundle] pathForResource:@"Red_Alert" ofType:@"mp3"];
+      
         soundUrl = [NSURL fileURLWithPath:path];
         _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:&error];
         _audioPlayer.numberOfLoops=-1;
@@ -181,6 +188,6 @@
     [_audioPlayer prepareToPlay];
     [_audioPlayer play];
     
-   // [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PlaySound" object:nil];
+    // [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PlaySound" object:nil];
 }
 @end

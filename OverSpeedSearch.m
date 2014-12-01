@@ -33,7 +33,7 @@
             [self.search setBackgroundImage:[UIImage imageNamed:@"Navbarbg.jpg"] forState:UIControlStateNormal];
             [self.search setUserInteractionEnabled:YES];
             [self.search setTintColor:[UIColor whiteColor]];
-            self.search.titleLabel.font = [UIFont fontWithName:@"Bangla Sangam MN Bold" size:19];
+            self.search.titleLabel.font = [UIFont fontWithName:@"Bangla Sangam MN" size:19];
             self.search.clipsToBounds=YES;
             self.search.layer.cornerRadius=5;
             
@@ -91,7 +91,7 @@
             
             
         
-            self.search.titleLabel.font = [UIFont fontWithName:@"Bangla Sangam MN Bold" size:15];
+            self.search.titleLabel.font = [UIFont fontWithName:@"Bangla Sangam MN" size:15];
             
             self.search = [[UIButton alloc]initWithFrame:CGRectMake(252,16,58,40)];
             [self.search addTarget:self action:@selector(search:) forControlEvents:UIControlEventTouchUpInside];
@@ -103,14 +103,14 @@
             self.search.layer.cornerRadius=5;
             
             
-            CGRect fromLabelFrame=CGRectMake(3,21,150,33);
+            CGRect fromLabelFrame=CGRectMake(3,21,120,33);
             self.fromTime=[[UILabel alloc]initWithFrame:fromLabelFrame];
             [ self.fromTime setBackgroundColor:[UIColor clearColor]];
             [ self.fromTime setText:@"From Date"];
             [ self.fromTime setTextColor:[UIColor blackColor]];
             [ self.fromTime setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
             
-            CGRect toLabelFrame=CGRectMake(128,21,150,33);
+            CGRect toLabelFrame=CGRectMake(128,21,120,33);
             self.toTime=[[UILabel alloc]initWithFrame:toLabelFrame];
             [ self.toTime setBackgroundColor:[UIColor clearColor]];
             [ self.toTime setText:@"To Date"];

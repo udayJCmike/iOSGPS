@@ -38,13 +38,13 @@
         
         self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     }
-   
-    orgname=@"DeemsysGPS";
-    orgtype=@"Fleet";
-    address=@"8/41,Jakkappan Nagar,1St Cross,Krishnagiri-635001";
-    number=@"9940854293";
+    orgname= [[NSUserDefaults standardUserDefaults]valueForKey:@"org_name"];
+   number= [[NSUserDefaults standardUserDefaults]valueForKey:@"phone"];
+   address= [[NSUserDefaults standardUserDefaults]valueForKey:@"Org_address"];
+  // orgtype= [[NSUserDefaults standardUserDefaults]valueForKey:@"type_of_organization"];
+  
     
-    profileContent=[[NSArray alloc]initWithObjects:@"Organisation Name :",@"Organization Type :",@"Contact Address :",@"Tel :",nil];
+    profileContent=[[NSArray alloc]initWithObjects:@"Organisation Name ",@"Organization Type ",@"Contact Address ",@"Tel ",nil];
     self.ProfileContent.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
@@ -58,7 +58,25 @@
         self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     }
     
+    NSString *role=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
     
+    if ([role isEqualToString:@"ROLE_ADMIN"])
+    {
+        [self.banner setImage:[UIImage imageNamed:@"school_cover.jpg"]];
+         orgtype=@"School";
+        
+    }
+    else  if ([role isEqualToString:@"ROLE_PCLIENT"])
+    {
+           [self.banner setImage:[UIImage imageNamed:@"personal_cover.jpg"]];
+         orgtype=@"Personal";
+        
+    }
+    else  if ([role isEqualToString:@"ROLE_FCLIENT"])
+    {
+           [self.banner setImage:[UIImage imageNamed:@"fleet_cover.jpg"]];
+         orgtype=@"Fleet";
+    }
 
 
     

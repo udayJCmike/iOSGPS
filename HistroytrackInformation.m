@@ -47,42 +47,42 @@
             v1.clipsToBounds=YES;
             v1.layer.cornerRadius=10;
             [v1 setBackgroundColor:[UIColor colorWithRed:204.0/255 green:204.0/255 blue:204.0/255 alpha:1.0]];
-            CGRect vecRegFrame=CGRectMake(26,20,350,21);
+            CGRect vecRegFrame=CGRectMake(91,20,155,21);
             self.vecreg=[[UILabel alloc]initWithFrame:vecRegFrame];
             [ self.vecreg setBackgroundColor:[UIColor clearColor]];
-            [ self.vecreg setText:@"Vehicle Registration Number:"];
+            [ self.vecreg setText:@"Vehicle Reg.No:"];
             [ self.vecreg setTextColor:[UIColor blackColor]];
             [ self.vecreg setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:19]];
             
-            CGRect vecRegansFrame=CGRectMake(270,20,281,21);
+            CGRect vecRegansFrame=CGRectMake(264,20,170,21);
             self.vecreg_ans=[[UILabel alloc]initWithFrame:vecRegansFrame];
             [ self.vecreg_ans setBackgroundColor:[UIColor clearColor]];
             [ self.vecreg_ans setText:@"TN0942358"];
             [ self.vecreg_ans setTextColor:[UIColor blackColor]];
             [ self.vecreg_ans setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:19]];
             
-            CGRect OwnerNameFrame=CGRectMake(26,61,194,21);
+            CGRect OwnerNameFrame=CGRectMake(91,61,155,21);
             self.ownername=[[UILabel alloc]initWithFrame:OwnerNameFrame];
             [ self.ownername setBackgroundColor:[UIColor clearColor]];
-            [ self.ownername setText:@"Vehicle Driver Name:"];
+            [ self.ownername setText:@"Driver Name:"];
             [ self.ownername setTextColor:[UIColor blackColor]];
             [ self.ownername setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:19]];
             
-            CGRect OwnerNameansFrame=CGRectMake(270,61,281,21);
+            CGRect OwnerNameansFrame=CGRectMake(264,61,170,21);
             self.ownername_ans=[[UILabel alloc]initWithFrame:OwnerNameansFrame];
             [ self.ownername_ans setBackgroundColor:[UIColor clearColor]];
             [ self.ownername_ans setText:@"John"];
             [ self.ownername_ans setTextColor:[UIColor blackColor]];
             [ self.ownername_ans setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:19]];
             
-            CGRect DistanceFrame=CGRectMake(26,103,204,21);
+            CGRect DistanceFrame=CGRectMake(91,103,181,21);
             self.totalDistance=[[UILabel alloc]initWithFrame:DistanceFrame];
             [ self.totalDistance setBackgroundColor:[UIColor clearColor]];
-            [ self.totalDistance setText:@"Total Distance Travelled:"];
+            [ self.totalDistance setText:@"Distance Travelled:"];
             [ self.totalDistance setTextColor:[UIColor blackColor]];
             [ self.totalDistance setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:19]];
             
-            CGRect DistanceansFrame=CGRectMake(270,103,281,21);
+            CGRect DistanceansFrame=CGRectMake(264,103,170,21);
             self.totalDistance_ans=[[UILabel alloc]initWithFrame:DistanceansFrame];
             [ self.totalDistance_ans setBackgroundColor:[UIColor clearColor]];
             [ self.totalDistance_ans setText:@"48 kms"];
@@ -102,43 +102,46 @@
             [ self.instruction setBackgroundColor:[UIColor clearColor]];
             [ self.instruction setText:@"Indicator Details"];
             [ self.instruction setTextColor:[UIColor whiteColor]];
-            [ self.instruction setFont:[UIFont fontWithName:@"Bangla Sangam MN Bold" size:19.0]];
+            [ self.instruction setFont:[UIFont fontWithName:@"Bangla Sangam MN Bold" size:20.0]];
             
             
-            CGRect redimgFrame=CGRectMake(127,84,35,35);
+            CGRect redimgFrame=CGRectMake(127,61,35,35);
             self.red=[[UIImageView alloc]initWithFrame:redimgFrame];
             [ self.red setImage:[UIImage imageNamed:@"red_pin.png"]];
             
-//            CGRect greenimgFrame=CGRectMake(127,104,35,35);
-//            self.green=[[UIImageView alloc]initWithFrame:greenimgFrame];
-//            [ self.green setImage:[UIImage imageNamed:@"green_pin.png"]];
-            
-            CGRect pinkimgFrame=CGRectMake(127,130,35,35);
+            CGRect pinkimgFrame=CGRectMake(127,107,35,35);
             self.pink=[[UIImageView alloc]initWithFrame:pinkimgFrame];
             [ self.pink setImage:[UIImage imageNamed:@"pink_pin.png"]];
             
+            CGRect greenimgFrame=CGRectMake(127,150,35,35);
+            self.green=[[UIImageView alloc]initWithFrame:greenimgFrame];
+            [ self.green setImage:[UIImage imageNamed:@"startpoint.png"]];
             
-            CGRect redansFrame=CGRectMake(172,91,174,21);
+           
+            
+            
+            CGRect redansFrame=CGRectMake(172,68,174,21);
             self.red_lab=[[UILabel alloc]initWithFrame:redansFrame];
             [ self.red_lab setBackgroundColor:[UIColor clearColor]];
             [ self.red_lab setText:@"Last Location"];
             [ self.red_lab setTextColor:[UIColor blackColor]];
             [ self.red_lab setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:19]];
             
-            
-//            CGRect greenansFrame=CGRectMake(172,112,174,21);
-//            self.green_lab=[[UILabel alloc]initWithFrame:greenansFrame];
-//            [ self.green_lab setBackgroundColor:[UIColor clearColor]];
-//            [ self.green_lab setText:@"Current Location"];
-//            [ self.green_lab setTextColor:[UIColor blackColor]];
-//            [ self.green_lab setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:19]];
-            
-            CGRect pinkansFrame=CGRectMake(172,137,220,21);
+            CGRect pinkansFrame=CGRectMake(172,114,220,21);
             self.pink_lab=[[UILabel alloc]initWithFrame:pinkansFrame];
             [ self.pink_lab setBackgroundColor:[UIColor clearColor]];
             [ self.pink_lab setText:@"Overspeed Location"];
             [ self.pink_lab setTextColor:[UIColor blackColor]];
             [ self.pink_lab setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:19]];
+            
+            CGRect greenansFrame=CGRectMake(172,157,200,21);
+            self.green_lab=[[UILabel alloc]initWithFrame:greenansFrame];
+            [ self.green_lab setBackgroundColor:[UIColor clearColor]];
+            [ self.green_lab setText:@"Start and End Location"];
+            [ self.green_lab setTextColor:[UIColor blackColor]];
+            [ self.green_lab setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:19]];
+            
+           
         }
         else if (SCREEN_40)
         {
@@ -229,46 +232,49 @@
             [ self.instruction setFont:[UIFont fontWithName:@"Bangla Sangam MN Bold" size:17.0]];
             
             
-            CGRect redimgFrame=CGRectMake(69,70,25,25);
+            CGRect redimgFrame=CGRectMake(35,57,25,25);
             self.red=[[UIImageView alloc]initWithFrame:redimgFrame];
             [ self.red setImage:[UIImage imageNamed:@"red_pin.png"]];
             
-//            CGRect greenimgFrame=CGRectMake(69,90,25,25);
-//            self.green=[[UIImageView alloc]initWithFrame:greenimgFrame];
-//            [ self.green setImage:[UIImage imageNamed:@"green_pin.png"]];
+          
             
-            CGRect pinkimgFrame=CGRectMake(69,107,25,25);
+            CGRect pinkimgFrame=CGRectMake(35,94,25,25);
             self.pink=[[UIImageView alloc]initWithFrame:pinkimgFrame];
             [ self.pink setImage:[UIImage imageNamed:@"pink_pin.png"]];
             
+            CGRect greenimgFrame=CGRectMake(35,129,25,25);
+            self.green=[[UIImageView alloc]initWithFrame:greenimgFrame];
+            [ self.green setImage:[UIImage imageNamed:@"startpoint.png"]];
             
-            CGRect redansFrame=CGRectMake(98,72,163,21);
+            CGRect redansFrame=CGRectMake(64,59,163,21);
             self.red_lab=[[UILabel alloc]initWithFrame:redansFrame];
             [ self.red_lab setBackgroundColor:[UIColor clearColor]];
             [ self.red_lab setText:@"Last Location"];
             [ self.red_lab setTextColor:[UIColor blackColor]];
             [ self.red_lab setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
             
-            
-//            CGRect greenansFrame=CGRectMake(98,92,125,21);
-//            self.green_lab=[[UILabel alloc]initWithFrame:greenansFrame];
-//            [ self.green_lab setBackgroundColor:[UIColor clearColor]];
-//            [ self.green_lab setText:@"Current Location"];
-//            [ self.green_lab setTextColor:[UIColor blackColor]];
-//            [ self.green_lab setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
-            
-            CGRect pinkansFrame=CGRectMake(98,109,163,21);
+            CGRect pinkansFrame=CGRectMake(64,96,163,21);
             self.pink_lab=[[UILabel alloc]initWithFrame:pinkansFrame];
             [ self.pink_lab setBackgroundColor:[UIColor clearColor]];
             [ self.pink_lab setText:@"Overspeed Location"];
             [ self.pink_lab setTextColor:[UIColor blackColor]];
             [ self.pink_lab setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
+            
+            CGRect greenansFrame=CGRectMake(64,133,190,21);
+            self.green_lab=[[UILabel alloc]initWithFrame:greenansFrame];
+            [ self.green_lab setBackgroundColor:[UIColor clearColor]];
+            [ self.green_lab setText:@"Start and End Location"];
+            [ self.green_lab setTextColor:[UIColor blackColor]];
+            [ self.green_lab setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
+            
+           
         }
        
         
         
-        
-        
+        self.vecreg_ans.text= [[NSUserDefaults standardUserDefaults]valueForKey:@"vehicleregno"];
+        self.ownername_ans.text= [[NSUserDefaults standardUserDefaults]valueForKey:@"driver_name"];
+        self.totalDistance_ans.text=@"";
         [v1 addSubview:self.vecreg];
         [v1 addSubview:self.vecreg_ans];
         [v1 addSubview:self.ownername];
@@ -279,8 +285,8 @@
         [v2 addSubview:self.instruction];
         [v2 addSubview:self.red];
         [v2 addSubview:self.red_lab];
-//        [v2 addSubview:self.green];
-//        [v2 addSubview:self.green_lab];
+        [v2 addSubview:self.green];
+        [v2 addSubview:self.green_lab];
         [v2 addSubview:self.pink];
         [v2 addSubview:self.pink_lab];
         [popUpView addSubview:navbar];

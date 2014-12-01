@@ -22,6 +22,17 @@
     }
     return self;
 }
+- (IBAction)saveTone:(id)sender {
+    [self StopaudioSound];
+        
+//        NSLog(@"selected tone %@",self.selectedtone.titleLabel.text );
+    
+        
+        [[NSUserDefaults standardUserDefaults]setValue:alarmName  forKey:[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
+       
+        [[NSUserDefaults standardUserDefaults]synchronize];
+   
+}
 
 - (void)viewDidLoad
 {
@@ -58,7 +69,7 @@
 {
     
     NSArray * arr = [[NSArray alloc] init];
-    arr = [NSArray arrayWithObjects:@"Default",@"Alarm 1", @"Alarm 2",@"Alarm 3", @"Alarm 4",nil];
+    arr = [NSArray arrayWithObjects:@"Default",@"Nuclear Alert", @"Car Alert",@"Extreme Alert", @"Handy Alert",nil];
     NSArray * arrImage = [[NSArray alloc] init];
    
     if(dropDown == nil)
@@ -77,12 +88,61 @@
 
 - (void) niDropDownDelegateMethod: (NSString *) sender
 {
-   NSLog(@"selected type %@",sender);
- 
+//   NSLog(@"selected type %@",sender);
+    [self StopaudioSound];
+    [self PlaySoundWithName:sender];
   
     [self rel];
 }
-
+-(void)StopaudioSound
+{
+    [_audioPlayer pause];
+    [_audioPlayer stop];
+    _audioPlayer=nil;
+    //  [[NSNotificationCenter defaultCenter] removeObserver:self name:@"StopSound" object:nil];
+}
+-(void)PlaySoundWithName:(NSString*)alarmName1
+{
+   
+    if (!_audioPlayer)
+    {
+        if ([alarmName1 isEqualToString:@"Default"]) {
+            alarmName=@"Red_Alert";
+        }
+        else  if ([alarmName1 isEqualToString:@"Nuclear Alert"]) {
+            alarmName=@"Nuclear_Alert";
+        }
+        else  if ([alarmName1 isEqualToString:@"Car Alert"]) {
+            alarmName=@"Car_Alert";
+        }
+        else  if ([alarmName1 isEqualToString:@"Extreme Alert"]) {
+            alarmName=@"Extreme_Alert";
+        }
+        else  if ([alarmName1 isEqualToString:@"Handy Alert"]) {
+            alarmName=@"Handy_Alert";
+        }
+        path   =   [[NSBundle mainBundle] pathForResource:alarmName ofType:@"mp3"];
+        soundUrl = [NSURL fileURLWithPath:path];
+        _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:&error];
+        _audioPlayer.numberOfLoops=1;
+        
+        if (error)
+        {
+            NSLog(@"Error in audioPlayer: %@",
+                  [error localizedDescription]);
+        }
+        else
+        {
+            _audioPlayer.delegate = self;
+            // [_audioPlayer setNumberOfLoops:3];
+        }
+        
+    }
+    [_audioPlayer prepareToPlay];
+    [_audioPlayer play];
+    
+    // [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PlaySound" object:nil];
+}
 -(void)rel{
   
     dropDown = nil;

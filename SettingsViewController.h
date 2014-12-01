@@ -8,11 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "NIDropDown.h"
-
-@interface SettingsViewController : UIViewController<NIDropDownDelegate>
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
+@interface SettingsViewController : UIViewController<NIDropDownDelegate,AVAudioPlayerDelegate>
 {
     NIDropDown *dropDown;
+     AVAudioPlayer *audioPlayer;
+    NSString *path;
+    NSURL *soundUrl;
+    NSError *error;
+  NSString *alarmName;
 }
+@property (strong, nonatomic) AVAudioPlayer *audioPlayer;
+
 - (IBAction)selectClicked:(id)sender;
 -(void)rel;
 @property (retain, nonatomic) IBOutlet UIButton *savetone;

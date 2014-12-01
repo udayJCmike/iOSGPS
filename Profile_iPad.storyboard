@@ -104,6 +104,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="ProfileContent" destination="jHu-42-Wbp" id="CWN-Gs-VzO"/>
+                        <outlet property="banner" destination="aiB-vb-WGp" id="nPI-29-BUK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QE6-Pa-boi" userLabel="First Responder" sceneMemberID="firstResponder"/>

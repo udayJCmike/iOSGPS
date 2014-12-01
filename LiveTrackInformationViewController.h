@@ -14,6 +14,8 @@
     NSTimer *CountDownTimer;
     int TotalSec;
 }
+@property (retain, nonatomic) IBOutlet UILabel *VecRegNo;
+@property (retain, nonatomic) IBOutlet UILabel *DriverName;
 @property float radius;
 @property float internalRadius;
 @property (nonatomic, strong) UIColor *circleStrokeColor;

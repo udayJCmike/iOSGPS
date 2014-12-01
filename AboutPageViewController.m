@@ -95,7 +95,14 @@
     {
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
-    
+    if (IS_IPAD) {
+          [ cell.textLabel setFont:[UIFont fontWithName:@"Bangla Sangam MN Bold" size:17]];
+    }
+    else
+    {
+          [ cell.textLabel setFont:[UIFont fontWithName:@"Bangla Sangam MN Bold" size:17]];
+    }
+  
     cell.textLabel.text= [contentForTable objectAtIndex:indexPath.row];
    
    

@@ -15,5 +15,5 @@
     
 }
 @property (retain, nonatomic) IBOutlet UITableView *ProfileContent;
-
+@property (retain, nonatomic) IBOutlet UIImageView *banner;
 @end

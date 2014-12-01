@@ -59,7 +59,7 @@
             self.search.layer.cornerRadius=5;
             
             
-            CGRect dateLabelFrame=CGRectMake(300,67,62,21);
+            CGRect dateLabelFrame=CGRectMake(251,67,62,21);
             self.Date=[[UILabel alloc]initWithFrame:dateLabelFrame];
             [ self.Date setBackgroundColor:[UIColor clearColor]];
             [ self.Date setText:@"Date :"];
@@ -75,7 +75,7 @@
             [ self.fromTime setTextColor:[UIColor blackColor]];
             [ self.fromTime setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:19]];
             
-            CGRect toLabelFrame=CGRectMake(273,143,82,21);
+            CGRect toLabelFrame=CGRectMake(251,143,82,21);
             self.toTime=[[UILabel alloc]initWithFrame:toLabelFrame];
             [ self.toTime setBackgroundColor:[UIColor clearColor]];
             [ self.toTime setText:@"To Time :"];
@@ -164,7 +164,7 @@
         self.search.layer.cornerRadius=5;
 
         
-        CGRect dateLabelFrame=CGRectMake(83,20,51,26);
+        CGRect dateLabelFrame=CGRectMake(45,20,51,26);
         self.Date=[[UILabel alloc]initWithFrame:dateLabelFrame];
         [ self.Date setBackgroundColor:[UIColor clearColor]];
         [ self.Date setText:@"Date :"];
@@ -173,14 +173,14 @@
         
       
      
-        CGRect fromLabelFrame=CGRectMake(40,61,88,21);
+        CGRect fromLabelFrame=CGRectMake(45,61,88,21);
         self.fromTime=[[UILabel alloc]initWithFrame:fromLabelFrame];
         [ self.fromTime setBackgroundColor:[UIColor clearColor]];
         [ self.fromTime setText:@"From Time :"];
         [ self.fromTime setTextColor:[UIColor blackColor]];
         [ self.fromTime setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
         
-        CGRect toLabelFrame=CGRectMake(58,97,70,21);
+        CGRect toLabelFrame=CGRectMake(45,97,70,21);
         self.toTime=[[UILabel alloc]initWithFrame:toLabelFrame];
         [ self.toTime setBackgroundColor:[UIColor clearColor]];
         [ self.toTime setText:@"To Time :"];

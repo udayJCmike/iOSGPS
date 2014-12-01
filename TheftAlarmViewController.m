@@ -190,10 +190,7 @@
     UIBarButtonItem *button11 = [[UIBarButtonItem alloc] initWithCustomView:back];
     self.navigationItem.leftBarButtonItem = button11;
   
-    UIBarButtonItem *b= [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Icon.png"]
-                                                         style:UIBarButtonItemStylePlain
-                                                        target:self
-                                                        action:@selector(toolButtonTapped:)];
+  
   
     //Right BAr Button Items...
   
@@ -201,6 +198,10 @@
     UIButton* homeButton;
     
     if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone) {
+        UIBarButtonItem *b= [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Icon.png"]
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(toolButtonTapped:)];
         homeButton= [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20,20)];
         [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
         [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
@@ -214,6 +215,10 @@
     }
     else if(UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
     {
+        UIBarButtonItem *b= [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Menu_Test.png"]
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(toolButtonTapped:)];
         homeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25,25)];
         [homeButton setImage:[UIImage imageNamed:@"Home_Icon.png"] forState:UIControlStateNormal];
         [homeButton addTarget:self action:@selector(home:) forControlEvents:UIControlEventTouchUpInside];
@@ -246,7 +251,13 @@
     
     delegate=AppDelegate;
     
-    path   =   [[NSBundle mainBundle] pathForResource:@"beep1" ofType:@"caf"];
+    NSString *tonename=[[NSUserDefaults standardUserDefaults]valueForKey:[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
+    if ([tonename length]>0) {
+         path   =   [[NSBundle mainBundle] pathForResource:tonename ofType:@"mp3"];
+    }
+    else
+          path   =   [[NSBundle mainBundle] pathForResource:@"Red_Alert" ofType:@"mp3"];
+  
     soundUrl = [NSURL fileURLWithPath:path];
   
     
@@ -260,9 +271,8 @@
        // [_audioPlayer setNumberOfLoops:3];
     }
  
-//    NSString *filename = [du imagecheck:@"message.jpg"];
-//    NSLog(@"image name %@",filename);
-//    bgimage.image = [UIImage imageNamed:filename];
+    self.VecRegNo.text= [[NSUserDefaults standardUserDefaults]valueForKey:@"vehicleregno"];
+    self.DriverName.text= [[NSUserDefaults standardUserDefaults]valueForKey:@"driver_name"];
 }
 
 - (void)didReceiveMemoryWarning
