@@ -94,6 +94,11 @@
   
     [self rel];
 }
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self StopaudioSound];
+}
 -(void)StopaudioSound
 {
     [_audioPlayer pause];
@@ -150,7 +155,7 @@
 - (void)viewDidUnload {
    
     self.selectedtone = nil;
-    
+    [self StopaudioSound];
     [super viewDidUnload];
     
 }

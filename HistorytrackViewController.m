@@ -29,21 +29,14 @@
 @end
 
 @implementation HistorytrackViewController
-@synthesize search;
+
 @synthesize stepper;
 @synthesize maptype;
-@synthesize segment;
-@synthesize welcome;
+
 @synthesize mapview;
-@synthesize imageview;
-@synthesize from;
-@synthesize fromtime;
-@synthesize to;
-@synthesize totime;
-@synthesize selecteddate;
-@synthesize s_date;
-@synthesize home;
-@synthesize logout;
+
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -215,12 +208,16 @@
     if (IS_IPAD) {
        
         SearchMenu * vc=[[SearchMenu alloc]initWithFrame:CGRectMake(0,0,768,1024)];
+        [[NSNotificationCenter defaultCenter]removeObserver:self name:@"HistorySearchDone" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(Historysearch:) name:@"HistorySearchDone"object:nil];
         
     }
     else
     {
         
    SearchMenu * vc=[[SearchMenu alloc]initWithFrame:CGRectMake(0,0,320,568)]; //Initialize this way otherwise you cannt access controllers from view.
+        [[NSNotificationCenter defaultCenter]removeObserver:self name:@"HistorySearchDone" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(Historysearch:) name:@"HistorySearchDone"object:nil];
         
     }
 }
@@ -344,39 +341,6 @@
         
         for (NSLayoutConstraint *con in self.view.constraints)
         {
-            if (con.firstItem == welcome && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant =98;
-            }
-            if (con.firstItem == home && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant = 74;
-            }
-            if (con.firstItem == logout && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant = 102;
-            }
-            if (con.firstItem == segment && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant =124;
-            }
-            if (con.firstItem == selecteddate && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant = 148;
-            }
-            if (con.firstItem == s_date && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant = 148;
-            }
-            if (con.firstItem == fromtime && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant = 150;
-            }
-            if (con.firstItem == from && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant = 150;
-            }
-            if (con.firstItem == totime && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant = 150;
-            }
-            if (con.firstItem == to && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant = 150;
-            }
-            if (con.firstItem == search && con.firstAttribute == NSLayoutAttributeTop) {
-                con.constant = 146;
-            }
             if (con.firstItem == stepper && con.firstAttribute == NSLayoutAttributeTop) {
                 con.constant = 435;
                 
@@ -393,17 +357,9 @@
         }
     }
     
-    
-    NSString *role=[[NSUserDefaults standardUserDefaults]objectForKey:@"role"];
-    
-    if ([role isEqualToString:@"ROLE_ADMIN"]) {
-        [segment removeSegmentAtIndex:3 animated:YES];
-    }
-    else  if (([role isEqualToString:@"ROLE_PCLIENT"]) ||   ([role isEqualToString:@"ROLE_FCLIENT"]))
-    {
-        // [segment removeSegmentAtIndex:2 animated:YES];
-        [segment setTitle:@"Theft Alarm" forSegmentAtIndex:2];
-    }
+    //Reintialize totalDistance Value
+    [[NSUserDefaults standardUserDefaults]setValue:@""  forKey:@"TotalDistance"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     
     self.allPins = [[NSMutableArray alloc]init];
     
@@ -416,16 +372,12 @@
     
     
     [mapview setRegion:region animated:YES];
-    [segment setSelectedSegmentIndex:1];
+  
     
     stepper_initial_value=stepper.value;
-    
-    
-    // Do any additional setup after loading the view.
+  
     du=[[databaseurl alloc]init];
-    //    NSString *filename = [du imagecheck:@"historytrack.jpg"];
-    //    NSLog(@"image name %@",filename);
-    //     imageview.image = [UIImage imageNamed:filename];
+   
     
     mapview.delegate=self;
     
@@ -433,222 +385,19 @@
     
     
 }
-#pragma mark - Search Action _ Date Selection
-- (IBAction)dateClicked:(id)sender {
-    
-    
-    [self cancelPressed];
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGFloat screenWidth = screenRect.size.width;
-        CGFloat screenHeight = screenRect.size.height;
-        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0,(screenHeight-230), screenWidth, screenHeight/2 + 35)];
-        [picker addTargetForDoneButton:self action:@selector(donePressed)];
-        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
-        [self.view addSubview:picker];
-        picker.hidden = NO;
-        [picker setMode:UIDatePickerModeDate];
-        picker.picker.tag=3;
-        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
-    }
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
-    {
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGFloat screenWidth = screenRect.size.width;
-        CGFloat screenHeight = screenRect.size.height;
-        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+100, screenWidth, screenHeight/2 + 35)];
-        if(SCREEN_35)
-        {
-            picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+20, screenWidth, screenHeight/2 + 35)];
-        }
-        [picker addTargetForDoneButton:self action:@selector(donePressed)];
-        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
-        [self.view addSubview:picker];
-        picker.hidden = NO;
-        [picker setMode:UIDatePickerModeDate];
-        picker.picker.tag=3;
-        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
-    }
-    
-    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"US"];
-    [picker.picker setLocale:locale];
-}
-#pragma mark - FromTime
-- (IBAction)fromtimeClicked:(id)sender {
-    
-    
-    [self cancelPressed];
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGFloat screenWidth = screenRect.size.width;
-        CGFloat screenHeight = screenRect.size.height;
-        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0,(screenHeight-230), screenWidth, screenHeight/2 + 35)];
-        [picker addTargetForDoneButton:self action:@selector(donePressed)];
-        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
-        [self.view addSubview:picker];
-        picker.hidden = NO;
-        [picker setMode:UIDatePickerModeTime];
-        picker.picker.tag=1;
-        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
-    }
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
-    {
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGFloat screenWidth = screenRect.size.width;
-        CGFloat screenHeight = screenRect.size.height;
-        
-        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+100, screenWidth, screenHeight/2 + 35)];
-        if(SCREEN_35)
-        {
-            picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+20, screenWidth, screenHeight/2 + 35)];
-        }
-        [picker addTargetForDoneButton:self action:@selector(donePressed)];
-        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
-        [self.view addSubview:picker];
-        picker.hidden = NO;
-        [picker setMode:UIDatePickerModeTime];
-        picker.picker.tag=1;
-        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
-    }
-    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"UK"];
-    [picker.picker setLocale:locale];
-    
-}
 
--(void)pickerChanged:(id)sender {
-    UIDatePicker *dp=(UIDatePicker*)sender;
-    //    NSLog(@"time in picker %@",dp.date);
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *strDate =[dateFormatter stringFromDate:[dp date]];
-    
-    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
-    [dateFormatter1 setDateFormat:@"HH:mm"];
-    NSString *timeDate =[dateFormatter1 stringFromDate:[dp date]];
-    if (dp.tag==1) {
-        self.fromtime.text = timeDate;
-    }
-    else if (dp.tag==2) {
-        self.totime.text = timeDate;
-    }
-    else if (dp.tag==3) {
-        self.selecteddate.text = strDate;
-    }
-    
-}
-#pragma mark - To time Picker
-- (IBAction)totimeClicked:(id)sender {
-    [self cancelPressed];
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGFloat screenWidth = screenRect.size.width;
-        CGFloat screenHeight = screenRect.size.height;
-        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0,screenHeight-230, screenWidth, screenHeight/2 + 35)];
-        [picker addTargetForDoneButton:self action:@selector(donePressed)];
-        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
-        [self.view addSubview:picker];
-        picker.hidden = NO;
-        [picker setMode:UIDatePickerModeTime];
-        picker.picker.tag=2;
-        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
-    }
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
-    {
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGFloat screenWidth = screenRect.size.width;
-        CGFloat screenHeight = screenRect.size.height;
-        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+100, screenWidth, screenHeight/2 + 35)];
-        if(SCREEN_35)
-        {
-            picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+20, screenWidth, screenHeight/2 + 35)];
-        }
-        [picker addTargetForDoneButton:self action:@selector(donePressed)];
-        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
-        [self.view addSubview:picker];
-        picker.hidden = NO;
-        [picker setMode:UIDatePickerModeTime];
-        picker.picker.tag=2;
-        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
-    }
-    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"UK"];
-    [picker.picker setLocale:locale];
-}
 
-#pragma mark - PickerAction
 
--(void)donePressed {
-    UIDatePicker *dp=picker.picker;
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *strDate =[dateFormatter stringFromDate:[dp date]];
-    
-    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
-    [dateFormatter1 setDateFormat:@"HH:mm"];
-    NSString *timeDate =[dateFormatter1 stringFromDate:[dp date]];
-    if (dp.tag==1) {
-        self.fromtime.text = timeDate;
-    }
-    else if (dp.tag==2) {
-        self.totime.text = timeDate;
-    }
-    else if (dp.tag==3) {
-        self.selecteddate.text = strDate;
-    }
-    [picker removeFromSuperview];
-    //    NSLog(@"Done button tapped");
-    
-}
-
--(void)cancelPressed {
-    [picker removeFromSuperview];
-    //    NSLog(@"Cancel pressed");
-}
-#pragma mark - Date and time comparison
--(BOOL)From_to_dateCheck
-{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-    //   NSLocale *indianEnglishLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_IN"] autorelease];
-    //    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Kolkata"];
-    //   [formatter setLocale:indianEnglishLocale];
-    //    [formatter setTimeZone:timeZone];
-    NSString *fromtime1=[NSString stringWithFormat:@"%@ %@",selecteddate.text,fromtime.text];
-    NSString *totime1=[NSString stringWithFormat:@"%@ %@",selecteddate.text,totime.text];
-    NSDate *date1= [formatter dateFromString:fromtime1];
-    NSDate *date2 = [formatter dateFromString:totime1];
-    NSComparisonResult result = [date1 compare:date2];
-    //    NSLog(@"from time %@",date1);
-    //     NSLog(@"to time %@",date2);
-    //     NSLog(@"result %ld",result);
-    if(result == NSOrderedDescending)
-    {
-        NSLog(@"date1 is later than date2");
-        return 0;
-    }
-    else if(result == NSOrderedAscending)
-    {
-        NSLog(@"date2 is later than date1");
-        return 1;
-    }
-    else
-    {
-        NSLog(@"date1 is equal to date2");
-        return 1;
-    }
-    return 0;
-}
 
 #pragma mark - search Action
-- (IBAction)search:(id)sender {
-    if ((![selecteddate.text isEqualToString:@"Select Date"])&&(![fromtime.text isEqualToString:@"From"])&&(![totime.text isEqualToString:@"To"]))
-    {
-        
-        BOOL res= [self From_to_dateCheck];
-        if (res)
+- (IBAction)Historysearch:(id)sender {
+   
+    NSLog(@"Object received %@",[sender valueForKey:@"object"]);   
+    self.SelectedDate= [[sender valueForKey:@"object"] valueForKey:@"Selected_Date"];
+    self.FromTime =[[sender valueForKey:@"object"] valueForKey:@"Selected_Fromtime"];
+      self.ToTime =[[sender valueForKey:@"object"] valueForKey:@"Selected_Totime"];
+    
+        if ([self.SelectedDate length]>0)
         {
             HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
             HUD.mode=MBProgressHUDModeIndeterminate;
@@ -659,42 +408,15 @@
         }
         else
         {
-            TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"To time must be greater than from time." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [self styleCustomAlertView:alertView];
-            [self addButtonsWithBackgroundImagesToAlertView:alertView];
-            [alertView show];
+            NSLog(@"Date Null");
         }
         
         
         
         
         
-        
-    }
-    else if ([selecteddate.text isEqualToString:@"Select Date"])
-    {
-        
-        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select date." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [self styleCustomAlertView:alertView];
-        [self addButtonsWithBackgroundImagesToAlertView:alertView];
-        [alertView show];
-    }
-    else if ([fromtime.text isEqualToString:@"From"])
-    {
-        
-        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select from time." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [self styleCustomAlertView:alertView];
-        [self addButtonsWithBackgroundImagesToAlertView:alertView];
-        [alertView show];
-    }
-    else if ([totime.text isEqualToString:@"To"])
-    {
-        
-        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select to time." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [self styleCustomAlertView:alertView];
-        [self addButtonsWithBackgroundImagesToAlertView:alertView];
-        [alertView show];
-    }
+
+
 }
 
 
@@ -728,7 +450,7 @@
             
             
             //     To check whether its having data or not
-            //              NSLog(@"datas %lu",(unsigned long)[datas count]);
+                         NSLog(@"datas %lu",(unsigned long)[datas count]);
             
             if ([datas count]>0)
             {
@@ -812,7 +534,7 @@
 #pragma mark - DrawPin with Lat nd Long
 -(void)setpin
 {
-    
+   
     NSMutableArray *points=[[NSMutableArray alloc]init];
     self.allPins = [[NSMutableArray alloc]init];
     MKMapRect visibleMapRect = mapview.visibleMapRect;
@@ -880,9 +602,61 @@
         [self.view addSubview:mapview];
         [self.view addSubview:maptype];
         [self.view addSubview:stepper];
+        [self Distance];
+    
+    }
+     self.navigationController.topViewController.title=@"Tracking History";
+
+}
+#pragma mark -Calculate Distance
+-(void)Distance
+{
+    double total=0;
+     distanceValues=[[NSMutableArray alloc]init];
+    for (int i=0; i<[locationlist count]-1; i++)
+    {
+        int j=i+1;
+        
+            Vehiclelocationlist *list1=[locationlist objectAtIndex:i];
+//            CLLocationDegrees latitude1  = [list1.latitude  doubleValue];
+//            CLLocationDegrees longitude1 = [list1.longitude doubleValue];
+//              NSLog(@"Latitude %d %@",i,list1);
+            Vehiclelocationlist *list2=[locationlist objectAtIndex:j];
+//            CLLocationDegrees latitude2  = [list2.latitude  doubleValue];
+//            CLLocationDegrees longitude2 = [list2.longitude doubleValue];
+//            NSLog(@"Latitude %d %@",j,list2);
+//            CLLocation *startLoc = [[CLLocation alloc] initWithLatitude:latitude1 longitude:longitude1];
+//            CLLocation *destLoc = [[CLLocation alloc] initWithLatitude:latitude2 longitude:longitude2];
+//            CLLocationDistance meters = [destLoc distanceFromLocation:startLoc]/1000;
+//            NSLog(@"Distance in meters %f",meters);
+//            [distanceValues addObject:[NSNumber numberWithDouble:meters]];
+        [distanceValues addObject:[NSNumber numberWithDouble:[self DistanceByLatLong:[list1.latitude  doubleValue] lat2:[list2.latitude  doubleValue] log1:[list1.longitude doubleValue] log2:[list2.longitude doubleValue]]]];
         
     }
     
+    for (int i=0; i<[distanceValues count]; i++)
+    {
+        total+=[[distanceValues objectAtIndex:i] doubleValue];
+    }
+    NSLog(@"Total Value %f",total);
+      [[NSUserDefaults standardUserDefaults]setValue:[NSString stringWithFormat:@"%f",total]  forKey:@"TotalDistance"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+-(double) Deg2Rad:(double) degrees
+{
+    return degrees == 0 ? degrees : (degrees * M_PI / 180.0);
+}
+-(double)DistanceByLatLong:(double)lat1 lat2:(double)lat2 log1:(double)log1 log2:(double)log2
+{
+     int R = 6371; // Radius of the earth
+    double latDistance = [self Deg2Rad:lat2 - lat1];
+    double lonDistance = [self Deg2Rad:log2 - log1];
+    double a = sin(latDistance / 2) * sin(latDistance / 2)
+    + cos([self Deg2Rad: lat1]) * cos([self Deg2Rad:lat2])
+    * sin(lonDistance / 2) * sin(lonDistance / 2);
+    double c = 2 * atan2(sqrt(a), sqrt(1 - a));
+    double distance = R * c; // convert the meters
+    return distance;
     
 }
 #pragma mark - Draw PolyLine
@@ -1031,7 +805,7 @@
     NSString *urltemp=[[databaseurl sharedInstance]DBurl];
     NSString *url1=@"Vehicledetails.php?service=vehiclehistorylist";
     NSString *url2=[NSString stringWithFormat:@"%@%@",urltemp,url1];
-    NSString *post =[[NSString alloc] initWithFormat:@"%@=%@&vehicleregno=%@&date=%@&from=%@&to=%@&%@=%@",firstEntity,value1,vehicleregno,selecteddate.text,fromtime.text,totime.text,secondEntity,value2];
+    NSString *post =[[NSString alloc] initWithFormat:@"%@=%@&vehicleregno=%@&date=%@&from=%@&to=%@&%@=%@",firstEntity,value1,vehicleregno,self.SelectedDate,self.FromTime,self.ToTime,secondEntity,value2];
     // NSLog(@"post %@",post);
     NSURL *url = [NSURL URLWithString:url2];
     

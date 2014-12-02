@@ -10,6 +10,7 @@
 #import "SBJSON.h"
 #import "DateTimePicker.h"
 #import "OverSpeedSearch.h"
+#define  AppDelegate (GPSMobileTrackingAppDelegate *)[[UIApplication sharedApplication] delegate]
 #ifdef UI_USER_INTERFACE_IDIOM
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #else
@@ -19,6 +20,7 @@
 {
     databaseurl *du;
     DateTimePicker *picker;
+    GPSMobileTrackingAppDelegate *delegate;
 }
 @end
 
@@ -27,13 +29,10 @@
 
 @synthesize fromdate;
 @synthesize todate;
-
 @synthesize vecnumber;
-@synthesize vecnumberlab;
 @synthesize drivername;
-@synthesize drivernamelab;
 @synthesize speedcount;
-@synthesize speedcountlab;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -165,13 +164,12 @@
              [self.view setFrame:CGRectMake(0,0, 768,1024)];
         }
     }
-    fromdate.text=@"From Date";
-    todate.text=@"To Date";
+   
     if (IS_IPAD) {
         OverSpeedSearch *search=[[OverSpeedSearch alloc]initWithFrame:CGRectMake(0, 0, 768, 1024)];
        [self animateView:self.view down:YES];
          [[NSNotificationCenter defaultCenter]removeObserver:self name:@"SearchDone" object:nil];
-         [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(search:) name:@"SearchDone"object:nil];
+         [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(RetriveDatas:) name:@"SearchDone"object:nil];
         
     }
     else
@@ -179,7 +177,7 @@
        OverSpeedSearch *search=[[OverSpeedSearch alloc]initWithFrame:CGRectMake(0, 0, 768, 1024)];
         [self animateView:self.view down:YES];
          [[NSNotificationCenter defaultCenter]removeObserver:self name:@"SearchDone" object:nil];
-   [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(search:) name:@"SearchDone"object:nil];
+   [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(RetriveDatas:) name:@"SearchDone"object:nil];
         
     }
 }
@@ -305,16 +303,36 @@
     
 
     du=[[databaseurl alloc]init];
-    
+    delegate=AppDelegate;
     speedcount.text=@"";
     NSString *vehicleregno=[[NSUserDefaults standardUserDefaults]objectForKey:@"vehicleregno"];
     NSString *driver_name=[[NSUserDefaults standardUserDefaults]objectForKey:@"driver_name"];
     vecnumber.text=vehicleregno;
     drivername.text=driver_name;
-    //     [self performSelector:@selector(CountOverSpeed) withObject:self afterDelay:0.1f];
+    
+    self.ownername.text=[[NSUserDefaults standardUserDefaults]valueForKey:@"OwnerFirstName"];
+   
+    BusNameList *bus_list= [delegate.Vehicle_List objectAtIndex:[[[NSUserDefaults standardUserDefaults]valueForKey:@"selected_row"] intValue]];
+    if ([bus_list.device_status isEqualToString:@"0"]) {
+        self.devicestatus.text=@"Switched Off";
+    }
+    else if ([bus_list.device_status isEqualToString:@"1"]) {
+        self.devicestatus.text=@"Active Mode";
+    }
+    else if ([bus_list.device_status isEqualToString:@"2"])
+    {
+        self.devicestatus.text=@"No Signal";
+    }
+    else if ([bus_list.device_status isEqualToString:@"3"])
+    {
+        self.devicestatus.text=@"Sleep Mode";
+        
+    }
+    else
+        self.devicestatus.text=@"Switched Off";
     
 }
-#pragma mark -OverspeedCount Method
+#pragma mark -OverspeedCount Method at didload
 -(void)CountOverSpeed
 {
     
@@ -357,23 +375,7 @@
     
 }
 
-#pragma mark -CustomAlert
-- (void)styleCustomAlertView:(TTAlertView *)alertView
-{
-    [alertView.containerView setImage:[[UIImage imageNamed:@"alert.bg.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(11.0f, 13.0f, 14.0f, 13.0f)]];
-    [alertView.containerView setBackgroundColor:[UIColor clearColor]];
-    
-    alertView.buttonInsets = UIEdgeInsetsMake(alertView.buttonInsets.top, alertView.buttonInsets.left + 4.0f, alertView.buttonInsets.bottom + 6.0f, alertView.buttonInsets.right + 4.0f);
-}
 
-- (void)addButtonsWithBackgroundImagesToAlertView:(TTAlertView *)alertView
-{
-    UIImage *redButtonImageOff = [[UIImage imageNamed:@"large.button.red.on.png"] stretchableImageWithLeftCapWidth:2.0 topCapHeight:2.0];
-    UIImage *redButtonImageOn = [[UIImage imageNamed:@"large.button.red.on.png"] stretchableImageWithLeftCapWidth:2.0 topCapHeight:2.0];
-    [alertView setButtonBackgroundImage:redButtonImageOff forState:UIControlStateNormal atIndex:0];
-    [alertView setButtonBackgroundImage:redButtonImageOn forState:UIControlStateHighlighted atIndex:0];
-    
-}
 
 #pragma mark -Home Action
 
@@ -393,181 +395,23 @@
         }
     }
 }
-#pragma mark -From Date Selection
-- (IBAction)frombuttonClicked:(id)sender {
-    //    fromdateselection.hidden=NO;
-    //    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 100, 320, 44)];
-    //    textField.text         = @"done";
-    //    textField.userInteractionEnabled=YES;
-    //    [self.view addSubview:textField];
-    //
-    //    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    //    toolbar.barStyle   = UIBarStyleBlackTranslucent;
-    //
-    //    UIBarButtonItem *itemDone  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:textField action:@selector(resignFirstResponder)];
-    //    UIBarButtonItem *itemSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    //
-    //    toolbar.items = @[itemSpace,itemDone];
-    //
-    //    UIDatePicker *datePicker =fromdateselection;
-    //    [fromdateselection setFrame:CGRectMake(0, 0, 320, 216)];
-    //
-    //
-    //    textField.inputAccessoryView = toolbar;
-    //    textField.inputView          = datePicker;
-    //
-    //    [textField becomeFirstResponder];
+
+
+
+
+#pragma mark -Get OverSpeedCount
+
+- (IBAction)RetriveDatas:(id)sender {
     
-   
-    [self cancelPressed];
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGFloat screenWidth = screenRect.size.width;
-        CGFloat screenHeight = screenRect.size.height;
-        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0,(screenHeight-230), screenWidth, screenHeight/2 + 35)];
-        [picker addTargetForDoneButton:self action:@selector(donePressed)];
-        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
-        [self.view addSubview:picker];
-        picker.hidden = NO;
-        [picker setMode:UIDatePickerModeDate];
-        picker.picker.tag=1;
-        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
-    }
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
-    {
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGFloat screenWidth = screenRect.size.width;
-        CGFloat screenHeight = screenRect.size.height;
-        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+100, screenWidth, screenHeight/2 + 35)];
-        if(SCREEN_35)
-        {
-            picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+20, screenWidth, screenHeight/2 + 35)];
-        }
-        [picker addTargetForDoneButton:self action:@selector(donePressed)];
-        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
-        [self.view addSubview:picker];
-        picker.hidden = NO;
-        [picker setMode:UIDatePickerModeDate];
-        picker.picker.tag=1;
-        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
-    }
-    
-    
-}
--(void)pickerChanged:(id)sender {
-    UIDatePicker *dp=(UIDatePicker*)sender;
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *strDate =[dateFormatter stringFromDate:[dp date]];
-    if (dp.tag==1) {
-        self.fromdate.text = strDate;
-    }
-    else if (dp.tag==2) {
-        self.todate.text = strDate;
-    }
-    //    selectedDate = picker.date;
-    //    [button setTitle:[dateFormatter stringFromDate:selectedDate] forState:UIControlStateNormal];
-}
-
--(void)donePressed {
-    UIDatePicker *dp=picker.picker;
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *strDate =[dateFormatter stringFromDate:[dp date]];
-    if (dp.tag==1) {
-        self.fromdate.text = strDate;
-    }
-    else if (dp.tag==2) {
-        self.todate.text = strDate;
-    }
-    [picker removeFromSuperview];
-    //    NSLog(@"Done button tapped");
-    
-}
-
--(void)cancelPressed {
-    [picker removeFromSuperview];
-    //    NSLog(@"Cancel pressed");
-}
-#pragma mark -To Date Selection
-
-- (IBAction)tobuttonClicked:(id)sender {
-    [self cancelPressed];
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-    {
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGFloat screenWidth = screenRect.size.width;
-        CGFloat screenHeight = screenRect.size.height;
-        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0,screenHeight-230, screenWidth, screenHeight/2 + 35)];
-        [picker addTargetForDoneButton:self action:@selector(donePressed)];
-        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
-        [self.view addSubview:picker];
-        picker.hidden = NO;
-        [picker setMode:UIDatePickerModeDate];
-        picker.picker.tag=2;
-        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
-    }
-    if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPhone)
-    {
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGFloat screenWidth = screenRect.size.width;
-        CGFloat screenHeight = screenRect.size.height;
-        picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+100, screenWidth, screenHeight/2 + 35)];
-        if(SCREEN_35)
-        {
-            picker = [[DateTimePicker alloc] initWithFrame:CGRectMake(0, screenHeight/2+20, screenWidth, screenHeight/2 + 35)];
-        }
-        [picker addTargetForDoneButton:self action:@selector(donePressed)];
-        [picker addTargetForCancelButton:self action:@selector(cancelPressed)];
-        [self.view addSubview:picker];
-        picker.hidden = NO;
-        [picker setMode:UIDatePickerModeDate];
-        picker.picker.tag=2;
-        [picker.picker addTarget:self action:@selector(pickerChanged:) forControlEvents:UIControlEventValueChanged];
-    }
-}
--(BOOL)From_to_dateCheck
-{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-    //   NSLocale *indianEnglishLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_IN"] autorelease];
-    //    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Kolkata"];
-    //   [formatter setLocale:indianEnglishLocale];
-    //    [formatter setTimeZone:timeZone];
-    NSString *fromtime1=fromdate.text;
-    NSString *totime1=todate.text;
-    NSDate *date1= [formatter dateFromString:fromtime1];
-    NSDate *date2 = [formatter dateFromString:totime1];
-    NSComparisonResult result = [date1 compare:date2];
-    //       NSLog(@"from time %@",date1);
-    //         NSLog(@"to time %@",date2);
-    //         NSLog(@"result %ld",result);
-    if(result == NSOrderedDescending)
-    {
-        NSLog(@"date1 is later than date2");
-        return 0;
-    }
-    else if(result == NSOrderedAscending)
-    {
-        NSLog(@"date2 is later than date1");
-        return 1;
-    }
-    else
-    {
-        NSLog(@"date1 is equal to date2");
-        return 1;
-    }
-    return 0;
-}
-
-#pragma mark -Search Action
-
-- (IBAction)search:(id)sender {
     [self animateView:self.view down:NO];
-    if ((![fromdate.text isEqualToString:@"From Date"])&&(![todate.text isEqualToString:@"To Date"])) {
-        BOOL res= [self From_to_dateCheck];
-        if (res)
+    
+    NSLog(@"Object received %@",[sender valueForKey:@"object"]);
+  
+   fromdate= [[sender valueForKey:@"object"] valueForKey:@"Selected_FromDate"];
+   todate =[[sender valueForKey:@"object"] valueForKey:@"Selected_ToDate"];
+    // NSLog(@"Failure %@",fromdate);
+   //  NSLog(@"Failure %@",todate);
+        if (([fromdate length]>0)&&([todate length]>0))
         {
          
             HUD = [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
@@ -577,30 +421,12 @@
             [HUD show:YES];
             [self performSelector:@selector(CountOverSpeedByTime) withObject:self afterDelay:0.1f];
         }
-        else
-        {
-            TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"To date must be greater than from date." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [self styleCustomAlertView:alertView];
-            [self addButtonsWithBackgroundImagesToAlertView:alertView];
-            [alertView show];
-        }
-        
-        
-    }
-    else if ([fromdate.text isEqualToString:@"From Date"])
+    else
     {
-        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select from date." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [self styleCustomAlertView:alertView];
-        [self addButtonsWithBackgroundImagesToAlertView:alertView];
-        [alertView show];
+        NSLog(@"Failure");
     }
-    else if ([todate.text isEqualToString:@"To Date"])
-    {
-        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select to date." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [self styleCustomAlertView:alertView];
-        [self addButtonsWithBackgroundImagesToAlertView:alertView];
-        [alertView show];
-    }
+    
+        
     
 }
 #pragma mark -Search by specified time
@@ -615,7 +441,7 @@
         NSString *driver_name=[[NSUserDefaults standardUserDefaults]objectForKey:@"driver_name"];
         
         NSString *response=[self countSpeedInTime:@"vecid" ForValue1:vehicleregno EntitySecond:@"authkey" ForValue2:@"rzTFevN099Km39PV"];
-        //        NSLog(@"response %@",response);
+           //    NSLog(@"response %@",response);
         NSError *error;
         SBJSON *json = [[SBJSON new] autorelease];
         
@@ -652,7 +478,7 @@
     NSString *urltemp=[[databaseurl sharedInstance]DBurl];
     NSString *url1=@"OverSpeed.php?service=VehicleOverSpeedInTime";
     NSString *url2=[NSString stringWithFormat:@"%@%@",urltemp,url1];
-    NSString *post =[[NSString alloc] initWithFormat:@"%@=%@&orgid=%@&from=%@&to=%@&%@=%@",firstEntity,value1,orgid,fromdate.text,todate.text,secondEntity,value2];
+    NSString *post =[[NSString alloc] initWithFormat:@"%@=%@&orgid=%@&from=%@&to=%@&%@=%@",firstEntity,value1,orgid,fromdate,todate,secondEntity,value2];
     // NSLog(@"post %@",post);
     NSURL *url = [NSURL URLWithString:url2];
     

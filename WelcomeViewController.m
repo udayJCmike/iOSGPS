@@ -7,8 +7,8 @@
 //
 
 #import "WelcomeViewController.h"
-
-
+#import "TWMessageBarManager.h"
+#import "StringConstants.h"
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define SCREEN_35 (SCREEN_HEIGHT == 480)
 #define SCREEN_40 (SCREEN_HEIGHT == 568)
@@ -30,6 +30,20 @@
 @synthesize logout;
 
 @synthesize tableheightConstraint;
+- (id)initWithStyleSheet:(NSObject<TWMessageBarStyleSheet> *)stylesheet
+{
+    self = [super init];
+    if (self)
+    {
+        [TWMessageBarManager sharedInstance].styleSheet = stylesheet;
+    }
+    return self;
+}
+
+- (id)init
+{
+    return [self initWithStyleSheet:nil];
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -203,15 +217,25 @@ delegate.login_status=@"0";
         }
     }
     
+    delegate=AppDelegate;
+    
  self.navigationController.topViewController.title=@"Dashboard";
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-//    
+//  NSLog(@"login %@",delegate.login_session_status);
 //    [self.tableView setSeparatorColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Divider_line@2x.png"]]];
-    welcome.text=[NSString stringWithFormat:@"Welcome %@ !",[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
-   
+    if ([delegate.login_session_status isEqualToString:@"0"])
+    {
+        [[TWMessageBarManager sharedInstance] showMessageWithTitle:kStringMessageBarInfoTitle
+                                                       description:[NSString stringWithFormat:@"Welcome %@!",[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]]
+                                                              type:TWMessageBarMessageTypeInfo
+                                                    statusBarStyle:YES
+                                                          callback:nil];
+  
+    }
+  
     delegate=AppDelegate;
     du=[[databaseurl alloc]init];
-     list= delegate.Vehicle_List;
+    list= delegate.Vehicle_List;
         
     if ([delegate.login_session_status isEqualToString:@"1"])
     {
@@ -224,6 +248,8 @@ delegate.login_status=@"0";
       // NSLog(@"observer added");
         
     }
+    
+    
     // Do any additional setup after loading the view.
 }
 

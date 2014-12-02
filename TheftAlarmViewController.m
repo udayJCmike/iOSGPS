@@ -273,6 +273,27 @@
  
     self.VecRegNo.text= [[NSUserDefaults standardUserDefaults]valueForKey:@"vehicleregno"];
     self.DriverName.text= [[NSUserDefaults standardUserDefaults]valueForKey:@"driver_name"];
+    self.OwnerName.text=[[NSUserDefaults standardUserDefaults]valueForKey:@"OwnerFirstName"];
+     BusNameList *bus_list= [delegate.Vehicle_List objectAtIndex:[[[NSUserDefaults standardUserDefaults]valueForKey:@"selected_row"] intValue]];
+    if ([bus_list.device_status isEqualToString:@"0"]) {
+       self.DeviceStatus.text=@"Switched Off";
+    }
+    else if ([bus_list.device_status isEqualToString:@"1"]) {
+           self.DeviceStatus.text=@"Active Mode";
+    }
+    else if ([bus_list.device_status isEqualToString:@"2"])
+    {
+           self.DeviceStatus.text=@"No Signal";
+    }
+    else if ([bus_list.device_status isEqualToString:@"3"])
+    {
+            self.DeviceStatus.text=@"Sleep Mode";
+        
+    }
+    else
+           self.DeviceStatus.text=@"Switched Off";
+   
+    
 }
 
 - (void)didReceiveMemoryWarning

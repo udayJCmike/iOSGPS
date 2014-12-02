@@ -192,6 +192,7 @@ int c;
                 [self getVehicleList];
 //                [self performSelector:@selector(getVehicleList) withObject:self afterDelay:0.1];
                 delegate.login_status=@"1";
+                delegate.login_session_status=@"0";
                 [delegate DownloadVehicleListInBackend];
                 username.text=@"";
                 password.text=@"";
@@ -465,6 +466,8 @@ int c;
                 [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"phone"]  forKey:@"phone"];
                 [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"Org_address"]  forKey:@"Org_address"];
                 [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"type_of_organization"] forKey:@"type_of_organization"];
+                [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"OwnerFirstName"]  forKey:@"OwnerFirstName"];
+                [[NSUserDefaults standardUserDefaults]setValue:[menu objectForKey:@"OwnerLastName"] forKey:@"OwnerLastName"];
                 [[NSUserDefaults standardUserDefaults]synchronize];
                 [self getVehicleList];
 

@@ -16,4 +16,6 @@
 @property(nonatomic,retain)NSString *bus_tracking_timestamp;
 @property(nonatomic,retain)NSString *address;
 @property(nonatomic,retain)NSString *flag;
+@property(nonatomic,retain)NSString *devicestatus;
+@property BOOL Latest;
 @end

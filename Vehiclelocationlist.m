@@ -16,4 +16,6 @@
 @synthesize bus_tracking_timestamp;
 @synthesize address;
 @synthesize flag;
+@synthesize devicestatus;
+@synthesize Latest;
 @end

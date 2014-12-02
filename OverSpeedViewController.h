@@ -26,12 +26,12 @@
 
 
 
-@property (retain, nonatomic) IBOutlet UILabel *fromdate;
-@property (retain, nonatomic) IBOutlet UILabel *todate;
+@property (retain, nonatomic)  NSString *fromdate;
+@property (retain, nonatomic)  NSString *todate;
 @property (retain, nonatomic) IBOutlet UILabel *vecnumber;
 @property (retain, nonatomic) IBOutlet UILabel *drivername;
 @property (retain, nonatomic) IBOutlet UILabel *speedcount;
-@property (retain, nonatomic) IBOutlet UILabel *vecnumberlab;
-@property (retain, nonatomic) IBOutlet UILabel *drivernamelab;
-@property (retain, nonatomic) IBOutlet UILabel *speedcountlab;
+@property (retain, nonatomic) IBOutlet UILabel *ownername;
+@property (retain, nonatomic) IBOutlet UILabel *devicestatus;
+
 @end

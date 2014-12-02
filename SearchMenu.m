@@ -571,26 +571,44 @@
 
 #pragma mark - search Action
 - (IBAction)search:(id)sender {
-    if ((![self.dateButton.titleLabel.text isEqualToString:@"Select"])&&(![self.fromButton.titleLabel.text isEqualToString:@"Select"])&&(![self.toButton.titleLabel.text isEqualToString:@"Select"]))
+    
+    if (![self.dateButton.titleLabel.text isEqualToString:@"Select Date"])
     {
+        NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
+
+        if([self.fromButton.titleLabel.text isEqualToString:@"Select From Time"])
+        {
+             [dict setValue:@"00:00" forKey:@"Selected_Fromtime"];
+            self.fromButton.titleLabel.text=@"00:00";
+        }
+            if([self.toButton.titleLabel.text isEqualToString:@"Select To Time"])
+            {
+                [dict setValue:@"23:59" forKey:@"Selected_Totime"];
+                self.toButton.titleLabel.text=@"23:59";
+            }
+       if((![self.fromButton.titleLabel.text isEqualToString:@"Select From Time"])&&(![self.toButton.titleLabel.text isEqualToString:@"Select To Time"]))
+       {
+           BOOL res= [self From_to_dateCheck];
+           if (res)
+           {
+               [dict setValue:self.dateButton.titleLabel.text forKey:@"Selected_Date"];
+               [dict setValue:self.fromButton.titleLabel.text forKey:@"Selected_Fromtime"];
+               [dict setValue:self.toButton.titleLabel.text forKey:@"Selected_Totime"];
+               [[NSNotificationCenter defaultCenter] postNotificationName:@"HistorySearchDone"  object:dict  userInfo:nil];
+               
+               [self animateDropDown];
+           }
+           else
+           {
+               TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"To time must be greater than from time." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+               [self styleCustomAlertView:alertView];
+               [self addButtonsWithBackgroundImagesToAlertView:alertView];
+               [alertView show];
+           }
+       }
         
-        BOOL res= [self From_to_dateCheck];
-        if (res)
-        {
-            NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
-            [dict setValue:self.dateButton.titleLabel.text forKey:@"Selected_Date"];
-             [dict setValue:self.fromButton.titleLabel.text forKey:@"Selected_Fromtime"];
-             [dict setValue:self.toButton.titleLabel.text forKey:@"Selected_Totime"];
-             [[NSNotificationCenter defaultCenter] postNotificationName:@"SearchAction"  object:dict  userInfo:nil];
-            [self animateDropDown];
-        }
-        else
-        {
-            TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"To time must be greater than from time." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [self styleCustomAlertView:alertView];
-            [self addButtonsWithBackgroundImagesToAlertView:alertView];
-            [alertView show];
-        }
+        
+       
         
         
         
@@ -598,7 +616,7 @@
         
         
     }
-    else if ([self.dateButton.titleLabel.text isEqualToString:@"Select"])
+    else if ([self.dateButton.titleLabel.text isEqualToString:@"Select Date"])
     {
         
         TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select date." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
@@ -606,22 +624,7 @@
         [self addButtonsWithBackgroundImagesToAlertView:alertView];
         [alertView show];
     }
-    else if ([self.fromButton.titleLabel.text isEqualToString:@"Select"])
-    {
-        
-        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select from time." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [self styleCustomAlertView:alertView];
-        [self addButtonsWithBackgroundImagesToAlertView:alertView];
-        [alertView show];
-    }
-    else if ([self.toButton.titleLabel.text isEqualToString:@"Select"])
-    {
-        
-        TTAlertView *alertView = [[TTAlertView alloc] initWithTitle:@"INFO" message:@"Select to time." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [self styleCustomAlertView:alertView];
-        [self addButtonsWithBackgroundImagesToAlertView:alertView];
-        [alertView show];
-    }
+   
 }
 #pragma mark - CustomPicker
 - (void)styleCustomAlertView:(TTAlertView *)alertView

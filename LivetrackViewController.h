@@ -20,13 +20,13 @@
     NSTimer *timer;
     NSTimer *CountDownTimer;
     int TotalSec;
-   
+    NSArray *colorArray;
 }
 @property(nonatomic,retain)NSTimer *timer;
 
 @property (retain, nonatomic) IBOutlet MKMapView *mapview;
 @property (retain, nonatomic) IBOutlet UISegmentedControl *maptype;
 @property (retain, nonatomic) IBOutlet UIStepper *stepper;
-
+@property(retain, nonatomic)  UIColor *currentLineColor;
 @property(retain,nonatomic)IBOutlet NSLayoutConstraint *mapheightConstraint;
 @end

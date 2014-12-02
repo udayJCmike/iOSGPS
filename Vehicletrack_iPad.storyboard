@@ -469,13 +469,6 @@
                                 <rect key="frame" x="0.0" y="64" width="768" height="196"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alert" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="285-gk-UNH">
-                                        <rect key="frame" x="340" y="308" width="88" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
-                                        <color key="textColor" red="0.85490196080000003" green="0.0" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vehicle Reg.No:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olI-7i-wdB">
                                         <rect key="frame" x="225" y="35" width="137" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -535,6 +528,13 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alert" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="285-gk-UNH">
+                                <rect key="frame" x="289" y="497" width="191" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="20"/>
+                                <color key="textColor" red="0.85490196080000003" green="0.0" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Turn On/Off Theft Alarm:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0i-vx-vJt">
                                 <rect key="frame" x="208" y="285" width="215" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -609,7 +609,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHH-0I-WAH">
-                                        <rect key="frame" x="371" y="203" width="160" height="19"/>
+                                        <rect key="frame" x="371" y="199" width="160" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="19"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -686,9 +686,6 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="search:" destination="8po-8D-HgX" eventType="touchUpInside" id="0md-SB-Fbe"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7At-4K-5h5">
                                         <rect key="frame" x="319" y="19" width="130" height="30"/>
@@ -697,9 +694,6 @@
                                         <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="tobuttonClicked:" destination="8po-8D-HgX" eventType="touchUpInside" id="m4r-re-6SC"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qd9-Vm-98z">
                                         <rect key="frame" x="98" y="19" width="130" height="30"/>
@@ -708,9 +702,6 @@
                                         <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="frombuttonClicked:" destination="8po-8D-HgX" eventType="touchUpInside" id="3eG-1a-LEd"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -720,14 +711,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="eok-EU-j19"/>
                     <connections>
+                        <outlet property="devicestatus" destination="O4N-Lg-XDj" id="OOd-b8-6VO"/>
                         <outlet property="drivername" destination="f0c-qV-36g" id="a0f-iX-dvQ"/>
-                        <outlet property="drivernamelab" destination="aYb-ZT-a5J" id="Rx9-eF-14y"/>
-                        <outlet property="fromdate" destination="X6j-ta-EvD" id="Eef-Hj-vvm"/>
+                        <outlet property="ownername" destination="cBX-1S-Yxf" id="2ow-YZ-u77"/>
                         <outlet property="speedcount" destination="aHH-0I-WAH" id="L9q-hQ-OUh"/>
-                        <outlet property="speedcountlab" destination="TcI-Uf-weo" id="p6s-Pa-EPC"/>
-                        <outlet property="todate" destination="Eww-t1-6KK" id="VJG-9X-Oa9"/>
                         <outlet property="vecnumber" destination="Ot6-Gg-gz2" id="e3x-xk-A5h"/>
-                        <outlet property="vecnumberlab" destination="T2f-FL-Q7p" id="ahs-B5-34I"/>
                         <segue destination="w6b-n0-Ina" kind="push" identifier="speedtotheft" id="70m-SG-q4n"/>
                         <segue destination="pxf-Ge-cAA" kind="push" identifier="speedtohis" id="Bbe-fT-qAD"/>
                         <segue destination="SnF-lu-w2d" kind="push" identifier="speedtolive" id="BM2-2l-WWG"/>
@@ -817,10 +805,10 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="70m-SG-q4n"/>
-        <segue reference="Bzf-23-aJW"/>
-        <segue reference="BM2-2l-WWG"/>
-        <segue reference="Bbe-fT-qAD"/>
         <segue reference="wxR-kA-MvR"/>
+        <segue reference="BM2-2l-WWG"/>
+        <segue reference="Bzf-23-aJW"/>
+        <segue reference="70m-SG-q4n"/>
+        <segue reference="Bbe-fT-qAD"/>
     </inferredMetricsTieBreakers>
 </document>

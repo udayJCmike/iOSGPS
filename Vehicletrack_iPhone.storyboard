@@ -478,13 +478,6 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="162"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alert" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opv-NG-RYG">
-                                        <rect key="frame" x="135" y="238" width="50" height="29"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="16"/>
-                                        <color key="textColor" red="0.85490196080000003" green="0.0" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vehicle Reg.No:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEE-8M-69u">
                                         <rect key="frame" x="20" y="14" width="131" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -559,6 +552,13 @@
                                     <outlet property="delegate" destination="jt2-GC-4sv" id="tg7-mg-puu"/>
                                 </connections>
                             </view>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alert" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opv-NG-RYG">
+                                <rect key="frame" x="106" y="315" width="109" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="18"/>
+                                <color key="textColor" red="0.85490196080000003" green="0.0" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -604,42 +604,42 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vehicle Reg.No:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLf-wy-VR7">
-                                        <rect key="frame" x="20" y="91" width="127" height="24"/>
+                                        <rect key="frame" x="20" y="20" width="127" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="16"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="108" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCG-RP-Q3G">
-                                        <rect key="frame" x="153" y="91" width="142" height="24"/>
+                                        <rect key="frame" x="153" y="20" width="142" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="16"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Owner Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6D-XB-28J">
-                                        <rect key="frame" x="20" y="21" width="111" height="24"/>
+                                        <rect key="frame" x="20" y="56" width="111" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="16"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kamal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhm-zq-HBP">
-                                        <rect key="frame" x="153" y="59" width="162" height="24"/>
+                                        <rect key="frame" x="153" y="94" width="162" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="16"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Driver Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyF-hB-dnr">
-                                        <rect key="frame" x="20" y="59" width="103" height="24"/>
+                                        <rect key="frame" x="20" y="94" width="103" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="16"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kamal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGP-bA-DyL">
-                                        <rect key="frame" x="153" y="21" width="162" height="24"/>
+                                        <rect key="frame" x="153" y="56" width="162" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="16"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -686,9 +686,6 @@
                                         <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="frombuttonClicked:" destination="nH1-xF-kCQ" eventType="touchUpInside" id="zi5-Wh-0ae"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="78/78/8522" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPC-Ot-ZbQ">
                                         <rect key="frame" x="3" y="21" width="119" height="30"/>
@@ -703,9 +700,6 @@
                                         <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="tobuttonClicked:" destination="nH1-xF-kCQ" eventType="touchUpInside" id="1io-l5-wLs"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyj-nz-5MH">
                                         <rect key="frame" x="128" y="21" width="116" height="30"/>
@@ -722,9 +716,6 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <action selector="search:" destination="nH1-xF-kCQ" eventType="touchUpInside" id="MWf-9M-LVa"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -734,14 +725,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="iY0-we-j2c"/>
                     <connections>
+                        <outlet property="devicestatus" destination="jch-T9-DfA" id="Kwl-O0-mFJ"/>
                         <outlet property="drivername" destination="hhm-zq-HBP" id="RRu-Bg-aC2"/>
-                        <outlet property="drivernamelab" destination="Z6D-XB-28J" id="pCV-RK-VcQ"/>
-                        <outlet property="fromdate" destination="vPC-Ot-ZbQ" id="Nv1-E2-f9S"/>
+                        <outlet property="ownername" destination="vGP-bA-DyL" id="KN5-mE-5NE"/>
                         <outlet property="speedcount" destination="KMa-96-rnK" id="bld-6Z-MlV"/>
-                        <outlet property="speedcountlab" destination="d8v-v9-f6o" id="ax5-jd-lcU"/>
-                        <outlet property="todate" destination="yyj-nz-5MH" id="g0y-fN-Hlg"/>
                         <outlet property="vecnumber" destination="GCG-RP-Q3G" id="KQG-Aa-Ary"/>
-                        <outlet property="vecnumberlab" destination="zLf-wy-VR7" id="Y9m-ut-Alj"/>
                         <segue destination="jt2-GC-4sv" kind="push" identifier="speedtotheft" id="POD-8J-B98"/>
                         <segue destination="Rw9-8b-hjh" kind="push" identifier="speedtolive" id="daT-RJ-Ezi"/>
                         <segue destination="GPI-Jy-4eI" kind="push" identifier="speedtohis" id="kG2-hX-Vga"/>
@@ -832,10 +820,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kG2-hX-Vga"/>
+        <segue reference="34y-xG-DC7"/>
+        <segue reference="daT-RJ-Ezi"/>
         <segue reference="TGL-dX-98Y"/>
         <segue reference="POD-8J-B98"/>
-        <segue reference="daT-RJ-Ezi"/>
-        <segue reference="34y-xG-DC7"/>
+        <segue reference="kG2-hX-Vga"/>
     </inferredMetricsTieBreakers>
 </document>

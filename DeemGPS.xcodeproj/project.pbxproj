@@ -40,6 +40,14 @@
 		8427C4F71A27378F0021B912 /* CircularTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8427C4F61A27378F0021B912 /* CircularTimer.m */; };
 		8427C51F1A2768B30021B912 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 8427C51E1A2768B30021B912 /* close.png */; };
 		8427C5221A276D750021B912 /* InformationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8427C5211A276D750021B912 /* InformationVC.m */; };
+		842956BD1A2DBE5C000E4912 /* icon-error.png in Resources */ = {isa = PBXBuildFile; fileRef = 842956B41A2DBE5C000E4912 /* icon-error.png */; };
+		842956BE1A2DBE5C000E4912 /* icon-error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842956B51A2DBE5C000E4912 /* icon-error@2x.png */; };
+		842956BF1A2DBE5C000E4912 /* icon-info.png in Resources */ = {isa = PBXBuildFile; fileRef = 842956B61A2DBE5C000E4912 /* icon-info.png */; };
+		842956C01A2DBE5C000E4912 /* icon-info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842956B71A2DBE5C000E4912 /* icon-info@2x.png */; };
+		842956C11A2DBE5C000E4912 /* icon-success.png in Resources */ = {isa = PBXBuildFile; fileRef = 842956B81A2DBE5C000E4912 /* icon-success.png */; };
+		842956C21A2DBE5C000E4912 /* icon-success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 842956B91A2DBE5C000E4912 /* icon-success@2x.png */; };
+		842956C31A2DBE5C000E4912 /* TWMessageBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 842956BC1A2DBE5C000E4912 /* TWMessageBarManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		842956C51A2DE12D000E4912 /* notresponding.png in Resources */ = {isa = PBXBuildFile; fileRef = 842956C41A2DE12D000E4912 /* notresponding.png */; };
 		842BA4B61A0A432900CDE021 /* OverSpeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842BA4B51A0A432800CDE021 /* OverSpeedViewController.m */; };
 		842BA4BA1A0A5DB100CDE021 /* DateTimePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 842BA4B91A0A5DB100CDE021 /* DateTimePicker.m */; };
 		845D84901A08986F000BB36B /* TheftAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D848F1A08986F000BB36B /* TheftAlarmViewController.m */; };
@@ -245,6 +253,16 @@
 		8427C51E1A2768B30021B912 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		8427C5201A276D750021B912 /* InformationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationVC.h; sourceTree = "<group>"; };
 		8427C5211A276D750021B912 /* InformationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationVC.m; sourceTree = "<group>"; };
+		842956B41A2DBE5C000E4912 /* icon-error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-error.png"; sourceTree = "<group>"; };
+		842956B51A2DBE5C000E4912 /* icon-error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-error@2x.png"; sourceTree = "<group>"; };
+		842956B61A2DBE5C000E4912 /* icon-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-info.png"; sourceTree = "<group>"; };
+		842956B71A2DBE5C000E4912 /* icon-info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-info@2x.png"; sourceTree = "<group>"; };
+		842956B81A2DBE5C000E4912 /* icon-success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success.png"; sourceTree = "<group>"; };
+		842956B91A2DBE5C000E4912 /* icon-success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-success@2x.png"; sourceTree = "<group>"; };
+		842956BA1A2DBE5C000E4912 /* StringConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringConstants.h; sourceTree = "<group>"; };
+		842956BB1A2DBE5C000E4912 /* TWMessageBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWMessageBarManager.h; sourceTree = "<group>"; };
+		842956BC1A2DBE5C000E4912 /* TWMessageBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWMessageBarManager.m; sourceTree = "<group>"; };
+		842956C41A2DE12D000E4912 /* notresponding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notresponding.png; sourceTree = "<group>"; };
 		842BA4B41A0A432800CDE021 /* OverSpeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverSpeedViewController.h; sourceTree = "<group>"; };
 		842BA4B51A0A432800CDE021 /* OverSpeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverSpeedViewController.m; sourceTree = "<group>"; };
 		842BA4B81A0A5DB100CDE021 /* DateTimePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateTimePicker.h; sourceTree = "<group>"; };
@@ -537,6 +555,22 @@
 			name = CircularTimer;
 			sourceTree = "<group>";
 		};
+		842956B31A2DBE43000E4912 /* WelcomeAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				842956B41A2DBE5C000E4912 /* icon-error.png */,
+				842956B51A2DBE5C000E4912 /* icon-error@2x.png */,
+				842956B61A2DBE5C000E4912 /* icon-info.png */,
+				842956B71A2DBE5C000E4912 /* icon-info@2x.png */,
+				842956B81A2DBE5C000E4912 /* icon-success.png */,
+				842956B91A2DBE5C000E4912 /* icon-success@2x.png */,
+				842956BA1A2DBE5C000E4912 /* StringConstants.h */,
+				842956BB1A2DBE5C000E4912 /* TWMessageBarManager.h */,
+				842956BC1A2DBE5C000E4912 /* TWMessageBarManager.m */,
+			);
+			name = WelcomeAlertView;
+			sourceTree = "<group>";
+		};
 		842BA4B31A0A42FC00CDE021 /* Over Speed */ = {
 			isa = PBXGroup;
 			children = (
@@ -604,6 +638,7 @@
 		84951A761973C7C2003C603B = {
 			isa = PBXGroup;
 			children = (
+				842956B31A2DBE43000E4912 /* WelcomeAlertView */,
 				84F6081F1A2CB29F00B13E3D /* Car_Alert.mp3 */,
 				84F608201A2CB29F00B13E3D /* Extreme_Alert.mp3 */,
 				84F608211A2CB29F00B13E3D /* Handy_Alert.mp3 */,
@@ -876,6 +911,7 @@
 		84C44EA21A2482300091B4B8 /* MockupImages */ = {
 			isa = PBXGroup;
 			children = (
+				842956C41A2DE12D000E4912 /* notresponding.png */,
 				84F6080F1A2C8DEF00B13E3D /* fleet_cover.jpg */,
 				84F608101A2C8DEF00B13E3D /* personal_cover.jpg */,
 				84F608111A2C8DEF00B13E3D /* school_cover.jpg */,
@@ -1084,6 +1120,7 @@
 				8427C4F01A270F1B0021B912 /* Menu_Test.png in Resources */,
 				84951A991973C7C2003C603B /* Main_iPad.storyboard in Resources */,
 				8427C4EE1A270DCC0021B912 /* button_bg@2x.png in Resources */,
+				842956BF1A2DBE5C000E4912 /* icon-info.png in Resources */,
 				84C44EB01A2498490091B4B8 /* multiple25.png in Resources */,
 				8427C51F1A2768B30021B912 /* close.png in Resources */,
 				84E7439E1A25B772007C9639 /* icon144.png in Resources */,
@@ -1093,7 +1130,9 @@
 				84E743B31A261472007C9639 /* back_Icon.png in Resources */,
 				84E743751A259482007C9639 /* Default-portrait~ipad.png in Resources */,
 				8492E12A1974ECF300AA9291 /* large.button.red.off@2x.png in Resources */,
+				842956BE1A2DBE5C000E4912 /* icon-error@2x.png in Resources */,
 				8492E1201974ECF300AA9291 /* alert.bg@2x.png in Resources */,
+				842956C21A2DBE5C000E4912 /* icon-success@2x.png in Resources */,
 				84E743941A25B772007C9639 /* icon40.png in Resources */,
 				84C44EA11A2469E10091B4B8 /* beep1.caf in Resources */,
 				846D58611A2C311200789453 /* idlepoint.png in Resources */,
@@ -1104,9 +1143,11 @@
 				8492E12B1974ECF300AA9291 /* large.button.red.on.png in Resources */,
 				8492E1251974ECF300AA9291 /* large.button.grey.off.png in Resources */,
 				84951AE71973E2E5003C603B /* Vehicletrack_iPad.storyboard in Resources */,
+				842956BD1A2DBE5C000E4912 /* icon-error.png in Resources */,
 				84951A9E1973C7C2003C603B /* Images.xcassets in Resources */,
 				846D58681A2C4E8200789453 /* Menu_Icon.png in Resources */,
 				84E743961A25B772007C9639 /* icon57.png in Resources */,
+				842956C01A2DBE5C000E4912 /* icon-info@2x.png in Resources */,
 				84E743731A259482007C9639 /* Default-568h@2x.png in Resources */,
 				84C44ED41A24B7E40091B4B8 /* Settings_iPad.storyboard in Resources */,
 				84C44EAA1A2482480091B4B8 /* tabbarbg.jpg in Resources */,
@@ -1127,6 +1168,7 @@
 				84951AD21973D952003C603B /* Welcome_iPad.storyboard in Resources */,
 				8494015419934C04006F161A /* pink_pin.png in Resources */,
 				84036BCE1A28AC49005E410A /* switchOne_on@2x.png in Resources */,
+				842956C11A2DBE5C000E4912 /* icon-success.png in Resources */,
 				84036BCF1A28AC49005E410A /* switchTwo_off@2x.png in Resources */,
 				84188B4F198B8465002D55BA /* year.png in Resources */,
 				8492E11F1974ECF300AA9291 /* alert.bg.png in Resources */,
@@ -1157,6 +1199,7 @@
 				84E743981A25B772007C9639 /* icon72.png in Resources */,
 				84036BC11A2890AB005E410A /* overspeedicon.png in Resources */,
 				84C44EB21A2498740091B4B8 /* profile.png in Resources */,
+				842956C51A2DE12D000E4912 /* notresponding.png in Resources */,
 				84951AD71973E139003C603B /* Contactus_iPad.storyboard in Resources */,
 				8492E1221974ECF300AA9291 /* large.button.green.off@2x.png in Resources */,
 				84E7436A1A2593D4007C9639 /* icon.png in Resources */,
@@ -1226,6 +1269,7 @@
 				84036BC71A28AC3C005E410A /* CustomSwitch.m in Sources */,
 				84951AEF1973E332003C603B /* HistorytrackViewController.m in Sources */,
 				84951ACA1973D60A003C603B /* WelcomeViewController.m in Sources */,
+				842956C31A2DBE5C000E4912 /* TWMessageBarManager.m in Sources */,
 				84951ACF1973D78E003C603B /* BuslistTableViewCell.m in Sources */,
 				842BA4BA1A0A5DB100CDE021 /* DateTimePicker.m in Sources */,
 				84951B121973FB14003C603B /* databaseurl.m in Sources */,

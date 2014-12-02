@@ -180,42 +180,42 @@
             [ self.vecreg setBackgroundColor:[UIColor clearColor]];
             [ self.vecreg setText:@"Vehicle Reg.No:"];
             [ self.vecreg setTextColor:[UIColor blackColor]];
-            [ self.vecreg setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
+            [ self.vecreg setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:14]];
             
             CGRect vecRegansFrame=CGRectMake(151,14,144,21);
             self.vecreg_ans=[[UILabel alloc]initWithFrame:vecRegansFrame];
             [ self.vecreg_ans setBackgroundColor:[UIColor clearColor]];
             [ self.vecreg_ans setText:@"TN0942358"];
             [ self.vecreg_ans setTextColor:[UIColor blackColor]];
-            [ self.vecreg_ans setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
+            [ self.vecreg_ans setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:14]];
             
             CGRect OwnerNameFrame=CGRectMake(7,45,107,21);
             self.ownername=[[UILabel alloc]initWithFrame:OwnerNameFrame];
             [ self.ownername setBackgroundColor:[UIColor clearColor]];
             [ self.ownername setText:@"Driver Name:"];
             [ self.ownername setTextColor:[UIColor blackColor]];
-            [ self.ownername setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
+            [ self.ownername setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:14]];
             
             CGRect OwnerNameansFrame=CGRectMake(151,45,194,21);
             self.ownername_ans=[[UILabel alloc]initWithFrame:OwnerNameansFrame];
             [ self.ownername_ans setBackgroundColor:[UIColor clearColor]];
             [ self.ownername_ans setText:@"John"];
             [ self.ownername_ans setTextColor:[UIColor blackColor]];
-            [ self.ownername_ans setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
+            [ self.ownername_ans setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:14]];
             
             CGRect DistanceFrame=CGRectMake(7,73,160,21);
             self.totalDistance=[[UILabel alloc]initWithFrame:DistanceFrame];
             [ self.totalDistance setBackgroundColor:[UIColor clearColor]];
             [ self.totalDistance setText:@"Distance Travelled:"];
             [ self.totalDistance setTextColor:[UIColor blackColor]];
-            [ self.totalDistance setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
+            [ self.totalDistance setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:14]];
             
             CGRect DistanceansFrame=CGRectMake(151,73,194,21);
             self.totalDistance_ans=[[UILabel alloc]initWithFrame:DistanceansFrame];
             [ self.totalDistance_ans setBackgroundColor:[UIColor clearColor]];
             [ self.totalDistance_ans setText:@"48 kms"];
             [ self.totalDistance_ans setTextColor:[UIColor blackColor]];
-            [ self.totalDistance_ans setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:15]];
+            [ self.totalDistance_ans setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:14]];
             
             v2  = [[UIView alloc] initWithFrame:CGRectMake(13,161,274,167)];
             [v2 setBackgroundColor:[UIColor colorWithRed:204.0/255 green:204.0/255 blue:204.0/255 alpha:1.0]];
@@ -274,7 +274,13 @@
         
         self.vecreg_ans.text= [[NSUserDefaults standardUserDefaults]valueForKey:@"vehicleregno"];
         self.ownername_ans.text= [[NSUserDefaults standardUserDefaults]valueForKey:@"driver_name"];
-        self.totalDistance_ans.text=@"";
+        NSMutableString *DistaceValue= [[NSUserDefaults standardUserDefaults]valueForKey:@"TotalDistance"];
+        if ([DistaceValue length]>0) {
+              self.totalDistance_ans.text=[DistaceValue stringByAppendingString:@" Km"];
+        }
+        else
+              self.totalDistance_ans.text=@"";
+      
         [v1 addSubview:self.vecreg];
         [v1 addSubview:self.vecreg_ans];
         [v1 addSubview:self.ownername];

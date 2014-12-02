@@ -26,6 +26,7 @@
 IBOutlet UITableView *tableView;
 NSMutableArray *list;
     MBProgressHUD *HUD;
+    
 }
 
 - (IBAction)aboutUS:(id)sender;
