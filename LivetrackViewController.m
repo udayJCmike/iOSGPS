@@ -43,7 +43,9 @@ int i;
 @synthesize mapview;
 @synthesize stepper;
 @synthesize maptype;
-
+@synthesize valuesArray;
+@synthesize colorsArray;
+@synthesize randomcolorsArray;
 
 @synthesize timer;
 
@@ -403,11 +405,14 @@ int i;
     
     
     
-     colorArray=[[NSArray alloc]initWithObjects:@"redColor",@"brownColor",@"cyanColor" ,@"yellowColor",@"magentaColor",@"purpleColor",@"blueColor",@"darkGrayColor",nil];
-    self.currentLineColor=[UIColor redColor];
+     randomcolorsArray=[[NSArray alloc]initWithObjects:@"redColor",@"brownColor",@"cyanColor" ,@"yellowColor",@"magentaColor",@"purpleColor",@"blueColor",@"darkGrayColor",nil];
+    self.currentLineColor=@"redColor";
     
     locationlist=[[NSMutableArray alloc]init];
-    
+    valuesArray=[[NSMutableArray alloc]init];
+    colorsArray=[[NSMutableArray alloc]init];
+    [colorsArray addObject:@"redColor"];
+    [valuesArray addObject:@"0"];
     mapview.delegate=self;
     du=[[databaseurl alloc]init];
     
@@ -453,20 +458,39 @@ int i;
 -(void)UpdateLineColor
 {
    int index= arc4random()%8;
-    if ([self.currentLineColor isEqual:[colorArray objectAtIndex:index]]) {
+    if ([self.currentLineColor isEqual:[randomcolorsArray objectAtIndex:index]]) {
         [self UpdateLineColor];
     }
     else
     {
-         self.currentLineColor=[colorArray objectAtIndex:index];
+         self.currentLineColor=[randomcolorsArray objectAtIndex:index];
     }
+    
    
 }
+#pragma mark-CheckDataAvailability
+- (void)CheckIndex:(int)fromIndex
+{
+   
+    if ([valuesArray containsObject:[NSNumber numberWithInt:fromIndex]]) {
+     self.currentLineColor=  [colorsArray objectAtIndex:[valuesArray indexOfObject:[NSNumber numberWithInt:fromIndex]]];
+        
+    }
+    else
+    {
+        [self UpdateLineColor];
+        [valuesArray addObject:[NSNumber numberWithInt:fromIndex]];
+        [colorsArray addObject:self.currentLineColor];
+    }
+    
+}
+#pragma mark-Download JSON Values
 -(void)getData
 {
     
     if ([[du submitvalues]isEqualToString:@"Success"])
     {
+           i=0;
         
         NSString *orgid=[[NSUserDefaults standardUserDefaults]objectForKey:@"orgid"];
         
@@ -496,7 +520,7 @@ int i;
                 
                 if ([datas count]>0)
                 {
-                    
+                 
                     
                     for (id anUpdate1 in datas)
                     {
@@ -534,7 +558,7 @@ int i;
                                 if (i==0)
                                 {
                                     NSLog(@"add new data in first location");
-                                    [locationlist replaceObjectAtIndex:0 withObject:list1];  //Replaced existing not responding location with latest one at 0th index
+                                    [locationlist replaceObjectAtIndex:[locationlist count]-1 withObject:list1];  //Replaced existing not responding location with latest one at n th index
                                     
                                     
                                 }
@@ -544,7 +568,7 @@ int i;
                             {
                                 NSLog(@"datas not in array");
                                
-                                    [locationlist insertObject:list1 atIndex:0];  ///Locationlist contains values in Desc order(latest value will be present at 0th index)
+                                    [locationlist addObject:list1];  ///Locationlist contains values in Desc order(latest value will be present at n th index)
                                 
                               
                             }
@@ -617,24 +641,14 @@ int i;
                             else
                             {
                                 NSLog(@"datas not in array");
-                                if (i==0)
-                                {
+                                
                                     NSLog(@"add new data in first location");
-                                    [locationlist insertObject:list1 atIndex:0];  ///Locationlist contains values in Desc order(latest value will be present at 0th index)
+                                     [locationlist addObject:list1];  ///Locationlist contains values in asc order(latest value will be present at n th index)
                                     //  NSLog(@"lovationlist 1 %@",locationlist[0]);
                                     
                                     
                                     
-                                }
-                                else
-                                {
-                                    NSLog(@"add in array");
-                                    [locationlist insertObject:list1 atIndex:1];///If it returnmore than one row add
-                                    
-                                    //                                      NSLog(@"lovationlist 1 %@",locationlist[0]);
-                                    //                                      NSLog(@"lovationlist 1 %@",[locationlist lastObject]);
-                                    //
-                                }
+                               
                             }
                             
                         }
@@ -675,6 +689,7 @@ int i;
 {
     [alert dismissWithClickedButtonIndex:0 animated:YES];
 }
+#pragma mark-DrawPIN
 -(void)setpin
 {
     
@@ -689,13 +704,14 @@ int i;
         //          NSLog(@"visible3");
         //check annotations present in map if >0 remove everything
         [self.mapview removeAnnotations:self.mapview.annotations];
+          [self.mapview removeOverlay:self.polyline];
     }
     
     
     if ([locationlist count]>0)
     {
         CSMapAnnotation* annotation = nil;
-        for (int i=0; i<[locationlist count]; i++)
+        for (int k=0; k<[locationlist count]; k++)
         {
             CLLocationManager *manager=[[CLLocationManager alloc]init];
             manager.delegate=self;
@@ -720,16 +736,16 @@ int i;
                                                            annotationType:CSMapAnnotationTypeNotRespondingImage
                                                                     title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
                 [annotation setUserData:@"Circle_Orange.png"];
-                [self UpdateLineColor];
+                [self CheckIndex:k];
             }
-            else if ((i==0)&&([list1.exceed_speed_limit isEqualToString:@"0"])&&(![list1.devicestatus isEqualToString:@"3"])) {
+            else if ((k==[locationlist count]-1)&&([list1.exceed_speed_limit isEqualToString:@"0"])&&(![list1.devicestatus isEqualToString:@"3"])) {
                 annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
                                                            annotationType:CSMapAnnotationTypeGreenImage
                                                                     title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
                 
                 [annotation setUserData:@"green_pin.png"];
             }
-            else if (((i==0)&&([list1.exceed_speed_limit isEqualToString:@"1"])&&(![list1.devicestatus isEqualToString:@"3"]))||(([list1.exceed_speed_limit isEqualToString:@"1"]&&(![list1.devicestatus isEqualToString:@"3"]))))
+            else if (((k==[locationlist count]-1)&&([list1.exceed_speed_limit isEqualToString:@"1"])&&(![list1.devicestatus isEqualToString:@"3"]))||(([list1.exceed_speed_limit isEqualToString:@"1"]&&(![list1.devicestatus isEqualToString:@"3"]))))
                 
             {
                 annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
@@ -749,16 +765,13 @@ int i;
             
             
             [mapview addAnnotation:annotation];
-            CLLocationCoordinate2D coord = {.latitude =  [list1.latitude doubleValue], .longitude = [list1.longitude doubleValue]};
-            Pin *newPin = [[Pin alloc]initWithCoordinate:coord];
-            [self.allPins addObject:newPin];
-            [self drawLines:self];
+           
             
             
         }
+        [self DrawPolyLine];
         
-        
-        Vehiclelocationlist *list1=[locationlist objectAtIndex:0];
+        Vehiclelocationlist *list1=[locationlist objectAtIndex:[locationlist count]-1];
         CLLocationCoordinate2D coord = {.latitude =  [list1.latitude doubleValue], .longitude = [list1.longitude doubleValue]};
         MKCoordinateSpan span = {.latitudeDelta =  0.00, .longitudeDelta =  0.00};
         //  MKCoordinateRegion region = {coord, span};
@@ -769,6 +782,7 @@ int i;
         [mapview setRegion:region animated:YES];
         
         [points release];
+        
         [self.view addSubview:mapview];
         [self.view addSubview:maptype];
         [self.view addSubview:stepper];
@@ -800,24 +814,71 @@ int i;
         }
     }
 }
+#pragma mark-Find polyLine Coords
+-(void)DrawPolyLine
+{
+   
+    for (int i=0; i<[valuesArray count]-1; i++) {
+        [self.allPins removeAllObjects];
+        for (int j=[[valuesArray objectAtIndex:i] intValue];j<[[valuesArray objectAtIndex:i+1] intValue]; j++)
+        {
+           Vehiclelocationlist *list1= [locationlist objectAtIndex:j];
+            CLLocationCoordinate2D coord = {.latitude =  [list1.latitude doubleValue], .longitude = [list1.longitude doubleValue]};
+            Pin *newPin = [[Pin alloc]initWithCoordinate:coord];
+            [self.allPins addObject:newPin];
+            
+        }
+       [self drawLines:[colorsArray objectAtIndex:i]];
+    }
+   
+}
+#pragma mark-Find Colors using colorname
+-(UIColor*)FindColor:(NSString *)colorname
+{
+   
 
-- (IBAction)drawLines:(id)sender {
+    if ([colorname isEqualToString:@"redColor"]) {
+        [UIColor redColor];
+    }
+    else if ([colorname isEqualToString:@"brownColor"]) {
+         [UIColor brownColor];
+    }
+    else if ([colorname isEqualToString:@"cyanColor"]) {
+         [UIColor cyanColor];
+    }
+    else if ([colorname isEqualToString:@"yellowColor"]) {
+         [UIColor yellowColor];
+    }
+    else if ([colorname isEqualToString:@"magentaColor"]) {
+         [UIColor magentaColor];
+    }
+    else if ([colorname isEqualToString:@"purpleColor"]) {
+         [UIColor purpleColor];
+    }
+    else if ([colorname isEqualToString:@"blueColor"]) {
+         [UIColor blueColor];
+    }
+    else if ([colorname isEqualToString:@"darkGrayColor"]) {
+         [UIColor darkGrayColor];
+    }
+    return [UIColor redColor];
+    
+}
+#pragma mark-DrawLine
+- (IBAction)drawLines:(NSString*)sender {
     
     
     // NSLog(@"method call");
-    [self drawLineSubroutine];
-    [self drawLineSubroutine];
+    [self drawLineSubroutine:[self FindColor:sender]];
+       [self drawLineSubroutine:[self FindColor:sender]];
     
 }
 
-- (void)drawLineSubroutine:(int)fromIndex to:(int)toIndex
-{
-    
-}
-- (void)drawLineSubroutine {
+
+- (void)drawLineSubroutine:(UIColor*)linecolorName {
     
     // remove polyline if one exists
-    [self.mapview removeOverlay:self.polyline];
+//    [self.mapview removeOverlay:self.polyline];
     
     // create an array of coordinates from allPins
     CLLocationCoordinate2D coordinates[self.allPins.count];
@@ -834,7 +895,7 @@ int i;
     
     // create an MKPolylineView and add it to the map view
     self.lineView = [[MKPolylineView alloc]initWithPolyline:self.polyline];
-    self.lineView.strokeColor = self.currentLineColor;
+    self.lineView.strokeColor = linecolorName;
     self.lineView.lineWidth = 3;
     
     // for a laugh: how many polylines are we drawing here?
