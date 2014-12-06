@@ -48,8 +48,8 @@ activeCircleStrokeColor:(UIColor *)activeCircleStrokeColor
 {    
     [self customizeAppearance];
     if ([self.finalDate compare:self.initialDate] == NSOrderedAscending) {
-        NSLog(@"Final date is smaller than initial.");
-    } else {    
+//        NSLog(@"Final date is smaller than initial.");
+    } else {
         self.percentageCompleted = 0.0f;
         self.running = NO;
         if ([self worthToRun]) {
@@ -112,8 +112,7 @@ activeCircleStrokeColor:(UIColor *)activeCircleStrokeColor
         [self completeRun];
     } else {
 //        NSLog(@"getCurrentDateGMT Date %@",[self getCurrentDateGMT]);
-//          NSLog(@"initialDate Date %@",self.initialDate);
-//          NSLog(@"finalDate Date %@",self.finalDate);
+        
         if ([self.initialDate compare:[self getCurrentDateGMT]] == NSOrderedAscending &&
               [self.finalDate compare:[self getCurrentDateGMT]] == NSOrderedDescending &&  [self.finalDate compare:[self getCurrentDateGMT]] != NSOrderedSame) {
             [self startRun];

@@ -8,17 +8,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" restorationIdentifier="CalloutView" id="3" customClass="CalloutView">
-            <rect key="frame" x="0.0" y="0.0" width="222" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="271" height="75"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="point.png" id="P66-OX-eLh">
-                    <rect key="frame" x="0.0" y="0.0" width="222" height="50"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Navbarbg.jpg" id="P66-OX-eLh">
+                    <rect key="frame" x="0.0" y="0.0" width="271" height="75"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Custom CallOut" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4">
-                    <rect key="frame" x="0.0" y="0.0" width="222" height="50"/>
+                    <rect key="frame" x="0.0" y="0.0" width="271" height="75"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="12"/>
+                    <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -28,8 +29,30 @@
                 <outlet property="calloutLabel" destination="4" id="10"/>
             </connections>
         </view>
+        <view tag="1" contentMode="scaleToFill" restorationIdentifier="CalloutView1" id="6dL-96-JSA" customClass="CalloutView">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="101"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Navbarbg.jpg" id="ipJ-U9-kbo">
+                    <rect key="frame" x="0.0" y="0.0" width="343" height="101"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Custom CallOut" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mok-VW-Fwl">
+                    <rect key="frame" x="0.0" y="0.0" width="343" height="101"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="calloutLabel" destination="Mok-VW-Fwl" id="KfJ-h5-cUA"/>
+            </connections>
+        </view>
     </objects>
     <resources>
-        <image name="point.png" width="1427" height="882"/>
+        <image name="Navbarbg.jpg" width="768" height="63"/>
     </resources>
 </document>

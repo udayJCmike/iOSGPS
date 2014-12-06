@@ -405,7 +405,7 @@
     
     [self animateView:self.view down:NO];
     
-    NSLog(@"Object received %@",[sender valueForKey:@"object"]);
+//    NSLog(@"Object received %@",[sender valueForKey:@"object"]);
   
    fromdate= [[sender valueForKey:@"object"] valueForKey:@"Selected_FromDate"];
    todate =[[sender valueForKey:@"object"] valueForKey:@"Selected_ToDate"];

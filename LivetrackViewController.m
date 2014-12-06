@@ -23,7 +23,7 @@
 #define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 #define SCREEN_35 (SCREEN_HEIGHT == 480)
 #define SCREEN_40 (SCREEN_HEIGHT == 568)
-int i;
+
 
 @interface LivetrackViewController ()
 {
@@ -65,7 +65,16 @@ int i;
     span.latitudeDelta*=delta;
     span.longitudeDelta*=delta;
     region.span=span;
-    [mapView setRegion:region animated:YES];
+      CLLocationCoordinate2D coord = {.latitude =  region.center.latitude , .longitude =region.center.longitude};
+    if (!CLLocationCoordinate2DIsValid(coord))
+    {
+//        NSLog(@"userlocation coordinate is invalid");
+        return;
+    }
+    else
+        [mapView setRegion:region animated:YES];
+        
+    
     
     
 }
@@ -76,7 +85,14 @@ int i;
     span.latitudeDelta/=delta;
     span.longitudeDelta/=delta;
     region.span=span;
-    [mapView setRegion:region animated:YES];
+    CLLocationCoordinate2D coord = {.latitude =  region.center.latitude , .longitude =region.center.longitude};
+    if (!CLLocationCoordinate2DIsValid(coord))
+    {
+//        NSLog(@"userlocation coordinate is invalid");
+        return;
+    }
+    else
+        [mapView setRegion:region animated:YES];
     
     
     
@@ -264,23 +280,27 @@ int i;
 
 -(void)UpdateCountDown:(NSTimer*)theTimer
 {
+    
     if (TotalSec>1) {
         TotalSec--;
     }
     else if(TotalSec==1)
     {
         TotalSec=30;
+      
+         [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"StartDate"];
+          [[NSUserDefaults standardUserDefaults]synchronize];
     }
     //  NSLog(@"Tick time %d and timeinterval %@ startDate %@",TotalSec, [theTimer fireDate],[CountDownTimer userInfo]);
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",TotalSec] forKey:@"tickcount"];
     [[NSUserDefaults standardUserDefaults] setObject:[theTimer fireDate] forKey:@"ticktime"];
-    [[NSUserDefaults standardUserDefaults] setObject:[[theTimer userInfo] objectForKey:@"StartDate"] forKey:@"StartDate"];
+   
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
-    NSLog(@"Disappear called");
+//    NSLog(@"Disappear called");
     
     if ([timer isValid]) {
         //        NSLog(@"timer stopped in will disappeae");
@@ -304,7 +324,7 @@ int i;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    i=1;
+    
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
@@ -330,9 +350,9 @@ int i;
             }
         }
     }
-   
     
-   
+    
+    
     //Right BAr Button Items...
     
     
@@ -405,7 +425,7 @@ int i;
     
     
     
-     randomcolorsArray=[[NSArray alloc]initWithObjects:@"redColor",@"brownColor",@"cyanColor" ,@"yellowColor",@"magentaColor",@"purpleColor",@"blueColor",@"darkGrayColor",nil];
+    randomcolorsArray=[[NSArray alloc]initWithObjects:@"redColor",@"brownColor",@"cyanColor" ,@"yellowColor",@"magentaColor",@"purpleColor",@"blueColor",@"darkGrayColor",nil];
     self.currentLineColor=@"redColor";
     
     locationlist=[[NSMutableArray alloc]init];
@@ -446,34 +466,35 @@ int i;
                                                         selector:@selector(UpdateCountDown:)
                                                         userInfo:dict
                                                          repeats:YES];
+         [[NSUserDefaults standardUserDefaults] setObject:[[CountDownTimer userInfo] objectForKey:@"StartDate"] forKey:@"StartDate"];
         TotalSec=30;
     }
     
     self.navigationController.topViewController.title=@"Live Track";
     self.navigationController.navigationItem.title=@"Live Track";
     
-    NSLog(@" title %@",self.navigationController.navigationItem.title);
+//    NSLog(@" title %@",self.navigationController.navigationItem.title);
 }
 #pragma mark-GetRandomColor
 -(void)UpdateLineColor
 {
-   int index= arc4random()%8;
+    int index= arc4random()%8;
     if ([self.currentLineColor isEqual:[randomcolorsArray objectAtIndex:index]]) {
         [self UpdateLineColor];
     }
     else
     {
-         self.currentLineColor=[randomcolorsArray objectAtIndex:index];
+        self.currentLineColor=[randomcolorsArray objectAtIndex:index];
     }
     
-   
+    
 }
 #pragma mark-CheckDataAvailability
 - (void)CheckIndex:(int)fromIndex
 {
-   
+    
     if ([valuesArray containsObject:[NSNumber numberWithInt:fromIndex]]) {
-     self.currentLineColor=  [colorsArray objectAtIndex:[valuesArray indexOfObject:[NSNumber numberWithInt:fromIndex]]];
+        self.currentLineColor=  [colorsArray objectAtIndex:[valuesArray indexOfObject:[NSNumber numberWithInt:fromIndex]]];
         
     }
     else
@@ -490,7 +511,7 @@ int i;
     
     if ([[du submitvalues]isEqualToString:@"Success"])
     {
-           i=0;
+        
         
         NSString *orgid=[[NSUserDefaults standardUserDefaults]objectForKey:@"orgid"];
         
@@ -500,7 +521,7 @@ int i;
         SBJSON *json = [[SBJSON new] autorelease];
         
         NSDictionary *parsedvalue = [json objectWithString:response error:&error];
-        NSLog(@"parsedvalue %@",parsedvalue);
+//        NSLog(@"parsedvalue %@",parsedvalue);
         
         if (parsedvalue == nil)
         {
@@ -520,7 +541,7 @@ int i;
                 
                 if ([datas count]>0)
                 {
-                 
+                    
                     
                     for (id anUpdate1 in datas)
                     {
@@ -538,39 +559,55 @@ int i;
                         list1.Latest=NO;
                         if ([locationlist count]>0)
                         {
+                            
                             int present=0;
-                            for (int j=0; j<[locationlist count]; j++)
+                            
+                            
+                            Vehiclelocationlist *list2=[locationlist lastObject];
+                            if (([list1.latitude isEqualToString:list2.latitude])&&([list1.longitude isEqualToString:list2.longitude]))
                             {
-                                Vehiclelocationlist *list2=[locationlist objectAtIndex:j];
-                                if (([list1.latitude isEqualToString:list2.latitude])&&([list1.longitude isEqualToString:list2.longitude])) {
-                                    NSLog(@"datas available in array");
+                                if (![list2.devicestatus isEqualToString:@"3"]) {
+//                                    NSLog(@"datas available in array");
                                     present=1;
-                                    break;
+                                  
+                                }
+                                else if (([list1.devicestatus isEqualToString:@"3"])&&([list2.devicestatus isEqualToString:@"3"])) {
+//                                    NSLog(@"datas available in array");
+                                    present=1;
+                                   
+                                }
+                                else if ((![list1.devicestatus isEqualToString:@"3"])&&([list2.devicestatus isEqualToString:@"3"])) {
+//                                    NSLog(@"datas available in array");
+                                    present=1;
+                                    
                                 }
                                 else
                                 {
                                     present=0;
                                 }
+                                
                             }
+                            else
+                            {
+                                present=0;
+                            }
+                            
                             if (present==1)
                             {
-                                NSLog(@"datas available in array verified");
-                                if (i==0)
-                                {
-                                    NSLog(@"add new data in first location");
-                                    [locationlist replaceObjectAtIndex:[locationlist count]-1 withObject:list1];  //Replaced existing not responding location with latest one at n th index
-                                    
-                                    
-                                }
+//                                NSLog(@"datas available and replaced with updated value");
+                                
+                                [locationlist replaceObjectAtIndex:[locationlist count]-1 withObject:list1];  //Replaced existing not responding location with latest one at n th index
+                                
+                                
                             }
                             
                             else
                             {
-                                NSLog(@"datas not in array");
-                               
-                                    [locationlist addObject:list1];  ///Locationlist contains values in Desc order(latest value will be present at n th index)
+//                                NSLog(@"datas not in array");
                                 
-                              
+                                [locationlist addObject:list1];  ///Locationlist contains values in Desc order(latest value will be present at n th index)
+                                
+                                
                             }
                             
                         }
@@ -580,13 +617,13 @@ int i;
                             [locationlist addObject:list1];
                             
                         }
-                      
+                        
                         
                     }
-                     [self setpin];
+                    [self setpin];
                     
                 }
-               
+                
                 
             }
             else
@@ -600,7 +637,7 @@ int i;
                 
                 if ([datas count]>0)
                 {
-                    int i=0;
+                    
                     
                     for (id anUpdate1 in datas)
                     {
@@ -615,41 +652,55 @@ int i;
                         list1.address =[arrayList1 objectForKey:@"address"];
                         list1.devicestatus=[arrayList1 objectForKey:@"devicestatus"];
                         list1.flag=[arrayList1 objectForKey:@"flag"];
-                         list1.Latest=YES;
+                        list1.Latest=YES;
                         //Check if data already available in array
                         if ([locationlist count]>0)
                         {
                             int present=0;
-                            for (int j=0; j<[locationlist count]; j++)
+                            
+                            Vehiclelocationlist *list2=[locationlist lastObject];
+                            if (([list1.latitude isEqualToString:list2.latitude])&&([list1.longitude isEqualToString:list2.longitude]))
                             {
-                                Vehiclelocationlist *list2=[locationlist objectAtIndex:j];
-                                if (([list1.latitude isEqualToString:list2.latitude])&&([list1.longitude isEqualToString:list2.longitude])) {
-                                    NSLog(@"datas available in array");
+                                if (![list2.devicestatus isEqualToString:@"3"]) {
+//                                    NSLog(@"datas available in array");
                                     present=1;
-                                    break;
+                                    
+                                }
+                                else if (([list1.devicestatus isEqualToString:@"3"])&&([list2.devicestatus isEqualToString:@"3"])) {
+//                                    NSLog(@"datas available in array");
+                                    present=1;
+                                    
+                                }
+                                else if ((![list1.devicestatus isEqualToString:@"3"])&&([list2.devicestatus isEqualToString:@"3"])) {
+//                                    NSLog(@"datas available in array");
+                                    present=1;
+                                    
                                 }
                                 else
                                 {
                                     present=0;
                                 }
                             }
+                            else
+                            {
+                                present=0;
+                            }
+                            
                             if (present==1)
                             {
-                                NSLog(@"datas available in array verified");
+//                                NSLog(@"datas available and replaced with updated value");
+                                [locationlist replaceObjectAtIndex:[locationlist count]-1 withObject:list1];
                             }
                             
                             else
                             {
-                                NSLog(@"datas not in array");
                                 
-                                    NSLog(@"add new data in first location");
-                                     [locationlist addObject:list1];  ///Locationlist contains values in asc order(latest value will be present at n th index)
-                                    //  NSLog(@"lovationlist 1 %@",locationlist[0]);
-                                    
-                                    
-                                    
-                               
+//                                NSLog(@"add new");
+                                [locationlist addObject:list1];  ///Locationlist contains values in asc order(latest value will be present at n th index)
+                                //  NSLog(@"lovationlist 1 %@",locationlist[0]);
+                                
                             }
+                            
                             
                         }
                         else
@@ -658,7 +709,7 @@ int i;
                             [locationlist addObject:list1];
                             
                         }
-                        i++;
+                      
                         
                     }
                     [self setpin];
@@ -704,10 +755,10 @@ int i;
         //          NSLog(@"visible3");
         //check annotations present in map if >0 remove everything
         [self.mapview removeAnnotations:self.mapview.annotations];
-          [self.mapview removeOverlay:self.polyline];
+        [self.mapview removeOverlays:[self.mapview overlays]];
     }
-    
-    
+//    
+//    NSLog(@"Locationlist");
     if ([locationlist count]>0)
     {
         CSMapAnnotation* annotation = nil;
@@ -715,57 +766,84 @@ int i;
         {
             CLLocationManager *manager=[[CLLocationManager alloc]init];
             manager.delegate=self;
-            Vehiclelocationlist *list1=[locationlist objectAtIndex:i];
+            Vehiclelocationlist *list1=[locationlist objectAtIndex:k];
             
             CLLocationDegrees latitude  = [list1.latitude  doubleValue];
             CLLocationDegrees longitude = [list1.longitude doubleValue];
             CLLocation* currentLocation = [[[CLLocation alloc] initWithLatitude:latitude longitude:longitude] autorelease];
             [points addObject:currentLocation];
-             if ((!list1.Latest)&&(![list1.devicestatus isEqualToString:@"3"]))
+            
+            if ((!list1.Latest)&&(![list1.devicestatus isEqualToString:@"3"]))
                 
             {
-                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
+                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:k] coordinate]
                                                            annotationType:CSMapAnnotationTypeNotRespondingImage
                                                                     title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
-                [annotation setUserData:@"notresponding.png"];
+                [annotation setUserData:@"black.png"];
+                NSLog(@"location %d lat %@ long %@ annotation type Not responing in datacount =0",k,list1.latitude ,list1.longitude);
             }
             else if ((!list1.Latest)&&([list1.devicestatus isEqualToString:@"3"]))
                 
             {
-                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
-                                                           annotationType:CSMapAnnotationTypeNotRespondingImage
+                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:k] coordinate]
+                                                           annotationType:CSMapAnnotationTypeSleepModeImage
                                                                     title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
-                [annotation setUserData:@"Circle_Orange.png"];
+                [annotation setUserData:@"orange.png"];
+                NSLog(@"location %d lat %@ long %@ annotation type orange",k,list1.latitude ,list1.longitude);
                 [self CheckIndex:k];
             }
-            else if ((k==[locationlist count]-1)&&([list1.exceed_speed_limit isEqualToString:@"0"])&&(![list1.devicestatus isEqualToString:@"3"])) {
-                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
+            else if ((list1.Latest)&&([list1.devicestatus isEqualToString:@"3"]))
+                
+            {
+                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:k] coordinate]
+                                                           annotationType:CSMapAnnotationTypeSleepModeImage
+                                                                    title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
+                [annotation setUserData:@"orange.png"];
+                NSLog(@"location %d lat %@ long %@ annotation type orange",k,list1.latitude ,list1.longitude);
+                [self CheckIndex:k];
+            }
+           
+            else if ((k==[locationlist count]-1)&&([list1.exceed_speed_limit isEqualToString:@"0"])&&([list1.devicestatus isEqualToString:@"1"])) {
+                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:k] coordinate]
                                                            annotationType:CSMapAnnotationTypeGreenImage
                                                                     title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
                 
-                [annotation setUserData:@"green_pin.png"];
+                [annotation setUserData:@"green.png"];
+                NSLog(@"location %d lat %@ long %@ annotation type green",k,list1.latitude ,list1.longitude);
             }
-            else if (((k==[locationlist count]-1)&&([list1.exceed_speed_limit isEqualToString:@"1"])&&(![list1.devicestatus isEqualToString:@"3"]))||(([list1.exceed_speed_limit isEqualToString:@"1"]&&(![list1.devicestatus isEqualToString:@"3"]))))
+            
+            else if (((k==[locationlist count]-1)&&([list1.exceed_speed_limit isEqualToString:@"1"])&&([list1.devicestatus isEqualToString:@"1"]))||(([list1.exceed_speed_limit isEqualToString:@"1"]&&([list1.devicestatus isEqualToString:@"1"]))))
                 
             {
-                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
+                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:k] coordinate]
                                                            annotationType:CSMapAnnotationTypePinkImage
                                                                     title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
-                [annotation setUserData:@"pink_pin.png"];
+                [annotation setUserData:@"pink.png"];
+                NSLog(@"location %d lat %@ long %@ annotation type pink",k,list1.latitude ,list1.longitude);
             }
-           
+            else if ((list1.Latest)&&(([list1.devicestatus isEqualToString:@"0"])||([list1.devicestatus isEqualToString:@"2"])))
+                
+            {
+                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:k] coordinate]
+                                                           annotationType:CSMapAnnotationTypeNotRespondingImage
+                                                                    title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
+                [annotation setUserData:@"black.png"];
+                NSLog(@"location %d lat %@ long %@ annotation type Not responing datacount =1",k,list1.latitude ,list1.longitude);
+            }
+            
             else
                 
             {
-                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
+                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:k] coordinate]
                                                            annotationType:CSMapAnnotationTypeRedImage
                                                                     title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
-                [annotation setUserData:@"red_pin.png"];
+                [annotation setUserData:@"red.png"];
+                NSLog(@"location %d lat %@ long %@ annotation type red",k,list1.latitude ,list1.longitude);
             }
             
             
             [mapview addAnnotation:annotation];
-           
+            
             
             
         }
@@ -817,49 +895,81 @@ int i;
 #pragma mark-Find polyLine Coords
 -(void)DrawPolyLine
 {
-   
-    for (int i=0; i<[valuesArray count]-1; i++) {
-        [self.allPins removeAllObjects];
-        for (int j=[[valuesArray objectAtIndex:i] intValue];j<[[valuesArray objectAtIndex:i+1] intValue]; j++)
+    if ([valuesArray count]>1)
+    {
+        for (int i=0; i<=[valuesArray count]-1; i++)
         {
-           Vehiclelocationlist *list1= [locationlist objectAtIndex:j];
+                        [self.allPins removeAllObjects];
+            if (i==[valuesArray count]-1) {
+                for (int j=[[valuesArray objectAtIndex:i] intValue];j<[locationlist count]; j++)
+                {
+                    Vehiclelocationlist *list1= [locationlist objectAtIndex:j];
+                    CLLocationCoordinate2D coord = {.latitude =  [list1.latitude doubleValue], .longitude = [list1.longitude doubleValue]};
+                    Pin *newPin = [[Pin alloc]initWithCoordinate:coord];
+                    [self.allPins addObject:newPin];
+                    
+                }
+            }
+            else
+            {
+            for (int j=[[valuesArray objectAtIndex:i] intValue];j<=[[valuesArray objectAtIndex:i+1] intValue]; j++)
+            {
+                Vehiclelocationlist *list1= [locationlist objectAtIndex:j];
+                CLLocationCoordinate2D coord = {.latitude =  [list1.latitude doubleValue], .longitude = [list1.longitude doubleValue]};
+                Pin *newPin = [[Pin alloc]initWithCoordinate:coord];
+                [self.allPins addObject:newPin];
+                
+            }
+            }
+            
+            [self drawLines:[colorsArray objectAtIndex:i]];
+        }
+    }
+    else
+    {
+        [self.allPins removeAllObjects];
+        for (int j=0 ;j<[locationlist count]; j++)
+        {
+            Vehiclelocationlist *list1= [locationlist objectAtIndex:j];
             CLLocationCoordinate2D coord = {.latitude =  [list1.latitude doubleValue], .longitude = [list1.longitude doubleValue]};
             Pin *newPin = [[Pin alloc]initWithCoordinate:coord];
             [self.allPins addObject:newPin];
             
         }
-       [self drawLines:[colorsArray objectAtIndex:i]];
+        [self drawLines:[colorsArray objectAtIndex:0]];
     }
-   
+    
+    
+    
 }
 #pragma mark-Find Colors using colorname
 -(UIColor*)FindColor:(NSString *)colorname
 {
-   
-
+    
+    
     if ([colorname isEqualToString:@"redColor"]) {
         [UIColor redColor];
     }
     else if ([colorname isEqualToString:@"brownColor"]) {
-         [UIColor brownColor];
+        [UIColor brownColor];
     }
     else if ([colorname isEqualToString:@"cyanColor"]) {
-         [UIColor cyanColor];
+        [UIColor cyanColor];
     }
     else if ([colorname isEqualToString:@"yellowColor"]) {
-         [UIColor yellowColor];
+        [UIColor yellowColor];
     }
     else if ([colorname isEqualToString:@"magentaColor"]) {
-         [UIColor magentaColor];
+        [UIColor magentaColor];
     }
     else if ([colorname isEqualToString:@"purpleColor"]) {
-         [UIColor purpleColor];
+        [UIColor purpleColor];
     }
     else if ([colorname isEqualToString:@"blueColor"]) {
-         [UIColor blueColor];
+        [UIColor blueColor];
     }
     else if ([colorname isEqualToString:@"darkGrayColor"]) {
-         [UIColor darkGrayColor];
+        [UIColor darkGrayColor];
     }
     return [UIColor redColor];
     
@@ -868,17 +978,17 @@ int i;
 - (IBAction)drawLines:(NSString*)sender {
     
     
-    // NSLog(@"method call");
-    [self drawLineSubroutine:[self FindColor:sender]];
-       [self drawLineSubroutine:[self FindColor:sender]];
+    
+    [self drawLineSubroutine:sender];
+    [self drawLineSubroutine:sender];
     
 }
 
 
-- (void)drawLineSubroutine:(UIColor*)linecolorName {
+- (void)drawLineSubroutine:(NSString*)colorname {
     
     // remove polyline if one exists
-//    [self.mapview removeOverlay:self.polyline];
+  //  [self.mapview removeOverlay:self.polyline];
     
     // create an array of coordinates from allPins
     CLLocationCoordinate2D coordinates[self.allPins.count];
@@ -887,24 +997,69 @@ int i;
         coordinates[i] = currentPin.coordinate;
         i++;
     }
-    
+//    NSLog(@"Line coords %@",self.allPins);
+//    NSLog(@"method call with colorname %@",colorname);
     // create a polyline with all cooridnates
     MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinates count:self.allPins.count];
+     polyline.title=colorname;
     [self.mapview addOverlay:polyline];
-    self.polyline = polyline;
     
-    // create an MKPolylineView and add it to the map view
-    self.lineView = [[MKPolylineView alloc]initWithPolyline:self.polyline];
-    self.lineView.strokeColor = linecolorName;
-    self.lineView.lineWidth = 3;
     
     // for a laugh: how many polylines are we drawing here?
     self.title = [[NSString alloc]initWithFormat:@"%lu", (unsigned long)self.mapview.overlays.count];
+
+    self.polyline = polyline;
+    
+    // create an MKPolylineView and add it to the map view
     
 }
-- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
+{
     
-    return self.lineView;
+    if ([overlay isKindOfClass:[MKPolyline class]]) {
+		
+		MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:overlay];
+		polylineView.strokeColor = [UIColor redColor];
+        
+		polylineView.lineWidth = 3.0;
+        NSString *colorname=overlay.title;
+//         NSLog(@"method call with colorname in viewforOverlay %@",colorname);
+       
+        if ([colorname isEqualToString:@"redColor"]) {
+            polylineView.strokeColor = [UIColor redColor];
+        }
+        else if ([colorname isEqualToString:@"brownColor"]) {
+            polylineView.strokeColor = [UIColor brownColor];
+        }
+        else if ([colorname isEqualToString:@"cyanColor"]) {
+            polylineView.strokeColor =[UIColor cyanColor];
+        }
+        else if ([colorname isEqualToString:@"yellowColor"]) {
+            polylineView.strokeColor =  [UIColor yellowColor];
+        }
+        else if ([colorname isEqualToString:@"magentaColor"]) {
+           polylineView.strokeColor = [UIColor magentaColor];
+        }
+        else if ([colorname isEqualToString:@"purpleColor"]) {
+            polylineView.strokeColor =  [UIColor purpleColor];
+        }
+        else if ([colorname isEqualToString:@"blueColor"]) {
+            polylineView.strokeColor =[UIColor blueColor];
+        }
+        else if ([colorname isEqualToString:@"darkGrayColor"]) {
+           polylineView. strokeColor = [UIColor darkGrayColor];
+        }
+        self.lineView=polylineView;
+        
+		return polylineView;
+        
+	}
+	
+	return [[MKOverlayView alloc] initWithOverlay:overlay];
+   
+    
+    // for a laugh: how many polylines are we drawing here?
+   
 }
 #pragma mark mapView delegate functions
 
@@ -1010,12 +1165,27 @@ int i;
     CSImageAnnotationView* imageAnnotationView = (CSImageAnnotationView*) view;
     CSMapAnnotation* annotation = (CSMapAnnotation*)[imageAnnotationView annotation];
     
-    CalloutView *calloutView = (CalloutView *)[[[NSBundle mainBundle] loadNibNamed:@"calloutView" owner:self options:nil] objectAtIndex:0];
-    CGRect calloutViewFrame = calloutView.frame;
-    calloutViewFrame.origin = CGPointMake(-calloutViewFrame.size.width/2 + 15, -calloutViewFrame.size.height);
-    calloutView.frame = calloutViewFrame;
-    [calloutView.calloutLabel setText:[NSString stringWithFormat:@"%@\n%@",[annotation title],[annotation subtitle]]];
-    [view addSubview:calloutView];
+   
+    if (IS_IPAD) {
+        CalloutView *calloutView = (CalloutView *)[[[NSBundle mainBundle] loadNibNamed:@"calloutView" owner:self options:nil] objectAtIndex:1];
+        CGRect calloutViewFrame = calloutView.frame;
+        calloutViewFrame.origin = CGPointMake(-calloutViewFrame.size.width/2 + 15, -calloutViewFrame.size.height);
+        calloutViewFrame.size=CGSizeMake(300, 100);
+        calloutView.frame = calloutViewFrame;
+        [calloutView.calloutLabel setText:[NSString stringWithFormat:@"%@\n%@",[annotation title],[annotation subtitle]]];
+        [view addSubview:calloutView];
+    }
+    else
+    {
+         CalloutView *calloutView = (CalloutView *)[[[NSBundle mainBundle] loadNibNamed:@"calloutView" owner:self options:nil] objectAtIndex:0];
+        CGRect calloutViewFrame = calloutView.frame;
+        calloutViewFrame.origin = CGPointMake(-calloutViewFrame.size.width/2 + 15, -calloutViewFrame.size.height);
+        calloutView.frame = calloutViewFrame;
+        [calloutView.calloutLabel setText:[NSString stringWithFormat:@"%@\n%@",[annotation title],[annotation subtitle]]];
+        [view addSubview:calloutView];
+    }
+    
+  
 }
 
 -(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {

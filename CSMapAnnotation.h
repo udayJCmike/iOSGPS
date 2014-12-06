@@ -15,7 +15,8 @@ typedef enum {
 	CSMapAnnotationTypeGreenImage   = 1,
 	CSMapAnnotationTypeRedImage = 2,
     CSMapAnnotationTypeNotRespondingImage = 3,
-    CSMapAnnotationTypeSleepModeImage = 4
+    CSMapAnnotationTypeSleepModeImage = 4,
+    CSMapAnnotationTypeStartAndStopImage = 5
 } CSMapAnnotationType;
 
 @interface CSMapAnnotation : NSObject <MKAnnotation>

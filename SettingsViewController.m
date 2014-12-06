@@ -13,7 +13,7 @@
 @end
 
 @implementation SettingsViewController
-
+@synthesize selectedtone;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -24,14 +24,14 @@
 }
 - (IBAction)saveTone:(id)sender {
     [self StopaudioSound];
-        
-//        NSLog(@"selected tone %@",self.selectedtone.titleLabel.text );
     
-        
-        [[NSUserDefaults standardUserDefaults]setValue:alarmName  forKey:[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
-       
-        [[NSUserDefaults standardUserDefaults]synchronize];
-   
+    //        NSLog(@"selected tone %@",self.selectedtone.titleLabel.text );
+    
+    
+    [[NSUserDefaults standardUserDefaults]setValue:alarmName  forKey:[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
+    
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    
 }
 
 - (void)viewDidLoad
@@ -49,7 +49,37 @@
         
         self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     }
-   
+    NSString *tonename=[[NSUserDefaults standardUserDefaults]valueForKey:[[NSUserDefaults standardUserDefaults]objectForKey:@"username"]];
+//    NSLog(@"tone name %@",tonename);
+    if ([tonename length]>0) {
+        if ([tonename isEqualToString:@"Red_Alert"]) {
+            
+            [self.selectedtone setTitle: @"Default" forState: UIControlStateNormal];
+            
+            alarmName=@"Red_Alert";
+        }
+        else  if ([tonename isEqualToString:@"Nuclear_Alert"]) {
+            
+            [self.selectedtone setTitle: @"Nuclear Alert" forState: UIControlStateNormal];
+            alarmName=@"Nuclear_Alert";
+        }
+        else  if ([tonename isEqualToString:@"Car_Alert"]) {
+            
+            [self.selectedtone setTitle: @"Car Alert" forState: UIControlStateNormal];
+            alarmName=@"Car_Alert";
+        }
+        else  if ([tonename isEqualToString:@"Extreme_Alert"]) {
+            
+            [self.selectedtone setTitle: @"Extreme Alert" forState: UIControlStateNormal];
+             [self.selectedtone setTitle: @"Extreme Alert" forState: UIControlStateSelected];
+            alarmName=@"Extreme_Alert";
+        }
+        else  if ([tonename isEqualToString:@"Handy_Alert"]) {
+            
+            [self.selectedtone setTitle: @"Handy Alert" forState: UIControlStateNormal];
+            alarmName=@"Handy_Alert";
+        }
+    }
     self.savetone.layer.cornerRadius=5;
     self.savetone.clipsToBounds=YES;
     self.selectedtone.layer.cornerRadius=5;
@@ -71,7 +101,7 @@
     NSArray * arr = [[NSArray alloc] init];
     arr = [NSArray arrayWithObjects:@"Default",@"Nuclear Alert", @"Car Alert",@"Extreme Alert", @"Handy Alert",nil];
     NSArray * arrImage = [[NSArray alloc] init];
-   
+    
     if(dropDown == nil)
     {
         CGFloat f = 200;
@@ -83,15 +113,15 @@
         [dropDown hideDropDown:sender];
         [self rel];
     }
-  
+    
 }
 
 - (void) niDropDownDelegateMethod: (NSString *) sender
 {
-//   NSLog(@"selected type %@",sender);
+    //   NSLog(@"selected type %@",sender);
     [self StopaudioSound];
     [self PlaySoundWithName:sender];
-  
+    
     [self rel];
 }
 -(void)viewWillDisappear:(BOOL)animated
@@ -108,7 +138,7 @@
 }
 -(void)PlaySoundWithName:(NSString*)alarmName1
 {
-   
+    
     if (!_audioPlayer)
     {
         if ([alarmName1 isEqualToString:@"Default"]) {
@@ -149,11 +179,11 @@
     // [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PlaySound" object:nil];
 }
 -(void)rel{
-  
+    
     dropDown = nil;
 }
 - (void)viewDidUnload {
-   
+    
     self.selectedtone = nil;
     [self StopaudioSound];
     [super viewDidUnload];

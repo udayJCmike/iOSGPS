@@ -239,7 +239,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="red_pin.png" translatesAutoresizingMaskIntoConstraints="NO" id="EHe-ZH-J6K">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="red.png" translatesAutoresizingMaskIntoConstraints="NO" id="EHe-ZH-J6K">
                                                 <rect key="frame" x="8" y="62" width="25" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
@@ -257,11 +257,11 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="green_pin.png" translatesAutoresizingMaskIntoConstraints="NO" id="bTD-Bf-wST">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="green.png" translatesAutoresizingMaskIntoConstraints="NO" id="bTD-Bf-wST">
                                                 <rect key="frame" x="127" y="62" width="25" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pink_pin.png" translatesAutoresizingMaskIntoConstraints="NO" id="h0q-Rn-FAP">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pink.png" translatesAutoresizingMaskIntoConstraints="NO" id="h0q-Rn-FAP">
                                                 <rect key="frame" x="8" y="101" width="25" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
@@ -272,12 +272,23 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pink_pin.png" translatesAutoresizingMaskIntoConstraints="NO" id="lfg-p7-Jt3">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="orange.png" translatesAutoresizingMaskIntoConstraints="NO" id="lfg-p7-Jt3">
                                                 <rect key="frame" x="127" y="101" width="25" height="25"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Idle Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEQ-Gc-aoS">
                                                 <rect key="frame" x="156" y="103" width="102" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="13"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="black.png" translatesAutoresizingMaskIntoConstraints="NO" id="KcS-SU-lSv">
+                                                <rect key="frame" x="74" y="140" width="25" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Idle Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoC-kN-kfm">
+                                                <rect key="frame" x="107" y="142" width="102" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="13"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -807,9 +818,13 @@
     </scenes>
     <resources>
         <image name="Navbarbg.jpg" width="768" height="63"/>
+        <image name="black.png" width="47" height="50"/>
         <image name="close.png" width="256" height="256"/>
-        <image name="green_pin.png" width="37" height="41"/>
+        <image name="green.png" width="47" height="50"/>
+        <image name="orange.png" width="47" height="50"/>
+        <image name="pink.png" width="47" height="50"/>
         <image name="pink_pin.png" width="37" height="41"/>
+        <image name="red.png" width="47" height="50"/>
         <image name="red_pin.png" width="37" height="41"/>
         <image name="startpoint.png" width="37" height="41"/>
     </resources>

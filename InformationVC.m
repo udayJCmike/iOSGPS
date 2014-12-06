@@ -108,23 +108,23 @@
         
         CGRect redimgFrame=CGRectMake(8,64,25,25);
         self.red=[[UIImageView alloc]initWithFrame:redimgFrame];
-        [ self.red setImage:[UIImage imageNamed:@"red_pin.png"]];
+        [ self.red setImage:[UIImage imageNamed:@"red.png"]];
         
         CGRect greenimgFrame=CGRectMake(127,64,25,25);
         self.green=[[UIImageView alloc]initWithFrame:greenimgFrame];
-        [ self.green setImage:[UIImage imageNamed:@"green_pin.png"]];
+        [ self.green setImage:[UIImage imageNamed:@"green.png"]];
         
         CGRect pinkimgFrame=CGRectMake(8,103,25,25);
         self.pink=[[UIImageView alloc]initWithFrame:pinkimgFrame];
-        [ self.pink setImage:[UIImage imageNamed:@"pink_pin.png"]];
+        [ self.pink setImage:[UIImage imageNamed:@"pink.png"]];
         
         CGRect orgimgFrame=CGRectMake(127,103,25,25);
         self.orange=[[UIImageView alloc]initWithFrame:orgimgFrame];
-        [ self.orange setImage:[UIImage imageNamed:@"idlepoint.png"]];
+        [ self.orange setImage:[UIImage imageNamed:@"orange.png"]];
         
-        CGRect starimgFrame=CGRectMake(54,147,25,25);
+        CGRect starimgFrame=CGRectMake(74,140,25,25);
         self.start_end=[[UIImageView alloc]initWithFrame:starimgFrame];
-        [ self.start_end setImage:[UIImage imageNamed:@"startpoint.png"]];
+        [ self.start_end setImage:[UIImage imageNamed:@"black.png"]];
         
         CGRect redansFrame=CGRectMake(37,66,94,21);
         self.red_lab=[[UILabel alloc]initWithFrame:redansFrame];
@@ -156,10 +156,10 @@
         [ self.org_lab setTextColor:[UIColor blackColor]];
         [ self.org_lab setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:13]];
         
-        CGRect startansFrame=CGRectMake(83,149,182,21);
+        CGRect startansFrame=CGRectMake(107,142,102,21);
         self.start_end_lab=[[UILabel alloc]initWithFrame:startansFrame];
         [ self.start_end_lab setBackgroundColor:[UIColor clearColor]];
-        [ self.start_end_lab setText:@"Start and End Location"];
+        [ self.start_end_lab setText:@"Not Responding"];
         [ self.start_end_lab setTextColor:[UIColor blackColor]];
         [ self.start_end_lab setFont:[UIFont fontWithName:@"Bangla Sangam MN" size:13]];
         
@@ -181,8 +181,8 @@
         [v2 addSubview:self.orange];
         [v2 addSubview:self.org_lab];
 
-//        [v2 addSubview:self.start_end];
-//        [v2 addSubview:self.start_end_lab];
+        [v2 addSubview:self.start_end];
+        [v2 addSubview:self.start_end_lab];
 
         [popUpView addSubview:navbar];
        
@@ -300,7 +300,7 @@
 
 -(void)restartCircle
 {
-    NSDate *endTime=[[NSDate date] dateByAddingTimeInterval:30];
+    NSDate *endTime=[[NSDate date] dateByAddingTimeInterval:31];
     self.circularTimer.initialDate=[NSDate date];
     self.circularTimer.finalDate=endTime;
     TotalSec=30;

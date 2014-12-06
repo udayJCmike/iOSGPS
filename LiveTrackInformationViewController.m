@@ -109,7 +109,7 @@
                                                      initialDate:self.initialDate
                                                        finalDate:self.finalDate
                                                    startCallback:^{
-                                                       NSLog(@"Running!");
+//                                                       NSLog(@"Running!");
                                                    }
                                                      endCallback:^{
                                                          [self restartCircle];
@@ -133,7 +133,7 @@
     {
          self.countDown.text=[NSString stringWithFormat:@"00"];
     }
-     NSLog(([self.circularTimer willRun]) ? @"Circle will run" : @"Circle won't run");
+//     NSLog(([self.circularTimer willRun]) ? @"Circle will run" : @"Circle won't run");
     
     [self.view addSubview:self.circularTimer];
 }

@@ -553,17 +553,17 @@
     //     NSLog(@"result %ld",result);
     if(result == NSOrderedDescending)
     {
-        NSLog(@"date1 is later than date2");
+//        NSLog(@"date1 is later than date2");
         return 0;
     }
     else if(result == NSOrderedAscending)
     {
-        NSLog(@"date2 is later than date1");
+//        NSLog(@"date2 is later than date1");
         return 1;
     }
     else
     {
-        NSLog(@"date1 is equal to date2");
+//        NSLog(@"date1 is equal to date2");
         return 1;
     }
     return 0;

@@ -107,15 +107,15 @@
             
             CGRect redimgFrame=CGRectMake(127,61,35,35);
             self.red=[[UIImageView alloc]initWithFrame:redimgFrame];
-            [ self.red setImage:[UIImage imageNamed:@"red_pin.png"]];
+            [ self.red setImage:[UIImage imageNamed:@"red.png"]];
             
             CGRect pinkimgFrame=CGRectMake(127,107,35,35);
             self.pink=[[UIImageView alloc]initWithFrame:pinkimgFrame];
-            [ self.pink setImage:[UIImage imageNamed:@"pink_pin.png"]];
+            [ self.pink setImage:[UIImage imageNamed:@"pink.png"]];
             
             CGRect greenimgFrame=CGRectMake(127,150,35,35);
             self.green=[[UIImageView alloc]initWithFrame:greenimgFrame];
-            [ self.green setImage:[UIImage imageNamed:@"startpoint.png"]];
+            [ self.green setImage:[UIImage imageNamed:@"start.png"]];
             
            
             
@@ -234,17 +234,17 @@
             
             CGRect redimgFrame=CGRectMake(35,57,25,25);
             self.red=[[UIImageView alloc]initWithFrame:redimgFrame];
-            [ self.red setImage:[UIImage imageNamed:@"red_pin.png"]];
+            [ self.red setImage:[UIImage imageNamed:@"red.png"]];
             
           
             
             CGRect pinkimgFrame=CGRectMake(35,94,25,25);
             self.pink=[[UIImageView alloc]initWithFrame:pinkimgFrame];
-            [ self.pink setImage:[UIImage imageNamed:@"pink_pin.png"]];
+            [ self.pink setImage:[UIImage imageNamed:@"pink.png"]];
             
             CGRect greenimgFrame=CGRectMake(35,129,25,25);
             self.green=[[UIImageView alloc]initWithFrame:greenimgFrame];
-            [ self.green setImage:[UIImage imageNamed:@"startpoint.png"]];
+            [ self.green setImage:[UIImage imageNamed:@"start.png"]];
             
             CGRect redansFrame=CGRectMake(64,59,163,21);
             self.red_lab=[[UILabel alloc]initWithFrame:redansFrame];

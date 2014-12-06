@@ -53,7 +53,14 @@
     span.latitudeDelta*=delta;
     span.longitudeDelta*=delta;
     region.span=span;
-    [mapView setRegion:region animated:YES];
+    CLLocationCoordinate2D coord = {.latitude =  region.center.latitude , .longitude =region.center.longitude};
+    if (!CLLocationCoordinate2DIsValid(coord))
+    {
+        NSLog(@"userlocation coordinate is invalid");
+        return;
+    }
+    else
+        [mapView setRegion:region animated:YES];
     
 }
 - (void)zoomMapdec:(MKMapView*)mapView byDelta:(float) delta {
@@ -63,7 +70,14 @@
     span.latitudeDelta/=delta;
     span.longitudeDelta/=delta;
     region.span=span;
-    [mapView setRegion:region animated:YES];
+    CLLocationCoordinate2D coord = {.latitude =  region.center.latitude , .longitude =region.center.longitude};
+    if (!CLLocationCoordinate2DIsValid(coord))
+    {
+        NSLog(@"userlocation coordinate is invalid");
+        return;
+    }
+    else
+        [mapView setRegion:region animated:YES];
     
 }
 - (IBAction)maptype:(id)sender {
@@ -392,7 +406,7 @@
 #pragma mark - search Action
 - (IBAction)Historysearch:(id)sender {
    
-    NSLog(@"Object received %@",[sender valueForKey:@"object"]);   
+//    NSLog(@"Object received %@",[sender valueForKey:@"object"]);   
     self.SelectedDate= [[sender valueForKey:@"object"] valueForKey:@"Selected_Date"];
     self.FromTime =[[sender valueForKey:@"object"] valueForKey:@"Selected_Fromtime"];
       self.ToTime =[[sender valueForKey:@"object"] valueForKey:@"Selected_Totime"];
@@ -561,21 +575,39 @@
             
             CLLocation* currentLocation = [[[CLLocation alloc] initWithLatitude:latitude longitude:longitude] autorelease];
             [points addObject:currentLocation];
-            if([list1.exceed_speed_limit isEqualToString:@"1"])
+             if ((i==[locationlist count]-1)||(i==0))
+                
+            {
+                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
+                                                           annotationType:CSMapAnnotationTypeStartAndStopImage
+                                                                    title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
+                [annotation setUserData:@"start.png"];
+                
+            }
+           else if([list1.exceed_speed_limit isEqualToString:@"1"])
             {
                 annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
                                                            annotationType:CSMapAnnotationTypePinkImage
                                                                     title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
-                [annotation setUserData:@"pink_pin.png"];
+                [annotation setUserData:@"pink.png"];
             }
+           
             else
             {
                 annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
                                                            annotationType:CSMapAnnotationTypeRedImage
                                                                     title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
-                [annotation setUserData:@"red_pin.png"];
+                [annotation setUserData:@"red.png"];
             }
-            
+            if ((i==[locationlist count]-1)||(i==0))
+                
+            {
+                annotation = [[[CSMapAnnotation alloc] initWithCoordinate:[[points objectAtIndex:i] coordinate]
+                                                           annotationType:CSMapAnnotationTypeStartAndStopImage
+                                                                    title:[NSString stringWithFormat:@"Speed:%@ km/hr Date:%@",list1.speed,list1.bus_tracking_timestamp]subtitle: [NSString stringWithFormat:@"Address:%@",list1.address]] autorelease];
+                [annotation setUserData:@"start.png"];
+                
+            }
             
             [mapview addAnnotation:annotation];
             CLLocationCoordinate2D coord = {.latitude =  [list1.latitude doubleValue], .longitude = [list1.longitude doubleValue]};
@@ -751,6 +783,19 @@
 			
 			annotationView = imageAnnotationView;
 		}
+        if(csAnnotation.annotationType == CSMapAnnotationTypeStartAndStopImage)
+		{
+			NSString* identifier = @"StartAndStop";
+			
+			CSImageAnnotationView* imageAnnotationView = (CSImageAnnotationView*)[self.mapview dequeueReusableAnnotationViewWithIdentifier:identifier];
+			if(nil == imageAnnotationView)
+			{
+				imageAnnotationView = [[[CSImageAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
+				
+			}
+			
+			annotationView = imageAnnotationView;
+		}
         
         [annotationView setEnabled:YES];
 		[annotationView setCanShowCallout:NO];
@@ -782,12 +827,26 @@
     CSImageAnnotationView* imageAnnotationView = (CSImageAnnotationView*) view;
     CSMapAnnotation* annotation = (CSMapAnnotation*)[imageAnnotationView annotation];
     
-    CalloutView *calloutView = (CalloutView *)[[[NSBundle mainBundle] loadNibNamed:@"calloutView" owner:self options:nil] objectAtIndex:0];
-    CGRect calloutViewFrame = calloutView.frame;
-    calloutViewFrame.origin = CGPointMake(-calloutViewFrame.size.width/2 + 15, -calloutViewFrame.size.height);
-    calloutView.frame = calloutViewFrame;
-    [calloutView.calloutLabel setText:[NSString stringWithFormat:@"%@\n%@",[annotation title],[annotation subtitle]]];
-    [view addSubview:calloutView];
+  
+    
+    if (IS_IPAD) {
+        CalloutView *calloutView = (CalloutView *)[[[NSBundle mainBundle] loadNibNamed:@"calloutView" owner:self options:nil] objectAtIndex:1];
+        CGRect calloutViewFrame = calloutView.frame;
+        calloutViewFrame.origin = CGPointMake(-calloutViewFrame.size.width/2 + 15, -calloutViewFrame.size.height);
+        calloutViewFrame.size=CGSizeMake(300, 100);
+        calloutView.frame = calloutViewFrame;
+        [calloutView.calloutLabel setText:[NSString stringWithFormat:@"%@\n%@",[annotation title],[annotation subtitle]]];
+        [view addSubview:calloutView];
+    }
+    else
+    {
+        CalloutView *calloutView = (CalloutView *)[[[NSBundle mainBundle] loadNibNamed:@"calloutView" owner:self options:nil] objectAtIndex:0];
+        CGRect calloutViewFrame = calloutView.frame;
+        calloutViewFrame.origin = CGPointMake(-calloutViewFrame.size.width/2 + 15, -calloutViewFrame.size.height);
+        calloutView.frame = calloutViewFrame;
+        [calloutView.calloutLabel setText:[NSString stringWithFormat:@"%@\n%@",[annotation title],[annotation subtitle]]];
+        [view addSubview:calloutView];
+    }
 }
 
 -(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {

@@ -71,7 +71,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="red_pin.png" translatesAutoresizingMaskIntoConstraints="NO" id="8d4-mr-oZf">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="red.png" translatesAutoresizingMaskIntoConstraints="NO" id="8d4-mr-oZf">
                                                 <rect key="frame" x="20" y="61" width="35" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
@@ -82,7 +82,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="green_pin.png" translatesAutoresizingMaskIntoConstraints="NO" id="aaf-bz-QE6">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="green.png" translatesAutoresizingMaskIntoConstraints="NO" id="aaf-bz-QE6">
                                                 <rect key="frame" x="294" y="61" width="35" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
@@ -93,8 +93,19 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pink_pin.png" translatesAutoresizingMaskIntoConstraints="NO" id="CJb-so-7OV">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pink.png" translatesAutoresizingMaskIntoConstraints="NO" id="CJb-so-7OV">
                                                 <rect key="frame" x="20" y="115" width="35" height="35"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Not Responding" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JW8-et-5Mi">
+                                                <rect key="frame" x="196" y="170" width="171" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="BanglaSangamMN" family="Bangla Sangam MN" pointSize="19"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="black.png" translatesAutoresizingMaskIntoConstraints="NO" id="99K-df-TKj">
+                                                <rect key="frame" x="151" y="158" width="35" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Idle Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MdF-Gq-P5m">
@@ -104,7 +115,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="idlepoint.png" translatesAutoresizingMaskIntoConstraints="NO" id="wMT-Z4-vwa">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="orange.png" translatesAutoresizingMaskIntoConstraints="NO" id="wMT-Z4-vwa">
                                                 <rect key="frame" x="294" y="115" width="35" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
@@ -346,7 +357,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="red_pin.png" translatesAutoresizingMaskIntoConstraints="NO" id="9qv-QK-Ajm">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="red.png" translatesAutoresizingMaskIntoConstraints="NO" id="9qv-QK-Ajm">
                                                 <rect key="frame" x="127" y="61" width="35" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
@@ -357,7 +368,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pink_pin.png" translatesAutoresizingMaskIntoConstraints="NO" id="ypC-BJ-BaU">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pink.png" translatesAutoresizingMaskIntoConstraints="NO" id="ypC-BJ-BaU">
                                                 <rect key="frame" x="127" y="107" width="35" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
@@ -375,7 +386,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="startpoint.png" translatesAutoresizingMaskIntoConstraints="NO" id="096-Zy-0O7">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="start.png" translatesAutoresizingMaskIntoConstraints="NO" id="096-Zy-0O7">
                                                 <rect key="frame" x="127" y="150" width="35" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
@@ -792,11 +803,12 @@
     </scenes>
     <resources>
         <image name="Navbarbg.jpg" width="768" height="63"/>
-        <image name="green_pin.png" width="37" height="41"/>
-        <image name="idlepoint.png" width="37" height="41"/>
-        <image name="pink_pin.png" width="37" height="41"/>
-        <image name="red_pin.png" width="37" height="41"/>
-        <image name="startpoint.png" width="37" height="41"/>
+        <image name="black.png" width="47" height="50"/>
+        <image name="green.png" width="47" height="50"/>
+        <image name="orange.png" width="47" height="50"/>
+        <image name="pink.png" width="47" height="50"/>
+        <image name="red.png" width="47" height="50"/>
+        <image name="start.png" width="47" height="50"/>
     </resources>
     <color key="tintColor" red="0.058823529409999999" green="0.64313725489999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
